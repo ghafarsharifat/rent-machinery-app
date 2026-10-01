@@ -1,11 +1,4 @@
-,
-"icons": [
-  {
-    "src": "/rent-machinery-app/icon.png",
-    "sizes": "512x512",
-    "type": "image/png"
-  }
-]{
+{
   "name": "نرخینو",
   "short_name": "نرخینو",
   "description": "سامانه ثبت و مشاهده آگهی اجاره ماشین‌آلات راهسازی و معدنی",
@@ -16,5 +9,12 @@
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#1565c0",
-  "id": "/rent-machinery-app/"
+  "id": "/rent-machinery-app/",
+  "icons": [
+    {
+      "src": "/rent-machinery-app/icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
 }
