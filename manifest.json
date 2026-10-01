@@ -1,0 +1,13 @@
+{
+  "name": "نرخینو",
+  "short_name": "نرخینو",
+  "description": "سامانه ثبت و مشاهده آگهی اجاره ماشین‌آلات راهسازی و معدنی",
+  "lang": "fa-IR",
+  "dir": "rtl",
+  "start_url": "/rent-machinery-app/",
+  "scope": "/rent-machinery-app/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1565c0",
+  "icons": []
+}
