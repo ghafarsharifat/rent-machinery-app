@@ -1,0 +1,43 @@
+name: ساخت APK نرخینو
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - اصلی
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: دریافت پروژه
+        uses: actions/checkout@v4
+
+      - name: نصب Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: باز کردن فایل پروژه
+        run: |
+          unzip -q "پروژه اندروید نرخینو نسخه ۱۳ - ساخت ابری.zip" -d project
+
+      - name: ساخت APK
+        run: |
+          GRADLEW=$(find project -name gradlew -type f | head -n 1)
+          if [ -z "$GRADLEW" ]; then
+            echo "فایل gradlew در پروژه پیدا نشد."
+            exit 1
+          fi
+          chmod +x "$GRADLEW"
+          cd "$(dirname "$GRADLEW")"
+          ./gradlew assembleDebug --no-daemon
+
+      - name: دریافت APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: Nerkhino-APK
+          path: "project/**/build/outputs/apk/**/*.apk"
+          if-no-files-found: error
