@@ -295,6 +295,8 @@ function showSection(sectionId){
 
 function registerAd(){
 
+  function registerAd(){
+
   var machine =
     document.getElementById('machine').value.trim();
 
@@ -309,34 +311,10 @@ function registerAd(){
 
   var description =
     document.getElementById('description').value.trim();
-var imageInput =
-  document.getElementById('image');
 
-var image =
-  '';
+  var imageInput =
+    document.getElementById('image');
 
-if(imageInput && imageInput.files.length > 0){
-
-  var file =
-    imageInput.files[0];
-
-  var reader =
-    new FileReader();
-
-  reader.onload = function(e){
-
-    ad.image =
-      e.target.result;
-
-    saveAd(ad);
-
-  };
-
-  reader.readAsDataURL(file);
-
-  return;
-
-}
 
   if(
     machine === '' ||
@@ -357,50 +335,87 @@ if(imageInput && imageInput.files.length > 0){
     type: type,
     city: city,
     phone: phone,
-    description: description
+    description: description,
+    image: ''
   };
 
 
-  var ads = [];
+  function saveAd(){
 
-  try{
+    var ads = [];
 
-    ads =
-      JSON.parse(
-        localStorage.getItem('rentAds') || '[]'
-      );
+    try{
 
-  }catch(error){
+      ads =
+        JSON.parse(
+          localStorage.getItem('rentAds') || '[]'
+        );
 
-    ads = [];
+    }catch(error){
+
+      ads = [];
+
+    }
+
+
+    ads.push(ad);
+
+
+    localStorage.setItem(
+      'rentAds',
+      JSON.stringify(ads)
+    );
+
+
+    alert('آگهی با موفقیت ثبت شد.');
+
+
+    document.getElementById('machine').value = '';
+    document.getElementById('city').value = '';
+    document.getElementById('phone').value = '';
+    document.getElementById('description').value = '';
+
+    if(imageInput){
+      imageInput.value = '';
+    }
+
+
+    showAds();
+
+    showSection('ads');
 
   }
 
 
-  ads.push(ad);
+  if(
+    imageInput &&
+    imageInput.files &&
+    imageInput.files.length > 0
+  ){
 
+    var reader =
+      new FileReader();
 
-  localStorage.setItem(
-    'rentAds',
-    JSON.stringify(ads)
-  );
+    reader.onload = function(e){
 
+      ad.image =
+        e.target.result;
 
-  alert('آگهی با موفقیت ثبت شد.');
+      saveAd();
 
+    };
 
-  document.getElementById('machine').value = '';
-  document.getElementById('city').value = '';
-  document.getElementById('phone').value = '';
-  document.getElementById('description').value = '';
+    reader.readAsDataURL(
+      imageInput.files[0]
+    );
 
+  }else{
 
-  showAds();
+    saveAd();
 
-  showSection('ads');
+  }
 
 }
-
 
 function showAds(){
 
