@@ -599,5 +599,18 @@ function showSection(sectionId) {
   }
 }
 </script>
+  <script>
+document.querySelectorAll('button').forEach(function(button) {
+  button.addEventListener('click', function() {
+    var text = this.innerText.trim();
+
+    if (text === 'ثبت آگهی') {
+      document.getElementById('home').style.display = 'none';
+      document.getElementById('register').style.display = 'block';
+      window.scrollTo(0, 0);
+    }
+  });
+});
+</script>
 </body>
 </html>
