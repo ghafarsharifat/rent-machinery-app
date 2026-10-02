@@ -297,38 +297,19 @@ function registerAd(){
 
   function registerAd(){
 
-  var machine =
-    document.getElementById('machine').value.trim();
+  var machine = document.getElementById('machine').value.trim();
+  var type = document.getElementById('type').value;
+  var city = document.getElementById('city').value.trim();
+  var phone = document.getElementById('phone').value.trim();
+  var description = document.getElementById('description').value.trim();
+  var imageInput = document.getElementById('image');
 
-  var type =
-    document.getElementById('type').value;
+  if(machine === '' || city === '' || phone === ''){
 
-  var city =
-    document.getElementById('city').value.trim();
-
-  var phone =
-    document.getElementById('phone').value.trim();
-
-  var description =
-    document.getElementById('description').value.trim();
-
-  var imageInput =
-    document.getElementById('image');
-
-
-  if(
-    machine === '' ||
-    city === '' ||
-    phone === ''
-  ){
-
-    alert(
-      'لطفاً نام ماشین‌آلات، شهر و شماره تماس را وارد کنید.'
-    );
-
+    alert('لطفاً نام ماشین‌آلات، شهر و شماره تماس را وارد کنید.');
     return;
-  }
 
+  }
 
   var ad = {
     machine: machine,
@@ -345,30 +326,30 @@ function registerAd(){
     var ads = [];
 
     try{
-
-      ads =
-        JSON.parse(
-          localStorage.getItem('rentAds') || '[]'
-        );
-
+      ads = JSON.parse(
+        localStorage.getItem('rentAds') || '[]'
+      );
     }catch(error){
-
       ads = [];
-
     }
-
 
     ads.push(ad);
 
+    try{
 
-    localStorage.setItem(
-      'rentAds',
-      JSON.stringify(ads)
-    );
+      localStorage.setItem(
+        'rentAds',
+        JSON.stringify(ads)
+      );
 
+    }catch(error){
+
+      alert('حجم عکس زیاد است. لطفاً عکس کوچک‌تری انتخاب کنید.');
+      return;
+
+    }
 
     alert('آگهی با موفقیت ثبت شد.');
-
 
     document.getElementById('machine').value = '';
     document.getElementById('city').value = '';
@@ -379,9 +360,84 @@ function registerAd(){
       imageInput.value = '';
     }
 
-
     showAds();
+    showSection('ads');
+  }
 
+
+  if(
+    imageInput &&
+    imageInput.files &&
+    imageInput.files.length > 0
+  ){
+
+    var file = imageInput.files[0];
+    var reader = new FileReader();
+
+    reader.onload = function(e){
+
+      var img = new Image();
+
+      img.onload = function(){
+
+        var canvas = document.createElement('canvas');
+
+        var maxWidth = 800;
+        var maxHeight = 800;
+
+        var width = img.width;
+        var height = img.height;
+
+        if(width > maxWidth){
+
+          height = height * maxWidth / width;
+          width = maxWidth;
+
+        }
+
+        if(height > maxHeight){
+
+          width = width * maxHeight / height;
+          height = maxHeight;
+
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+
+        var ctx = canvas.getContext('2d');
+
+        ctx.drawImage(
+          img,
+          0,
+          0,
+          width,
+          height
+        );
+
+        ad.image =
+          canvas.toDataURL(
+            'image/jpeg',
+            0.7
+          );
+
+        saveAd();
+
+      };
+
+      img.src = e.target.result;
+
+    };
+
+    reader.readAsDataURL(file);
+
+  }else{
+
+    saveAd();
+
+  }
+
+}
     showSection('ads');
 
   }
