@@ -3,45 +3,320 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="manifest" href="/rent-machinery-app/manifest.json">
-<title>اجاره ماشین‌آلات</title>
+<link rel="manifest" href="/rent-machinery-app/manifest.json">
+<meta name="theme-color" content="#222222">
+
+<title>نرخینو | اجاره ماشین‌آلات</title>
+
 <style>
-body{font-family:Arial,sans-serif;margin:0;background:#f4f4f4;color:#222}
-header{background:#222;color:#fff;padding:25px;text-align:center}
-h1{margin:0}
-.container{padding:20px;max-width:700px;margin:auto}
-.card{background:white;padding:20px;margin:15px 0;border-radius:12px;box-shadow:0 2px 8px #ccc}
-button{background:#ff9800;border:0;padding:12px 20px;border-radius:8px;font-size:16px}
+body{
+  font-family:Arial,sans-serif;
+  margin:0;
+  background:#f4f4f4;
+  color:#222;
+}
+
+header{
+  background:#222;
+  color:#fff;
+  padding:25px 15px;
+  text-align:center;
+}
+
+h1{margin:0 0 8px}
+
+.container{
+  padding:20px;
+  max-width:700px;
+  margin:auto;
+}
+
+.card{
+  background:white;
+  padding:20px;
+  margin:15px 0;
+  border-radius:12px;
+  box-shadow:0 2px 8px #ccc;
+}
+
+button{
+  background:#ff9800;
+  border:0;
+  padding:12px 20px;
+  border-radius:8px;
+  font-size:16px;
+  cursor:pointer;
+  margin-top:8px;
+}
+
+button:hover{
+  background:#f57c00;
+}
+
+input,select,textarea{
+  width:100%;
+  box-sizing:border-box;
+  padding:12px;
+  margin:7px 0 15px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:15px;
+}
+
+.section{
+  display:none;
+}
+
+.active{
+  display:block;
+}
+
+.ad{
+  border:1px solid #ddd;
+  padding:15px;
+  margin:10px 0;
+  border-radius:10px;
+  background:#fafafa;
+}
+
+.back{
+  background:#555;
+  color:white;
+}
 </style>
 </head>
+
 <body>
 
 <header>
-<h1>اجاره ماشین‌آلات</h1>
+<h1>نرخینو</h1>
 <p>ثبت و جستجوی ماشین‌آلات راه‌سازی و معدنی</p>
 </header>
 
 <div class="container">
 
+<!-- صفحه اصلی -->
+<div id="home" class="section active">
+
 <div class="card">
 <h2>🚜 ثبت آگهی</h2>
 <p>ماشین‌آلات خود را برای اجاره ثبت کنید.</p>
-<button>ثبت آگهی</button>
+<button onclick="showSection('register')">ثبت آگهی</button>
 </div>
 
 <div class="card">
 <h2>🔎 جستجوی ماشین‌آلات</h2>
 <p>بیل مکانیکی، لودر، کامیون، پیکور و سایر ماشین‌آلات.</p>
-<button>مشاهده آگهی‌ها</button>
+<button onclick="showSection('ads')">مشاهده آگهی‌ها</button>
 </div>
 
 <div class="card">
 <h2>📍 نشانی‌ها</h2>
 <p>مشاهده محل فعالیت و موقعیت ماشین‌آلات.</p>
+<button onclick="showSection('addresses')">مشاهده نشانی‌ها</button>
 </div>
 
 </div>
+
+
+<!-- ثبت آگهی -->
+<div id="register" class="section">
+
+<div class="card">
+<h2>📝 ثبت آگهی</h2>
+
+<label>نام ماشین‌آلات</label>
+<input id="machine" type="text" placeholder="مثلاً بیل مکانیکی">
+
+<label>نوع ماشین‌آلات</label>
+<select id="type">
+<option>بیل مکانیکی</option>
+<option>لودر</option>
+<option>کامیون</option>
+<option>پیکور</option>
+<option>جرثقیل</option>
+<option>غلتک</option>
+<option>سایر</option>
+</select>
+
+<label>شهر</label>
+<input id="city" type="text" placeholder="مثلاً شوش">
+
+<label>شماره تماس</label>
+<input id="phone" type="tel" placeholder="شماره تماس">
+
+<label>توضیحات</label>
+<textarea id="description" rows="4" placeholder="توضیحات آگهی"></textarea>
+
+<button onclick="registerAd()">ثبت آگهی</button>
+<button class="back" onclick="showSection('home')">بازگشت</button>
+
+</div>
+
+</div>
+
+
+<!-- آگهی‌ها -->
+<div id="ads" class="section">
+
+<div class="card">
+<h2>📋 آگهی‌های ماشین‌آلات</h2>
+
+<div id="adsList">
+<p>هنوز آگهی‌ای ثبت نشده است.</p>
+</div>
+
+<button class="back" onclick="showSection('home')">بازگشت</button>
+</div>
+
+</div>
+
+
+<!-- نشانی‌ها -->
+<div id="addresses" class="section">
+
+<div class="card">
+<h2>📍 نشانی‌ها</h2>
+
+<p>محل فعالیت ماشین‌آلات را می‌توانید در آگهی مشخص کنید.</p>
+
+<button class="back" onclick="showSection('home')">بازگشت</button>
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+function showSection(sectionId){
+
+  document.querySelectorAll('.section').forEach(function(section){
+    section.classList.remove('active');
+  });
+
+  document.getElementById(sectionId).classList.add('active');
+
+  window.scrollTo(0,0);
+}
+
+
+function registerAd(){
+
+  const machine =
+    document.getElementById('machine').value.trim();
+
+  const type =
+    document.getElementById('type').value;
+
+  const city =
+    document.getElementById('city').value.trim();
+
+  const phone =
+    document.getElementById('phone').value.trim();
+
+  const description =
+    document.getElementById('description').value.trim();
+
+  if(machine === '' || city === '' || phone === ''){
+
+    alert('لطفاً نام ماشین‌آلات، شهر و شماره تماس را وارد کنید.');
+
+    return;
+  }
+
+  const ad = {
+    machine: machine,
+    type: type,
+    city: city,
+    phone: phone,
+    description: description
+  };
+
+  let ads =
+    JSON.parse(localStorage.getItem('rentAds') || '[]');
+
+  ads.push(ad);
+
+  localStorage.setItem('rentAds', JSON.stringify(ads));
+
+  alert('آگهی با موفقیت ثبت شد.');
+
+  document.getElementById('machine').value = '';
+  document.getElementById('city').value = '';
+  document.getElementById('phone').value = '';
+  document.getElementById('description').value = '';
+
+  showAds();
+
+  showSection('ads');
+}
+
+
+function showAds(){
+
+  const adsList =
+    document.getElementById('adsList');
+
+  let ads =
+    JSON.parse(localStorage.getItem('rentAds') || '[]');
+
+  if(ads.length === 0){
+
+    adsList.innerHTML =
+      '<p>هنوز آگهی‌ای ثبت نشده است.</p>';
+
+    return;
+  }
+
+  adsList.innerHTML = '';
+
+  ads.forEach(function(ad){
+
+    const div =
+      document.createElement('div');
+
+    div.className = 'ad';
+
+    div.innerHTML = `
+      <h3>🚜 ${ad.machine}</h3>
+      <p><strong>نوع:</strong> ${ad.type}</p>
+      <p><strong>شهر:</strong> ${ad.city}</p>
+      <p><strong>تلفن:</strong> ${ad.phone}</p>
+      <p>${ad.description}</p>
+    `;
+
+    adsList.appendChild(div);
+
+  });
+}
+
+
+showAds();
+
+
+// فعال‌سازی Service Worker
+if('serviceWorker' in navigator){
+
+  window.addEventListener('load', function(){
+
+    navigator.serviceWorker.register(
+      '/rent-machinery-app/service-worker.js'
+    ).catch(function(error){
+
+      console.log(
+        'Service Worker Error:',
+        error
+      );
+
+    });
+
+  });
+
+}
+
+</script>
 
 </body>
 </html>
-
