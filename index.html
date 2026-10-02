@@ -3,12 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="manifest" href="/rent-machinery-app/manifest.json">
-<meta name="theme-color" content="#222222">
 
 <title>نرخینو | اجاره ماشین‌آلات</title>
 
+<meta name="theme-color" content="#222222">
+
 <style>
+*{
+  box-sizing:border-box;
+}
+
 body{
   font-family:Arial,sans-serif;
   margin:0;
@@ -18,12 +22,14 @@ body{
 
 header{
   background:#222;
-  color:#fff;
+  color:white;
   padding:25px 15px;
   text-align:center;
 }
 
-h1{margin:0 0 8px}
+header h1{
+  margin:0 0 8px;
+}
 
 .container{
   padding:20px;
@@ -41,21 +47,24 @@ h1{margin:0 0 8px}
 
 button{
   background:#ff9800;
+  color:#222;
   border:0;
   padding:12px 20px;
   border-radius:8px;
   font-size:16px;
   cursor:pointer;
   margin-top:8px;
+  width:100%;
 }
 
 button:hover{
   background:#f57c00;
 }
 
-input,select,textarea{
+input,
+select,
+textarea{
   width:100%;
-  box-sizing:border-box;
   padding:12px;
   margin:7px 0 15px;
   border:1px solid #ccc;
@@ -67,7 +76,7 @@ input,select,textarea{
   display:none;
 }
 
-.active{
+.section.active{
   display:block;
 }
 
@@ -83,14 +92,24 @@ input,select,textarea{
   background:#555;
   color:white;
 }
+
+.back:hover{
+  background:#333;
+}
+
+.empty{
+  text-align:center;
+  color:#777;
+  padding:20px;
+}
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>نرخینو</h1>
-<p>ثبت و جستجوی ماشین‌آلات راه‌سازی و معدنی</p>
+  <h1>نرخینو</h1>
+  <p>ثبت و جستجوی ماشین‌آلات راه‌سازی و معدنی</p>
 </header>
 
 <div class="container">
@@ -98,23 +117,29 @@ input,select,textarea{
 <!-- صفحه اصلی -->
 <div id="home" class="section active">
 
-<div class="card">
-<h2>🚜 ثبت آگهی</h2>
-<p>ماشین‌آلات خود را برای اجاره ثبت کنید.</p>
-<button onclick="showSection('register')">ثبت آگهی</button>
-</div>
+  <div class="card">
+    <h2>🚜 ثبت آگهی</h2>
+    <p>ماشین‌آلات خود را برای اجاره ثبت کنید.</p>
+    <button type="button" onclick="showSection('register')">
+      ثبت آگهی
+    </button>
+  </div>
 
-<div class="card">
-<h2>🔎 جستجوی ماشین‌آلات</h2>
-<p>بیل مکانیکی، لودر، کامیون، پیکور و سایر ماشین‌آلات.</p>
-<button onclick="showSection('ads')">مشاهده آگهی‌ها</button>
-</div>
+  <div class="card">
+    <h2>🔎 جستجوی ماشین‌آلات</h2>
+    <p>بیل مکانیکی، لودر، کامیون، پیکور و سایر ماشین‌آلات.</p>
+    <button type="button" onclick="showSection('ads')">
+      مشاهده آگهی‌ها
+    </button>
+  </div>
 
-<div class="card">
-<h2>📍 نشانی‌ها</h2>
-<p>مشاهده محل فعالیت و موقعیت ماشین‌آلات.</p>
-<button onclick="showSection('addresses')">مشاهده نشانی‌ها</button>
-</div>
+  <div class="card">
+    <h2>📍 نشانی‌ها</h2>
+    <p>مشاهده محل فعالیت و موقعیت ماشین‌آلات.</p>
+    <button type="button" onclick="showSection('addresses')">
+      مشاهده نشانی‌ها
+    </button>
+  </div>
 
 </div>
 
@@ -122,36 +147,64 @@ input,select,textarea{
 <!-- ثبت آگهی -->
 <div id="register" class="section">
 
-<div class="card">
-<h2>📝 ثبت آگهی</h2>
+  <div class="card">
 
-<label>نام ماشین‌آلات</label>
-<input id="machine" type="text" placeholder="مثلاً بیل مکانیکی">
+    <h2>📝 ثبت آگهی</h2>
 
-<label>نوع ماشین‌آلات</label>
-<select id="type">
-<option>بیل مکانیکی</option>
-<option>لودر</option>
-<option>کامیون</option>
-<option>پیکور</option>
-<option>جرثقیل</option>
-<option>غلتک</option>
-<option>سایر</option>
-</select>
+    <label>نام ماشین‌آلات</label>
+    <input
+      id="machine"
+      type="text"
+      placeholder="مثلاً بیل مکانیکی"
+    >
 
-<label>شهر</label>
-<input id="city" type="text" placeholder="مثلاً شوش">
+    <label>نوع ماشین‌آلات</label>
+    <select id="type">
+      <option>بیل مکانیکی</option>
+      <option>لودر</option>
+      <option>کامیون</option>
+      <option>پیکور</option>
+      <option>جرثقیل</option>
+      <option>غلتک</option>
+      <option>بولدوزر</option>
+      <option>گریدر</option>
+      <option>سایر</option>
+    </select>
 
-<label>شماره تماس</label>
-<input id="phone" type="tel" placeholder="شماره تماس">
+    <label>شهر</label>
+    <input
+      id="city"
+      type="text"
+      placeholder="مثلاً شوش"
+    >
 
-<label>توضیحات</label>
-<textarea id="description" rows="4" placeholder="توضیحات آگهی"></textarea>
+    <label>شماره تماس</label>
+    <input
+      id="phone"
+      type="tel"
+      placeholder="شماره تماس"
+    >
 
-<button onclick="registerAd()">ثبت آگهی</button>
-<button class="back" onclick="showSection('home')">بازگشت</button>
+    <label>توضیحات</label>
+    <textarea
+      id="description"
+      rows="4"
+      placeholder="توضیحات آگهی"
+    ></textarea>
 
-</div>
+    <button type="button" onclick="registerAd()">
+      ثبت آگهی
+    </button>
+
+    <button
+      type="button"
+      class="back"
+      onclick="showSection('home')"
+    >
+      بازگشت
+    </button>
+
+  </div>
 
 </div>
 
@@ -159,15 +212,23 @@ input,select,textarea{
 <!-- آگهی‌ها -->
 <div id="ads" class="section">
 
-<div class="card">
-<h2>📋 آگهی‌های ماشین‌آلات</h2>
+  <div class="card">
 
-<div id="adsList">
-<p>هنوز آگهی‌ای ثبت نشده است.</p>
-</div>
+    <h2>📋 آگهی‌های ماشین‌آلات</h2>
 
-<button class="back" onclick="showSection('home')">بازگشت</button>
-</div>
+    <div id="adsList">
+      <p class="empty">هنوز آگهی‌ای ثبت نشده است.</p>
+    </div>
+
+    <button
+      type="button"
+      class="back"
+      onclick="showSection('home')"
+    >
+      بازگشت
+    </button>
+
+  </div>
 
 </div>
 
@@ -175,13 +236,23 @@ input,select,textarea{
 <!-- نشانی‌ها -->
 <div id="addresses" class="section">
 
-<div class="card">
-<h2>📍 نشانی‌ها</h2>
+  <div class="card">
 
-<p>محل فعالیت ماشین‌آلات را می‌توانید در آگهی مشخص کنید.</p>
+    <h2>📍 نشانی‌ها</h2>
 
-<button class="back" onclick="showSection('home')">بازگشت</button>
-</div>
+    <p>
+      محل فعالیت ماشین‌آلات را می‌توانید در آگهی مشخص کنید.
+    </p>
+
+    <button
+      type="button"
+      class="back"
+      onclick="showSection('home')"
+    >
+      بازگشت
+    </button>
+
+  </div>
 
 </div>
 
@@ -192,41 +263,55 @@ input,select,textarea{
 
 function showSection(sectionId){
 
-  document.querySelectorAll('.section').forEach(function(section){
+  var sections = document.querySelectorAll('.section');
+
+  sections.forEach(function(section){
     section.classList.remove('active');
   });
 
-  document.getElementById(sectionId).classList.add('active');
+  var target = document.getElementById(sectionId);
 
-  window.scrollTo(0,0);
+  if(target){
+    target.classList.add('active');
+    window.scrollTo(0,0);
+  }
+
 }
 
 
 function registerAd(){
 
-  const machine =
+  var machine =
     document.getElementById('machine').value.trim();
 
-  const type =
+  var type =
     document.getElementById('type').value;
 
-  const city =
+  var city =
     document.getElementById('city').value.trim();
 
-  const phone =
+  var phone =
     document.getElementById('phone').value.trim();
 
-  const description =
+  var description =
     document.getElementById('description').value.trim();
 
-  if(machine === '' || city === '' || phone === ''){
 
-    alert('لطفاً نام ماشین‌آلات، شهر و شماره تماس را وارد کنید.');
+  if(
+    machine === '' ||
+    city === '' ||
+    phone === ''
+  ){
+
+    alert(
+      'لطفاً نام ماشین‌آلات، شهر و شماره تماس را وارد کنید.'
+    );
 
     return;
   }
 
-  const ad = {
+
+  var ad = {
     machine: machine,
     type: type,
     city: city,
@@ -234,71 +319,137 @@ function registerAd(){
     description: description
   };
 
-  let ads =
-    JSON.parse(localStorage.getItem('rentAds') || '[]');
+
+  var ads = [];
+
+  try{
+
+    ads =
+      JSON.parse(
+        localStorage.getItem('rentAds') || '[]'
+      );
+
+  }catch(error){
+
+    ads = [];
+
+  }
+
 
   ads.push(ad);
 
-  localStorage.setItem('rentAds', JSON.stringify(ads));
+
+  localStorage.setItem(
+    'rentAds',
+    JSON.stringify(ads)
+  );
+
 
   alert('آگهی با موفقیت ثبت شد.');
+
 
   document.getElementById('machine').value = '';
   document.getElementById('city').value = '';
   document.getElementById('phone').value = '';
   document.getElementById('description').value = '';
 
+
   showAds();
 
   showSection('ads');
+
 }
 
 
 function showAds(){
 
-  const adsList =
+  var adsList =
     document.getElementById('adsList');
 
-  let ads =
-    JSON.parse(localStorage.getItem('rentAds') || '[]');
+  if(!adsList){
+    return;
+  }
+
+
+  var ads = [];
+
+  try{
+
+    ads =
+      JSON.parse(
+        localStorage.getItem('rentAds') || '[]'
+      );
+
+  }catch(error){
+
+    ads = [];
+
+  }
+
 
   if(ads.length === 0){
 
     adsList.innerHTML =
-      '<p>هنوز آگهی‌ای ثبت نشده است.</p>';
+      '<p class="empty">هنوز آگهی‌ای ثبت نشده است.</p>';
 
     return;
   }
 
+
   adsList.innerHTML = '';
+
 
   ads.forEach(function(ad){
 
-    const div =
+    var div =
       document.createElement('div');
 
     div.className = 'ad';
 
-    div.innerHTML = `
-      <h3>🚜 ${ad.machine}</h3>
-      <p><strong>نوع:</strong> ${ad.type}</p>
-      <p><strong>شهر:</strong> ${ad.city}</p>
-      <p><strong>تلفن:</strong> ${ad.phone}</p>
-      <p>${ad.description}</p>
-    `;
+
+    div.innerHTML =
+      '<h3>🚜 ' +
+      escapeHtml(ad.machine) +
+      '</h3>' +
+
+      '<p><strong>نوع:</strong> ' +
+      escapeHtml(ad.type) +
+      '</p>' +
+
+      '<p><strong>شهر:</strong> ' +
+      escapeHtml(ad.city) +
+      '</p>' +
+
+      '<p><strong>تلفن:</strong> ' +
+      escapeHtml(ad.phone) +
+      '</p>' +
+
+      '<p>' +
+      escapeHtml(ad.description) +
+      '</p>';
+
 
     adsList.appendChild(div);
 
   });
+
+}
+
+
+function escapeHtml(text){
+
+  var div =
+    document.createElement('div');
+
+  div.textContent =
+    text || '';
+
+  return div.innerHTML;
+
 }
 
 
 showAds();
-
-
-// فعال‌سازی Service Worker
-if('serviceWorker' in navigator){
-  showAds();
 
 </script>
 
