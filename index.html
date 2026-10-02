@@ -309,7 +309,34 @@ function registerAd(){
 
   var description =
     document.getElementById('description').value.trim();
+var imageInput =
+  document.getElementById('image');
 
+var image =
+  '';
+
+if(imageInput && imageInput.files.length > 0){
+
+  var file =
+    imageInput.files[0];
+
+  var reader =
+    new FileReader();
+
+  reader.onload = function(e){
+
+    ad.image =
+      e.target.result;
+
+    saveAd(ad);
+
+  };
+
+  reader.readAsDataURL(file);
+
+  return;
+
+}
 
   if(
     machine === '' ||
