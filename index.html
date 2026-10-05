@@ -317,7 +317,14 @@ textarea {
   oninput="searchAds()"
 >
 <label>🔎 فیلتر بر اساس کارکرد</label>
+<label>📍 فیلتر بر اساس شهر</label>
 
+<input
+  id="cityFilter"
+  type="text"
+  placeholder="مثلاً اهواز"
+  oninput="filterByCity()"
+>
 <select id="workFilter" onchange="filterByWork()">
   <option value="all">همه</option>
   <option value="5000">کمتر از ۵۰۰۰ ساعت</option>
