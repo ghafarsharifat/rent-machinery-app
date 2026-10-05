@@ -695,7 +695,98 @@ function showAds() {
 
 }
 
+function filterAds(category) {
 
+  var adsList =
+    document.getElementById('adsList');
+
+  var ads = [];
+
+  try {
+
+    ads =
+      JSON.parse(
+        localStorage.getItem('rentAds') || '[]'
+      );
+
+  } catch(error) {
+
+    ads = [];
+
+  }
+
+  var results;
+
+  if (category === 'همه') {
+
+    results = ads;
+
+  } else {
+
+    results = ads.filter(function(ad) {
+
+      return ad.type === category;
+
+    });
+
+  }
+
+  if (results.length === 0) {
+
+    adsList.innerHTML =
+      '<p class="empty">آگهی‌ای در این دسته وجود ندارد.</p>';
+
+    return;
+
+  }
+
+  adsList.innerHTML = '';
+
+  results.forEach(function(ad) {
+
+    var div =
+      document.createElement('div');
+
+    div.className = 'ad';
+
+    var html =
+
+      '<h3>🚜 ' +
+      escapeHtml(ad.machine) +
+      '</h3>' +
+
+      '<p><strong>نوع:</strong> ' +
+      escapeHtml(ad.type) +
+      '</p>' +
+
+      '<p><strong>شهر:</strong> ' +
+      escapeHtml(ad.city) +
+      '</p>' +
+
+      '<p><strong>تلفن:</strong> ' +
+      escapeHtml(ad.phone) +
+      '</p>' +
+
+      '<p>' +
+      escapeHtml(ad.description) +
+      '</p>';
+
+    if (ad.image) {
+
+      html +=
+        '<img src="' +
+        ad.image +
+        '" alt="تصویر ماشین‌آلات">';
+
+    }
+
+    div.innerHTML = html;
+
+    adsList.appendChild(div);
+
+  });
+
+}
 function searchAds() {
 
   var input =
