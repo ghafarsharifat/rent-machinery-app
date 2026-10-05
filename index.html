@@ -1195,6 +1195,14 @@ function searchAds() {
   });
 
 }
+  function callOwner(phone) {
+  if (!phone) {
+    alert('شماره تماس ثبت نشده است.');
+    return;
+  }
+
+  window.location.href = 'tel:' + phone;
+}
 </script>
 
 </body>
