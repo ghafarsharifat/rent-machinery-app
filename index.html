@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+6<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -959,7 +959,10 @@ function filterByWork() {
 
     if (ad.image) {
 
-      html +=
+  html +=
+  '<button type="button" onclick="callOwner(\'' +
+  ad.phone +
+  '\')">📞 تماس با آگهی‌دهنده</button>';    html +=
         '<img src="' +
         ad.image +
         '" alt="تصویر ماشین‌آلات">';
