@@ -691,7 +691,9 @@ function showAds() {
       '<p><strong>تلفن:</strong> ' +
       escapeHtml(ad.phone) +
       '</p>' +
-
+'<p><strong>کارکرد:</strong> ' +
+      escapeHtml(ad.workHours || 'ثبت نشده') +
+      ' ساعت</p>' +
       '<p>' +
       escapeHtml(ad.description) +
       '</p>';
