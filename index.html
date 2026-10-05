@@ -985,7 +985,86 @@ function showAds() {
 
 function filterAds(category) {
 function filterByWork() {
+function filterByCity() {
 
+  var filter =
+    document.getElementById('cityFilter').value
+      .trim()
+      .toLowerCase();
+
+  var adsList =
+    document.getElementById('adsList');
+
+  var ads = [];
+
+  try {
+
+    ads = JSON.parse(
+      localStorage.getItem('rentAds') || '[]'
+    );
+
+  } catch (error) {
+
+    ads = [];
+
+  }
+
+  if (!filter) {
+
+    showAds();
+    return;
+
+  }
+
+  var filteredAds =
+    ads.filter(function(ad) {
+
+      return (ad.city || '')
+        .toLowerCase()
+        .includes(filter);
+
+    });
+
+  adsList.innerHTML = '';
+
+  if (filteredAds.length === 0) {
+
+    adsList.innerHTML =
+      '<p class="empty">آگهی‌ای در این شهر پیدا نشد.</p>';
+
+    return;
+
+  }
+
+  filteredAds.forEach(function(ad) {
+
+    var div =
+      document.createElement('div');
+
+    div.className = 'ad';
+
+    div.innerHTML =
+      '<h3>🚜 ' +
+      escapeHtml(ad.machine) +
+      '</h3>' +
+
+      '<p><strong>📍 شهر:</strong> ' +
+      escapeHtml(ad.city || 'ثبت نشده') +
+      '</p>' +
+
+      '<p><strong>📍 نشانی:</strong> ' +
+      escapeHtml(ad.address || 'ثبت نشده') +
+      '</p>' +
+
+      '<p><strong>کارکرد:</strong> ' +
+      escapeHtml(ad.workHours || 'ثبت نشده') +
+      ' ساعت</p>';
+
+    adsList.appendChild(div);
+
+  });
+
+}
   var filter =
     document.getElementById('workFilter').value;
 
