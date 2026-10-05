@@ -258,6 +258,14 @@ textarea {
   <div class="card">
 
     <h2>📋 آگهی‌های ماشین‌آلات</h2>
+<label>🔎 فیلتر بر اساس کارکرد</label>
+
+<select id="workFilter" onchange="filterByWork()">
+  <option value="all">همه</option>
+  <option value="5000">کمتر از ۵۰۰۰ ساعت</option>
+  <option value="10000">کمتر از ۱۰۰۰۰ ساعت</option>
+  <option value="20000">کمتر از ۲۰۰۰۰ ساعت</option>
+</select>
     <style>
 #categories {
   display: grid;
