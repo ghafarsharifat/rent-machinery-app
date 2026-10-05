@@ -697,8 +697,14 @@ function showAds() {
       '</p>' +
 
       '<p><strong>تلفن:</strong> ' +
-      escapeHtml(ad.phone) +
-      '</p>' +
+  escapeHtml(ad.phone) +
+  '</p>' +
+
+'<a href="tel:' +
+  encodeURIComponent(ad.phone) +
+  '" class="call-btn">' +
+  '📞 تماس با مالک' +
+  '</a>' +
 '<p><strong>کارکرد:</strong> ' +
       escapeHtml(ad.workHours || 'ثبت نشده') +
       ' ساعت</p>' +
