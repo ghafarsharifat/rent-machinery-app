@@ -1118,7 +1118,80 @@ function escapeHtml(text) {
 
 
 showAds();
+function searchAds() {
 
+  var search =
+    document.getElementById('searchAds').value
+      .trim()
+      .toLowerCase();
+
+  var adsList =
+    document.getElementById('adsList');
+
+  var ads = [];
+
+  try {
+
+    ads =
+      JSON.parse(
+        localStorage.getItem('rentAds') || '[]'
+      );
+
+  } catch (error) {
+
+    ads = [];
+
+  }
+
+  var results = ads.filter(function(ad) {
+
+    return (
+      (ad.machine || '').toLowerCase().includes(search) ||
+      (ad.type || '').toLowerCase().includes(search)
+    );
+
+  });
+
+  adsList.innerHTML = '';
+
+  if (results.length === 0) {
+
+    adsList.innerHTML =
+      '<p class="empty">آگهی‌ای پیدا نشد.</p>';
+
+    return;
+
+  }
+
+  results.forEach(function(ad) {
+
+    var div =
+      document.createElement('div');
+
+    div.className = 'ad';
+
+    div.innerHTML =
+      '<h3>🚜 ' +
+      escapeHtml(ad.machine) +
+      '</h3>' +
+
+      '<p><strong>نوع:</strong> ' +
+      escapeHtml(ad.type) +
+      '</p>' +
+
+      '<p><strong>شهر:</strong> ' +
+      escapeHtml(ad.city) +
+      '</p>' +
+
+      '<p><strong>تلفن:</strong> ' +
+      escapeHtml(ad.phone) +
+      '</p>';
+
+    adsList.appendChild(div);
+
+  });
+
+}
 </script>
 
 </body>
