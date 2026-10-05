@@ -1396,6 +1396,60 @@ function searchAds() {
 
   window.location.href = 'tel:' + phone;
 }
+  function showAddresses() {
+
+  var addressList =
+    document.getElementById('addressList');
+
+  if (!addressList) {
+    return;
+  }
+
+  var ads = [];
+
+  try {
+    ads = JSON.parse(
+      localStorage.getItem('rentAds') || '[]'
+    );
+  } catch (error) {
+    ads = [];
+  }
+
+  if (ads.length === 0) {
+
+    addressList.innerHTML =
+      '<p class="empty">هنوز نشانی‌ای ثبت نشده است.</p>';
+
+    return;
+  }
+
+  addressList.innerHTML = '';
+
+  ads.forEach(function(ad) {
+
+    var div =
+      document.createElement('div');
+
+    div.className = 'ad';
+
+    div.innerHTML =
+      '<h3>🚜 ' +
+      escapeHtml(ad.machine) +
+      '</h3>' +
+
+      '<p><strong>📍 شهر:</strong> ' +
+      escapeHtml(ad.city || 'ثبت نشده') +
+      '</p>' +
+
+      '<p><strong>📍 نشانی:</strong> ' +
+      escapeHtml(ad.address || 'ثبت نشده') +
+      '</p>';
+
+    addressList.appendChild(div);
+
+  });
+
+  }
 </script>
 
 </body>
