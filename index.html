@@ -292,6 +292,14 @@ textarea {
   <div class="card">
 
     <h2>📋 آگهی‌های ماشین‌آلات</h2>
+    <label>🔎 جستجوی ماشین‌آلات</label>
+
+<input
+  id="searchAds"
+  type="text"
+  placeholder="مثلاً بیل، لودر، کمرشکن..."
+  oninput="searchAds()"
+>
 <label>🔎 فیلتر بر اساس کارکرد</label>
 
 <select id="workFilter" onchange="filterByWork()">
