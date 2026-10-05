@@ -448,8 +448,182 @@ function registerAd() {
   var type =
     document.getElementById('type').value;
 
+  function registerAd() {
+
+  var machine =
+    document.getElementById('machine').value.trim();
+
+  var type =
+    document.getElementById('type').value;
+
   var city =
     document.getElementById('city').value.trim();
+
+  var phone =
+    document.getElementById('phone').value.trim();
+var workHours =
+  document.getElementById('workHours').value.trim();
+
+var price =
+  document.getElementById('price').value.trim();
+
+var description =
+  document.getElementById('description').value.trim();
+
+  var imageInput =
+    document.getElementById('image');
+
+
+  if (!machine) {
+
+    alert('لطفاً نام ماشین‌آلات را وارد کنید.');
+
+    return;
+
+  }
+
+
+  if (!city) {
+
+    alert('لطفاً شهر را وارد کنید.');
+
+    return;
+
+  }
+
+
+  if (!phone) {
+
+    alert('لطفاً شماره تماس را وارد کنید.');
+
+    return;
+
+  }
+
+
+  var ad = {
+
+    machine: machine,
+
+    type: type,
+
+    city: city,
+workHours: workHours,
+    price: price,
+    phone: phone,
+
+    description: description,
+
+    image: ''
+
+  };
+
+
+  if (
+    imageInput.files &&
+    imageInput.files.length > 0
+  ) {
+
+    var file =
+      imageInput.files[0];
+
+    var reader =
+      new FileReader();
+
+
+    reader.onload = function(event) {
+
+      var img =
+        new Image();
+
+
+      img.onload = function() {
+
+        var canvas =
+          document.createElement('canvas');
+
+
+        var maxWidth = 800;
+
+        var maxHeight = 800;
+
+
+        var width =
+          img.width;
+
+        var height =
+          img.height;
+
+
+        if (width > maxWidth) {
+
+          height =
+            height * maxWidth / width;
+
+          width =
+            maxWidth;
+
+        }
+
+
+        if (height > maxHeight) {
+
+          width =
+            width * maxHeight / height;
+
+          height =
+            maxHeight;
+
+        }
+
+
+        canvas.width =
+          width;
+
+        canvas.height =
+          height;
+
+
+        var ctx =
+          canvas.getContext('2d');
+
+
+        ctx.drawImage(
+          img,
+          0,
+          0,
+          width,
+          height
+        );
+
+
+        ad.image =
+          canvas.toDataURL(
+            'image/jpeg',
+            0.7
+          );
+
+
+        saveAd(ad);
+
+      };
+
+
+      img.src =
+        event.target.result;
+
+    };
+
+
+    reader.readAsDataURL(file);
+
+  } else {
+
+    saveAd(ad);
+
+  }
+
+}
 
   var phone =
     document.getElementById('phone').value.trim();
