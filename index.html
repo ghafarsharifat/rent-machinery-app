@@ -611,6 +611,36 @@ document.querySelectorAll('button').forEach(function(button) {
     }
   });
 });
+  function registerAd() {
+  const form = document.getElementById('adForm');
+
+  if (!form) {
+    alert('فرم ثبت آگهی پیدا نشد');
+    return;
+  }
+
+  const formData = new FormData(form);
+
+  const ad = {
+    name: formData.get('name') || '',
+    phone: formData.get('phone') || '',
+    type: formData.get('type') || '',
+    city: formData.get('city') || '',
+    description: formData.get('description') || '',
+    date: new Date().toLocaleString('fa-IR')
+  };
+
+  let ads = JSON.parse(localStorage.getItem('rentAds') || '[]');
+  ads.push(ad);
+  localStorage.setItem('rentAds', JSON.stringify(ads));
+
+  alert('آگهی با موفقیت ثبت شد');
+  form.reset();
+
+  if (typeof showAds === 'function') {
+    showAds();
+  }
+  }
 </script>
 </body>
 </html>
