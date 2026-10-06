@@ -1589,153 +1589,8 @@ function filterByCity() {
 }
 function searchAds() {
 
-  var input =
+  var searchInput =
     document.getElementById('searchInput');
-
-  var adsList =
-    document.getElementById('adsList');
-
-
-  if (!input || !adsList) {
-
-    return;
-
-  }
-
-
-  var search =
-    input.value
-      .trim()
-      .toLowerCase();
-
-
-  var ads = [];
-
-  try {
-
-    ads =
-      JSON.parse(
-        localStorage.getItem('rentAds') || '[]'
-      );
-
-  } catch(error) {
-
-    ads = [];
-
-  }
-
-
-  var results =
-    ads.filter(function(ad) {
-
-      return (
-
-        (ad.machine || '')
-          .toLowerCase()
-          .includes(search)
-
-        ||
-
-        (ad.type || '')
-          .toLowerCase()
-          .includes(search)
-
-        ||
-
-        (ad.city || '')
-          .toLowerCase()
-          .includes(search)
-
-      );
-
-    });
-
-
-  if (results.length === 0) {
-
-    adsList.innerHTML =
-      '<p class="empty">آگهی موردنظر پیدا نشد.</p>';
-
-    return;
-
-  }
-
-
-  adsList.innerHTML = '';
-
-
-  results.forEach(function(ad) {
-
-    var div =
-      document.createElement('div');
-
-
-    div.className =
-      'ad';
-
-
-    var html =
-
-      '<h3>🚜 ' +
-      escapeHtml(ad.machine) +
-      '</h3>' +
-
-      '<p><strong>نوع:</strong> ' +
-      escapeHtml(ad.type) +
-      '</p>' +
-
-      '<p><strong>شهر:</strong> ' +
-      escapeHtml(ad.city) +
-      '</p>' +
-
-      '<p><strong>تلفن:</strong> ' +
-      escapeHtml(ad.phone) +
-      '</p>' +
-
-      '<p>' +
-      escapeHtml(ad.description) +
-      '</p>';
-
-
-    if (ad.image) {
-
-      html +=
-        '<img src="' +
-        ad.image +
-        '" alt="تصویر ماشین‌آلات">';
-
-    }
-
-
-    div.innerHTML =
-      html;
-
-
-    adsList.appendChild(div);
-
-  });
-
-}
-
-
-function escapeHtml(text) {
-
-  var div =
-    document.createElement('div');
-
-  div.textContent =
-    text || '';
-
-  return div.innerHTML;
-
-}
-
-
-showAds();
-function searchAds() {
-
-var searchInput =
-  document.getElementById('searchInput');
 
   var adsList =
     document.getElementById('adsList');
@@ -1752,36 +1607,29 @@ var searchInput =
   var ads = [];
 
   try {
-
     ads = JSON.parse(
       localStorage.getItem('rentAds') || '[]'
     );
-
   } catch (error) {
-
     ads = [];
-
   }
 
   if (!search) {
-
     showAds();
     return;
-
   }
 
-  var results =
-    ads.filter(function(ad) {
+  var results = ads.filter(function(ad) {
 
-      return (
-        (ad.machine || '').toLowerCase().includes(search) ||
-        (ad.type || '').toLowerCase().includes(search) ||
-        (ad.city || '').toLowerCase().includes(search) ||
-        (ad.address || '').toLowerCase().includes(search) ||
-        (ad.description || '').toLowerCase().includes(search)
-      );
+    return (
+      (ad.machine || '').toLowerCase().includes(search) ||
+      (ad.type || '').toLowerCase().includes(search) ||
+      (ad.city || '').toLowerCase().includes(search) ||
+      (ad.address || '').toLowerCase().includes(search) ||
+      (ad.description || '').toLowerCase().includes(search)
+    );
 
-    });
+  });
 
   adsList.innerHTML = '';
 
@@ -1791,7 +1639,6 @@ var searchInput =
       '<p class="empty">❌ آگهی‌ای پیدا نشد.</p>';
 
     return;
-
   }
 
   results.forEach(function(ad) {
@@ -1801,39 +1648,31 @@ var searchInput =
 
     div.className = 'ad-card';
 
-    var html = '';
-
-    html +=
+    var html =
       '<h3>🚜 ' +
       escapeHtml(ad.machine || 'ماشین‌آلات') +
-      '</h3>';
+      '</h3>' +
 
-    html +=
       '<p><strong>نوع:</strong> ' +
       escapeHtml(ad.type || 'سایر') +
-      '</p>';
+      '</p>' +
 
-    html +=
       '<p><strong>📍 شهر:</strong> ' +
       escapeHtml(ad.city || 'ثبت نشده') +
-      '</p>';
+      '</p>' +
 
-    html +=
       '<p><strong>📍 نشانی:</strong> ' +
       escapeHtml(ad.address || 'ثبت نشده') +
-      '</p>';
+      '</p>' +
 
-    html +=
       '<p><strong>⏱ کارکرد:</strong> ' +
       escapeHtml(ad.workHours || 'ثبت نشده') +
-      '</p>';
+      '</p>' +
 
-    html +=
       '<p><strong>💰 قیمت اجاره:</strong> ' +
       escapeHtml(ad.price || 'توافقی') +
-      '</p>';
+      '</p>' +
 
-    html +=
       '<p><strong>📞 تلفن:</strong> ' +
       escapeHtml(ad.phone || 'ثبت نشده') +
       '</p>';
@@ -1844,7 +1683,6 @@ var searchInput =
         '<p><strong>📝 توضیحات:</strong> ' +
         escapeHtml(ad.description) +
         '</p>';
-
     }
 
     if (ad.image) {
@@ -1853,7 +1691,6 @@ var searchInput =
         '<img src="' +
         ad.image +
         '" style="width:100%;max-width:500px;border-radius:10px;margin-top:10px;">';
-
     }
 
     if (ad.phone) {
@@ -1862,52 +1699,9 @@ var searchInput =
         '<br><a href="tel:' +
         encodeURIComponent(ad.phone) +
         '" class="call-btn">📞 تماس با مالک</a>';
-
     }
 
     div.innerHTML = html;
-
-    adsList.appendChild(div);
-
-  });
-
-}
-  });
-
-  adsList.innerHTML = '';
-
-  if (results.length === 0) {
-
-    adsList.innerHTML =
-      '<p class="empty">آگهی‌ای پیدا نشد.</p>';
-
-    return;
-
-  }
-
-  results.forEach(function(ad) {
-
-    var div =
-      document.createElement('div');
-
-    div.className = 'ad';
-
-    div.innerHTML =
-      '<h3>🚜 ' +
-      escapeHtml(ad.machine) +
-      '</h3>' +
-
-      '<p><strong>نوع:</strong> ' +
-      escapeHtml(ad.type) +
-      '</p>' +
-
-      '<p><strong>شهر:</strong> ' +
-      escapeHtml(ad.city) +
-      '</p>' +
-
-      '<p><strong>تلفن:</strong> ' +
-      escapeHtml(ad.phone) +
-      '</p>';
 
     adsList.appendChild(div);
 
