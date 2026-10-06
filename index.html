@@ -825,12 +825,11 @@ function saveAd(ad) {
 
   try {
 
-    ads =
-      JSON.parse(
-        localStorage.getItem('rentAds') || '[]'
-      );
+    ads = JSON.parse(
+      localStorage.getItem('rentAds') || '[]'
+    );
 
-  } catch(error) {
+  } catch (error) {
 
     ads = [];
 
@@ -847,7 +846,7 @@ function saveAd(ad) {
       JSON.stringify(ads)
     );
 
-  } catch(error) {
+  } catch (error) {
 
     alert(
       'حجم اطلاعات زیاد است. لطفاً عکس کوچک‌تری انتخاب کنید.'
@@ -865,7 +864,13 @@ function saveAd(ad) {
 
   document.getElementById('city').value = '';
 
+  document.getElementById('address').value = '';
+
   document.getElementById('phone').value = '';
+
+  document.getElementById('workHours').value = '';
+
+  document.getElementById('price').value = '';
 
   document.getElementById('description').value = '';
 
@@ -877,8 +882,6 @@ function saveAd(ad) {
   showSection('ads');
 
 }
-
-
 function showAds() {
 
   var adsList =
