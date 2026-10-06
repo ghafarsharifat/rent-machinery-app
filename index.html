@@ -1009,6 +1009,141 @@ function showAds() {
 }
 function filterAds(category) {
 function filterByWork() {
+
+  var filter =
+    document.getElementById('workFilter').value;
+
+  var adsList =
+    document.getElementById('adsList');
+
+  var ads = [];
+
+  try {
+
+    ads = JSON.parse(
+      localStorage.getItem('rentAds') || '[]'
+    );
+
+  } catch (error) {
+
+    ads = [];
+
+  }
+
+  if (!filter || filter === 'همه') {
+
+    showAds();
+    return;
+
+  }
+
+  var maxWork =
+    Number(filter);
+
+  var results =
+    ads.filter(function(ad) {
+
+      if (!ad.workHours) {
+        return false;
+      }
+
+      var work =
+        Number(ad.workHours);
+
+      return !isNaN(work) &&
+             work <= maxWork;
+
+    });
+
+  adsList.innerHTML = '';
+
+  if (results.length === 0) {
+
+    adsList.innerHTML =
+      '<p>❌ آگهی‌ای با این میزان کارکرد پیدا نشد.</p>';
+
+    return;
+
+  }
+
+  results.forEach(function(ad) {
+
+    var div =
+      document.createElement('div');
+
+    div.className = 'ad-card';
+
+    var html = '';
+
+    html +=
+      '<h3>🚜 ' +
+      escapeHtml(ad.machine || 'ماشین‌آلات') +
+      '</h3>';
+
+    html +=
+      '<p><strong>نوع:</strong> ' +
+      escapeHtml(ad.type || 'سایر') +
+      '</p>';
+
+    html +=
+      '<p><strong>📍 شهر:</strong> ' +
+      escapeHtml(ad.city || 'ثبت نشده') +
+      '</p>';
+
+    html +=
+      '<p><strong>📍 نشانی:</strong> ' +
+      escapeHtml(ad.address || 'ثبت نشده') +
+      '</p>';
+
+    html +=
+      '<p><strong>⏱ کارکرد:</strong> ' +
+      escapeHtml(ad.workHours || 'ثبت نشده') +
+      '</p>';
+
+    html +=
+      '<p><strong>💰 قیمت اجاره:</strong> ' +
+      escapeHtml(ad.price || 'توافقی') +
+      '</p>';
+
+    html +=
+      '<p><strong>📞 تلفن:</strong> ' +
+      escapeHtml(ad.phone || 'ثبت نشده') +
+      '</p>';
+
+    if (ad.description) {
+
+      html +=
+        '<p><strong>📝 توضیحات:</strong> ' +
+        escapeHtml(ad.description) +
+        '</p>';
+
+    }
+
+    if (ad.image) {
+
+      html +=
+        '<img src="' +
+        ad.image +
+        '" style="width:100%;max-width:500px;border-radius:10px;margin-top:10px;">';
+
+    }
+
+    if (ad.phone) {
+
+      html +=
+        '<br><a href="tel:' +
+        encodeURIComponent(ad.phone) +
+        '" class="call-btn">📞 تماس با مالک</a>';
+
+    }
+
+    div.innerHTML = html;
+
+    adsList.appendChild(div);
+
+  });
+
+}
 function filterByCity() {
 
   var filter =
