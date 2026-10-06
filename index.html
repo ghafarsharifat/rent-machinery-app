@@ -120,11 +120,6 @@ textarea {
   line-height: 2;
 }
 
-.small {
-  color: #666;
-  font-size: 13px;
-}
-
 .address-card {
   background: #fff;
   padding: 15px;
@@ -185,7 +180,7 @@ textarea {
     <h2>🔐 مدیریت</h2>
     <p>بخش مدیریت آگهی‌های نرخینو</p>
 
-    <button type="button" onclick="showSection('admin')">
+    <button type="button" onclick="adminLogin()">
       ورود به مدیریت
     </button>
   </div>
@@ -285,6 +280,7 @@ textarea {
     </select>
 
     <div>
+
       <button
         type="button"
         class="category-btn"
@@ -326,6 +322,7 @@ textarea {
         onclick="filterAds('کامیون و کمپرسی')">
         کامیون
       </button>
+
     </div>
 
   </div>
@@ -463,6 +460,24 @@ textarea {
 
 <script>
 
+function adminLogin() {
+
+  var password =
+    prompt('🔐 رمز مدیریت را وارد کنید:');
+
+  if (password === 'Nerkhino1405') {
+
+    showSection('admin');
+
+  } else if (password !== null) {
+
+    alert('❌ رمز اشتباه است.');
+
+  }
+
+}
+
+
 function showSection(sectionId) {
 
   var sections =
@@ -551,7 +566,9 @@ function registerAd() {
 
   if (!machine || !type || !city || !phone) {
 
-    alert('لطفاً نام ماشین، نوع، شهر و شماره تماس را وارد کنید.');
+    alert(
+      'لطفاً نام ماشین، نوع، شهر و شماره تماس را وارد کنید.'
+    );
 
     return;
   }
@@ -639,19 +656,23 @@ function registerAd() {
         if (width > height) {
 
           if (width > maxSize) {
+
             height =
               height * maxSize / width;
 
             width = maxSize;
+
           }
 
         } else {
 
           if (height > maxSize) {
+
             width =
               width * maxSize / height;
 
             height = maxSize;
+
           }
 
         }
@@ -815,6 +836,8 @@ function showAds() {
       'هنوز آگهی‌ای ثبت نشده است.' +
       '</div>';
 
+    updateCityFilter();
+
     return;
   }
 
@@ -826,7 +849,6 @@ function showAds() {
     );
 
   });
-
 
   updateCityFilter();
 
@@ -870,6 +892,7 @@ function updateCityFilter() {
       document.createElement('option');
 
     option.value = city;
+
     option.textContent = city;
 
     select.appendChild(option);
@@ -1282,6 +1305,7 @@ function saveEdit() {
   alert('تغییرات با موفقیت ذخیره شد.');
 
   showAds();
+
   showSection('ads');
 
 }
