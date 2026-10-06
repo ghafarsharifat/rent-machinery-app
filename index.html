@@ -81,16 +81,16 @@
       font-size: 15px;
     }
 
-    button:hover {
-      opacity: .9;
-    }
-
     .back {
       background: #555;
     }
 
     .delete-btn {
       background: #c62828;
+    }
+
+    .edit-btn {
+      background: #ef6c00;
     }
 
     .call-btn {
@@ -113,15 +113,6 @@
       text-align: center;
       color: #777;
       padding: 20px;
-    }
-
-    .home-buttons {
-      display: grid;
-      gap: 10px;
-    }
-
-    .filter-box {
-      margin-bottom: 15px;
     }
 
     .categories {
@@ -150,7 +141,7 @@
 
 <div class="container">
 
-  <!-- صفحه اصلی -->
+  <!-- خانه -->
   <div id="home" class="section active">
 
     <div class="card">
@@ -159,8 +150,7 @@
 
       <button
         type="button"
-        onclick="showSection('register')"
-      >
+        onclick="showSection('register')">
         ثبت آگهی
       </button>
     </div>
@@ -171,8 +161,7 @@
 
       <button
         type="button"
-        onclick="showSection('ads'); showAds();"
-      >
+        onclick="showSection('ads'); showAds();">
         مشاهده آگهی‌ها
       </button>
     </div>
@@ -183,8 +172,7 @@
 
       <button
         type="button"
-        onclick="showSection('addresses'); showAddresses();"
-      >
+        onclick="showSection('addresses'); showAddresses();">
         مشاهده نشانی‌ها
       </button>
     </div>
@@ -203,8 +191,7 @@
       <input
         id="machine"
         type="text"
-        placeholder="مثلاً بیل مکانیکی"
-      >
+        placeholder="مثلاً بیل مکانیکی">
 
       <label>نوع ماشین‌آلات</label>
       <select id="type">
@@ -225,63 +212,54 @@
       <input
         id="city"
         type="text"
-        placeholder="مثلاً اهواز"
-      >
+        placeholder="مثلاً اهواز">
 
       <label>نشانی</label>
       <textarea
         id="address"
-        placeholder="نشانی محل فعالیت ماشین"
-      ></textarea>
+        placeholder="نشانی محل فعالیت ماشین"></textarea>
 
       <label>شماره تماس</label>
       <input
         id="phone"
         type="tel"
-        placeholder="مثلاً 09123456789"
-      >
+        placeholder="مثلاً 09123456789">
 
       <label>قیمت اجاره</label>
       <input
         id="price"
         type="text"
-        placeholder="مثلاً روزانه 5 میلیون تومان"
-      >
+        placeholder="مثلاً روزانه 5 میلیون تومان">
 
       <label>کارکرد / ساعت کار</label>
       <input
         id="workHours"
         type="text"
-        placeholder="مثلاً 8 ساعت در روز"
-      >
+        placeholder="مثلاً 8 ساعت در روز">
 
       <label>توضیحات</label>
       <textarea
         id="description"
-        placeholder="توضیحات بیشتر درباره ماشین"
-      ></textarea>
+        placeholder="توضیحات بیشتر درباره ماشین"></textarea>
 
       <label>عکس ماشین</label>
       <input
         id="image"
         type="file"
-        accept="image/*"
-      >
+        accept="image/*">
 
       <br>
 
       <button
         type="button"
-        onclick="registerAd()"
-      >
+        onclick="registerAd()">
         ثبت آگهی
       </button>
 
       <button
         type="button"
         class="back"
-        onclick="showSection('home')"
-      >
+        onclick="showSection('home')">
         بازگشت
       </button>
 
@@ -297,82 +275,71 @@
 
       <h2>📋 آگهی‌های ماشین‌آلات</h2>
 
-      <div class="filter-box">
+      <input
+        id="searchInput"
+        type="text"
+        placeholder="جستجوی ماشین، شهر، نشانی..."
+        oninput="searchAds()">
 
-        <input
-          id="searchInput"
-          type="text"
-          placeholder="جستجوی ماشین، شهر، نشانی..."
-          oninput="searchAds()"
-        >
+      <input
+        id="cityFilter"
+        type="text"
+        placeholder="فیلتر بر اساس شهر"
+        oninput="filterByCity()">
 
-        <input
-          id="cityFilter"
-          type="text"
-          placeholder="فیلتر بر اساس شهر"
-          oninput="filterByCity()"
-        >
+      <select
+        id="workFilter"
+        onchange="filterByWork()">
 
-        <select
-          id="workFilter"
-          onchange="filterByWork()"
-        >
-          <option value="">همه کارکردها</option>
-          <option value="8">8 ساعت</option>
-          <option value="10">10 ساعت</option>
-          <option value="12">12 ساعت</option>
-          <option value="24">24 ساعت</option>
-        </select>
+        <option value="">همه کارکردها</option>
+        <option value="8">8 ساعت</option>
+        <option value="10">10 ساعت</option>
+        <option value="12">12 ساعت</option>
+        <option value="24">24 ساعت</option>
 
-      </div>
+      </select>
 
       <div class="categories">
 
         <button
           type="button"
           class="category-btn"
-          onclick="filterAds('بیل مکانیکی')"
-        >
+          onclick="filterAds('بیل مکانیکی')">
           بیل مکانیکی
         </button>
 
         <button
           type="button"
           class="category-btn"
-          onclick="filterAds('لودر')"
-        >
+          onclick="filterAds('لودر')">
           لودر
         </button>
 
         <button
           type="button"
           class="category-btn"
-          onclick="filterAds('بولدوزر')"
-        >
+          onclick="filterAds('بولدوزر')">
           بولدوزر
         </button>
 
         <button
           type="button"
           class="category-btn"
-          onclick="filterAds('گریدر')"
-        >
+          onclick="filterAds('گریدر')">
           گریدر
         </button>
 
         <button
           type="button"
           class="category-btn"
-          onclick="filterAds('کامیون')"
-        >
+          onclick="filterAds('کامیون')">
           کامیون
         </button>
 
         <button
           type="button"
           class="category-btn"
-          onclick="filterAds('همه')"
-        >
+          onclick="filterAds('همه')">
           همه
         </button>
 
@@ -387,8 +354,7 @@
       <button
         type="button"
         class="back"
-        onclick="showSection('home')"
-      >
+        onclick="showSection('home')">
         بازگشت
       </button>
 
@@ -404,9 +370,7 @@
 
       <h2>📍 نشانی‌های ماشین‌آلات</h2>
 
-      <p>
-        محل فعالیت ماشین‌آلات ثبت‌شده:
-      </p>
+      <p>محل فعالیت ماشین‌آلات ثبت‌شده:</p>
 
       <div id="addressList">
         <p class="empty">
@@ -417,9 +381,70 @@
       <button
         type="button"
         class="back"
-        onclick="showSection('home')"
-      >
+        onclick="showSection('home')">
         بازگشت
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ویرایش -->
+  <div id="edit" class="section">
+
+    <div class="card">
+
+      <h2>✏️ ویرایش آگهی</h2>
+
+      <input type="hidden" id="editId">
+
+      <label>نام ماشین‌آلات</label>
+      <input id="editMachine" type="text">
+
+      <label>نوع ماشین‌آلات</label>
+      <select id="editType">
+        <option>بیل مکانیکی</option>
+        <option>بیل مکانیکی + پیکور</option>
+        <option>لودر</option>
+        <option>بولدوزر</option>
+        <option>گریدر</option>
+        <option>کامیون و کمپرسی</option>
+        <option>غلطک</option>
+        <option>جرثقیل</option>
+        <option>کمرشکن کامیون</option>
+        <option>سایر</option>
+      </select>
+
+      <label>شهر</label>
+      <input id="editCity" type="text">
+
+      <label>نشانی</label>
+      <textarea id="editAddress"></textarea>
+
+      <label>شماره تماس</label>
+      <input id="editPhone" type="tel">
+
+      <label>قیمت اجاره</label>
+      <input id="editPrice" type="text">
+
+      <label>کارکرد</label>
+      <input id="editWorkHours" type="text">
+
+      <label>توضیحات</label>
+      <textarea id="editDescription"></textarea>
+
+      <button
+        type="button"
+        onclick="saveEdit()">
+        💾 ذخیره تغییرات
+      </button>
+
+      <button
+        type="button"
+        class="back"
+        onclick="showSection('ads'); showAds();">
+        انصراف
       </button>
 
     </div>
@@ -447,7 +472,6 @@ function showSection(sectionId) {
     target.classList.add('active');
     window.scrollTo(0, 0);
   }
-
 }
 
 
@@ -459,6 +483,23 @@ function escapeHtml(value) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
+
+}
+
+
+function getAds() {
+
+  try {
+
+    return JSON.parse(
+      localStorage.getItem('rentAds') || '[]'
+    );
+
+  } catch (error) {
+
+    return [];
+
+  }
 
 }
 
@@ -517,42 +558,20 @@ function registerAd() {
   var ad = {
 
     id: Date.now(),
-
     machine: machine,
-
     type: type,
-
     city: city,
-
     address: address,
-
     phone: phone,
-
     price: price,
-
     workHours: workHours,
-
     description: description,
-
     image: ''
 
   };
 
 
-  var ads = [];
-
-  try {
-
-    ads =
-      JSON.parse(
-        localStorage.getItem('rentAds') || '[]'
-      );
-
-  } catch (error) {
-
-    ads = [];
-
-  }
+  var ads = getAds();
 
 
   function saveAd() {
@@ -613,7 +632,6 @@ function registerAd() {
           if (width > maxSize) {
             height =
               height * maxSize / width;
-
             width = maxSize;
           }
 
@@ -622,7 +640,6 @@ function registerAd() {
           if (height > maxSize) {
             width =
               width * maxSize / height;
-
             height = maxSize;
           }
 
@@ -652,7 +669,8 @@ function registerAd() {
 
       };
 
-      img.src = event.target.result;
+      img.src =
+        event.target.result;
 
     };
 
@@ -769,6 +787,17 @@ function createAdCard(ad) {
   html +=
     '<button ' +
     'type="button" ' +
+    'class="edit-btn" ' +
+    'onclick="editAd(' +
+    ad.id +
+    ')">' +
+    '✏️ ویرایش آگهی' +
+    '</button>';
+
+
+  html +=
+    '<button ' +
+    'type="button" ' +
     'class="delete-btn" ' +
     'onclick="deleteAd(' +
     ad.id +
@@ -790,26 +819,9 @@ function showAds() {
   var adsList =
     document.getElementById('adsList');
 
-  if (!adsList) {
-    return;
-  }
+  if (!adsList) return;
 
-
-  var ads = [];
-
-  try {
-
-    ads =
-      JSON.parse(
-        localStorage.getItem('rentAds') || '[]'
-      );
-
-  } catch (error) {
-
-    ads = [];
-
-  }
-
+  var ads = getAds();
 
   adsList.innerHTML = '';
 
@@ -842,24 +854,7 @@ function filterAds(category) {
   var adsList =
     document.getElementById('adsList');
 
-  var ads = [];
-
-  try {
-
-    ads =
-      JSON.parse(
-        localStorage.getItem('rentAds') || '[]'
-      );
-
-  } catch (error) {
-
-    ads = [];
-
-  }
-
-
-  adsList.innerHTML = '';
-
+  var ads = getAds();
 
   var results;
 
@@ -883,12 +878,13 @@ function filterAds(category) {
   }
 
 
+  adsList.innerHTML = '';
+
+
   if (results.length === 0) {
 
     adsList.innerHTML =
-      '<p class="empty">' +
-      'آگهی‌ای پیدا نشد.' +
-      '</p>';
+      '<p class="empty">آگهی‌ای پیدا نشد.</p>';
 
     return;
 
@@ -917,20 +913,7 @@ function filterByCity() {
   var adsList =
     document.getElementById('adsList');
 
-  var ads = [];
-
-  try {
-
-    ads =
-      JSON.parse(
-        localStorage.getItem('rentAds') || '[]'
-      );
-
-  } catch (error) {
-
-    ads = [];
-
-  }
+  var ads = getAds();
 
 
   var results =
@@ -948,18 +931,6 @@ function filterByCity() {
   adsList.innerHTML = '';
 
 
-  if (results.length === 0) {
-
-    adsList.innerHTML =
-      '<p class="empty">' +
-      'آگهی‌ای در این شهر پیدا نشد.' +
-      '</p>';
-
-    return;
-
-  }
-
-
   results.forEach(function(ad) {
 
     adsList.appendChild(
@@ -967,6 +938,16 @@ function filterByCity() {
     );
 
   });
+
+
+  if (results.length === 0) {
+
+    adsList.innerHTML =
+      '<p class="empty">' +
+      'آگهی‌ای در این شهر پیدا نشد.' +
+      '</p>';
+
+  }
 
 }
 
@@ -979,21 +960,7 @@ function filterByWork() {
   var adsList =
     document.getElementById('adsList');
 
-  var ads = [];
-
-  try {
-
-    ads =
-      JSON.parse(
-        localStorage.getItem('rentAds') || '[]'
-      );
-
-  } catch (error) {
-
-    ads = [];
-
-  }
-
+  var ads = getAds();
 
   var results;
 
@@ -1018,18 +985,6 @@ function filterByWork() {
   adsList.innerHTML = '';
 
 
-  if (results.length === 0) {
-
-    adsList.innerHTML =
-      '<p class="empty">' +
-      'آگهی‌ای پیدا نشد.' +
-      '</p>';
-
-    return;
-
-  }
-
-
   results.forEach(function(ad) {
 
     adsList.appendChild(
@@ -1037,6 +992,14 @@ function filterByWork() {
     );
 
   });
+
+
+  if (results.length === 0) {
+
+    adsList.innerHTML =
+      '<p class="empty">آگهی‌ای پیدا نشد.</p>';
+
+  }
 
 }
 
@@ -1052,20 +1015,7 @@ function searchAds() {
   var adsList =
     document.getElementById('adsList');
 
-  var ads = [];
-
-  try {
-
-    ads =
-      JSON.parse(
-        localStorage.getItem('rentAds') || '[]'
-      );
-
-  } catch (error) {
-
-    ads = [];
-
-  }
+  var ads = getAds();
 
 
   var results =
@@ -1090,18 +1040,6 @@ function searchAds() {
   adsList.innerHTML = '';
 
 
-  if (results.length === 0) {
-
-    adsList.innerHTML =
-      '<p class="empty">' +
-      'آگهی‌ای پیدا نشد.' +
-      '</p>';
-
-    return;
-
-  }
-
-
   results.forEach(function(ad) {
 
     adsList.appendChild(
@@ -1109,6 +1047,14 @@ function searchAds() {
     );
 
   });
+
+
+  if (results.length === 0) {
+
+    adsList.innerHTML =
+      '<p class="empty">آگهی‌ای پیدا نشد.</p>';
+
+  }
 
 }
 
@@ -1118,41 +1064,11 @@ function showAddresses() {
   var addressList =
     document.getElementById('addressList');
 
-  if (!addressList) {
-    return;
-  }
+  if (!addressList) return;
 
-
-  var ads = [];
-
-  try {
-
-    ads =
-      JSON.parse(
-        localStorage.getItem('rentAds') || '[]'
-      );
-
-  } catch (error) {
-
-    ads = [];
-
-  }
-
+  var ads = getAds();
 
   addressList.innerHTML = '';
-
-
-  if (ads.length === 0) {
-
-    addressList.innerHTML =
-      '<p class="empty">' +
-      'هنوز نشانی‌ای ثبت نشده است.' +
-      '</p>';
-
-    return;
-
-  }
-
 
   var count = 0;
 
@@ -1163,16 +1079,12 @@ function showAddresses() {
       return;
     }
 
-
     count++;
-
 
     var div =
       document.createElement('div');
 
-    div.className =
-      'ad';
-
+    div.className = 'ad';
 
     div.innerHTML =
       '<h3>🚜 ' +
@@ -1193,7 +1105,6 @@ function showAddresses() {
       ) +
       '</p>';
 
-
     addressList.appendChild(div);
 
   });
@@ -1203,7 +1114,7 @@ function showAddresses() {
 
     addressList.innerHTML =
       '<p class="empty">' +
-      'هنوز نشانی‌ای برای آگهی‌ها ثبت نشده است.' +
+      'هنوز نشانی‌ای ثبت نشده است.' +
       '</p>';
 
   }
@@ -1213,31 +1124,14 @@ function showAddresses() {
 
 function deleteAd(id) {
 
-  var ads = [];
+  var ads = getAds();
 
-  try {
-
-    ads =
-      JSON.parse(
-        localStorage.getItem('rentAds') || '[]'
-      );
-
-  } catch (error) {
-
-    ads = [];
-
-  }
-
-
-  var confirmDelete =
+  var ok =
     confirm(
       'آیا از حذف این آگهی مطمئن هستید؟'
     );
 
-
-  if (!confirmDelete) {
-    return;
-  }
+  if (!ok) return;
 
 
   var newAds =
@@ -1261,7 +1155,143 @@ function deleteAd(id) {
 }
 
 
+function editAd(id) {
+
+  var ads = getAds();
+
+  var ad =
+    ads.find(function(item) {
+
+      return item.id === id;
+
+    });
+
+
+  if (!ad) {
+
+    alert('آگهی پیدا نشد.');
+
+    return;
+
+  }
+
+
+  document.getElementById('editId').value =
+    ad.id;
+
+  document.getElementById('editMachine').value =
+    ad.machine || '';
+
+  document.getElementById('editType').value =
+    ad.type || 'سایر';
+
+  document.getElementById('editCity').value =
+    ad.city || '';
+
+  document.getElementById('editAddress').value =
+    ad.address || '';
+
+  document.getElementById('editPhone').value =
+    ad.phone || '';
+
+  document.getElementById('editPrice').value =
+    ad.price || '';
+
+  document.getElementById('editWorkHours').value =
+    ad.workHours || '';
+
+  document.getElementById('editDescription').value =
+    ad.description || '';
+
+
+  showSection('edit');
+
+}
+
+
+function saveEdit() {
+
+  var id =
+    Number(
+      document.getElementById('editId').value
+    );
+
+
+  var ads = getAds();
+
+
+  var index =
+    ads.findIndex(function(ad) {
+
+      return ad.id === id;
+
+    });
+
+
+  if (index === -1) {
+
+    alert('آگهی پیدا نشد.');
+
+    return;
+
+  }
+
+
+  ads[index].machine =
+    document.getElementById('editMachine')
+      .value
+      .trim();
+
+  ads[index].type =
+    document.getElementById('editType')
+      .value
+      .trim();
+
+  ads[index].city =
+    document.getElementById('editCity')
+      .value
+      .trim();
+
+  ads[index].address =
+    document.getElementById('editAddress')
+      .value
+      .trim();
+
+  ads[index].phone =
+    document.getElementById('editPhone')
+      .value
+      .trim();
+
+  ads[index].price =
+    document.getElementById('editPrice')
+      .value
+      .trim();
+
+  ads[index].workHours =
+    document.getElementById('editWorkHours')
+      .value
+      .trim();
+
+  ads[index].description =
+    document.getElementById('editDescription')
+      .value
+      .trim();
+
+
+  localStorage.setItem(
+    'rentAds',
+    JSON.stringify(ads)
+  );
+
+
+  alert('تغییرات با موفقیت ذخیره شد.');
+
+  showSection('ads');
+  showAds();
+
+}
+
 </script>
 
 </body>
-        </html>
+</html>
