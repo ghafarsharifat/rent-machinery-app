@@ -1,718 +1,444 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#222222">
+<meta name="description" content="نرخینو؛ ثبت و جستجوی ماشین‌آلات راه‌سازی و معدنی">
+<link rel="manifest" href="/rent-machinery-app/manifest.json">
 
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+<title>نرخینو | اجاره ماشین‌آلات</title>
 
-  <meta name="theme-color"
-        content="#222222">
+<style>
+*{box-sizing:border-box}
 
-  <meta name="description"
-        content="نرخینو؛ ثبت و جستجوی ماشین‌آلات راه‌سازی و معدنی">
+body{
+  margin:0;
+  font-family:Tahoma,Arial,sans-serif;
+  background:#f2f2f2;
+  color:#222;
+}
 
-  <link rel="manifest"
-        href="/rent-machinery-app/manifest.json">
+header{
+  background:#222;
+  color:white;
+  padding:20px;
+  text-align:center;
+}
 
-  <title>نرخینو | اجاره ماشین‌آلات</title>
+header h1{
+  margin:0 0 8px;
+  font-size:28px;
+}
 
-  <style>
+header p{
+  margin:0;
+  font-size:14px;
+}
 
-    * {
-      box-sizing: border-box;
-    }
+main{
+  max-width:700px;
+  margin:auto;
+  padding:15px;
+}
 
-    body {
-      margin: 0;
-      font-family: Tahoma, Arial, sans-serif;
-      background: #f2f2f2;
-      color: #222;
-    }
+.section{
+  display:none;
+}
 
-    header {
-      background: #222;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
+.section.active{
+  display:block;
+}
 
-    header h1 {
-      margin: 0 0 8px;
-      font-size: 28px;
-    }
+.card{
+  background:white;
+  padding:18px;
+  margin:12px 0;
+  border-radius:14px;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
 
-    header p {
-      margin: 0;
-      font-size: 14px;
-    }
+button{
+  width:100%;
+  padding:13px;
+  border:0;
+  border-radius:10px;
+  background:#1565c0;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+  margin-top:8px;
+}
 
-    main {
-      max-width: 700px;
-      margin: auto;
-      padding: 15px;
-    }
+.success{background:#2e7d32}
+.danger{background:#c62828}
+.gray{background:#555}
 
-    .section {
-      display: none;
-    }
+input,select,textarea{
+  width:100%;
+  padding:12px;
+  margin:6px 0 12px;
+  border:1px solid #ccc;
+  border-radius:9px;
+  font-size:15px;
+  font-family:inherit;
+}
 
-    .section.active {
-      display: block;
-    }
+textarea{
+  min-height:90px;
+  resize:vertical;
+}
 
-    .card {
-      background: white;
-      padding: 18px;
-      margin: 12px 0;
-      border-radius: 14px;
-      box-shadow: 0 2px 8px rgba(0,0,0,.08);
-    }
+label{
+  font-weight:bold;
+  display:block;
+  margin-top:8px;
+}
 
-    button {
-      width: 100%;
-      padding: 13px;
-      border: none;
-      border-radius: 10px;
-      background: #1565c0;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-      margin-top: 8px;
-    }
+.ad-card{
+  background:white;
+  padding:15px;
+  margin:12px 0;
+  border-radius:14px;
+  border-right:5px solid #1565c0;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
 
-    button:hover {
-      opacity: .9;
-    }
+.ad-card img{
+  width:100%;
+  max-height:300px;
+  object-fit:cover;
+  border-radius:10px;
+  margin-bottom:10px;
+}
 
-    .danger {
-      background: #c62828;
-    }
+.ad-card h3{
+  margin-top:0;
+}
 
-    .success {
-      background: #2e7d32;
-    }
+.info{
+  line-height:1.9;
+}
 
-    .gray {
-      background: #555;
-    }
+.back{
+  background:#555;
+  margin-bottom:12px;
+}
 
-    input,
-    select,
-    textarea {
-      width: 100%;
-      padding: 12px;
-      margin: 6px 0 12px;
-      border: 1px solid #ccc;
-      border-radius: 9px;
-      font-size: 15px;
-      font-family: inherit;
-    }
+.empty{
+  text-align:center;
+  padding:25px;
+  color:#777;
+}
 
-    textarea {
-      min-height: 90px;
-      resize: vertical;
-    }
+.stat-box{
+  background:white;
+  border-radius:14px;
+  padding:18px;
+  margin:10px 0;
+  text-align:center;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
 
-    label {
-      font-weight: bold;
-      display: block;
-      margin-top: 8px;
-    }
+.stat-title{
+  color:#555;
+  font-size:15px;
+}
 
-    .ad-card {
-      background: white;
-      padding: 15px;
-      margin: 12px 0;
-      border-radius: 14px;
-      border-right: 5px solid #1565c0;
-      box-shadow: 0 2px 8px rgba(0,0,0,.08);
-    }
-
-    .ad-card img {
-      width: 100%;
-      max-height: 300px;
-      object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: 10px;
-    }
-
-    .ad-card h3 {
-      margin-top: 0;
-    }
-
-    .info {
-      line-height: 1.9;
-    }
-
-    .back {
-      background: #555;
-      margin-bottom: 12px;
-    }
-
-    .stat-box {
-      background: white;
-      border-radius: 14px;
-      padding: 18px;
-      margin: 10px 0;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0,0,0,.08);
-    }
-
-    .stat-number {
-      font-size: 30px;
-      font-weight: bold;
-      color: #1565c0;
-      margin: 8px 0;
-    }
-
-    .stat-title {
-      font-size: 15px;
-      color: #555;
-    }
-
-    .empty {
-      text-align: center;
-      padding: 25px;
-      color: #777;
-    }
-
-  </style>
+.stat-number{
+  color:#1565c0;
+  font-size:30px;
+  font-weight:bold;
+  margin-top:8px;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-
-  <h1>نرخینو</h1>
-
-  <p>
-    ثبت و جستجوی ماشین‌آلات راه‌سازی و معدنی
-  </p>
-
+<h1>نرخینو</h1>
+<p>ثبت و جستجوی ماشین‌آلات راه‌سازی و معدنی</p>
 </header>
-
 
 <main>
 
+<!-- خانه -->
+<section id="home" class="section active">
 
-  <!-- صفحه اصلی -->
+<div class="card">
+<h2>🚜 ثبت آگهی</h2>
+<p>ماشین‌آلات خود را برای اجاره ثبت کنید.</p>
+<button onclick="showSection('register')">ثبت آگهی</button>
+</div>
 
-  <section id="home" class="section active">
+<div class="card">
+<h2>🔎 جستجوی ماشین‌آلات</h2>
+<p>بیل مکانیکی، لودر، کامیون، پیکور و سایر ماشین‌آلات.</p>
+<button onclick="showSection('ads');showAds()">مشاهده آگهی‌ها</button>
+</div>
 
-    <div class="card">
+<div class="card">
+<h2>📍 نشانی‌ها</h2>
+<p>مشاهده محل فعالیت ماشین‌آلات.</p>
+<button onclick="showSection('addresses');showAddresses()">مشاهده نشانی‌ها</button>
+</div>
 
-      <h2>🚜 ثبت آگهی</h2>
+<div class="card">
+<h2>🔐 مدیریت</h2>
+<p>ورود به بخش مدیریت نرخینو.</p>
+<button onclick="adminLogin()">ورود مدیریت</button>
+</div>
 
-      <p>
-        ماشین‌آلات خود را برای اجاره ثبت کنید.
-      </p>
+</section>
 
-      <button
-        type="button"
-        onclick="showSection('register')">
 
-        ثبت آگهی
+<!-- ثبت آگهی -->
+<section id="register" class="section">
 
-      </button>
+<button class="back" onclick="showSection('home')">← بازگشت</button>
 
-    </div>
+<div class="card">
 
+<h2>📝 ثبت آگهی</h2>
 
-    <div class="card">
+<label>نام ماشین‌آلات</label>
+<input id="machine" placeholder="مثلاً بیل مکانیکی">
 
-      <h2>🔎 جستجوی ماشین‌آلات</h2>
+<label>نوع ماشین‌آلات</label>
+<select id="type">
+<option value="">انتخاب کنید</option>
+<option>بیل مکانیکی</option>
+<option>بیل مکانیکی + پیکور</option>
+<option>لودر</option>
+<option>بولدوزر</option>
+<option>گریدر</option>
+<option>کامیون و کمپرسی</option>
+<option>غلطک</option>
+<option>جرثقیل</option>
+<option>کمرشکن کامیون</option>
+<option>سایر</option>
+</select>
 
-      <p>
-        بیل مکانیکی، لودر، کامیون، پیکور و سایر ماشین‌آلات.
-      </p>
+<label>شهر</label>
+<input id="city" placeholder="مثلاً اهواز">
 
-      <button
-        type="button"
-        onclick="showSection('ads'); showAds();">
+<label>نشانی</label>
+<input id="address" placeholder="نشانی محل فعالیت">
 
-        مشاهده آگهی‌ها
+<label>شماره تماس</label>
+<input id="phone" type="tel" placeholder="مثلاً 09123456789">
 
-      </button>
+<label>قیمت اجاره</label>
+<input id="price" placeholder="مثلاً توافقی">
 
-    </div>
+<label>کارکرد</label>
+<input id="workHours" placeholder="مثلاً 5000 ساعت">
 
+<label>توضیحات</label>
+<textarea id="description"></textarea>
 
-    <div class="card">
+<label>تصویر ماشین‌آلات</label>
+<input id="image" type="file" accept="image/*">
 
-      <h2>📍 نشانی‌ها</h2>
+<button class="success" onclick="registerAd()">ثبت آگهی</button>
 
-      <p>
-        مشاهده محل فعالیت ماشین‌آلات.
-      </p>
+</div>
+</section>
 
-      <button
-        type="button"
-        onclick="showSection('addresses'); showAddresses();">
 
-        مشاهده نشانی‌ها
+<!-- آگهی ها -->
+<section id="ads" class="section">
 
-      </button>
+<button class="back" onclick="showSection('home')">← بازگشت</button>
 
-    </div>
+<div class="card">
 
+<h2>📋 آگهی‌های ماشین‌آلات</h2>
 
-    <div class="card">
+<label>🔎 جستجو</label>
+<input id="searchInput"
+       placeholder="جستجو..."
+       oninput="searchAds()">
 
-      <h2>🔐 مدیریت</h2>
+<label>فیلتر شهر</label>
+<select id="cityFilter" onchange="filterByCity()">
+<option value="">همه شهرها</option>
+</select>
 
-      <p>
-        ورود به بخش مدیریت نرخینو.
-      </p>
+<label>فیلتر کارکرد</label>
+<select id="workFilter" onchange="filterByWork()">
+<option value="">همه کارکردها</option>
+<option value="نو">نو</option>
+<option value="کم‌کار">کم‌کار</option>
+<option value="متوسط">متوسط</option>
+<option value="پرکار">پرکار</option>
+</select>
 
-      <button
-        type="button"
-        onclick="adminLogin()">
+</div>
 
-        ورود مدیریت
+<div id="adsList"></div>
 
-      </button>
+</section>
 
-    </div>
 
-  </section>
+<!-- نشانی -->
+<section id="addresses" class="section">
 
+<button class="back" onclick="showSection('home')">← بازگشت</button>
 
+<div class="card">
 
-  <!-- ثبت آگهی -->
+<h2>📍 نشانی ماشین‌آلات</h2>
 
-  <section id="register" class="section">
+<div id="addressList"></div>
 
-    <button
-      type="button"
-      class="back"
-      onclick="showSection('home')">
+</div>
+</section>
 
-      ← بازگشت
 
-    </button>
+<!-- ویرایش -->
+<section id="edit" class="section">
 
-    <div class="card">
+<button class="back" onclick="showSection('ads');showAds()">← بازگشت</button>
 
-      <h2>📝 ثبت آگهی</h2>
+<div class="card">
 
-      <label>نام ماشین‌آلات</label>
+<h2>✏️ ویرایش آگهی</h2>
 
-      <input
-        id="machine"
-        type="text"
-        placeholder="مثلاً بیل مکانیکی">
+<input id="editId" type="hidden">
 
+<label>نام ماشین‌آلات</label>
+<input id="editMachine">
 
-      <label>نوع ماشین‌آلات</label>
+<label>نوع ماشین‌آلات</label>
+<input id="editType">
 
-      <select id="type">
+<label>شهر</label>
+<input id="editCity">
 
-        <option value="">انتخاب کنید</option>
+<label>نشانی</label>
+<input id="editAddress">
 
-        <option>بیل مکانیکی</option>
+<label>شماره تماس</label>
+<input id="editPhone">
 
-        <option>بیل مکانیکی + پیکور</option>
+<label>قیمت</label>
+<input id="editPrice">
 
-        <option>لودر</option>
+<label>کارکرد</label>
+<input id="editWorkHours">
 
-        <option>بولدوزر</option>
+<label>توضیحات</label>
+<textarea id="editDescription"></textarea>
 
-        <option>گریدر</option>
+<button class="success" onclick="saveEdit()">💾 ذخیره تغییرات</button>
 
-        <option>کامیون و کمپرسی</option>
+</div>
+</section>
 
-        <option>غلطک</option>
 
-        <option>جرثقیل</option>
+<!-- مدیریت -->
+<section id="admin" class="section">
 
-        <option>کمرشکن کامیون</option>
+<button class="back" onclick="showSection('home')">
+← خروج از مدیریت
+</button>
 
-        <option>سایر</option>
+<div class="card">
 
-      </select>
+<h2>🔐 پنل مدیریت نرخینو</h2>
+<p>آمار و مدیریت آگهی‌ها</p>
 
+</div>
 
-      <label>شهر</label>
 
-      <input
-        id="city"
-        type="text"
-        placeholder="مثلاً اهواز">
+<!-- چهار آمار -->
+<div class="stat-box">
+<div class="stat-title">📋 تعداد کل آگهی‌ها</div>
+<div id="statAds" class="stat-number">0</div>
+</div>
 
+<div class="stat-box">
+<div class="stat-title">🏙️ تعداد شهرهای فعال</div>
+<div id="statCities" class="stat-number">0</div>
+</div>
 
-      <label>نشانی</label>
+<div class="stat-box">
+<div class="stat-title">🚜 تعداد ماشین‌آلات</div>
+<div id="statMachines" class="stat-number">0</div>
+</div>
 
-      <input
-        id="address"
-        type="text"
-        placeholder="نشانی محل فعالیت">
+<div class="stat-box">
+<div class="stat-title">📞 آگهی‌های دارای شماره تماس</div>
+<div id="statPhones" class="stat-number">0</div>
+</div>
 
 
-      <label>شماره تماس</label>
+<button class="success"
+onclick="showAds();showSection('ads')">
+📋 مشاهده همه آگهی‌ها
+</button>
 
-      <input
-        id="phone"
-        type="tel"
-        placeholder="مثلاً 09123456789">
+<button
+onclick="showAddresses();showSection('addresses')">
+📍 مشاهده همه نشانی‌ها
+</button>
 
-
-      <label>قیمت اجاره</label>
-
-      <input
-        id="price"
-        type="text"
-        placeholder="مثلاً توافقی">
-
-
-      <label>کارکرد</label>
-
-      <input
-        id="workHours"
-        type="text"
-        placeholder="مثلاً 5000 ساعت">
-
-
-      <label>توضیحات</label>
-
-      <textarea
-        id="description"
-        placeholder="توضیحات ماشین‌آلات"></textarea>
-
-
-      <label>تصویر ماشین‌آلات</label>
-
-      <input
-        id="image"
-        type="file"
-        accept="image/*">
-
-
-      <button
-        type="button"
-        class="success"
-        onclick="registerAd()">
-
-        ثبت آگهی
-
-      </button>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- آگهی‌ها -->
-
-  <section id="ads" class="section">
-
-    <button
-      type="button"
-      class="back"
-      onclick="showSection('home')">
-
-      ← بازگشت
-
-    </button>
-
-    <div class="card">
-
-      <h2>📋 آگهی‌های ماشین‌آلات</h2>
-
-
-      <label>🔎 جستجو</label>
-
-      <input
-        id="searchInput"
-        type="text"
-        placeholder="نام ماشین، شهر یا توضیحات..."
-        oninput="searchAds()">
-
-
-      <label>🏙️ فیلتر شهر</label>
-
-      <select
-        id="cityFilter"
-        onchange="filterByCity()">
-
-        <option value="">همه شهرها</option>
-
-      </select>
-
-
-      <label>⚙️ فیلتر کارکرد</label>
-
-      <select
-        id="workFilter"
-        onchange="filterByWork()">
-
-        <option value="">همه</option>
-
-        <option value="نو">نو</option>
-
-        <option value="کم‌کار">کم‌کار</option>
-
-        <option value="متوسط">متوسط</option>
-
-        <option value="پُرکار">پُرکار</option>
-
-      </select>
-
-    </div>
-
-
-    <div id="adsList"></div>
-
-  </section>
-
-
-
-  <!-- نشانی‌ها -->
-
-  <section id="addresses" class="section">
-
-    <button
-      type="button"
-      class="back"
-      onclick="showSection('home')">
-
-      ← بازگشت
-
-    </button>
-
-    <div class="card">
-
-      <h2>📍 نشانی ماشین‌آلات</h2>
-
-      <div id="addressList"></div>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- ویرایش -->
-
-  <section id="edit" class="section">
-
-    <button
-      type="button"
-      class="back"
-      onclick="showSection('ads'); showAds();">
-
-      ← بازگشت
-
-    </button>
-
-    <div class="card">
-
-      <h2>✏️ ویرایش آگهی</h2>
-
-      <input
-        id="editId"
-        type="hidden">
-
-
-      <label>نام ماشین‌آلات</label>
-
-      <input id="editMachine">
-
-
-      <label>نوع ماشین‌آلات</label>
-
-      <input id="editType">
-
-
-      <label>شهر</label>
-
-      <input id="editCity">
-
-
-      <label>نشانی</label>
-
-      <input id="editAddress">
-
-
-      <label>شماره تماس</label>
-
-      <input id="editPhone">
-
-
-      <label>قیمت</label>
-
-      <input id="editPrice">
-
-
-      <label>کارکرد</label>
-
-      <input id="editWorkHours">
-
-
-      <label>توضیحات</label>
-
-      <textarea id="editDescription"></textarea>
-
-
-      <button
-        type="button"
-        class="success"
-        onclick="saveEdit()">
-
-        💾 ذخیره تغییرات
-
-      </button>
-
-    </div>
-
-  </section>
-
-
-
-  <!-- مدیریت -->
-
-  <section id="admin" class="section">
-
-    <button
-      type="button"
-      class="back"
-      onclick="showSection('home')">
-
-      ← خروج از مدیریت
-
-    </button>
-
-
-    <div class="card">
-
-      <h2>🔐 پنل مدیریت نرخینو</h2>
-
-      <p>
-        آمار و مدیریت آگهی‌ها
-      </p>
-
-    </div>
-
-
-    <div id="adminStats">
-
-      <div class="stat-box">
-
-        <div class="stat-title">
-          📋 تعداد کل آگهی‌ها
-        </div>
-
-        <div
-          id="statAds"
-          class="stat-number">
-
-          0
-
-        </div>
-
-      </div>
-
-
-      <div class="stat-box">
-
-        <div class="stat-title">
-          🏙️ تعداد شهرهای فعال
-        </div>
-
-        <div
-          id="statCities"
-          class="stat-number">
-
-          0
-
-        </div>
-
-      </div>
-
-
-      <div class="stat-box">
-
-        <div class="stat-title">
-          🚜 تعداد ماشین‌آلات
-        </div>
-
-        <div
-          id="statMachines"
-          class="stat-number">
-
-          0
-
-        </div>
-
-      </div>
-
-
-      <div class="stat-box">
-
-        <div class="stat-title">
-          📞 آگهی‌های دارای شماره تماس
-        </div>
-
-        <div
-          id="statPhones"
-          class="stat-number">
-
-          0
-
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <button
-      type="button"
-      class="success"
-      onclick="showAds(); showSection('ads');">
-
-      📋 مشاهده همه آگهی‌ها
-
-    </button>
-
-
-    <button
-      type="button"
-      onclick="showAddresses(); showSection('addresses');">
-
-      📍 مشاهده همه نشانی‌ها
-
-    </button>
-
-  </section>
-
+</section>
 
 </main>
 
 
-
 <script>
 
+/* گرفتن آگهی ها */
+function getAds(){
 
-/* =========================
-   مدیریت ورود
-========================= */
+  try{
+    return JSON.parse(
+      localStorage.getItem('rentAds')
+    ) || [];
+  }catch(e){
+    return [];
+  }
 
-function adminLogin() {
+}
 
-  var password =
-    prompt('🔐 رمز مدیریت را وارد کنید:');
 
-  if (password === 'Nerkhino1405') {
+/* نمایش بخش */
+function showSection(id){
+
+  document.querySelectorAll('.section')
+  .forEach(function(section){
+    section.classList.remove('active');
+  });
+
+  var target=document.getElementById(id);
+
+  if(target){
+    target.classList.add('active');
+    window.scrollTo(0,0);
+  }
+
+}
+
+
+/* ورود مدیریت */
+function adminLogin(){
+
+  var password=prompt(
+    '🔐 رمز مدیریت را وارد کنید:'
+  );
+
+  if(password==='Nerkhino1405'){
 
     showSection('admin');
 
     updateAdminStats();
 
   }
-
-  else if (password !== null) {
+  else if(password!==null){
 
     alert('❌ رمز اشتباه است.');
 
@@ -721,331 +447,150 @@ function adminLogin() {
 }
 
 
+/* ثبت آگهی */
+function registerAd(){
 
-/* =========================
-   نمایش بخش‌ها
-========================= */
+  var machine=document.getElementById('machine').value.trim();
+  var type=document.getElementById('type').value.trim();
+  var city=document.getElementById('city').value.trim();
+  var address=document.getElementById('address').value.trim();
+  var phone=document.getElementById('phone').value.trim();
+  var price=document.getElementById('price').value.trim();
+  var workHours=document.getElementById('workHours').value.trim();
+  var description=document.getElementById('description').value.trim();
+  var imageInput=document.getElementById('image');
 
-function showSection(sectionId) {
-
-  var sections =
-    document.querySelectorAll('.section');
-
-  sections.forEach(function(section) {
-
-    section.classList.remove('active');
-
-  });
-
-
-  var target =
-    document.getElementById(sectionId);
-
-  if (target) {
-
-    target.classList.add('active');
-
-    window.scrollTo(0, 0);
-
-  }
-
-}
-
-
-
-/* =========================
-   جلوگیری از HTML خطرناک
-========================= */
-
-function escapeHtml(text) {
-
-  if (text === null ||
-      text === undefined) {
-
-    return '';
-
-  }
-
-  return String(text)
-
-    .replace(/&/g, '&amp;')
-
-    .replace(/</g, '&lt;')
-
-    .replace(/>/g, '&gt;')
-
-    .replace(/"/g, '&quot;')
-
-    .replace(/'/g, '&#039;');
-
-}
-
-
-
-/* =========================
-   دریافت آگهی‌ها
-========================= */
-
-function getAds() {
-
-  try {
-
-    return JSON.parse(
-      localStorage.getItem('rentAds')
-    ) || [];
-
-  }
-
-  catch (error) {
-
-    return [];
-
-  }
-
-}
-
-
-
-/* =========================
-   ثبت آگهی
-========================= */
-
-function registerAd() {
-
-  var machine =
-    document.getElementById('machine').value.trim();
-
-  var type =
-    document.getElementById('type').value.trim();
-
-  var city =
-    document.getElementById('city').value.trim();
-
-  var address =
-    document.getElementById('address').value.trim();
-
-  var phone =
-    document.getElementById('phone').value.trim();
-
-  var price =
-    document.getElementById('price').value.trim();
-
-  var workHours =
-    document.getElementById('workHours').value.trim();
-
-  var description =
-    document.getElementById('description').value.trim();
-
-  var imageInput =
-    document.getElementById('image');
-
-
-  if (!machine) {
-
+  if(!machine){
     alert('لطفاً نام ماشین‌آلات را وارد کنید.');
-
     return;
-
   }
 
-
-  if (!type) {
-
+  if(!type){
     alert('لطفاً نوع ماشین‌آلات را انتخاب کنید.');
-
     return;
-
   }
 
-
-  if (!city) {
-
+  if(!city){
     alert('لطفاً شهر را وارد کنید.');
-
     return;
-
   }
 
+  var ads=getAds();
 
-  var ads = getAds();
+  function saveAd(imageData){
 
+    ads.push({
 
-  function saveAd(imageData) {
+      id:Date.now(),
 
-    var newAd = {
+      machine:machine,
 
-      id: Date.now(),
+      type:type,
 
-      machine: machine,
+      city:city,
 
-      type: type,
+      address:address,
 
-      city: city,
+      phone:phone,
 
-      address: address,
+      price:price,
 
-      phone: phone,
+      workHours:workHours,
 
-      price: price,
+      description:description,
 
-      workHours: workHours,
+      image:imageData || ''
 
-      description: description,
+    });
 
-      image: imageData || '',
-
-      createdAt: new Date().toISOString()
-
-    };
-
-
-    ads.push(newAd);
-
-
-    try {
+    try{
 
       localStorage.setItem(
         'rentAds',
         JSON.stringify(ads)
       );
 
-    }
+    }catch(e){
 
-    catch (error) {
-
-      alert(
-        '❌ ذخیره انجام نشد. احتمالاً حجم تصویر زیاد است.'
-      );
-
+      alert('❌ ذخیره انجام نشد. حجم تصویر زیاد است.');
       return;
 
     }
 
-
     alert('✅ آگهی با موفقیت ثبت شد.');
 
-
-    document.getElementById('machine').value = '';
-
-    document.getElementById('type').value = '';
-
-    document.getElementById('city').value = '';
-
-    document.getElementById('address').value = '';
-
-    document.getElementById('phone').value = '';
-
-    document.getElementById('price').value = '';
-
-    document.getElementById('workHours').value = '';
-
-    document.getElementById('description').value = '';
-
-    document.getElementById('image').value = '';
-
+    document.getElementById('machine').value='';
+    document.getElementById('type').value='';
+    document.getElementById('city').value='';
+    document.getElementById('address').value='';
+    document.getElementById('phone').value='';
+    document.getElementById('price').value='';
+    document.getElementById('workHours').value='';
+    document.getElementById('description').value='';
+    document.getElementById('image').value='';
 
     showSection('ads');
-
     showAds();
 
   }
 
 
-  if (imageInput.files &&
-      imageInput.files[0]) {
+  if(imageInput.files && imageInput.files[0]){
 
-    var file =
-      imageInput.files[0];
+    var reader=new FileReader();
 
-    var reader =
-      new FileReader();
+    reader.onload=function(e){
 
+      var img=new Image();
 
-    reader.onload = function(e) {
+      img.onload=function(){
 
-      var img =
-        new Image();
+        var max=800;
+        var width=img.width;
+        var height=img.height;
 
-      img.onload = function() {
+        if(width>height && width>max){
 
-        var maxSize = 800;
-
-        var width = img.width;
-
-        var height = img.height;
-
-
-        if (width > height) {
-
-          if (width > maxSize) {
-
-            height =
-              height * maxSize / width;
-
-            width = maxSize;
-
-          }
+          height=height*max/width;
+          width=max;
 
         }
 
-        else {
+        if(height>=width && height>max){
 
-          if (height > maxSize) {
-
-            width =
-              width * maxSize / height;
-
-            height = maxSize;
-
-          }
+          width=width*max/height;
+          height=max;
 
         }
 
+        var canvas=document.createElement('canvas');
 
-        var canvas =
-          document.createElement('canvas');
+        canvas.width=width;
+        canvas.height=height;
 
-        canvas.width =
-          width;
-
-        canvas.height =
-          height;
-
-
-        var ctx =
-          canvas.getContext('2d');
+        var ctx=canvas.getContext('2d');
 
         ctx.drawImage(
-          img,
-          0,
-          0,
-          width,
-          height
+          img,0,0,width,height
         );
 
-
-        var imageData =
+        var imageData=
           canvas.toDataURL(
             'image/jpeg',
-            0.7
+            .7
           );
-
 
         saveAd(imageData);
 
       };
 
-
-      img.src = e.target.result;
+      img.src=e.target.result;
 
     };
 
+    reader.readAsDataURL(imageInput.files[0]);
 
-    reader.readAsDataURL(file);
-
-  }
-
-  else {
+  }else{
 
     saveAd('');
 
@@ -1054,171 +599,28 @@ function registerAd() {
 }
 
 
+/* نمایش آگهی */
+function showAds(){
 
-/* =========================
-   کارت آگهی
-========================= */
+  var list=document.getElementById('adsList');
+  var ads=getAds();
 
-function createAdCard(ad) {
-
-  var div =
-    document.createElement('div');
-
-  div.className =
-    'ad-card';
-
-
-  var html = '';
-
-
-  if (ad.image) {
-
-    html +=
-
-      '<img src="' +
-      escapeHtml(ad.image) +
-      '" alt="تصویر ماشین‌آلات">';
-
-  }
-
-
-  html +=
-
-    '<h3>🚜 ' +
-    escapeHtml(ad.machine) +
-    '</h3>';
-
-
-  html +=
-
-    '<div class="info">' +
-
-    '<b>نوع:</b> ' +
-    escapeHtml(ad.type) +
-    '<br>' +
-
-    '<b>شهر:</b> ' +
-    escapeHtml(ad.city) +
-    '<br>' +
-
-    '<b>نشانی:</b> ' +
-    escapeHtml(ad.address) +
-    '<br>' +
-
-    '<b>قیمت:</b> ' +
-    escapeHtml(ad.price) +
-    '<br>' +
-
-    '<b>کارکرد:</b> ' +
-    escapeHtml(ad.workHours) +
-    '<br>' +
-
-    '<b>توضیحات:</b> ' +
-    escapeHtml(ad.description) +
-
-    '</div>';
-
-
-  if (ad.phone) {
-
-    html +=
-
-      '<button type="button" ' +
-
-      'class="success" ' +
-
-      'onclick="callOwner(\'' +
-
-      encodeURIComponent(ad.phone) +
-
-      '\')">' +
-
-      '📞 تماس با مالک' +
-
-      '</button>';
-
-  }
-
-
-  html +=
-
-    '<button type="button" ' +
-
-    'onclick="editAd(' +
-
-    ad.id +
-
-    ')">' +
-
-    '✏️ ویرایش' +
-
-    '</button>';
-
-
-  html +=
-
-    '<button type="button" ' +
-
-    'class="danger" ' +
-
-    'onclick="deleteAd(' +
-
-    ad.id +
-
-    ')">' +
-
-    '🗑️ حذف آگهی' +
-
-    '</button>';
-
-
-  div.innerHTML =
-    html;
-
-
-  return div;
-
-}
-
-
-
-/* =========================
-   نمایش آگهی‌ها
-========================= */
-
-function showAds() {
-
-  var adsList =
-    document.getElementById('adsList');
-
-  var ads =
-    getAds();
-
-
-  adsList.innerHTML = '';
-
+  list.innerHTML='';
 
   updateCityFilter();
 
+  if(!ads.length){
 
-  if (!ads.length) {
-
-    adsList.innerHTML =
-
-      '<div class="card empty">' +
-
-      'هنوز آگهی‌ای ثبت نشده است.' +
-
-      '</div>';
+    list.innerHTML=
+      '<div class="card empty">هنوز آگهی‌ای ثبت نشده است.</div>';
 
     return;
 
   }
 
+  ads.forEach(function(ad){
 
-  ads.forEach(function(ad) {
-
-    adsList.appendChild(
+    list.appendChild(
       createAdCard(ad)
     );
 
@@ -1227,54 +629,88 @@ function showAds() {
 }
 
 
+/* کارت آگهی */
+function createAdCard(ad){
 
-/* =========================
-   فیلتر شهر
-========================= */
+  var div=document.createElement('div');
 
-function updateCityFilter() {
+  div.className='ad-card';
 
-  var select =
-    document.getElementById('cityFilter');
+  var html='';
 
-  var ads =
-    getAds();
+  if(ad.image){
+
+    html+=
+      '<img src="'+ad.image+'" alt="تصویر ماشین‌آلات">';
+
+  }
+
+  html+=
+    '<h3>🚜 '+ad.machine+'</h3>';
+
+  html+=
+    '<div class="info">'+
+    '<b>نوع:</b> '+ad.type+'<br>'+
+    '<b>شهر:</b> '+ad.city+'<br>'+
+    '<b>نشانی:</b> '+ad.address+'<br>'+
+    '<b>تلفن:</b> '+ad.phone+'<br>'+
+    '<b>قیمت:</b> '+ad.price+'<br>'+
+    '<b>کارکرد:</b> '+ad.workHours+'<br>'+
+    '<b>توضیحات:</b> '+ad.description+
+    '</div>';
+
+  if(ad.phone){
+
+    html+=
+      '<button class="success" onclick="callOwner(\''+
+      encodeURIComponent(ad.phone)+
+      '\')">📞 تماس با مالک</button>';
+
+  }
+
+  html+=
+    '<button onclick="editAd('+ad.id+')">✏️ ویرایش آگهی</button>';
+
+  html+=
+    '<button class="danger" onclick="deleteAd('+ad.id+')">🗑️ حذف آگهی</button>';
+
+  div.innerHTML=html;
+
+  return div;
+
+}
 
 
-  var cities = [];
+/* شهرها */
+function updateCityFilter(){
 
+  var select=document.getElementById('cityFilter');
+  var ads=getAds();
 
-  ads.forEach(function(ad) {
+  var cities=[];
 
-    if (
+  ads.forEach(function(ad){
+
+    if(
       ad.city &&
       !cities.includes(ad.city)
-    ) {
-
+    ){
       cities.push(ad.city);
-
     }
 
   });
 
+  select.innerHTML=
+    '<option value="">همه شهرها</option>';
 
   cities.sort();
 
+  cities.forEach(function(city){
 
-  select.innerHTML =
-    '<option value="">همه شهرها</option>';
+    var option=document.createElement('option');
 
-
-  cities.forEach(function(city) {
-
-    var option =
-      document.createElement('option');
-
-    option.value =
-      city;
-
-    option.textContent =
-      city;
+    option.value=city;
+    option.textContent=city;
 
     select.appendChild(option);
 
@@ -1283,70 +719,22 @@ function updateCityFilter() {
 }
 
 
+/* فیلتر شهر */
+function filterByCity(){
 
-/* =========================
-   فیلتر دسته‌بندی
-========================= */
-
-function filterAds(category) {
-
-  var ads =
-    getAds();
-
-
-  var adsList =
-    document.getElementById('adsList');
-
-
-  adsList.innerHTML = '';
-
-
-  ads.forEach(function(ad) {
-
-    if (
-      !category ||
-      ad.type === category
-    ) {
-
-      adsList.appendChild(
-        createAdCard(ad)
-      );
-
-    }
-
-  });
-
-}
-
-
-
-/* =========================
-   فیلتر شهر
-========================= */
-
-function filterByCity() {
-
-  var filter =
+  var filter=
     document.getElementById('cityFilter').value;
 
-  var ads =
-    getAds();
+  var ads=getAds();
+  var list=document.getElementById('adsList');
 
-  var adsList =
-    document.getElementById('adsList');
+  list.innerHTML='';
 
+  ads.forEach(function(ad){
 
-  adsList.innerHTML = '';
+    if(!filter || ad.city===filter){
 
-
-  ads.forEach(function(ad) {
-
-    if (
-      !filter ||
-      ad.city === filter
-    ) {
-
-      adsList.appendChild(
+      list.appendChild(
         createAdCard(ad)
       );
 
@@ -1357,93 +745,49 @@ function filterByCity() {
 }
 
 
+/* فیلتر کارکرد */
+function filterByWork(){
 
-/* =========================
-   فیلتر کارکرد
-========================= */
-
-function filterByWork() {
-
-  var filter =
+  var filter=
     document.getElementById('workFilter').value;
 
-  var ads =
-    getAds();
+  var ads=getAds();
+  var list=document.getElementById('adsList');
 
-  var adsList =
-    document.getElementById('adsList');
+  list.innerHTML='';
 
+  ads.forEach(function(ad){
 
-  adsList.innerHTML = '';
+    var text=(ad.workHours || '').toLowerCase();
 
+    var ok=!filter;
 
-  ads.forEach(function(ad) {
+    if(
+      filter==='نو' &&
+      text.includes('نو')
+    ) ok=true;
 
-    var text =
-      (
-        ad.workHours ||
-        ''
-      ).toLowerCase();
+    if(
+      filter==='کم‌کار' &&
+      text.includes('کم')
+    ) ok=true;
 
-
-    var match = false;
-
-
-    if (!filter) {
-
-      match = true;
-
-    }
-
-    else if (
-      filter === 'نو' &&
-      (
-        text.includes('نو') ||
-        text.includes('0')
-      )
-    ) {
-
-      match = true;
-
-    }
-
-    else if (
-      filter === 'کم‌کار' &&
-      (
-        text.includes('کم') ||
-        text.includes('1000')
-      )
-    ) {
-
-      match = true;
-
-    }
-
-    else if (
-      filter === 'متوسط' &&
+    if(
+      filter==='متوسط' &&
       text.includes('متوسط')
-    ) {
+    ) ok=true;
 
-      match = true;
-
-    }
-
-    else if (
-      filter === 'پُرکار' &&
+    if(
+      filter==='پرکار' &&
       (
         text.includes('پر') ||
         text.includes('پُر')
       )
-    ) {
+    ) ok=true;
 
-      match = true;
+    if(ok){
 
-    }
-
-
-    if (match) {
-
-      adsList.appendChild(
+      list.appendChild(
         createAdCard(ad)
       );
 
@@ -1454,55 +798,34 @@ function filterByWork() {
 }
 
 
+/* جستجو */
+function searchAds(){
 
-/* =========================
-   جستجو
-========================= */
+  var search=
+    document.getElementById('searchInput')
+    .value
+    .trim()
+    .toLowerCase();
 
-function searchAds() {
+  var ads=getAds();
+  var list=document.getElementById('adsList');
 
-  var search =
-    document
-      .getElementById('searchInput')
-      .value
-      .trim()
-      .toLowerCase();
+  list.innerHTML='';
 
+  ads.forEach(function(ad){
 
-  var ads =
-    getAds();
-
-  var adsList =
-    document.getElementById('adsList');
-
-
-  adsList.innerHTML = '';
-
-
-  ads.forEach(function(ad) {
-
-    var text =
-
+    var text=
       (
-        ad.machine +
-        ' ' +
-        ad.type +
-        ' ' +
-        ad.city +
-        ' ' +
-        ad.address +
-        ' ' +
+        ad.machine+' '+
+        ad.type+' '+
+        ad.city+' '+
+        ad.address+' '+
         ad.description
-      )
-      .toLowerCase();
+      ).toLowerCase();
 
+    if(!search || text.includes(search)){
 
-    if (
-      !search ||
-      text.includes(search)
-    ) {
-
-      adsList.appendChild(
+      list.appendChild(
         createAdCard(ad)
       );
 
@@ -1513,316 +836,188 @@ function searchAds() {
 }
 
 
+/* نشانی */
+function showAddresses(){
 
-/* =========================
-   نشانی‌ها
-========================= */
+  var list=document.getElementById('addressList');
+  var ads=getAds();
 
-function showAddresses() {
+  list.innerHTML='';
 
-  var addressList =
-    document.getElementById('addressList');
+  ads.forEach(function(ad){
 
-  var ads =
-    getAds();
+    if(ad.address){
 
+      var div=document.createElement('div');
 
-  addressList.innerHTML = '';
+      div.className='card';
 
-
-  if (!ads.length) {
-
-    addressList.innerHTML =
-
-      '<div class="empty">' +
-
-      'هنوز نشانی‌ای ثبت نشده است.' +
-
-      '</div>';
-
-    return;
-
-  }
-
-
-  ads.forEach(function(ad) {
-
-    if (ad.address) {
-
-      var div =
-        document.createElement('div');
-
-      div.className =
-        'card';
-
-
-      div.innerHTML =
-
-        '<h3>🚜 ' +
-        escapeHtml(ad.machine) +
-        '</h3>' +
-
-        '<p>' +
-
-        '<b>🏙️ شهر:</b> ' +
-        escapeHtml(ad.city) +
-
-        '<br>' +
-
-        '<b>📍 نشانی:</b> ' +
-        escapeHtml(ad.address) +
-
+      div.innerHTML=
+        '<h3>🚜 '+ad.machine+'</h3>'+
+        '<p>'+
+        '<b>🏙️ شهر:</b> '+ad.city+
+        '<br>'+
+        '<b>📍 نشانی:</b> '+ad.address+
         '</p>';
 
-
-      addressList.appendChild(div);
+      list.appendChild(div);
 
     }
 
   });
 
+  if(!list.children.length){
 
-  if (!addressList.children.length) {
-
-    addressList.innerHTML =
-
-      '<div class="empty">' +
-
-      'برای آگهی‌ها نشانی ثبت نشده است.' +
-
-      '</div>';
+    list.innerHTML=
+      '<div class="empty">برای آگهی‌ها نشانی ثبت نشده است.</div>';
 
   }
 
 }
 
 
+/* حذف */
+function deleteAd(id){
 
-/* =========================
-   حذف آگهی
-========================= */
-
-function deleteAd(id) {
-
-  if (
-    !confirm(
-      'آیا از حذف این آگهی مطمئن هستید؟'
-    )
-  ) {
-
+  if(!confirm('آیا از حذف این آگهی مطمئن هستید؟')){
     return;
-
   }
 
+  var ads=getAds();
 
-  var ads =
-    getAds();
-
-
-  ads =
-    ads.filter(function(ad) {
-
-      return ad.id !== id;
-
-    });
-
+  ads=ads.filter(function(ad){
+    return ad.id!==id;
+  });
 
   localStorage.setItem(
     'rentAds',
     JSON.stringify(ads)
   );
 
-
   alert('✅ آگهی حذف شد.');
-
 
   showAds();
 
 }
 
 
+/* ویرایش */
+function editAd(id){
 
-/* =========================
-   ویرایش آگهی
-========================= */
+  var ads=getAds();
 
-function editAd(id) {
+  var ad=ads.find(function(item){
+    return item.id===id;
+  });
 
-  var ads =
-    getAds();
-
-
-  var ad =
-    ads.find(function(item) {
-
-      return item.id === id;
-
-    });
-
-
-  if (!ad) {
-
+  if(!ad){
     alert('آگهی پیدا نشد.');
-
     return;
-
   }
 
-
-  document.getElementById('editId').value =
-    ad.id;
-
-  document.getElementById('editMachine').value =
-    ad.machine || '';
-
-  document.getElementById('editType').value =
-    ad.type || '';
-
-  document.getElementById('editCity').value =
-    ad.city || '';
-
-  document.getElementById('editAddress').value =
-    ad.address || '';
-
-  document.getElementById('editPhone').value =
-    ad.phone || '';
-
-  document.getElementById('editPrice').value =
-    ad.price || '';
-
-  document.getElementById('editWorkHours').value =
-    ad.workHours || '';
-
-  document.getElementById('editDescription').value =
-    ad.description || '';
-
+  document.getElementById('editId').value=ad.id;
+  document.getElementById('editMachine').value=ad.machine || '';
+  document.getElementById('editType').value=ad.type || '';
+  document.getElementById('editCity').value=ad.city || '';
+  document.getElementById('editAddress').value=ad.address || '';
+  document.getElementById('editPhone').value=ad.phone || '';
+  document.getElementById('editPrice').value=ad.price || '';
+  document.getElementById('editWorkHours').value=ad.workHours || '';
+  document.getElementById('editDescription').value=ad.description || '';
 
   showSection('edit');
 
 }
 
 
+/* ذخیره ویرایش */
+function saveEdit(){
 
-/* =========================
-   ذخیره ویرایش
-========================= */
-
-function saveEdit() {
-
-  var id =
+  var id=
     Number(
       document.getElementById('editId').value
     );
 
+  var ads=getAds();
 
-  var ads =
-    getAds();
-
-
-  var index =
-    ads.findIndex(function(ad) {
-
-      return ad.id === id;
-
+  var index=
+    ads.findIndex(function(ad){
+      return ad.id===id;
     });
 
-
-  if (index === -1) {
-
+  if(index===-1){
     alert('آگهی پیدا نشد.');
-
     return;
-
   }
 
-
-  ads[index].machine =
+  ads[index].machine=
     document.getElementById('editMachine').value.trim();
 
-  ads[index].type =
+  ads[index].type=
     document.getElementById('editType').value.trim();
 
-  ads[index].city =
+  ads[index].city=
     document.getElementById('editCity').value.trim();
 
-  ads[index].address =
+  ads[index].address=
     document.getElementById('editAddress').value.trim();
 
-  ads[index].phone =
+  ads[index].phone=
     document.getElementById('editPhone').value.trim();
 
-  ads[index].price =
+  ads[index].price=
     document.getElementById('editPrice').value.trim();
 
-  ads[index].workHours =
+  ads[index].workHours=
     document.getElementById('editWorkHours').value.trim();
 
-  ads[index].description =
+  ads[index].description=
     document.getElementById('editDescription').value.trim();
-
 
   localStorage.setItem(
     'rentAds',
     JSON.stringify(ads)
   );
 
-
   alert('✅ تغییرات ذخیره شد.');
 
-
   showSection('ads');
-
   showAds();
 
 }
 
 
+/* تماس */
+function callOwner(phone){
 
-/* =========================
-   تماس با مالک
-========================= */
+  phone=decodeURIComponent(phone);
 
-function callOwner(encodedPhone) {
-
-  var phone =
-    decodeURIComponent(encodedPhone);
-
-
-  if (!phone) {
-
+  if(!phone){
     alert('شماره تماس موجود نیست.');
-
     return;
-
   }
 
-
-  window.location.href =
-    'tel:' + phone;
+  window.location.href='tel:'+phone;
 
 }
-
 
 
 /* =========================
    آمار مدیریت
 ========================= */
 
-function updateAdminStats() {
+function updateAdminStats(){
 
-  var ads =
-    getAds();
+  var ads=getAds();
 
+  var cities=[];
 
-  var cities = [];
+  ads.forEach(function(ad){
 
-
-  ads.forEach(function(ad) {
-
-    if (
+    if(
       ad.city &&
       !cities.includes(ad.city)
-    ) {
+    ){
 
       cities.push(ad.city);
 
@@ -1831,41 +1026,35 @@ function updateAdminStats() {
   });
 
 
-  var phoneCount =
-    ads.filter(function(ad) {
+  var phones=
+    ads.filter(function(ad){
 
-      return (
+      return(
         ad.phone &&
-        ad.phone.trim() !== ''
+        ad.phone.trim()!==''
       );
 
     }).length;
 
 
   document.getElementById('statAds')
-    .textContent =
-    ads.length;
+    .textContent=ads.length;
 
 
   document.getElementById('statCities')
-    .textContent =
-    cities.length;
+    .textContent=cities.length;
 
 
   document.getElementById('statMachines')
-    .textContent =
-    ads.length;
+    .textContent=ads.length;
 
 
   document.getElementById('statPhones')
-    .textContent =
-    phoneCount;
+    .textContent=phones;
 
 }
 
-
 </script>
-
 
 </body>
 </html>
