@@ -476,8 +476,8 @@ function registerAd() {
 
   var type =
     document.getElementById('type').value;
-
-  function registerAd() {
+  
+function registerAd() {
 
   var machine =
     document.getElementById('machine').value.trim();
@@ -488,45 +488,40 @@ function registerAd() {
   var city =
     document.getElementById('city').value.trim();
 
+  var address =
+    document.getElementById('address').value.trim();
+
   var phone =
     document.getElementById('phone').value.trim();
-var workHours =
-  document.getElementById('workHours').value.trim();
 
-var price =
-  document.getElementById('price').value.trim();
+  var workHours =
+    document.getElementById('workHours').value.trim();
 
-var description =
-  document.getElementById('description').value.trim();
+  var price =
+    document.getElementById('price').value.trim();
+
+  var description =
+    document.getElementById('description').value.trim();
 
   var imageInput =
     document.getElementById('image');
 
 
   if (!machine) {
-
     alert('لطفاً نام ماشین‌آلات را وارد کنید.');
-
     return;
-
   }
 
 
   if (!city) {
-
     alert('لطفاً شهر را وارد کنید.');
-
     return;
-
   }
 
 
   if (!phone) {
-
     alert('لطفاً شماره تماس را وارد کنید.');
-
     return;
-
   }
 
 
@@ -537,9 +532,13 @@ var description =
     type: type,
 
     city: city,
+
     address: address,
-workHours: workHours,
+
+    workHours: workHours,
+
     price: price,
+
     phone: phone,
 
     description: description,
@@ -550,6 +549,7 @@ workHours: workHours,
 
 
   if (
+    imageInput &&
     imageInput.files &&
     imageInput.files.length > 0
   ) {
@@ -572,11 +572,9 @@ workHours: workHours,
         var canvas =
           document.createElement('canvas');
 
-
         var maxWidth = 800;
 
         var maxHeight = 800;
-
 
         var width =
           img.width;
@@ -654,7 +652,6 @@ workHours: workHours,
   }
 
 }
-
   var phone =
     document.getElementById('phone').value.trim();
 var workHours =
