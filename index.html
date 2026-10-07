@@ -201,7 +201,7 @@ onclick="showSection('allAds'); showAllAds();">
 
 <div class="card">
 
-<h2>🚜 ثبت آگهی</h2>
+<h2> ثبت آگهی</h2>
 
 <p>
 نوع آگهی خود را انتخاب کنید.
@@ -279,13 +279,6 @@ onclick="showSection('home')">
 <h2>🚜 ثبت آگهی اجاره</h2>
 
 
-<label>نام ماشین‌آلات</label>
-
-<input
-id="machine"
-placeholder="مثلاً بیل مکانیکی">
-
-
 <label>نوع ماشین‌آلات</label>
 
 <select id="category">
@@ -317,15 +310,6 @@ type="tel">
 <input
 id="address"
 placeholder="شهر، روستا یا منطقه">
-
-
-<label>⏱️ ساعت کارکرد</label>
-
-<input
-id="work"
-type="number"
-min="0"
-placeholder="مثلاً 5000">
 
 
 <label>قیمت اجاره</label>
@@ -398,11 +382,6 @@ onclick="showSection('registerMenu')">
 <div class="card">
 
 <h2>🟢 ثبت آگهی فروش</h2>
-
-
-<label>نام ماشین‌آلات</label>
-
-<input id="sellMachine">
 
 
 <label>نوع ماشین‌آلات</label>
@@ -643,7 +622,7 @@ onchange="filterAllAds()">
 </option>
 
 <option value="rent">
-🚜 اجاره
+ اجاره
 </option>
 
 <option value="sell">
@@ -797,7 +776,6 @@ window.firebaseBuySell =
 [];
 
 
-
 onValue(
 ref(database,"ads"),
 function(snapshot){
@@ -826,7 +804,6 @@ window.firebaseAds.push(item);
 showAllAds();
 
 });
-
 
 
 onValue(
@@ -1198,10 +1175,6 @@ async function registerAd(){
 
 try{
 
-var machine =
-document.getElementById("machine")
-.value.trim();
-
 var category =
 document.getElementById("category")
 .value;
@@ -1212,10 +1185,6 @@ document.getElementById("phone")
 
 var address =
 document.getElementById("address")
-.value.trim();
-
-var work =
-document.getElementById("work")
 .value.trim();
 
 var priceType =
@@ -1231,12 +1200,11 @@ document.getElementById("description")
 .value.trim();
 
 
-if(!machine ||
-!category ||
+if(!category ||
 !phone){
 
 alert(
-"نام ماشین، نوع ماشین و شماره تماس الزامی است."
+"نوع ماشین و شماره تماس الزامی است."
 );
 
 return;
@@ -1252,15 +1220,11 @@ var ad = {
 
 type:"rent",
 
-machine:machine,
-
 category:category,
 
 phone:phone,
 
 address:address,
-
-work:work,
 
 priceType:priceType,
 
@@ -1594,8 +1558,6 @@ div.className =
 
 var typeText = "";
 
-var typeClass = "";
-
 
 if(item.type === "rent"){
 
@@ -1619,10 +1581,27 @@ var priceText =
 item.price || "توافقی";
 
 
+var workHTML = "";
+
+
+/* ساعت کارکرد فقط برای خرید و فروش */
+
+if(item.type === "sell" ||
+item.type === "buy"){
+
 var workText =
 item.work
 ? escapeHTML(item.work) + " ساعت"
 : "ثبت نشده";
+
+
+workHTML =
+
+"<p><b>⏱️ ساعت کارکرد:</b> "+
+workText+
+"</p>";
+
+}
 
 
 div.innerHTML =
@@ -1632,16 +1611,16 @@ typeText+
 "</span>"+
 
 "<h3>🚜 "+
-escapeHTML(item.machine)+
+escapeHTML(
+item.category || item.machine
+)+
 "</h3>"+
 
 "<p><b>نوع ماشین:</b> "+
 escapeHTML(item.category)+
 "</p>"+
 
-"<p><b>⏱️ ساعت کارکرد:</b> "+
-workText+
-"</p>"+
+workHTML+
 
 "<p><b>💰 قیمت:</b> "+
 escapeHTML(priceText)+
@@ -1886,7 +1865,9 @@ div.className =
 div.innerHTML =
 
 "<h3>📍 "+
-escapeHTML(item.machine)+
+escapeHTML(
+item.category || item.machine
+)+
 "</h3>"+
 
 "<p>"+
