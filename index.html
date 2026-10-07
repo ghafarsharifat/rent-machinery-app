@@ -264,39 +264,39 @@
           انتخاب کنید
         </option>
 
-        <option>
+        <option value="بیل مکانیکی">
           بیل مکانیکی
         </option>
 
-        <option>
+        <option value="بیل مکانیکی + پیکور">
           بیل مکانیکی + پیکور
         </option>
 
-        <option>
+        <option value="لودر">
           لودر
         </option>
 
-        <option>
+        <option value="بولدوزر">
           بولدوزر
         </option>
 
-        <option>
+        <option value="گریدر">
           گریدر
         </option>
 
-        <option>
+        <option value="کامیون و کمپرسی">
           کامیون و کمپرسی
         </option>
 
-        <option>
+        <option value="غلطک">
           غلطک
         </option>
 
-        <option>
+        <option value="جرثقیل">
           جرثقیل
         </option>
 
-        <option>
+        <option value="کمرشکن کامیون">
           کمرشکن کامیون
         </option>
 
@@ -405,39 +405,39 @@
           همه ماشین‌آلات
         </option>
 
-        <option>
+        <option value="بیل مکانیکی">
           بیل مکانیکی
         </option>
 
-        <option>
+        <option value="بیل مکانیکی + پیکور">
           بیل مکانیکی + پیکور
         </option>
 
-        <option>
+        <option value="لودر">
           لودر
         </option>
 
-        <option>
+        <option value="بولدوزر">
           بولدوزر
         </option>
 
-        <option>
+        <option value="گریدر">
           گریدر
         </option>
 
-        <option>
+        <option value="کامیون و کمپرسی">
           کامیون و کمپرسی
         </option>
 
-        <option>
+        <option value="غلطک">
           غلطک
         </option>
 
-        <option>
+        <option value="جرثقیل">
           جرثقیل
         </option>
 
-        <option>
+        <option value="کمرشکن کامیون">
           کمرشکن کامیون
         </option>
 
@@ -525,8 +525,7 @@
 
   import {
     initializeApp
-  }
-  from
+  } from
   "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 
@@ -536,8 +535,7 @@
     push,
     set,
     onValue
-  }
-  from
+  } from
   "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
 
@@ -567,85 +565,99 @@
   };
 
 
-  const app =
-    initializeApp(firebaseConfig);
+  try {
+
+    const app =
+      initializeApp(firebaseConfig);
 
 
-  const database =
-    getDatabase(app);
+    const database =
+      getDatabase(app);
 
 
-  window.firebaseDatabase =
-    database;
+    window.firebaseDatabase =
+      database;
 
-  window.firebaseRef =
-    ref;
+    window.firebaseRef =
+      ref;
 
-  window.firebasePush =
-    push;
+    window.firebasePush =
+      push;
 
-  window.firebaseSet =
-    set;
+    window.firebaseSet =
+      set;
 
-  window.firebaseOnValue =
-    onValue;
+    window.firebaseOnValue =
+      onValue;
 
-
-  window.firebaseAds = [];
-
-
-  console.log(
-    "Firebase با موفقیت متصل شد."
-  );
+    window.firebaseReady =
+      true;
 
 
-  // دریافت آگهی‌ها
-
-  const adsRef =
-    ref(database, "ads");
-
-
-  onValue(
-    adsRef,
-    function(snapshot) {
-
-      const data =
-        snapshot.val() || {};
+    console.log(
+      "Firebase آماده ثبت آگهی است."
+    );
 
 
-      window.firebaseAds =
-        Object.keys(data).map(
-          function(key) {
+    // دریافت آگهی‌ها
 
-            return {
-              id: key,
-              ...data[key]
-            };
+    const adsRef =
+      ref(database, "ads");
 
-          }
+
+    onValue(
+      adsRef,
+      function(snapshot) {
+
+        const data =
+          snapshot.val() || {};
+
+
+        window.firebaseAds =
+          Object.keys(data).map(
+            function(key) {
+
+              return {
+                id: key,
+                ...data[key]
+              };
+
+            }
+          );
+
+
+        showAds(
+          window.firebaseAds
         );
 
 
-      showAds(
-        window.firebaseAds
-      );
+        showAddresses(
+          window.firebaseAds
+        );
 
+      },
+      function(error) {
 
-      showAddresses(
-        window.firebaseAds
-      );
+        console.error(
+          "خطا در دریافت اطلاعات Firebase:",
+          error
+        );
 
-    },
-    function(error) {
+      }
+    );
 
-      console.error(
-        "خطا در دریافت اطلاعات:",
-        error
-      );
+  }
+  catch(error) {
 
-    }
-  );
+    console.error(
+      "Firebase initialization error:",
+      error
+    );
 
+    window.firebaseReady =
+      false;
+
+  }
 
 </script>
 
@@ -656,6 +668,9 @@
 <!-- ================================================= -->
 
 <script>
+
+  window.firebaseAds =
+    window.firebaseAds || [];
 
 
   // ===============================
@@ -748,6 +763,17 @@
 
   function registerAd() {
 
+    if (!window.firebaseReady) {
+
+      showStatus(
+        "❌ Firebase هنوز آماده نیست. چند ثانیه صبر کنید و دوباره تلاش کنید.",
+        "error"
+      );
+
+      return;
+
+    }
+
 
     const machine =
       document
@@ -790,7 +816,6 @@
       .trim();
 
 
-
     if (
       !machine ||
       !category ||
@@ -806,7 +831,6 @@
       return;
 
     }
-
 
 
     const ad = {
@@ -835,9 +859,13 @@
     };
 
 
+    showStatus(
+      "در حال ثبت آگهی...",
+      "success"
+    );
+
 
     try {
-
 
       const adsRef =
         window.firebaseRef(
@@ -856,12 +884,12 @@
         newAd,
         ad
       )
+
       .then(
         function() {
 
-
           showStatus(
-            "آگهی با موفقیت ثبت شد.",
+            "✅ آگهی با موفقیت ثبت شد.",
             "success"
           );
 
@@ -880,19 +908,20 @@
             1000
           );
 
-
         }
       )
+
       .catch(
         function(error) {
 
           console.error(
+            "Firebase Write Error:",
             error
           );
 
 
           showStatus(
-            "خطا در ذخیره آگهی: " +
+            "❌ خطا در ثبت آگهی: " +
             error.message,
             "error"
           );
@@ -900,17 +929,18 @@
         }
       );
 
-
     }
     catch(error) {
 
       console.error(
+        "Firebase Error:",
         error
       );
 
 
       showStatus(
-        "خطا در اتصال به Firebase.",
+        "❌ خطا در اتصال به Firebase: " +
+        error.message,
         "error"
       );
 
@@ -981,11 +1011,15 @@
     type
   ) {
 
-
     const box =
       document.getElementById(
         "registerStatus"
       );
+
+
+    if (!box) {
+      return;
+    }
 
 
     box.textContent =
@@ -1008,7 +1042,7 @@
           "none";
 
       },
-      4000
+      5000
     );
 
   }
@@ -1022,7 +1056,6 @@
   function showAds(
     ads
   ) {
-
 
     const adsList =
       document.getElementById(
@@ -1054,13 +1087,11 @@
     }
 
 
-
     ads
       .slice()
       .reverse()
       .forEach(
         function(ad) {
-
 
           const div =
             document.createElement(
@@ -1108,7 +1139,6 @@
             );
 
 
-
           div.innerHTML =
 
             "<h3>🚜 " +
@@ -1153,7 +1183,6 @@
 
   function filterAds() {
 
-
     const category =
       document
       .getElementById(
@@ -1172,7 +1201,6 @@
       .toLowerCase();
 
 
-
     const ads =
       window.firebaseAds || [];
 
@@ -1180,7 +1208,6 @@
     const filtered =
       ads.filter(
         function(ad) {
-
 
           const categoryOK =
             !category ||
@@ -1222,7 +1249,6 @@
   function showAddresses(
     ads
   ) {
-
 
     const list =
       document.getElementById(
@@ -1267,13 +1293,11 @@
     }
 
 
-
     withAddress
       .slice()
       .reverse()
       .forEach(
         function(ad) {
-
 
           const div =
             document.createElement(
@@ -1332,7 +1356,6 @@
     return div.innerHTML;
 
   }
-
 
 </script>
 
