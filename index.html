@@ -7,7 +7,7 @@
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0">
 
-  <title>نرخینو | اجاره ماشین‌آلات</title>
+  <title>نرخینو | اجاره و خرید و فروش ماشین‌آلات</title>
 
   <link rel="manifest"
         href="/rent-machinery-app/manifest.json">
@@ -87,6 +87,14 @@
       opacity: 0.9;
     }
 
+    .sell-button {
+      background: #2e7d32;
+    }
+
+    .buy-button {
+      background: #1565c0;
+    }
+
     .back-button {
       background: #555;
     }
@@ -125,6 +133,14 @@
     .ad-card h3 {
       margin-top: 0;
       color: #1565c0;
+    }
+
+    .sell-card {
+      border-right: 5px solid #2e7d32;
+    }
+
+    .buy-card {
+      border-right: 5px solid #1565c0;
     }
 
     .empty {
@@ -177,7 +193,7 @@
 
     <div class="card">
 
-      <h2>🚜 ثبت آگهی</h2>
+      <h2>🚜 اجاره ماشین‌آلات</h2>
 
       <p>
         ماشین‌آلات خود را برای اجاره ثبت کنید.
@@ -187,7 +203,7 @@
         type="button"
         onclick="showSection('register')">
 
-        ثبت آگهی
+        ثبت آگهی اجاره
 
       </button>
 
@@ -196,7 +212,7 @@
 
     <div class="card">
 
-      <h2>🔎 جستجوی ماشین‌آلات</h2>
+      <h2>🔎 جستجوی ماشین‌آلات اجاره‌ای</h2>
 
       <p>
         بیل مکانیکی، لودر، کامیون، پیکور و سایر ماشین‌آلات.
@@ -206,7 +222,26 @@
         type="button"
         onclick="openAds()">
 
-        مشاهده آگهی‌ها
+        مشاهده آگهی‌های اجاره
+
+      </button>
+
+    </div>
+
+
+    <div class="card">
+
+      <h2>🛒 خرید و فروش ماشین‌آلات</h2>
+
+      <p>
+        خرید یا فروش ماشین‌آلات راه‌سازی و معدنی.
+      </p>
+
+      <button
+        type="button"
+        onclick="showSection('buySell')">
+
+        ورود به خرید و فروش
 
       </button>
 
@@ -235,18 +270,16 @@
 
 
 
-  <!-- ================= REGISTER ================= -->
+  <!-- ================= REGISTER RENT ================= -->
 
   <section id="register" class="section">
 
     <div class="card">
 
-      <h2>📝 ثبت آگهی</h2>
+      <h2>📝 ثبت آگهی اجاره</h2>
 
 
-      <label>
-        نام ماشین‌آلات
-      </label>
+      <label>نام ماشین‌آلات</label>
 
       <input
         id="machine"
@@ -254,47 +287,31 @@
         placeholder="مثلاً بیل مکانیکی">
 
 
-      <label>
-        نوع ماشین‌آلات
-      </label>
+      <label>نوع ماشین‌آلات</label>
 
       <select id="category">
 
-        <option value="">
-          انتخاب کنید
-        </option>
+        <option value="">انتخاب کنید</option>
 
-        <option value="بیل مکانیکی">
-          بیل مکانیکی
-        </option>
+        <option value="بیل مکانیکی">بیل مکانیکی</option>
 
         <option value="بیل مکانیکی + پیکور">
           بیل مکانیکی + پیکور
         </option>
 
-        <option value="لودر">
-          لودر
-        </option>
+        <option value="لودر">لودر</option>
 
-        <option value="بولدوزر">
-          بولدوزر
-        </option>
+        <option value="بولدوزر">بولدوزر</option>
 
-        <option value="گریدر">
-          گریدر
-        </option>
+        <option value="گریدر">گریدر</option>
 
         <option value="کامیون و کمپرسی">
           کامیون و کمپرسی
         </option>
 
-        <option value="غلطک">
-          غلطک
-        </option>
+        <option value="غلطک">غلطک</option>
 
-        <option value="جرثقیل">
-          جرثقیل
-        </option>
+        <option value="جرثقیل">جرثقیل</option>
 
         <option value="کمرشکن کامیون">
           کمرشکن کامیون
@@ -303,9 +320,7 @@
       </select>
 
 
-      <label>
-        شماره تماس
-      </label>
+      <label>شماره تماس</label>
 
       <input
         id="phone"
@@ -313,9 +328,7 @@
         placeholder="مثلاً 0912xxxxxxx">
 
 
-      <label>
-        محل فعالیت / نشانی
-      </label>
+      <label>محل فعالیت / نشانی</label>
 
       <input
         id="address"
@@ -323,9 +336,7 @@
         placeholder="مثلاً اهواز، خوزستان">
 
 
-      <label>
-        کارکرد
-      </label>
+      <label>کارکرد</label>
 
       <input
         id="work"
@@ -333,18 +344,14 @@
         placeholder="مثلاً 5000 ساعت">
 
 
-      <label>
-        توضیحات
-      </label>
+      <label>توضیحات</label>
 
       <textarea
         id="description"
         placeholder="توضیحات ماشین‌آلات"></textarea>
 
 
-      <label>
-        عکس ماشین‌آلات
-      </label>
+      <label>عکس ماشین‌آلات</label>
 
       <input
         id="image"
@@ -382,60 +389,42 @@
 
 
 
-  <!-- ================= ADS ================= -->
+  <!-- ================= RENT ADS ================= -->
 
   <section id="ads" class="section">
 
     <div class="card">
 
-      <h2>
-        📋 آگهی‌های ماشین‌آلات
-      </h2>
+      <h2>📋 آگهی‌های اجاره</h2>
 
 
-      <label>
-        فیلتر نوع ماشین‌آلات
-      </label>
+      <label>فیلتر نوع ماشین‌آلات</label>
 
       <select
         id="categoryFilter"
         onchange="filterAds()">
 
-        <option value="">
-          همه ماشین‌آلات
-        </option>
+        <option value="">همه ماشین‌آلات</option>
 
-        <option value="بیل مکانیکی">
-          بیل مکانیکی
-        </option>
+        <option value="بیل مکانیکی">بیل مکانیکی</option>
 
         <option value="بیل مکانیکی + پیکور">
           بیل مکانیکی + پیکور
         </option>
 
-        <option value="لودر">
-          لودر
-        </option>
+        <option value="لودر">لودر</option>
 
-        <option value="بولدوزر">
-          بولدوزر
-        </option>
+        <option value="بولدوزر">بولدوزر</option>
 
-        <option value="گریدر">
-          گریدر
-        </option>
+        <option value="گریدر">گریدر</option>
 
         <option value="کامیون و کمپرسی">
           کامیون و کمپرسی
         </option>
 
-        <option value="غلطک">
-          غلطک
-        </option>
+        <option value="غلطک">غلطک</option>
 
-        <option value="جرثقیل">
-          جرثقیل
-        </option>
+        <option value="جرثقیل">جرثقیل</option>
 
         <option value="کمرشکن کامیون">
           کمرشکن کامیون
@@ -444,9 +433,7 @@
       </select>
 
 
-      <label>
-        جستجو بر اساس کارکرد
-      </label>
+      <label>جستجو بر اساس کارکرد</label>
 
       <input
         id="workFilter"
@@ -479,15 +466,330 @@
 
 
 
+  <!-- ================= BUY SELL MENU ================= -->
+
+  <section id="buySell" class="section">
+
+    <div class="card">
+
+      <h2>🛒 خرید و فروش ماشین‌آلات</h2>
+
+      <p>
+        ماشین‌آلات مورد نظر خود را برای خرید یا فروش ثبت کنید.
+      </p>
+
+
+      <button
+        type="button"
+        class="sell-button"
+        onclick="showSection('sellRegister')">
+
+        🟢 ثبت آگهی فروش
+
+      </button>
+
+
+      <button
+        type="button"
+        class="buy-button"
+        onclick="showSection('buyRegister')">
+
+        🔵 ثبت درخواست خرید
+
+      </button>
+
+
+      <button
+        type="button"
+        onclick="openBuySellAds()">
+
+        📋 مشاهده آگهی‌های خرید و فروش
+
+      </button>
+
+
+      <br>
+
+
+      <button
+        type="button"
+        class="back-button"
+        onclick="showSection('home')">
+
+        بازگشت
+
+      </button>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ================= SELL REGISTER ================= -->
+
+  <section id="sellRegister" class="section">
+
+    <div class="card">
+
+      <h2>🟢 ثبت آگهی فروش</h2>
+
+
+      <label>نام ماشین‌آلات</label>
+
+      <input
+        id="sellMachine"
+        type="text"
+        placeholder="مثلاً بیل مکانیکی کوماتسو">
+
+
+      <label>نوع ماشین‌آلات</label>
+
+      <select id="sellCategory">
+
+        <option value="">انتخاب کنید</option>
+
+        <option value="بیل مکانیکی">بیل مکانیکی</option>
+
+        <option value="بیل مکانیکی + پیکور">
+          بیل مکانیکی + پیکور
+        </option>
+
+        <option value="لودر">لودر</option>
+
+        <option value="بولدوزر">بولدوزر</option>
+
+        <option value="گریدر">گریدر</option>
+
+        <option value="کامیون و کمپرسی">
+          کامیون و کمپرسی
+        </option>
+
+        <option value="غلطک">غلطک</option>
+
+        <option value="جرثقیل">جرثقیل</option>
+
+        <option value="کمرشکن کامیون">
+          کمرشکن کامیون
+        </option>
+
+      </select>
+
+
+      <label>قیمت فروش</label>
+
+      <input
+        id="sellPrice"
+        type="text"
+        placeholder="مثلاً 5 میلیارد تومان">
+
+
+      <label>شماره تماس</label>
+
+      <input
+        id="sellPhone"
+        type="tel"
+        placeholder="مثلاً 0912xxxxxxx">
+
+
+      <label>نشانی</label>
+
+      <input
+        id="sellAddress"
+        type="text"
+        placeholder="مثلاً اهواز، خوزستان">
+
+
+      <label>توضیحات</label>
+
+      <textarea
+        id="sellDescription"
+        placeholder="توضیحات ماشین‌آلات"></textarea>
+
+
+      <div
+        id="sellStatus"
+        class="status">
+      </div>
+
+
+      <button
+        type="button"
+        class="sell-button"
+        onclick="registerSell()">
+
+        ثبت آگهی فروش
+
+      </button>
+
+
+      <button
+        type="button"
+        class="back-button"
+        onclick="showSection('buySell')">
+
+        بازگشت
+
+      </button>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ================= BUY REGISTER ================= -->
+
+  <section id="buyRegister" class="section">
+
+    <div class="card">
+
+      <h2>🔵 ثبت درخواست خرید</h2>
+
+
+      <label>ماشین‌آلات مورد نیاز</label>
+
+      <input
+        id="buyMachine"
+        type="text"
+        placeholder="مثلاً بیل مکانیکی">
+
+
+      <label>نوع ماشین‌آلات</label>
+
+      <select id="buyCategory">
+
+        <option value="">انتخاب کنید</option>
+
+        <option value="بیل مکانیکی">بیل مکانیکی</option>
+
+        <option value="بیل مکانیکی + پیکور">
+          بیل مکانیکی + پیکور
+        </option>
+
+        <option value="لودر">لودر</option>
+
+        <option value="بولدوزر">بولدوزر</option>
+
+        <option value="گریدر">گریدر</option>
+
+        <option value="کامیون و کمپرسی">
+          کامیون و کمپرسی
+        </option>
+
+        <option value="غلطک">غلطک</option>
+
+        <option value="جرثقیل">جرثقیل</option>
+
+        <option value="کمرشکن کامیون">
+          کمرشکن کامیون
+        </option>
+
+      </select>
+
+
+      <label>بودجه / قیمت پیشنهادی</label>
+
+      <input
+        id="buyPrice"
+        type="text"
+        placeholder="مثلاً تا 5 میلیارد تومان">
+
+
+      <label>شماره تماس</label>
+
+      <input
+        id="buyPhone"
+        type="tel"
+        placeholder="مثلاً 0912xxxxxxx">
+
+
+      <label>محل مورد نظر</label>
+
+      <input
+        id="buyAddress"
+        type="text"
+        placeholder="مثلاً خوزستان">
+
+
+      <label>توضیحات</label>
+
+      <textarea
+        id="buyDescription"
+        placeholder="توضیحات مورد نیاز"></textarea>
+
+
+      <div
+        id="buyStatus"
+        class="status">
+      </div>
+
+
+      <button
+        type="button"
+        class="buy-button"
+        onclick="registerBuy()">
+
+        ثبت درخواست خرید
+
+      </button>
+
+
+      <button
+        type="button"
+        class="back-button"
+        onclick="showSection('buySell')">
+
+        بازگشت
+
+      </button>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ================= BUY SELL ADS ================= -->
+
+  <section id="buySellAds" class="section">
+
+    <div class="card">
+
+      <h2>📋 آگهی‌های خرید و فروش</h2>
+
+
+      <div id="buySellList">
+
+        <div class="empty">
+          در حال دریافت آگهی‌ها...
+        </div>
+
+      </div>
+
+
+      <button
+        type="button"
+        class="back-button"
+        onclick="showSection('buySell')">
+
+        بازگشت
+
+      </button>
+
+    </div>
+
+  </section>
+
+
+
   <!-- ================= ADDRESSES ================= -->
 
   <section id="addresses" class="section">
 
     <div class="card">
 
-      <h2>
-        📍 نشانی ماشین‌آلات
-      </h2>
+      <h2>📍 نشانی ماشین‌آلات</h2>
 
 
       <div id="addressList">
@@ -587,19 +889,24 @@
     window.firebaseSet =
       set;
 
-    window.firebaseOnValue =
-      onValue;
-
     window.firebaseReady =
       true;
 
+    window.firebaseAds =
+      [];
+
+    window.firebaseBuySell =
+      [];
+
 
     console.log(
-      "Firebase آماده ثبت آگهی است."
+      "Firebase آماده است."
     );
 
 
-    // دریافت آگهی‌ها
+    // ==========================
+    // آگهی‌های اجاره
+    // ==========================
 
     const adsRef =
       ref(database, "ads");
@@ -639,7 +946,52 @@
       function(error) {
 
         console.error(
-          "خطا در دریافت اطلاعات Firebase:",
+          "خطا در دریافت آگهی‌های اجاره:",
+          error
+        );
+
+      }
+    );
+
+
+    // ==========================
+    // آگهی‌های خرید و فروش
+    // ==========================
+
+    const buySellRef =
+      ref(database, "buySell");
+
+
+    onValue(
+      buySellRef,
+      function(snapshot) {
+
+        const data =
+          snapshot.val() || {};
+
+
+        window.firebaseBuySell =
+          Object.keys(data).map(
+            function(key) {
+
+              return {
+                id: key,
+                ...data[key]
+              };
+
+            }
+          );
+
+
+        showBuySellAds(
+          window.firebaseBuySell
+        );
+
+      },
+      function(error) {
+
+        console.error(
+          "خطا در دریافت خرید و فروش:",
           error
         );
 
@@ -668,9 +1020,6 @@
 <!-- ================================================= -->
 
 <script>
-
-  window.firebaseAds =
-    window.firebaseAds || [];
 
 
   // ===============================
@@ -720,15 +1069,12 @@
 
 
   // ===============================
-  // باز کردن آگهی‌ها
+  // آگهی‌های اجاره
   // ===============================
 
   function openAds() {
 
-    showSection(
-      "ads"
-    );
-
+    showSection("ads");
 
     showAds(
       window.firebaseAds || []
@@ -739,15 +1085,12 @@
 
 
   // ===============================
-  // باز کردن نشانی‌ها
+  // نشانی‌ها
   // ===============================
 
   function openAddresses() {
 
-    showSection(
-      "addresses"
-    );
-
+    showSection("addresses");
 
     showAddresses(
       window.firebaseAds || []
@@ -758,7 +1101,7 @@
 
 
   // ===============================
-  // ثبت آگهی
+  // ثبت آگهی اجاره
   // ===============================
 
   function registerAd() {
@@ -766,7 +1109,7 @@
     if (!window.firebaseReady) {
 
       showStatus(
-        "❌ Firebase هنوز آماده نیست. چند ثانیه صبر کنید و دوباره تلاش کنید.",
+        "❌ Firebase هنوز آماده نیست.",
         "error"
       );
 
@@ -776,44 +1119,39 @@
 
 
     const machine =
-      document
-      .getElementById("machine")
-      .value
-      .trim();
+      document.getElementById(
+        "machine"
+      ).value.trim();
 
 
     const category =
-      document
-      .getElementById("category")
-      .value;
+      document.getElementById(
+        "category"
+      ).value;
 
 
     const phone =
-      document
-      .getElementById("phone")
-      .value
-      .trim();
+      document.getElementById(
+        "phone"
+      ).value.trim();
 
 
     const address =
-      document
-      .getElementById("address")
-      .value
-      .trim();
+      document.getElementById(
+        "address"
+      ).value.trim();
 
 
     const work =
-      document
-      .getElementById("work")
-      .value
-      .trim();
+      document.getElementById(
+        "work"
+      ).value.trim();
 
 
     const description =
-      document
-      .getElementById("description")
-      .value
-      .trim();
+      document.getElementById(
+        "description"
+      ).value.trim();
 
 
     if (
@@ -824,7 +1162,7 @@
     ) {
 
       showStatus(
-        "لطفاً نام ماشین، نوع، شماره تماس و نشانی را کامل کنید.",
+        "لطفاً اطلاعات اصلی را کامل کنید.",
         "error"
       );
 
@@ -834,6 +1172,8 @@
 
 
     const ad = {
+
+      type: "rent",
 
       machine:
         machine,
@@ -894,15 +1234,13 @@
           );
 
 
-          clearForm();
+          clearRentForm();
 
 
           setTimeout(
             function() {
 
-              showSection(
-                "ads"
-              );
+              showSection("ads");
 
             },
             1000
@@ -914,11 +1252,7 @@
       .catch(
         function(error) {
 
-          console.error(
-            "Firebase Write Error:",
-            error
-          );
-
+          console.error(error);
 
           showStatus(
             "❌ خطا در ثبت آگهی: " +
@@ -932,14 +1266,8 @@
     }
     catch(error) {
 
-      console.error(
-        "Firebase Error:",
-        error
-      );
-
-
       showStatus(
-        "❌ خطا در اتصال به Firebase: " +
+        "❌ خطا در Firebase: " +
         error.message,
         "error"
       );
@@ -951,59 +1279,618 @@
 
 
   // ===============================
-  // پاک کردن فرم
+  // ثبت فروش
   // ===============================
 
-  function clearForm() {
+  function registerSell() {
 
-    document
-      .getElementById("machine")
-      .value = "";
+    if (!window.firebaseReady) {
 
+      showSellStatus(
+        "❌ Firebase هنوز آماده نیست.",
+        "error"
+      );
 
-    document
-      .getElementById("category")
-      .value = "";
+      return;
 
-
-    document
-      .getElementById("phone")
-      .value = "";
+    }
 
 
-    document
-      .getElementById("address")
-      .value = "";
-
-
-    document
-      .getElementById("work")
-      .value = "";
-
-
-    document
-      .getElementById("description")
-      .value = "";
-
-
-    const image =
+    const machine =
       document.getElementById(
-        "image"
+        "sellMachine"
+      ).value.trim();
+
+
+    const category =
+      document.getElementById(
+        "sellCategory"
+      ).value;
+
+
+    const price =
+      document.getElementById(
+        "sellPrice"
+      ).value.trim();
+
+
+    const phone =
+      document.getElementById(
+        "sellPhone"
+      ).value.trim();
+
+
+    const address =
+      document.getElementById(
+        "sellAddress"
+      ).value.trim();
+
+
+    const description =
+      document.getElementById(
+        "sellDescription"
+      ).value.trim();
+
+
+    if (
+      !machine ||
+      !category ||
+      !price ||
+      !phone ||
+      !address
+    ) {
+
+      showSellStatus(
+        "لطفاً نام ماشین، نوع، قیمت، شماره تماس و نشانی را کامل کنید.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    const item = {
+
+      type: "sell",
+
+      machine:
+        machine,
+
+      category:
+        category,
+
+      price:
+        price,
+
+      phone:
+        phone,
+
+      address:
+        address,
+
+      description:
+        description,
+
+      createdAt:
+        Date.now()
+
+    };
+
+
+    showSellStatus(
+      "در حال ثبت آگهی فروش...",
+      "success"
+    );
+
+
+    const buySellRef =
+      window.firebaseRef(
+        window.firebaseDatabase,
+        "buySell"
       );
 
 
-    if (image) {
+    const newItem =
+      window.firebasePush(
+        buySellRef
+      );
 
-      image.value = "";
 
-    }
+    window.firebaseSet(
+      newItem,
+      item
+    )
+
+    .then(
+      function() {
+
+        showSellStatus(
+          "✅ آگهی فروش با موفقیت ثبت شد.",
+          "success"
+        );
+
+
+        clearSellForm();
+
+
+        setTimeout(
+          function() {
+
+            showSection(
+              "buySellAds"
+            );
+
+          },
+          1000
+        );
+
+      }
+    )
+
+    .catch(
+      function(error) {
+
+        console.error(error);
+
+        showSellStatus(
+          "❌ خطا در ثبت فروش: " +
+          error.message,
+          "error"
+        );
+
+      }
+    );
 
   }
 
 
 
   // ===============================
-  // پیام وضعیت
+  // ثبت خرید
+  // ===============================
+
+  function registerBuy() {
+
+    if (!window.firebaseReady) {
+
+      showBuyStatus(
+        "❌ Firebase هنوز آماده نیست.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    const machine =
+      document.getElementById(
+        "buyMachine"
+      ).value.trim();
+
+
+    const category =
+      document.getElementById(
+        "buyCategory"
+      ).value;
+
+
+    const price =
+      document.getElementById(
+        "buyPrice"
+      ).value.trim();
+
+
+    const phone =
+      document.getElementById(
+        "buyPhone"
+      ).value.trim();
+
+
+    const address =
+      document.getElementById(
+        "buyAddress"
+      ).value.trim();
+
+
+    const description =
+      document.getElementById(
+        "buyDescription"
+      ).value.trim();
+
+
+    if (
+      !machine ||
+      !category ||
+      !price ||
+      !phone ||
+      !address
+    ) {
+
+      showBuyStatus(
+        "لطفاً ماشین، نوع، بودجه، شماره تماس و محل را کامل کنید.",
+        "error"
+      );
+
+      return;
+
+    }
+
+
+    const item = {
+
+      type: "buy",
+
+      machine:
+        machine,
+
+      category:
+        category,
+
+      price:
+        price,
+
+      phone:
+        phone,
+
+      address:
+        address,
+
+      description:
+        description,
+
+      createdAt:
+        Date.now()
+
+    };
+
+
+    showBuyStatus(
+      "در حال ثبت درخواست خرید...",
+      "success"
+    );
+
+
+    const buySellRef =
+      window.firebaseRef(
+        window.firebaseDatabase,
+        "buySell"
+      );
+
+
+    const newItem =
+      window.firebasePush(
+        buySellRef
+      );
+
+
+    window.firebaseSet(
+      newItem,
+      item
+    )
+
+    .then(
+      function() {
+
+        showBuyStatus(
+          "✅ درخواست خرید با موفقیت ثبت شد.",
+          "success"
+        );
+
+
+        clearBuyForm();
+
+
+        setTimeout(
+          function() {
+
+            showSection(
+              "buySellAds"
+            );
+
+          },
+          1000
+        );
+
+      }
+    )
+
+    .catch(
+      function(error) {
+
+        console.error(error);
+
+        showBuyStatus(
+          "❌ خطا در ثبت خرید: " +
+          error.message,
+          "error"
+        );
+
+      }
+    );
+
+  }
+
+
+
+  // ===============================
+  // مشاهده خرید و فروش
+  // ===============================
+
+  function openBuySellAds() {
+
+    showSection(
+      "buySellAds"
+    );
+
+
+    showBuySellAds(
+      window.firebaseBuySell || []
+    );
+
+  }
+
+
+
+  // ===============================
+  // نمایش خرید و فروش
+  // ===============================
+
+  function showBuySellAds(
+    items
+  ) {
+
+    const list =
+      document.getElementById(
+        "buySellList"
+      );
+
+
+    if (!list) {
+      return;
+    }
+
+
+    list.innerHTML = "";
+
+
+    if (
+      !items ||
+      items.length === 0
+    ) {
+
+      list.innerHTML =
+        '<div class="empty">' +
+        'هنوز آگهی خرید یا فروشی ثبت نشده است.' +
+        '</div>';
+
+      return;
+
+    }
+
+
+    items
+      .slice()
+      .reverse()
+      .forEach(
+        function(item) {
+
+          const div =
+            document.createElement(
+              "div"
+            );
+
+
+          if (
+            item.type === "sell"
+          ) {
+
+            div.className =
+              "ad-card sell-card";
+
+
+            div.innerHTML =
+
+              "<h3>🟢 فروش: " +
+              escapeHTML(
+                item.machine || ""
+              ) +
+              "</h3>" +
+
+              "<p><strong>نوع:</strong> " +
+              escapeHTML(
+                item.category || ""
+              ) +
+              "</p>" +
+
+              "<p><strong>💰 قیمت:</strong> " +
+              escapeHTML(
+                item.price || ""
+              ) +
+              "</p>" +
+
+              "<p><strong>📞 تماس:</strong> " +
+              escapeHTML(
+                item.phone || ""
+              ) +
+              "</p>" +
+
+              "<p><strong>📍 نشانی:</strong> " +
+              escapeHTML(
+                item.address || ""
+              ) +
+              "</p>" +
+
+              "<p>" +
+              escapeHTML(
+                item.description || ""
+              ) +
+              "</p>";
+
+          }
+          else {
+
+            div.className =
+              "ad-card buy-card";
+
+
+            div.innerHTML =
+
+              "<h3>🔵 خرید: " +
+              escapeHTML(
+                item.machine || ""
+              ) +
+              "</h3>" +
+
+              "<p><strong>نوع:</strong> " +
+              escapeHTML(
+                item.category || ""
+              ) +
+              "</p>" +
+
+              "<p><strong>💰 بودجه:</strong> " +
+              escapeHTML(
+                item.price || ""
+              ) +
+              "</p>" +
+
+              "<p><strong>📞 تماس:</strong> " +
+              escapeHTML(
+                item.phone || ""
+              ) +
+              "</p>" +
+
+              "<p><strong>📍 محل:</strong> " +
+              escapeHTML(
+                item.address || ""
+              ) +
+              "</p>" +
+
+              "<p>" +
+              escapeHTML(
+                item.description || ""
+              ) +
+              "</p>";
+
+          }
+
+
+          list.appendChild(
+            div
+          );
+
+        }
+      );
+
+  }
+
+
+
+  // ===============================
+  // پاک کردن فرم اجاره
+  // ===============================
+
+  function clearRentForm() {
+
+    document.getElementById(
+      "machine"
+    ).value = "";
+
+    document.getElementById(
+      "category"
+    ).value = "";
+
+    document.getElementById(
+      "phone"
+    ).value = "";
+
+    document.getElementById(
+      "address"
+    ).value = "";
+
+    document.getElementById(
+      "work"
+    ).value = "";
+
+    document.getElementById(
+      "description"
+    ).value = "";
+
+  }
+
+
+
+  // ===============================
+  // پاک کردن فرم فروش
+  // ===============================
+
+  function clearSellForm() {
+
+    document.getElementById(
+      "sellMachine"
+    ).value = "";
+
+    document.getElementById(
+      "sellCategory"
+    ).value = "";
+
+    document.getElementById(
+      "sellPrice"
+    ).value = "";
+
+    document.getElementById(
+      "sellPhone"
+    ).value = "";
+
+    document.getElementById(
+      "sellAddress"
+    ).value = "";
+
+    document.getElementById(
+      "sellDescription"
+    ).value = "";
+
+  }
+
+
+
+  // ===============================
+  // پاک کردن فرم خرید
+  // ===============================
+
+  function clearBuyForm() {
+
+    document.getElementById(
+      "buyMachine"
+    ).value = "";
+
+    document.getElementById(
+      "buyCategory"
+    ).value = "";
+
+    document.getElementById(
+      "buyPrice"
+    ).value = "";
+
+    document.getElementById(
+      "buyPhone"
+    ).value = "";
+
+    document.getElementById(
+      "buyAddress"
+    ).value = "";
+
+    document.getElementById(
+      "buyDescription"
+    ).value = "";
+
+  }
+
+
+
+  // ===============================
+  // پیام‌ها
   // ===============================
 
   function showStatus(
@@ -1016,41 +1903,71 @@
         "registerStatus"
       );
 
-
-    if (!box) {
-      return;
-    }
-
+    if (!box) return;
 
     box.textContent =
       message;
 
-
     box.className =
-      "status " +
-      type;
-
+      "status " + type;
 
     box.style.display =
       "block";
 
+  }
 
-    setTimeout(
-      function() {
 
-        box.style.display =
-          "none";
+  function showSellStatus(
+    message,
+    type
+  ) {
 
-      },
-      5000
-    );
+    const box =
+      document.getElementById(
+        "sellStatus"
+      );
+
+    if (!box) return;
+
+    box.textContent =
+      message;
+
+    box.className =
+      "status " + type;
+
+    box.style.display =
+      "block";
+
+  }
+
+
+  function showBuyStatus(
+    message,
+    type
+  ) {
+
+    const box =
+      document.getElementById(
+        "buyStatus"
+      );
+
+    if (!box) return;
+
+    box.textContent =
+      message;
+
+    box.className =
+      "status " + type;
+
+    box.style.display =
+      "block";
 
   }
 
 
 
   // ===============================
-  // نمایش آگهی‌ها
+  // نمایش آگهی‌های اجاره
   // ===============================
 
   function showAds(
@@ -1062,14 +1979,10 @@
         "adsList"
       );
 
-
-    if (!adsList) {
-      return;
-    }
+    if (!adsList) return;
 
 
-    adsList.innerHTML =
-      "";
+    adsList.innerHTML = "";
 
 
     if (
@@ -1103,66 +2016,42 @@
             "ad-card";
 
 
-          const title =
-            escapeHTML(
-              ad.machine || ""
-            );
-
-
-          const category =
-            escapeHTML(
-              ad.category || ""
-            );
-
-
-          const phone =
-            escapeHTML(
-              ad.phone || ""
-            );
-
-
-          const address =
-            escapeHTML(
-              ad.address || ""
-            );
-
-
-          const work =
-            escapeHTML(
-              ad.work || "ثبت نشده"
-            );
-
-
-          const description =
-            escapeHTML(
-              ad.description || ""
-            );
-
-
           div.innerHTML =
 
             "<h3>🚜 " +
-            title +
+            escapeHTML(
+              ad.machine || ""
+            ) +
             "</h3>" +
 
             "<p><strong>نوع:</strong> " +
-            category +
+            escapeHTML(
+              ad.category || ""
+            ) +
             "</p>" +
 
             "<p><strong>📞 تماس:</strong> " +
-            phone +
+            escapeHTML(
+              ad.phone || ""
+            ) +
             "</p>" +
 
             "<p><strong>📍 نشانی:</strong> " +
-            address +
+            escapeHTML(
+              ad.address || ""
+            ) +
             "</p>" +
 
             "<p><strong>⏱ کارکرد:</strong> " +
-            work +
+            escapeHTML(
+              ad.work || "ثبت نشده"
+            ) +
             "</p>" +
 
             "<p>" +
-            description +
+            escapeHTML(
+              ad.description || ""
+            ) +
             "</p>";
 
 
@@ -1178,25 +2067,21 @@
 
 
   // ===============================
-  // فیلتر آگهی‌ها
+  // فیلتر
   // ===============================
 
   function filterAds() {
 
     const category =
-      document
-      .getElementById(
+      document.getElementById(
         "categoryFilter"
-      )
-      .value;
+      ).value;
 
 
     const work =
-      document
-      .getElementById(
+      document.getElementById(
         "workFilter"
-      )
-      .value
+      ).value
       .trim()
       .toLowerCase();
 
@@ -1243,7 +2128,7 @@
 
 
   // ===============================
-  // نمایش نشانی‌ها
+  // نشانی‌ها
   // ===============================
 
   function showAddresses(
@@ -1255,14 +2140,10 @@
         "addressList"
       );
 
-
-    if (!list) {
-      return;
-    }
+    if (!list) return;
 
 
-    list.innerHTML =
-      "";
+    list.innerHTML = "";
 
 
     const withAddress =
@@ -1336,7 +2217,7 @@
 
 
   // ===============================
-  // جلوگیری از ورود HTML
+  // جلوگیری از HTML
   // ===============================
 
   function escapeHTML(
