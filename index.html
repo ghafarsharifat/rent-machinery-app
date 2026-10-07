@@ -158,6 +158,18 @@ small {
   margin-bottom: 15px;
 }
 
+.evaluation {
+  background: #f7f7f7;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 12px;
+  border-right: 3px solid #2e7d32;
+}
+
+.evaluation p {
+  margin: 7px 0;
+}
+
 </style>
 </head>
 
@@ -201,7 +213,7 @@ onclick="showSection('allAds'); showAllAds();">
 
 <div class="card">
 
-<h2> ثبت آگهی</h2>
+<h2>ثبت آگهی</h2>
 
 <p>
 نوع آگهی خود را انتخاب کنید.
@@ -243,15 +255,15 @@ onclick="showSection('addresses'); showAddresses();">
 <h2>📝 نوع آگهی</h2>
 
 <button onclick="showSection('register')">
- آگهی اجاره
+آگهی اجاره
 </button>
 
 <button onclick="showSection('sellRegister')">
- آگهی فروش
+آگهی فروش
 </button>
 
 <button onclick="showSection('buyRegister')">
- آگهی خرید
+آگهی خرید
 </button>
 
 <br>
@@ -276,7 +288,7 @@ onclick="showSection('home')">
 
 <div class="card">
 
-<h2> ثبت آگهی اجاره</h2>
+<h2>ثبت آگهی اجاره</h2>
 
 
 <label>نوع ماشین‌آلات</label>
@@ -286,14 +298,14 @@ onclick="showSection('home')">
 <option value="">انتخاب کنید</option>
 
 <option>بیل مکانیکی</option>
-<option>بیل مکانیکی + پیکور</option>
 <option>لودر</option>
 <option>بولدوزر</option>
 <option>گریدر</option>
 <option>کامیون و کمپرسی</option>
 <option>غلطک</option>
 <option>جرثقیل</option>
-<option>کمرشکن کامیون</option>
+<option>کمرشکن</option>
+<option>سایر</option>
 
 </select>
 
@@ -338,7 +350,7 @@ id="description"></textarea>
 
 
 <label>
- عکس ماشین‌آلات - حداکثر ۵ عکس
+عکس ماشین‌آلات - حداکثر ۵ عکس
 </label>
 
 <input
@@ -381,7 +393,14 @@ onclick="showSection('registerMenu')">
 
 <div class="card">
 
-<h2> ثبت آگهی فروش</h2>
+<h2>ثبت آگهی فروش</h2>
+
+
+<label>نام ماشین‌آلات</label>
+
+<input
+id="sellMachine"
+placeholder="مثلاً بیل مکانیکی کوماتسو">
 
 
 <label>نوع ماشین‌آلات</label>
@@ -391,25 +410,102 @@ onclick="showSection('registerMenu')">
 <option value="">انتخاب کنید</option>
 
 <option>بیل مکانیکی</option>
-<option>بیل مکانیکی + پیکور</option>
 <option>لودر</option>
 <option>بولدوزر</option>
 <option>گریدر</option>
 <option>کامیون و کمپرسی</option>
 <option>غلطک</option>
 <option>جرثقیل</option>
-<option>کمرشکن کامیون</option>
+<option>کمرشکن</option>
+<option>سایر</option>
 
 </select>
 
 
-<label> ساعت کارکرد</label>
+<label>مدل (سال تولید)</label>
+
+<input
+id="sellYear"
+type="number"
+min="1900"
+max="2100"
+placeholder="مثلاً ۱۴۰۰">
+
+
+<label>ساعت کارکرد</label>
 
 <input
 id="sellWork"
 type="number"
 min="0"
 placeholder="مثلاً 6000">
+
+
+<div class="evaluation">
+
+<h3>🔍 ارزیابی فروشنده</h3>
+
+
+<label>موتور</label>
+
+<select id="sellEngine">
+
+<option value="">انتخاب وضعیت</option>
+<option>عالی</option>
+<option>خوب</option>
+<option>متوسط</option>
+<option>نیاز به تعمیر</option>
+</select>
+
+
+<label>وضعیت شاسی</label>
+
+<select id="sellChassis">
+
+<option value="">انتخاب وضعیت</option>
+<option>عالی</option>
+<option>خوب</option>
+<option>متوسط</option>
+<option>نیاز به تعمیر</option>
+</select>
+
+
+<label>پمپ هیدرولیک</label>
+
+<select id="sellHydraulic">
+
+<option value="">انتخاب وضعیت</option>
+<option>عالی</option>
+<option>خوب</option>
+<option>متوسط</option>
+<option>نیاز به تعمیر</option>
+</select>
+
+
+<label>گیربکس</label>
+
+<select id="sellGearbox">
+
+<option value="">انتخاب وضعیت</option>
+<option>عالی</option>
+<option>خوب</option>
+<option>متوسط</option>
+<option>نیاز به تعمیر</option>
+</select>
+
+
+<label>بدنه</label>
+
+<select id="sellBody">
+
+<option value="">انتخاب وضعیت</option>
+<option>عالی</option>
+<option>خوب</option>
+<option>متوسط</option>
+<option>نیاز به تعمیر</option>
+</select>
+
+</div>
 
 
 <label>قیمت فروش</label>
@@ -440,16 +536,19 @@ type="tel">
 
 <label>نشانی</label>
 
-<input id="sellAddress">
+<input
+id="sellAddress"
+placeholder="شهر، روستا یا منطقه">
 
 
 <label>توضیحات</label>
 
-<textarea id="sellDescription"></textarea>
+<textarea
+id="sellDescription"></textarea>
 
 
 <label>
- عکس‌های ماشین‌آلات - حداکثر ۵ عکس
+عکس‌های ماشین‌آلات - حداکثر ۵ عکس
 </label>
 
 <input
@@ -492,7 +591,7 @@ onclick="showSection('registerMenu')">
 
 <div class="card">
 
-<h2> ثبت آگهی خرید</h2>
+<h2>ثبت آگهی خرید</h2>
 
 
 <label>نام ماشین‌آلات مورد نظر</label>
@@ -507,14 +606,14 @@ onclick="showSection('registerMenu')">
 <option value="">انتخاب کنید</option>
 
 <option>بیل مکانیکی</option>
-<option>بیل مکانیکی + پیکور</option>
 <option>لودر</option>
 <option>بولدوزر</option>
 <option>گریدر</option>
 <option>کامیون و کمپرسی</option>
 <option>غلطک</option>
 <option>جرثقیل</option>
-<option>کمرشکن کامیون</option>
+<option>کمرشکن</option>
+<option>سایر</option>
 
 </select>
 
@@ -556,7 +655,8 @@ type="tel">
 
 <label>نشانی</label>
 
-<input id="buyAddress">
+<input
+id="buyAddress">
 
 
 <label>توضیحات</label>
@@ -565,7 +665,7 @@ type="tel">
 
 
 <label>
-  عکس مورد نظر - حداکثر ۵ عکس
+عکس مورد نظر - حداکثر ۵ عکس
 </label>
 
 <input
@@ -622,15 +722,15 @@ onchange="filterAllAds()">
 </option>
 
 <option value="rent">
- اجاره
+اجاره
 </option>
 
 <option value="sell">
- فروش
+فروش
 </option>
 
 <option value="buy">
- خرید
+خرید
 </option>
 
 </select>
@@ -645,14 +745,14 @@ onchange="filterAllAds()">
 <option value="">همه</option>
 
 <option>بیل مکانیکی</option>
-<option>بیل مکانیکی + پیکور</option>
 <option>لودر</option>
 <option>بولدوزر</option>
 <option>گریدر</option>
 <option>کامیون و کمپرسی</option>
 <option>غلطک</option>
 <option>جرثقیل</option>
-<option>کمرشکن کامیون</option>
+<option>کمرشکن</option>
+<option>سایر</option>
 
 </select>
 
@@ -680,7 +780,7 @@ onclick="showSection('home')">
 
 <div class="card">
 
-<h2> نشانی ماشین‌آلات</h2>
+<h2>📍 نشانی ماشین‌آلات</h2>
 
 <div id="addressesList"></div>
 
@@ -1298,9 +1398,33 @@ var category =
 document.getElementById("sellCategory")
 .value;
 
+var year =
+document.getElementById("sellYear")
+.value.trim();
+
 var work =
 document.getElementById("sellWork")
 .value.trim();
+
+var engine =
+document.getElementById("sellEngine")
+.value;
+
+var chassis =
+document.getElementById("sellChassis")
+.value;
+
+var hydraulic =
+document.getElementById("sellHydraulic")
+.value;
+
+var gearbox =
+document.getElementById("sellGearbox")
+.value;
+
+var body =
+document.getElementById("sellBody")
+.value;
 
 var priceType =
 document.getElementById("sellPriceType")
@@ -1328,7 +1452,7 @@ if(!machine ||
 !phone){
 
 alert(
-"اطلاعات اصلی را وارد کنید."
+"نام ماشین، نوع ماشین و شماره تماس الزامی است."
 );
 
 return;
@@ -1348,7 +1472,23 @@ machine:machine,
 
 category:category,
 
+year:year,
+
 work:work,
+
+evaluation:{
+
+engine:engine,
+
+chassis:chassis,
+
+hydraulic:hydraulic,
+
+gearbox:gearbox,
+
+body:body
+
+},
 
 priceType:priceType,
 
@@ -1584,7 +1724,7 @@ item.price || "توافقی";
 var workHTML = "";
 
 
-/* ساعت کارکرد فقط برای خرید و فروش */
+/* ساعت کارکرد برای خرید و فروش */
 
 if(item.type === "sell" ||
 item.type === "buy"){
@@ -1604,6 +1744,58 @@ workText+
 }
 
 
+/* سال تولید فقط برای فروش */
+
+var yearHTML = "";
+
+if(item.type === "sell"){
+
+yearHTML =
+
+"<p><b>📅 مدل (سال تولید):</b> "+
+escapeHTML(item.year || "ثبت نشده")+
+"</p>";
+
+}
+
+
+/* ارزیابی فروشنده فقط برای فروش */
+
+var evaluationHTML = "";
+
+if(item.type === "sell" && item.evaluation){
+
+evaluationHTML =
+
+"<div class='evaluation'>"+
+
+"<h3>🔍 ارزیابی فروشنده</h3>"+
+
+"<p><b>موتور:</b> "+
+escapeHTML(item.evaluation.engine || "ثبت نشده")+
+"</p>"+
+
+"<p><b>وضعیت شاسی:</b> "+
+escapeHTML(item.evaluation.chassis || "ثبت نشده")+
+"</p>"+
+
+"<p><b>پمپ هیدرولیک:</b> "+
+escapeHTML(item.evaluation.hydraulic || "ثبت نشده")+
+"</p>"+
+
+"<p><b>گیربکس:</b> "+
+escapeHTML(item.evaluation.gearbox || "ثبت نشده")+
+"</p>"+
+
+"<p><b>بدنه:</b> "+
+escapeHTML(item.evaluation.body || "ثبت نشده")+
+"</p>"+
+
+"</div>";
+
+}
+
+
 div.innerHTML =
 
 "<span class='badge'>"+
@@ -1616,11 +1808,19 @@ item.category || item.machine
 )+
 "</h3>"+
 
+"<p><b>نام ماشین:</b> "+
+escapeHTML(item.machine || item.category)+
+"</p>"+
+
 "<p><b>نوع ماشین:</b> "+
 escapeHTML(item.category)+
 "</p>"+
 
+yearHTML+
+
 workHTML+
+
+evaluationHTML+
 
 "<p><b>💰 قیمت:</b> "+
 escapeHTML(priceText)+
@@ -1845,6 +2045,16 @@ all.push(item);
 });
 
 
+if(!all.length){
+
+list.innerHTML =
+"<p>هنوز نشانی‌ای ثبت نشده است.</p>";
+
+return;
+
+}
+
+
 all.forEach(function(item){
 
 if(!item.address){
@@ -1864,14 +2074,24 @@ div.className =
 
 div.innerHTML =
 
-"<h3> "+
+"<h3>🚜 "+
 escapeHTML(
 item.category || item.machine
 )+
 "</h3>"+
 
-"<p>"+
+"<p><b>📍 نشانی:</b> "+
 escapeHTML(item.address)+
+"</p>"+
+
+"<p><b>نوع آگهی:</b> "+
+escapeHTML(
+item.type === "rent"
+? "اجاره"
+: item.type === "sell"
+? "فروش"
+: "خرید"
+)+
 "</p>";
 
 
