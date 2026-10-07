@@ -2,7 +2,6 @@
 <html lang="fa" dir="rtl">
 
 <head>
-
 <meta charset="UTF-8">
 
 <meta name="viewport"
@@ -36,11 +35,11 @@ header h1 {
 
 header p {
   margin: 0;
-  font-size: 15px;
+  opacity: .9;
 }
 
 .container {
-  max-width: 800px;
+  max-width: 850px;
   margin: auto;
   padding: 15px;
 }
@@ -55,13 +54,27 @@ header p {
 
 .card {
   background: white;
-  padding: 18px;
+  padding: 20px;
   margin-bottom: 15px;
-  border-radius: 12px;
+  border-radius: 14px;
   box-shadow: 0 2px 8px rgba(0,0,0,.08);
 }
 
-.card h2 {
+.home-intro {
+  text-align: center;
+  padding: 25px 15px;
+}
+
+.home-intro h2 {
+  margin-top: 0;
+}
+
+.home-card {
+  text-align: center;
+  padding: 22px 15px;
+}
+
+.home-card h2 {
   margin-top: 0;
 }
 
@@ -74,6 +87,7 @@ button {
   cursor: pointer;
   margin: 5px 0;
   font-size: 15px;
+  font-family: inherit;
 }
 
 button:hover {
@@ -90,6 +104,7 @@ textarea {
   border: 1px solid #ccc;
   border-radius: 7px;
   font-family: inherit;
+  font-size: 15px;
 }
 
 textarea {
@@ -178,50 +193,22 @@ small {
 }
 
 
-/* ================= صفحه اصلی ================= */
+/* ================= نوع آگهی ================= */
 
-.home-intro {
-  text-align: center;
-  background: #ffffff;
-  border-top: 5px solid #1565c0;
-  padding: 22px 18px;
+.ad-type-menu {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 15px 0;
 }
 
-.home-intro h2 {
-  margin: 0 0 8px;
-  font-size: 25px;
-}
-
-.home-intro p {
-  color: #555;
+.ad-type-menu button {
+  flex: 1;
+  min-width: 150px;
   margin: 0;
-  line-height: 1.8;
-}
-
-.home-card {
-  text-align: right;
-}
-
-.home-card h2 {
-  margin-bottom: 8px;
-}
-
-.home-card p {
-  color: #555;
-  line-height: 1.8;
-}
-
-.home-card button {
-  width: 100%;
-  margin-top: 5px;
-}
-
-
-/* ================= منوی ثبت آگهی ================= */
-
-.register-menu button {
-  width: 100%;
-  margin: 7px 0;
+  padding: 14px 10px;
+  font-size: 15px;
 }
 
 
@@ -233,27 +220,23 @@ small {
     padding: 10px;
   }
 
-  header {
-    padding: 17px 10px;
-  }
-
-  header h1 {
-    font-size: 26px;
-  }
-
   .card {
-    padding: 15px;
+    padding: 16px;
   }
 
-  button {
+  .ad-type-menu {
+    flex-direction: column;
+  }
+
+  .ad-type-menu button {
     width: 100%;
   }
 
 }
 
 </style>
-
 </head>
+
 
 <body>
 
@@ -263,7 +246,7 @@ small {
 <h1>نرخینو</h1>
 
 <p>
-ثبت و جستجوی ماشین‌آلات راه‌سازی و معدنی
+سامانه ثبت و جستجوی ماشین‌آلات راه‌سازی و معدنی
 </p>
 
 </header>
@@ -282,7 +265,7 @@ small {
 <h2>🚜 نرخینو</h2>
 
 <p>
-سامانه ثبت و جستجوی ماشین‌آلات راه‌سازی و معدنی
+ثبت، جستجو و مشاهده آگهی‌های ماشین‌آلات
 </p>
 
 </div>
@@ -293,7 +276,7 @@ small {
 <h2>📋 آگهی‌ها</h2>
 
 <p>
-مشاهده همه آگهی‌های اجاره، خرید و فروش ماشین‌آلات
+مشاهده همه آگهی‌های اجاره، خرید و فروش
 </p>
 
 <button
@@ -311,7 +294,7 @@ onclick="showSection('allAds'); showAllAds();">
 <h2>📝 ثبت آگهی</h2>
 
 <p>
-آگهی خود را در یکی از بخش‌های اجاره، فروش یا خرید ثبت کنید.
+نوع آگهی خود را انتخاب کنید.
 </p>
 
 <button
@@ -329,7 +312,7 @@ onclick="showSection('registerMenu')">
 <h2>📍 نشانی‌ها</h2>
 
 <p>
-مشاهده محل فعالیت و نشانی ماشین‌آلات ثبت‌شده
+مشاهده محل فعالیت ماشین‌آلات
 </p>
 
 <button
@@ -350,34 +333,44 @@ onclick="showSection('addresses'); showAddresses();">
 
 <section id="registerMenu" class="section">
 
-<div class="card register-menu">
+
+<div class="card">
 
 <h2>📝 نوع آگهی</h2>
 
-<p>
-نوع آگهی مورد نظر خود را انتخاب کنید.
+<p class="info">
+نوع آگهی مورد نظر خود را انتخاب کنید:
 </p>
 
 
-<button onclick="showSection('register')">
+<div class="ad-type-menu">
+
+
+<button
+onclick="showSection('register')">
 
 🚜 آگهی اجاره
 
 </button>
 
 
-<button onclick="showSection('sellRegister')">
+<button
+onclick="showSection('sellRegister')">
 
 🟢 آگهی فروش
 
 </button>
 
 
-<button onclick="showSection('buyRegister')">
+<button
+onclick="showSection('buyRegister')">
 
 🔵 آگهی خرید
 
 </button>
+
+
+</div>
 
 
 <br>
@@ -391,6 +384,7 @@ onclick="showSection('home')">
 
 </button>
 
+
 </div>
 
 </section>
@@ -400,6 +394,7 @@ onclick="showSection('home')">
 <!-- ================= RENT REGISTER ================= -->
 
 <section id="register" class="section">
+
 
 <div class="card">
 
@@ -453,6 +448,7 @@ placeholder="شهر، روستا یا منطقه">
 
 </select>
 
+
 <input
 id="rentPrice"
 placeholder="مثلاً روزانه ۵ میلیون تومان">
@@ -474,6 +470,7 @@ type="file"
 accept="image/*"
 multiple>
 
+
 <small>
 حداکثر ۵ عکس، حجم نهایی هر عکس حدود ۵۰۰ کیلوبایت
 </small>
@@ -483,7 +480,7 @@ multiple>
 class="success"
 onclick="registerAd()">
 
-ثبت آگهی
+ثبت آگهی اجاره
 
 </button>
 
@@ -496,6 +493,7 @@ onclick="showSection('registerMenu')">
 
 </button>
 
+
 </div>
 
 </section>
@@ -505,6 +503,7 @@ onclick="showSection('registerMenu')">
 <!-- ================= SELL REGISTER ================= -->
 
 <section id="sellRegister" class="section">
+
 
 <div class="card">
 
@@ -625,6 +624,7 @@ placeholder="مثلاً 6000">
 
 </select>
 
+
 </div>
 
 
@@ -641,6 +641,7 @@ placeholder="مثلاً 6000">
 </option>
 
 </select>
+
 
 <input
 id="sellPrice"
@@ -677,6 +678,7 @@ type="file"
 accept="image/*"
 multiple>
 
+
 <small>
 حداکثر ۵ عکس، حجم نهایی هر عکس حدود ۵۰۰ کیلوبایت
 </small>
@@ -699,6 +701,7 @@ onclick="showSection('registerMenu')">
 
 </button>
 
+
 </div>
 
 </section>
@@ -709,6 +712,7 @@ onclick="showSection('registerMenu')">
 
 <section id="buyRegister" class="section">
 
+
 <div class="card">
 
 <h2>🔵 ثبت آگهی خرید</h2>
@@ -716,7 +720,9 @@ onclick="showSection('registerMenu')">
 
 <label>نام ماشین‌آلات مورد نظر</label>
 
-<input id="buyMachine">
+<input
+id="buyMachine"
+placeholder="مثلاً بیل مکانیکی">
 
 
 <label>نوع ماشین‌آلات</label>
@@ -761,6 +767,7 @@ placeholder="مثلاً حداکثر 5000 ساعت">
 
 </select>
 
+
 <input
 id="buyPrice"
 placeholder="مثلاً تا ۷ میلیارد تومان">
@@ -776,12 +783,14 @@ type="tel">
 <label>نشانی</label>
 
 <input
-id="buyAddress">
+id="buyAddress"
+placeholder="شهر، روستا یا منطقه">
 
 
 <label>توضیحات</label>
 
-<textarea id="buyDescription"></textarea>
+<textarea
+id="buyDescription"></textarea>
 
 
 <label>
@@ -793,6 +802,7 @@ id="buyImages"
 type="file"
 accept="image/*"
 multiple>
+
 
 <small>
 حداکثر ۵ عکس، حجم نهایی هر عکس حدود ۵۰۰ کیلوبایت
@@ -816,6 +826,7 @@ onclick="showSection('registerMenu')">
 
 </button>
 
+
 </div>
 
 </section>
@@ -825,6 +836,7 @@ onclick="showSection('registerMenu')">
 <!-- ================= ALL ADS ================= -->
 
 <section id="allAds" class="section">
+
 
 <div class="card">
 
@@ -888,6 +900,7 @@ onclick="showSection('home')">
 
 </button>
 
+
 </div>
 
 </section>
@@ -897,6 +910,7 @@ onclick="showSection('home')">
 <!-- ================= ADDRESSES ================= -->
 
 <section id="addresses" class="section">
+
 
 <div class="card">
 
@@ -912,6 +926,7 @@ onclick="showSection('home')">
 بازگشت
 
 </button>
+
 
 </div>
 
@@ -1823,17 +1838,17 @@ var typeText = "";
 if(item.type === "rent"){
 
 typeText =
-"🚜 اجاره";
+"🚜 آگهی اجاره";
 
 }else if(item.type === "sell"){
 
 typeText =
-"🟢 فروش";
+"🟢 آگهی فروش";
 
 }else{
 
 typeText =
-"🔵 خرید";
+"🔵 آگهی خرید";
 
 }
 
@@ -1865,6 +1880,7 @@ workText+
 
 var yearHTML = "";
 
+
 if(item.type === "sell"){
 
 yearHTML =
@@ -1877,6 +1893,7 @@ escapeHTML(item.year || "ثبت نشده")+
 
 
 var evaluationHTML = "";
+
 
 if(item.type === "sell" && item.evaluation){
 
@@ -2170,7 +2187,7 @@ return;
 }
 
 
-var hasAddress = false;
+var found = false;
 
 
 all.forEach(function(item){
@@ -2182,7 +2199,7 @@ return;
 }
 
 
-hasAddress = true;
+found = true;
 
 
 var div =
@@ -2221,7 +2238,7 @@ list.appendChild(div);
 });
 
 
-if(!hasAddress){
+if(!found){
 
 list.innerHTML =
 "<p>هنوز نشانی‌ای برای آگهی‌ها ثبت نشده است.</p>";
@@ -2232,6 +2249,6 @@ list.innerHTML =
 
 </script>
 
-</body>
 
+</body>
 </html>
