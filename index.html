@@ -122,6 +122,13 @@
       font-weight: bold;
     }
 
+    small {
+      display: block;
+      color: #777;
+      margin-top: -10px;
+      margin-bottom: 15px;
+    }
+
     .ad-card {
       background: white;
       border: 1px solid #ddd;
@@ -165,6 +172,26 @@
     .error {
       background: #ffebee;
       color: #c62828;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .gallery img {
+      width: 110px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      cursor: pointer;
+    }
+
+    .gallery img:hover {
+      opacity: 0.85;
     }
 
   </style>
@@ -351,12 +378,19 @@
         placeholder="توضیحات ماشین‌آلات"></textarea>
 
 
-      <label>عکس ماشین‌آلات</label>
+      <label>
+        📸 عکس ماشین‌آلات - حداکثر ۵ عکس
+      </label>
 
       <input
-        id="image"
+        id="images"
         type="file"
-        accept="image/*">
+        accept="image/*"
+        multiple>
+
+      <small>
+        حداکثر ۵ عکس، هر عکس حداکثر ۷۵۰ کیلوبایت
+      </small>
 
 
       <div
@@ -439,7 +473,7 @@
         id="workFilter"
         type="text"
         placeholder="مثلاً 5000"
-        oninput="filterAds()">
+        oninput="filterAds">
 
 
       <div id="adsList">
@@ -607,6 +641,21 @@
         placeholder="توضیحات ماشین‌آلات"></textarea>
 
 
+      <label>
+        📸 عکس‌های ماشین‌آلات - حداکثر ۵ عکس
+      </label>
+
+      <input
+        id="sellImages"
+        type="file"
+        accept="image/*"
+        multiple>
+
+      <small>
+        حداکثر ۵ عکس، هر عکس حداکثر ۷۵۰ کیلوبایت
+      </small>
+
+
       <div
         id="sellStatus"
         class="status">
@@ -717,6 +766,21 @@
       <textarea
         id="buyDescription"
         placeholder="توضیحات مورد نیاز"></textarea>
+
+
+      <label>
+        📸 عکس‌های مورد نظر - حداکثر ۵ عکس
+      </label>
+
+      <input
+        id="buyImages"
+        type="file"
+        accept="image/*"
+        multiple>
+
+      <small>
+        حداکثر ۵ عکس، هر عکس حداکثر ۷۵۰ کیلوبایت
+      </small>
 
 
       <div
@@ -872,10 +936,8 @@
     const app =
       initializeApp(firebaseConfig);
 
-
     const database =
       getDatabase(app);
-
 
     window.firebaseDatabase =
       database;
@@ -904,10 +966,6 @@
     );
 
 
-    // ==========================
-    // آگهی‌های اجاره
-    // ==========================
-
     const adsRef =
       ref(database, "ads");
 
@@ -918,7 +976,6 @@
 
         const data =
           snapshot.val() || {};
-
 
         window.firebaseAds =
           Object.keys(data).map(
@@ -954,10 +1011,6 @@
     );
 
 
-    // ==========================
-    // آگهی‌های خرید و فروش
-    // ==========================
-
     const buySellRef =
       ref(database, "buySell");
 
@@ -968,7 +1021,6 @@
 
         const data =
           snapshot.val() || {};
-
 
         window.firebaseBuySell =
           Object.keys(data).map(
@@ -1033,7 +1085,6 @@
         ".section"
       );
 
-
     sections.forEach(
       function(section) {
 
@@ -1044,12 +1095,10 @@
       }
     );
 
-
     const target =
       document.getElementById(
         sectionId
       );
-
 
     if (target) {
 
@@ -1069,12 +1118,318 @@
 
 
   // ===============================
+  // فشرده‌سازی عکس
+  // ===============================
+
+  function compressImage(file) {
+
+    return new Promise(
+      function(resolve, reject) {
+
+        if (!file.type.startsWith("image/")) {
+
+          reject(
+            new Error(
+              "فایل انتخاب‌شده عکس نیست."
+            )
+          );
+
+          return;
+        }
+
+
+        const reader =
+          new FileReader();
+
+
+        reader.onload =
+          function(event) {
+
+            const img =
+              new Image();
+
+
+            img.onload =
+              function() {
+
+                const canvas =
+                  document.createElement(
+                    "canvas"
+                  );
+
+
+                let width =
+                  img.width;
+
+                let height =
+                  img.height;
+
+
+                const maxSize =
+                  1400;
+
+
+                if (
+                  width > maxSize ||
+                  height > maxSize
+                ) {
+
+                  if (
+                    width > height
+                  ) {
+
+                    height =
+                      Math.round(
+                        height *
+                        maxSize /
+                        width
+                      );
+
+                    width =
+                      maxSize;
+
+                  }
+                  else {
+
+                    width =
+                      Math.round(
+                        width *
+                        maxSize /
+                        height
+                      );
+
+                    height =
+                      maxSize;
+
+                  }
+
+                }
+
+
+                canvas.width =
+                  width;
+
+                canvas.height =
+                  height;
+
+
+                const ctx =
+                  canvas.getContext(
+                    "2d"
+                  );
+
+
+                ctx.drawImage(
+                  img,
+                  0,
+                  0,
+                  width,
+                  height
+                );
+
+
+                let quality =
+                  0.82;
+
+                let dataUrl =
+                  "";
+
+
+                for (
+                  let i = 0;
+                  i < 10;
+                  i++
+                ) {
+
+                  dataUrl =
+                    canvas.toDataURL(
+                      "image/jpeg",
+                      quality
+                    );
+
+
+                  const size =
+                    Math.round(
+                      dataUrl.length *
+                      3 /
+                      4
+                    );
+
+
+                  if (
+                    size <=
+                    750 * 1024
+                  ) {
+
+                    break;
+
+                  }
+
+
+                  quality -=
+                    0.07;
+
+
+                  if (
+                    quality < 0.20
+                  ) {
+
+                    quality =
+                      0.20;
+
+                  }
+
+                }
+
+
+                const finalSize =
+                  Math.round(
+                    dataUrl.length *
+                    3 /
+                    4
+                  );
+
+
+                if (
+                  finalSize >
+                  750 * 1024
+                ) {
+
+                  reject(
+                    new Error(
+                      "این عکس بعد از فشرده‌سازی هنوز بزرگ است."
+                    )
+                  );
+
+                  return;
+
+                }
+
+
+                resolve(
+                  dataUrl
+                );
+
+              };
+
+
+            img.onerror =
+              function() {
+
+                reject(
+                  new Error(
+                    "خواندن عکس امکان‌پذیر نیست."
+                  )
+                );
+
+              };
+
+
+            img.src =
+              event.target.result;
+
+          };
+
+
+        reader.onerror =
+          function() {
+
+            reject(
+              new Error(
+                "خواندن فایل انجام نشد."
+              )
+            );
+
+          };
+
+
+        reader.readAsDataURL(
+          file
+        );
+
+      }
+    );
+
+  }
+
+
+
+  // ===============================
+  // دریافت حداکثر ۵ عکس
+  // ===============================
+
+  async function getImages(
+    inputId
+  ) {
+
+    const input =
+      document.getElementById(
+        inputId
+      );
+
+
+    if (
+      !input ||
+      !input.files
+    ) {
+
+      return [];
+
+    }
+
+
+    const files =
+      Array.from(
+        input.files
+      );
+
+
+    if (
+      files.length > 5
+    ) {
+
+      throw new Error(
+        "حداکثر ۵ عکس می‌توانید انتخاب کنید."
+      );
+
+    }
+
+
+    const images = [];
+
+
+    for (
+      const file of files
+    ) {
+
+      const image =
+        await compressImage(
+          file
+        );
+
+
+      images.push(
+        image
+      );
+
+    }
+
+
+    return images;
+
+  }
+
+
+
+  // ===============================
   // آگهی‌های اجاره
   // ===============================
 
   function openAds() {
 
-    showSection("ads");
+    showSection(
+      "ads"
+    );
 
     showAds(
       window.firebaseAds || []
@@ -1090,7 +1445,9 @@
 
   function openAddresses() {
 
-    showSection("addresses");
+    showSection(
+      "addresses"
+    );
 
     showAddresses(
       window.firebaseAds || []
@@ -1104,9 +1461,11 @@
   // ثبت آگهی اجاره
   // ===============================
 
-  function registerAd() {
+  async function registerAd() {
 
-    if (!window.firebaseReady) {
+    if (
+      !window.firebaseReady
+    ) {
 
       showStatus(
         "❌ Firebase هنوز آماده نیست.",
@@ -1171,41 +1530,57 @@
     }
 
 
-    const ad = {
-
-      type: "rent",
-
-      machine:
-        machine,
-
-      category:
-        category,
-
-      phone:
-        phone,
-
-      address:
-        address,
-
-      work:
-        work,
-
-      description:
-        description,
-
-      createdAt:
-        Date.now()
-
-    };
-
-
-    showStatus(
-      "در حال ثبت آگهی...",
-      "success"
-    );
-
-
     try {
+
+      showStatus(
+        "📸 در حال آماده‌سازی عکس‌ها...",
+        "success"
+      );
+
+
+      const images =
+        await getImages(
+          "images"
+        );
+
+
+      showStatus(
+        "در حال ثبت آگهی...",
+        "success"
+      );
+
+
+      const ad = {
+
+        type:
+          "rent",
+
+        machine:
+          machine,
+
+        category:
+          category,
+
+        phone:
+          phone,
+
+        address:
+          address,
+
+        work:
+          work,
+
+        description:
+          description,
+
+        images:
+          images,
+
+        createdAt:
+          Date.now()
+
+      };
+
 
       const adsRef =
         window.firebaseRef(
@@ -1220,54 +1595,42 @@
         );
 
 
-      window.firebaseSet(
+      await window.firebaseSet(
         newAd,
         ad
-      )
+      );
 
-      .then(
+
+      showStatus(
+        "✅ آگهی با موفقیت ثبت شد.",
+        "success"
+      );
+
+
+      clearRentForm();
+
+
+      setTimeout(
         function() {
 
-          showStatus(
-            "✅ آگهی با موفقیت ثبت شد.",
-            "success"
+          showSection(
+            "ads"
           );
 
-
-          clearRentForm();
-
-
-          setTimeout(
-            function() {
-
-              showSection("ads");
-
-            },
-            1000
-          );
-
-        }
-      )
-
-      .catch(
-        function(error) {
-
-          console.error(error);
-
-          showStatus(
-            "❌ خطا در ثبت آگهی: " +
-            error.message,
-            "error"
-          );
-
-        }
+        },
+        1000
       );
 
     }
     catch(error) {
 
+      console.error(
+        error
+      );
+
+
       showStatus(
-        "❌ خطا در Firebase: " +
+        "❌ " +
         error.message,
         "error"
       );
@@ -1282,9 +1645,11 @@
   // ثبت فروش
   // ===============================
 
-  function registerSell() {
+  async function registerSell() {
 
-    if (!window.firebaseReady) {
+    if (
+      !window.firebaseReady
+    ) {
 
       showSellStatus(
         "❌ Firebase هنوز آماده نیست.",
@@ -1350,97 +1715,112 @@
     }
 
 
-    const item = {
+    try {
 
-      type: "sell",
-
-      machine:
-        machine,
-
-      category:
-        category,
-
-      price:
-        price,
-
-      phone:
-        phone,
-
-      address:
-        address,
-
-      description:
-        description,
-
-      createdAt:
-        Date.now()
-
-    };
-
-
-    showSellStatus(
-      "در حال ثبت آگهی فروش...",
-      "success"
-    );
-
-
-    const buySellRef =
-      window.firebaseRef(
-        window.firebaseDatabase,
-        "buySell"
+      showSellStatus(
+        "📸 در حال آماده‌سازی عکس‌ها...",
+        "success"
       );
 
 
-    const newItem =
-      window.firebasePush(
-        buySellRef
+      const images =
+        await getImages(
+          "sellImages"
+        );
+
+
+      showSellStatus(
+        "در حال ثبت آگهی فروش...",
+        "success"
       );
 
 
-    window.firebaseSet(
-      newItem,
-      item
-    )
+      const item = {
 
-    .then(
-      function() {
+        type:
+          "sell",
 
-        showSellStatus(
-          "✅ آگهی فروش با موفقیت ثبت شد.",
-          "success"
+        machine:
+          machine,
+
+        category:
+          category,
+
+        price:
+          price,
+
+        phone:
+          phone,
+
+        address:
+          address,
+
+        description:
+          description,
+
+        images:
+          images,
+
+        createdAt:
+          Date.now()
+
+      };
+
+
+      const buySellRef =
+        window.firebaseRef(
+          window.firebaseDatabase,
+          "buySell"
         );
 
 
-        clearSellForm();
-
-
-        setTimeout(
-          function() {
-
-            showSection(
-              "buySellAds"
-            );
-
-          },
-          1000
+      const newItem =
+        window.firebasePush(
+          buySellRef
         );
 
-      }
-    )
 
-    .catch(
-      function(error) {
+      await window.firebaseSet(
+        newItem,
+        item
+      );
 
-        console.error(error);
 
-        showSellStatus(
-          "❌ خطا در ثبت فروش: " +
-          error.message,
-          "error"
-        );
+      showSellStatus(
+        "✅ آگهی فروش با موفقیت ثبت شد.",
+        "success"
+      );
 
-      }
-    );
+
+      clearSellForm();
+
+
+      setTimeout(
+        function() {
+
+          showSection(
+            "buySellAds"
+          );
+
+        },
+        1000
+      );
+
+    }
+    catch(error) {
+
+      console.error(
+        error
+      );
+
+
+      showSellStatus(
+        "❌ " +
+        error.message,
+        "error"
+      );
+
+    }
 
   }
 
@@ -1450,9 +1830,11 @@
   // ثبت خرید
   // ===============================
 
-  function registerBuy() {
+  async function registerBuy() {
 
-    if (!window.firebaseReady) {
+    if (
+      !window.firebaseReady
+    ) {
 
       showBuyStatus(
         "❌ Firebase هنوز آماده نیست.",
@@ -1518,97 +1900,112 @@
     }
 
 
-    const item = {
+    try {
 
-      type: "buy",
-
-      machine:
-        machine,
-
-      category:
-        category,
-
-      price:
-        price,
-
-      phone:
-        phone,
-
-      address:
-        address,
-
-      description:
-        description,
-
-      createdAt:
-        Date.now()
-
-    };
-
-
-    showBuyStatus(
-      "در حال ثبت درخواست خرید...",
-      "success"
-    );
-
-
-    const buySellRef =
-      window.firebaseRef(
-        window.firebaseDatabase,
-        "buySell"
+      showBuyStatus(
+        "📸 در حال آماده‌سازی عکس‌ها...",
+        "success"
       );
 
 
-    const newItem =
-      window.firebasePush(
-        buySellRef
+      const images =
+        await getImages(
+          "buyImages"
+        );
+
+
+      showBuyStatus(
+        "در حال ثبت درخواست خرید...",
+        "success"
       );
 
 
-    window.firebaseSet(
-      newItem,
-      item
-    )
+      const item = {
 
-    .then(
-      function() {
+        type:
+          "buy",
 
-        showBuyStatus(
-          "✅ درخواست خرید با موفقیت ثبت شد.",
-          "success"
+        machine:
+          machine,
+
+        category:
+          category,
+
+        price:
+          price,
+
+        phone:
+          phone,
+
+        address:
+          address,
+
+        description:
+          description,
+
+        images:
+          images,
+
+        createdAt:
+          Date.now()
+
+      };
+
+
+      const buySellRef =
+        window.firebaseRef(
+          window.firebaseDatabase,
+          "buySell"
         );
 
 
-        clearBuyForm();
-
-
-        setTimeout(
-          function() {
-
-            showSection(
-              "buySellAds"
-            );
-
-          },
-          1000
+      const newItem =
+        window.firebasePush(
+          buySellRef
         );
 
-      }
-    )
 
-    .catch(
-      function(error) {
+      await window.firebaseSet(
+        newItem,
+        item
+      );
 
-        console.error(error);
 
-        showBuyStatus(
-          "❌ خطا در ثبت خرید: " +
-          error.message,
-          "error"
-        );
+      showBuyStatus(
+        "✅ درخواست خرید با موفقیت ثبت شد.",
+        "success"
+      );
 
-      }
-    );
+
+      clearBuyForm();
+
+
+      setTimeout(
+        function() {
+
+          showSection(
+            "buySellAds"
+          );
+
+        },
+        1000
+      );
+
+    }
+    catch(error) {
+
+      console.error(
+        error
+      );
+
+
+      showBuyStatus(
+        "❌ " +
+        error.message,
+        "error"
+      );
+
+    }
 
   }
 
@@ -1627,6 +2024,80 @@
 
     showBuySellAds(
       window.firebaseBuySell || []
+    );
+
+  }
+
+
+
+  // ===============================
+  // ساخت گالری عکس
+  // ===============================
+
+  function addGallery(
+    parent,
+    images
+  ) {
+
+    if (
+      !images ||
+      !Array.isArray(images) ||
+      images.length === 0
+    ) {
+
+      return;
+
+    }
+
+
+    const gallery =
+      document.createElement(
+        "div"
+      );
+
+
+    gallery.className =
+      "gallery";
+
+
+    images.forEach(
+      function(image) {
+
+        const img =
+          document.createElement(
+            "img"
+          );
+
+
+        img.src =
+          image;
+
+
+        img.alt =
+          "تصویر ماشین‌آلات";
+
+
+        img.onclick =
+          function() {
+
+            window.open(
+              image,
+              "_blank"
+            );
+
+          };
+
+
+        gallery.appendChild(
+          img
+        );
+
+      }
+    );
+
+
+    parent.appendChild(
+      gallery
     );
 
   }
@@ -1776,6 +2247,12 @@
           }
 
 
+          addGallery(
+            div,
+            item.images
+          );
+
+
           list.appendChild(
             div
           );
@@ -1817,6 +2294,10 @@
       "description"
     ).value = "";
 
+    document.getElementById(
+      "images"
+    ).value = "";
+
   }
 
 
@@ -1849,6 +2330,10 @@
 
     document.getElementById(
       "sellDescription"
+    ).value = "";
+
+    document.getElementById(
+      "sellImages"
     ).value = "";
 
   }
@@ -1885,6 +2370,10 @@
       "buyDescription"
     ).value = "";
 
+    document.getElementById(
+      "buyImages"
+    ).value = "";
+
   }
 
 
@@ -1903,18 +2392,25 @@
         "registerStatus"
       );
 
-    if (!box) return;
+
+    if (!box) {
+      return;
+    }
+
 
     box.textContent =
       message;
 
+
     box.className =
       "status " + type;
+
 
     box.style.display =
       "block";
 
   }
+
 
 
   function showSellStatus(
@@ -1927,18 +2423,25 @@
         "sellStatus"
       );
 
-    if (!box) return;
+
+    if (!box) {
+      return;
+    }
+
 
     box.textContent =
       message;
 
+
     box.className =
       "status " + type;
+
 
     box.style.display =
       "block";
 
   }
+
 
 
   function showBuyStatus(
@@ -1951,13 +2454,19 @@
         "buyStatus"
       );
 
-    if (!box) return;
+
+    if (!box) {
+      return;
+    }
+
 
     box.textContent =
       message;
 
+
     box.className =
       "status " + type;
+
 
     box.style.display =
       "block";
@@ -1979,10 +2488,14 @@
         "adsList"
       );
 
-    if (!adsList) return;
+
+    if (!adsList) {
+      return;
+    }
 
 
-    adsList.innerHTML = "";
+    adsList.innerHTML =
+      "";
 
 
     if (
@@ -2053,6 +2566,12 @@
               ad.description || ""
             ) +
             "</p>";
+
+
+          addGallery(
+            div,
+            ad.images
+          );
 
 
           adsList.appendChild(
@@ -2140,10 +2659,14 @@
         "addressList"
       );
 
-    if (!list) return;
+
+    if (!list) {
+      return;
+    }
 
 
-    list.innerHTML = "";
+    list.innerHTML =
+      "";
 
 
     const withAddress =
@@ -2241,4 +2764,4 @@
 </script>
 
 </body>
-</html>
+  </html>
