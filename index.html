@@ -2,6 +2,7 @@
 <html lang="fa" dir="rtl">
 
 <head>
+
 <meta charset="UTF-8">
 
 <meta name="viewport"
@@ -24,12 +25,18 @@ body {
 header {
   background: #222;
   color: white;
-  padding: 18px;
+  padding: 20px 15px;
   text-align: center;
 }
 
 header h1 {
   margin: 0 0 8px;
+  font-size: 30px;
+}
+
+header p {
+  margin: 0;
+  font-size: 15px;
 }
 
 .container {
@@ -52,6 +59,10 @@ header h1 {
   margin-bottom: 15px;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+
+.card h2 {
+  margin-top: 0;
 }
 
 button {
@@ -137,10 +148,6 @@ small {
   background: #2e7d32;
 }
 
-.menu button {
-  width: 100%;
-}
-
 .badge {
   display: inline-block;
   padding: 5px 9px;
@@ -170,10 +177,86 @@ small {
   margin: 7px 0;
 }
 
+
+/* ================= صفحه اصلی ================= */
+
+.home-intro {
+  text-align: center;
+  background: #ffffff;
+  border-top: 5px solid #1565c0;
+  padding: 22px 18px;
+}
+
+.home-intro h2 {
+  margin: 0 0 8px;
+  font-size: 25px;
+}
+
+.home-intro p {
+  color: #555;
+  margin: 0;
+  line-height: 1.8;
+}
+
+.home-card {
+  text-align: right;
+}
+
+.home-card h2 {
+  margin-bottom: 8px;
+}
+
+.home-card p {
+  color: #555;
+  line-height: 1.8;
+}
+
+.home-card button {
+  width: 100%;
+  margin-top: 5px;
+}
+
+
+/* ================= منوی ثبت آگهی ================= */
+
+.register-menu button {
+  width: 100%;
+  margin: 7px 0;
+}
+
+
+/* ================= موبایل ================= */
+
+@media (max-width: 600px) {
+
+  .container {
+    padding: 10px;
+  }
+
+  header {
+    padding: 17px 10px;
+  }
+
+  header h1 {
+    font-size: 26px;
+  }
+
+  .card {
+    padding: 15px;
+  }
+
+  button {
+    width: 100%;
+  }
+
+}
+
 </style>
+
 </head>
 
 <body>
+
 
 <header>
 
@@ -193,12 +276,24 @@ small {
 
 <section id="home" class="section active">
 
-<div class="card">
+
+<div class="card home-intro">
+
+<h2>🚜 نرخینو</h2>
+
+<p>
+سامانه ثبت و جستجوی ماشین‌آلات راه‌سازی و معدنی
+</p>
+
+</div>
+
+
+<div class="card home-card">
 
 <h2>📋 آگهی‌ها</h2>
 
 <p>
-مشاهده همه آگهی‌های اجاره، خرید و فروش
+مشاهده همه آگهی‌های اجاره، خرید و فروش ماشین‌آلات
 </p>
 
 <button
@@ -211,12 +306,12 @@ onclick="showSection('allAds'); showAllAds();">
 </div>
 
 
-<div class="card">
+<div class="card home-card">
 
-<h2>ثبت آگهی</h2>
+<h2>📝 ثبت آگهی</h2>
 
 <p>
-نوع آگهی خود را انتخاب کنید.
+آگهی خود را در یکی از بخش‌های اجاره، فروش یا خرید ثبت کنید.
 </p>
 
 <button
@@ -229,9 +324,13 @@ onclick="showSection('registerMenu')">
 </div>
 
 
-<div class="card">
+<div class="card home-card">
 
 <h2>📍 نشانی‌ها</h2>
+
+<p>
+مشاهده محل فعالیت و نشانی ماشین‌آلات ثبت‌شده
+</p>
 
 <button
 onclick="showSection('addresses'); showAddresses();">
@@ -242,6 +341,7 @@ onclick="showSection('addresses'); showAddresses();">
 
 </div>
 
+
 </section>
 
 
@@ -250,23 +350,38 @@ onclick="showSection('addresses'); showAddresses();">
 
 <section id="registerMenu" class="section">
 
-<div class="card">
+<div class="card register-menu">
 
 <h2>📝 نوع آگهی</h2>
 
+<p>
+نوع آگهی مورد نظر خود را انتخاب کنید.
+</p>
+
+
 <button onclick="showSection('register')">
-آگهی اجاره
+
+🚜 آگهی اجاره
+
 </button>
+
 
 <button onclick="showSection('sellRegister')">
-آگهی فروش
+
+🟢 آگهی فروش
+
 </button>
+
 
 <button onclick="showSection('buyRegister')">
-آگهی خرید
+
+🔵 آگهی خرید
+
 </button>
 
+
 <br>
+
 
 <button
 class="back"
@@ -288,7 +403,7 @@ onclick="showSection('home')">
 
 <div class="card">
 
-<h2>ثبت آگهی اجاره</h2>
+<h2>🚜 ثبت آگهی اجاره</h2>
 
 
 <label>نوع ماشین‌آلات</label>
@@ -393,7 +508,7 @@ onclick="showSection('registerMenu')">
 
 <div class="card">
 
-<h2>ثبت آگهی فروش</h2>
+<h2>🟢 ثبت آگهی فروش</h2>
 
 
 <label>نام ماشین‌آلات</label>
@@ -455,6 +570,7 @@ placeholder="مثلاً 6000">
 <option>خوب</option>
 <option>متوسط</option>
 <option>نیاز به تعمیر</option>
+
 </select>
 
 
@@ -467,6 +583,7 @@ placeholder="مثلاً 6000">
 <option>خوب</option>
 <option>متوسط</option>
 <option>نیاز به تعمیر</option>
+
 </select>
 
 
@@ -479,6 +596,7 @@ placeholder="مثلاً 6000">
 <option>خوب</option>
 <option>متوسط</option>
 <option>نیاز به تعمیر</option>
+
 </select>
 
 
@@ -491,6 +609,7 @@ placeholder="مثلاً 6000">
 <option>خوب</option>
 <option>متوسط</option>
 <option>نیاز به تعمیر</option>
+
 </select>
 
 
@@ -503,6 +622,7 @@ placeholder="مثلاً 6000">
 <option>خوب</option>
 <option>متوسط</option>
 <option>نیاز به تعمیر</option>
+
 </select>
 
 </div>
@@ -591,7 +711,7 @@ onclick="showSection('registerMenu')">
 
 <div class="card">
 
-<h2>ثبت آگهی خرید</h2>
+<h2>🔵 ثبت آگهی خرید</h2>
 
 
 <label>نام ماشین‌آلات مورد نظر</label>
@@ -783,6 +903,7 @@ onclick="showSection('home')">
 <h2>📍 نشانی ماشین‌آلات</h2>
 
 <div id="addressesList"></div>
+
 
 <button
 class="back"
@@ -1724,8 +1845,6 @@ item.price || "توافقی";
 var workHTML = "";
 
 
-/* ساعت کارکرد برای خرید و فروش */
-
 if(item.type === "sell" ||
 item.type === "buy"){
 
@@ -1744,8 +1863,6 @@ workText+
 }
 
 
-/* سال تولید فقط برای فروش */
-
 var yearHTML = "";
 
 if(item.type === "sell"){
@@ -1758,8 +1875,6 @@ escapeHTML(item.year || "ثبت نشده")+
 
 }
 
-
-/* ارزیابی فروشنده فقط برای فروش */
 
 var evaluationHTML = "";
 
@@ -2055,6 +2170,9 @@ return;
 }
 
 
+var hasAddress = false;
+
+
 all.forEach(function(item){
 
 if(!item.address){
@@ -2062,6 +2180,9 @@ if(!item.address){
 return;
 
 }
+
+
+hasAddress = true;
 
 
 var div =
@@ -2099,9 +2220,18 @@ list.appendChild(div);
 
 });
 
+
+if(!hasAddress){
+
+list.innerHTML =
+"<p>هنوز نشانی‌ای برای آگهی‌ها ثبت نشده است.</p>";
+
+}
+
 }
 
 </script>
 
 </body>
+
 </html>
