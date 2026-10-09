@@ -1,25 +1,18 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>تأمینو | بازار ماشین‌آلات سنگین</title>
+<title>تأمینو | بازار ماشین‌آلات و نیروی کار</title>
+
 <meta name="theme-color" content="#1565c0">
-<meta name="description" content="بازار ماشین‌آلات راه‌سازی و معدنی، قطعات، کاریابی و استخدام رانندگان">
+<meta name="description" content="ثبت و جست‌وجوی آگهی ماشین‌آلات، قطعات و فرصت‌های شغلی">
 
 <link rel="manifest" href="/rent-machinery-app/manifest.json">
 
 <style>
-:root {
-  --blue: #1565c0;
-  --dark: #12365a;
-  --bg: #f3f6fa;
-  --white: #fff;
-  --green: #198754;
-  --red: #c62828;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -27,59 +20,62 @@
 body {
   margin: 0;
   font-family: Tahoma, Arial, sans-serif;
-  background: var(--bg);
+  background: #f3f5f8;
   color: #222;
   line-height: 1.8;
 }
 
 header {
-  background: linear-gradient(135deg, #12365a, #1976d2);
+  background: #1565c0;
   color: white;
-  padding: 20px 14px;
+  padding: 18px 12px;
   text-align: center;
 }
 
 header h1 {
   margin: 0;
-  font-size: 28px;
+  font-size: 27px;
 }
 
 header p {
   margin: 5px 0 0;
+  font-size: 13px;
 }
 
 nav {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 7px;
-  padding: 10px;
-  overflow-x: auto;
+  padding: 12px;
   background: white;
-  box-shadow: 0 2px 7px #00000012;
-  position: sticky;
-  top: 0;
-  z-index: 5;
+  box-shadow: 0 2px 5px #00000012;
 }
 
-nav button {
-  flex-shrink: 0;
-  border: 0;
-  border-radius: 8px;
-  padding: 10px 13px;
-  background: #e8f0fe;
-  color: var(--dark);
+button,
+.nav-button {
   font-family: inherit;
   cursor: pointer;
+  border: none;
+  border-radius: 7px;
+  padding: 10px 14px;
+  font-size: 14px;
 }
 
-nav button.active {
-  color: white;
-  background: var(--blue);
+.nav-button {
+  background: #e8eef8;
+  color: #174b91;
 }
 
-main {
-  max-width: 1000px;
-  margin: auto;
-  padding: 15px;
+.nav-button:hover {
+  background: #d5e4fa;
+}
+
+.container {
+  width: 100%;
+  max-width: 850px;
+  margin: 18px auto;
+  padding: 0 12px;
 }
 
 .section {
@@ -90,201 +86,151 @@ main {
   display: block;
 }
 
-.panel {
+.box {
   background: white;
-  border-radius: 13px;
-  padding: 18px;
+  border-radius: 12px;
+  padding: 17px;
   margin-bottom: 16px;
-  box-shadow: 0 3px 12px #00000009;
+  box-shadow: 0 2px 8px #0000000a;
 }
 
 h2 {
   margin-top: 0;
-  color: var(--dark);
-  font-size: 21px;
+  font-size: 20px;
+  color: #174b91;
 }
 
 label {
   display: block;
+  margin-top: 12px;
+  margin-bottom: 4px;
   font-weight: bold;
-  margin: 12px 0 5px;
+  font-size: 14px;
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
+  display: block;
   width: 100%;
-  padding: 12px;
-  border: 1px solid #ccd5df;
-  border-radius: 8px;
+  padding: 11px;
+  border: 1px solid #ccd3dd;
+  border-radius: 7px;
   font-family: inherit;
   font-size: 14px;
   background: white;
 }
 
 textarea {
-  min-height: 100px;
+  min-height: 110px;
   resize: vertical;
 }
 
-button {
-  font-family: inherit;
-}
-
-.btn {
-  display: inline-block;
-  border: 0;
-  border-radius: 8px;
-  padding: 11px 16px;
-  cursor: pointer;
-  background: var(--blue);
+.primary {
+  width: 100%;
+  margin-top: 16px;
+  background: #1565c0;
   color: white;
-  font-size: 14px;
-  margin-top: 12px;
-  text-decoration: none;
+  font-weight: bold;
 }
 
-.btn:disabled {
-  opacity: .6;
-  cursor: wait;
+.success {
+  background: #e3f5e8;
+  color: #17652a;
+  padding: 10px;
+  border-radius: 7px;
+  margin-top: 10px;
 }
 
-.btn.green {
-  background: var(--green);
+.error {
+  background: #ffebee;
+  color: #b71c1c;
+  padding: 10px;
+  border-radius: 7px;
+  margin-top: 10px;
 }
 
-.btn.red {
-  background: var(--red);
-}
-
-.btn.gray {
-  background: #667788;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 13px;
+.muted {
+  color: #666;
+  font-size: 13px;
 }
 
 .ad-card {
   background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 3px 12px #0000000d;
-  min-width: 0;
-}
-
-.ad-card img {
-  width: 100%;
-  height: 190px;
-  object-fit: cover;
-  background: #e5e9ef;
-}
-
-.ad-content {
+  border-radius: 10px;
   padding: 14px;
+  margin: 13px 0;
+  box-shadow: 0 2px 8px #0000000d;
+  overflow-wrap: anywhere;
 }
 
-.ad-content h3 {
+.ad-card h3 {
   margin: 0 0 8px;
-  color: var(--dark);
-  overflow-wrap: anywhere;
+  color: #174b91;
 }
 
-.ad-content p {
+.ad-card p {
   margin: 5px 0;
-  overflow-wrap: anywhere;
 }
 
-.price {
-  color: var(--green);
-  font-size: 18px;
-  font-weight: bold;
+.ad-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
 }
 
-.badge {
-  display: inline-block;
-  border-radius: 20px;
-  background: #e8f0fe;
-  padding: 3px 9px;
-  font-size: 12px;
-}
-
-.status {
-  font-size: 13px;
-  font-weight: bold;
-}
-
-.status.pending {
-  color: #a15c00;
-}
-
-.status.approved {
-  color: var(--green);
-}
-
-.status.rejected {
-  color: var(--red);
-}
-
-.notice {
-  background: #e8f0fe;
-  padding: 12px;
+.ad-images img {
+  width: calc(50% - 4px);
+  max-height: 220px;
+  object-fit: cover;
   border-radius: 8px;
-  margin-bottom: 14px;
 }
 
-.notice p {
-  margin: 6px 0;
+.ad-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
 }
 
-.error {
-  color: var(--red);
+.green {
+  background: #218838;
+  color: white;
 }
 
-.success {
-  color: var(--green);
+.red {
+  background: #c62828;
+  color: white;
+}
+
+.gray {
+  background: #e6e6e6;
+  color: #222;
+}
+
+.orange {
+  background: #ef8b17;
+  color: white;
 }
 
 footer {
   text-align: center;
-  padding: 25px 12px;
-  color: #667788;
-}
-
-.hidden {
-  display: none !important;
-}
-
-.small {
+  padding: 25px 10px;
+  color: #777;
   font-size: 12px;
-  color: #667788;
 }
 
-.photo-preview {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-top: 10px;
+.status {
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+  padding: 8px;
 }
 
-.photo-preview img {
-  width: 85px;
-  height: 75px;
-  object-fit: cover;
-  border-radius: 7px;
-}
-
-@media (max-width: 500px) {
-  main {
-    padding: 10px;
-  }
-
-  .panel {
-    padding: 13px;
-  }
-
-  header h1 {
-    font-size: 24px;
+@media (min-width: 600px) {
+  .ad-images img {
+    width: 180px;
   }
 }
 </style>
@@ -298,277 +244,173 @@ footer {
 </header>
 
 <nav>
-  <button class="active" data-section="home">خانه</button>
-  <button data-section="ads">آگهی‌ها</button>
-  <button data-section="register">ثبت آگهی</button>
-  <button data-section="myAds">آگهی‌های من</button>
-  <button data-section="admin" id="adminNav" class="hidden">مدیریت</button>
+  <button class="nav-button" onclick="showSection('home')">خانه</button>
+  <button class="nav-button" onclick="showSection('ads')">مشاهده آگهی‌ها</button>
+  <button class="nav-button" onclick="showSection('register')">ثبت آگهی</button>
+  <button class="nav-button" onclick="showSection('myAds')">آگهی‌های من</button>
+  <button class="nav-button" id="adminNav" style="display:none"
+    onclick="showSection('admin')">پنل مدیریت</button>
 </nav>
 
-<main>
+<div class="container">
 
-<section id="home" class="section active">
-  <div class="panel">
-    <h2>دسته‌بندی‌های تأمینو</h2>
-
-    <div class="grid">
-      <button class="btn" onclick="openCategory('بیل مکانیکی')">بیل مکانیکی</button>
-      <button class="btn" onclick="openCategory('لودر')">لودر</button>
-      <button class="btn" onclick="openCategory('بولدوزر')">بولدوزر</button>
-      <button class="btn" onclick="openCategory('گریدر')">گریدر</button>
-      <button class="btn" onclick="openCategory('غلطک')">غلطک</button>
-      <button class="btn" onclick="openCategory('کامیون و کمپرسی')">کامیون و کمپرسی</button>
-      <button class="btn" onclick="openCategory('جرثقیل')">جرثقیل</button>
-      <button class="btn" onclick="openCategory('کمرشکن')">کمرشکن</button>
-      <button class="btn" onclick="openCategory('سایر ماشین‌آلات معدنی')">سایر ماشین‌آلات معدنی</button>
-      <button class="btn green" onclick="openCategory('راننده جویای کار')">🚛 راننده جویای کار</button>
-      <button class="btn green" onclick="openCategory('استخدام راننده')">🏗️ استخدام راننده</button>
-      <button class="btn" onclick="openCategory('ارائه قطعات ماشین‌آلات')">قطعات ماشین‌آلات</button>
+  <!-- خانه -->
+  <section id="home" class="section active">
+    <div class="box">
+      <h2>به تأمینو خوش آمدید</h2>
+      <p>
+        در تأمینو می‌توانید آگهی ماشین‌آلات، خدمات، قطعات و فرصت‌های
+        شغلی مرتبط با حوزه راه‌سازی و معدن را ثبت یا جست‌وجو کنید.
+      </p>
+      <button class="primary" onclick="showSection('ads')">
+        مشاهده آگهی‌ها
+      </button>
+      <button class="primary" onclick="showSection('register')">
+        ثبت آگهی جدید
+      </button>
     </div>
+  </section>
 
-    <button class="btn" onclick="showSection('ads')">مشاهده همه آگهی‌ها</button>
-    <button class="btn green" onclick="showSection('register')">ثبت آگهی جدید</button>
-  </div>
+  <!-- مشاهده و جست‌وجوی آگهی‌ها -->
+  <section id="ads" class="section">
+    <div class="box">
+      <h2>جست‌وجوی آگهی‌ها</h2>
 
-  <div class="panel">
-    <h2>کاریابی و استخدام رانندگان</h2>
-    <p><strong>راننده جویای کار:</strong> مشخصات شغلی خود را ثبت کنید تا کارفرمایان بتوانند آگهی شما را ببینند.</p>
-    <p><strong>کارفرما:</strong> اگر به راننده یا اپراتور ماشین‌آلات نیاز دارید، آگهی استخدام ثبت کنید.</p>
-    <button class="btn green" onclick="prepareJobAd('جویای کار')">ثبت آگهی راننده جویای کار</button>
-    <button class="btn" onclick="prepareJobAd('استخدام راننده')">ثبت آگهی استخدام راننده</button>
-  </div>
-</section>
+      <label for="searchText">عنوان یا توضیحات</label>
+      <input id="searchText"
+        placeholder="مثلاً راننده پایه یک یا بیل مکانیکی">
 
-<section id="ads" class="section">
-  <div class="panel">
-    <h2>جست‌وجوی آگهی‌ها</h2>
-
-    <label for="searchText">عنوان یا توضیحات</label>
-    <input id="searchText" placeholder="مثلاً راننده پایه یک یا بیل مکانیکی">
-
-    <label for="filterCategory">دسته‌بندی</label>
-    <select id="filterCategory">
-      <option value="">همه دسته‌بندی‌ها</option>
-    </select>
-
-    <label for="filterCity">استان یا شهر</label>
-    <input id="filterCity" placeholder="مثلاً اهواز">
-
-    <label for="minPrice">حداقل قیمت (تومان)</label>
-    <input id="minPrice" type="number" min="0">
-
-    <label for="maxPrice">حداکثر قیمت (تومان)</label>
-    <input id="maxPrice" type="number" min="0">
-
-    <button class="btn" onclick="renderAds()">جست‌وجو</button>
-    <button class="btn gray" onclick="clearFilters()">پاک کردن فیلترها</button>
-  </div>
-
-  <div id="adsList" class="grid"></div>
-</section>
-
-<section id="register" class="section">
-  <div class="panel">
-    <h2 id="formHeading">ثبت آگهی جدید</h2>
-
-    <div class="notice">
-      <strong>راهنمای ثبت آگهی</strong>
-      <p>🚛 راننده جویای کار: نوع گواهینامه، سابقه کار و مهارت‌های خود را وارد کنید.</p>
-      <p>🏗️ کارفرما: نوع راننده یا اپراتور موردنیاز و شرایط استخدام را مشخص کنید.</p>
-      <p>شماره تماس در آگهی منتشرشده نمایش داده می‌شود. آگهی پس از تأیید مدیر منتشر خواهد شد.</p>
-    </div>
-
-    <form id="adForm">
-      <input type="hidden" id="editAdId">
-
-      <label for="adType">نوع آگهی</label>
-      <select id="adType" required>
-        <option value="اجاره">اجاره ماشین‌آلات</option>
-        <option value="خرید و فروش">خرید و فروش ماشین‌آلات</option>
-        <option value="جویای کار">راننده جویای کار</option>
-        <option value="استخدام راننده">استخدام راننده توسط کارفرما</option>
-        <option value="ارائه قطعات">ارائه قطعات ماشین‌آلات</option>
+      <label for="searchCategory">دسته‌بندی</label>
+      <select id="searchCategory">
+        <option value="">همه دسته‌بندی‌ها</option>
+        <option>اجاره ماشین‌آلات</option>
+        <option>خرید و فروش ماشین‌آلات</option>
+        <option>راننده جویای کار</option>
+        <option>استخدام راننده</option>
+        <option>ارائه قطعات ماشین‌آلات</option>
+        <option>خدمات فنی و تعمیرات</option>
+        <option>سایر خدمات</option>
       </select>
 
-      <label for="category">دسته‌بندی</label>
-      <select id="category" required></select>
+      <label for="searchCity">استان یا شهر</label>
+      <input id="searchCity" placeholder="مثلاً اهواز">
 
-      <label for="title">عنوان آگهی</label>
-      <input id="title" required maxlength="100" placeholder="عنوان آگهی را وارد کنید">
-
-      <div id="jobSeekerFields" class="hidden">
-        <h3>مشخصات راننده جویای کار</h3>
-
-        <label for="licenseType">نوع گواهینامه</label>
-        <select id="licenseType">
-          <option value="">انتخاب کنید</option>
-          <option value="پایه یک">پایه یک</option>
-          <option value="پایه دو">پایه دو</option>
-          <option value="پایه سه">پایه سه</option>
-          <option value="ویژه">گواهینامه ویژه ماشین‌آلات</option>
-          <option value="سایر">سایر</option>
-        </select>
-
-        <label for="jobSkill">نوع رانندگی یا مهارت</label>
-        <select id="jobSkill">
-          <option value="">انتخاب کنید</option>
-          <option value="راننده کامیون و کمپرسی">راننده کامیون و کمپرسی</option>
-          <option value="راننده کمرشکن">راننده کمرشکن</option>
-          <option value="اپراتور بیل مکانیکی">اپراتور بیل مکانیکی</option>
-          <option value="اپراتور لودر">اپراتور لودر</option>
-          <option value="اپراتور بولدوزر">اپراتور بولدوزر</option>
-          <option value="اپراتور گریدر">اپراتور گریدر</option>
-          <option value="اپراتور جرثقیل">اپراتور جرثقیل</option>
-          <option value="سایر ماشین‌آلات">سایر ماشین‌آلات</option>
-        </select>
-
-        <label for="experience">سابقه کار</label>
-        <select id="experience">
-          <option value="">انتخاب کنید</option>
-          <option value="بدون سابقه">بدون سابقه</option>
-          <option value="کمتر از ۲ سال">کمتر از ۲ سال</option>
-          <option value="۲ تا ۵ سال">۲ تا ۵ سال</option>
-          <option value="۵ تا ۱۰ سال">۵ تا ۱۰ سال</option>
-          <option value="بیشتر از ۱۰ سال">بیشتر از ۱۰ سال</option>
-        </select>
-
-        <label for="desiredSalary">حقوق درخواستی ماهانه (تومان)</label>
-        <input id="desiredSalary" type="number" min="0" placeholder="اختیاری">
-
-        <label for="availability">وضعیت شروع به کار</label>
-        <select id="availability">
-          <option value="آماده به کار">آماده به کار</option>
-          <option value="از تاریخ مشخص">از تاریخ مشخص</option>
-          <option value="توافقی">توافقی</option>
-        </select>
-      </div>
-
-      <div id="employerFields" class="hidden">
-        <h3>شرایط استخدام</h3>
-
-        <label for="requiredPosition">سمت موردنیاز</label>
-        <select id="requiredPosition">
-          <option value="">انتخاب کنید</option>
-          <option value="راننده پایه یک">راننده پایه یک</option>
-          <option value="راننده پایه دو">راننده پایه دو</option>
-          <option value="راننده کامیون و کمپرسی">راننده کامیون و کمپرسی</option>
-          <option value="راننده کمرشکن">راننده کمرشکن</option>
-          <option value="اپراتور بیل مکانیکی">اپراتور بیل مکانیکی</option>
-          <option value="اپراتور لودر">اپراتور لودر</option>
-          <option value="اپراتور بولدوزر">اپراتور بولدوزر</option>
-          <option value="اپراتور گریدر">اپراتور گریدر</option>
-          <option value="اپراتور جرثقیل">اپراتور جرثقیل</option>
-          <option value="اپراتور سایر ماشین‌آلات">اپراتور سایر ماشین‌آلات</option>
-        </select>
-
-        <label for="salary">حقوق پیشنهادی ماهانه (تومان)</label>
-        <input id="salary" type="number" min="0" placeholder="اختیاری">
-
-        <label for="workType">نوع همکاری</label>
-        <select id="workType">
-          <option value="تمام‌وقت">تمام‌وقت</option>
-          <option value="پاره‌وقت">پاره‌وقت</option>
-          <option value="پروژه‌ای">پروژه‌ای</option>
-          <option value="توافقی">توافقی</option>
-        </select>
-
-        <label for="requiredExperience">سابقه کار موردنیاز</label>
-        <select id="requiredExperience">
-          <option value="بدون سابقه">بدون سابقه</option>
-          <option value="حداقل ۲ سال">حداقل ۲ سال</option>
-          <option value="حداقل ۵ سال">حداقل ۵ سال</option>
-          <option value="توافقی">توافقی</option>
-        </select>
-      </div>
-
-      <label for="province">استان</label>
-      <input id="province" maxlength="60" placeholder="نام استان">
-
-      <label for="city">شهر</label>
-      <input id="city" required maxlength="60" placeholder="نام شهر">
-
-      <div id="priceFieldGroup">
-        <label for="price">قیمت به تومان</label>
-        <input id="price" type="number" min="0" placeholder="برای قیمت توافقی خالی بگذارید">
-      </div>
-
-      <label for="phone">شماره تماس</label>
-      <input id="phone" type="tel" required maxlength="20"
-             inputmode="tel" placeholder="شماره تماس">
-
-      <label for="description">توضیحات</label>
-      <textarea id="description" required maxlength="3000"
-                placeholder="توضیحات کامل آگهی را وارد کنید"></textarea>
-
-      <div id="partsFields" class="hidden">
-        <h3>مشخصات قطعه</h3>
-
-        <label for="partName">نام قطعه</label>
-        <input id="partName" maxlength="100">
-
-        <label for="partCategory">گروه قطعه</label>
-        <input id="partCategory" maxlength="80" placeholder="مثلاً موتور، هیدرولیک، زیربندی">
-
-        <label for="partMachine">برند یا مدل ماشین</label>
-        <input id="partMachine" maxlength="100">
-
-        <label for="partCondition">وضعیت قطعه</label>
-        <select id="partCondition">
-          <option value="نو">نو</option>
-          <option value="کارکرده">کارکرده</option>
-          <option value="تعمیرشده">تعمیرشده</option>
-        </select>
-
-        <label for="partNumber">شماره فنی قطعه</label>
-        <input id="partNumber" maxlength="100">
-
-        <label for="partQuantity">تعداد</label>
-        <input id="partQuantity" type="number" min="1" value="1">
-      </div>
-
-      <label for="photos">تصاویر آگهی (حداکثر ۵ عکس)</label>
-      <input id="photos" type="file" accept="image/*" multiple>
-      <div id="photoPreview" class="photo-preview"></div>
-      <p class="small">هر تصویر باید کمتر از ۵ مگابایت باشد.</p>
-
-      <button id="submitButton" class="btn green" type="submit">ثبت آگهی</button>
-
-      <button id="cancelEdit" class="btn gray hidden" type="button" onclick="resetForm()">
-        لغو ویرایش
+      <button class="primary" onclick="renderAds()">
+        جست‌وجو
       </button>
-    </form>
 
-    <p id="formMessage" role="status"></p>
-  </div>
-</section>
+      <button class="primary gray" onclick="clearSearch()">
+        پاک کردن فیلترها
+      </button>
+    </div>
 
-<section id="myAds" class="section">
-  <div class="panel">
-    <h2>آگهی‌های من</h2>
-    <p class="small">
-      آگهی‌های ثبت‌شده با همین شناسه مرورگر نمایش داده می‌شوند.
-      با پاک شدن داده‌های مرورگر ممکن است دسترسی به آگهی‌های قبلی از دست برود.
-    </p>
-    <button class="btn" onclick="loadMyAds()">به‌روزرسانی</button>
-  </div>
-  <div id="myAdsList" class="grid"></div>
-</section>
+    <div id="adsList">
+      <p class="muted">در حال دریافت آگهی‌ها...</p>
+    </div>
+  </section>
 
-<section id="admin" class="section">
-  <div class="panel">
-    <h2>پنل مدیریت</h2>
-    <p>فقط شناسه‌های مجازشده در Firebase اجازه مدیریت دارند.</p>
-    <button class="btn" onclick="loadAdminAds()">بارگذاری آگهی‌های در انتظار</button>
-  </div>
-  <div id="adminAdsList" class="grid"></div>
-</section>
+  <!-- یک فرم مشترک برای ثبت تمام آگهی‌ها -->
+  <section id="register" class="section">
+    <div class="box">
+      <h2 id="formHeading">ثبت آگهی جدید</h2>
 
-</main>
+      <p class="muted">
+        برای تمام دسته‌بندی‌ها از همین فرم استفاده کنید.
+        آگهی پس از تأیید مدیر منتشر خواهد شد.
+      </p>
+
+      <form id="adForm">
+
+        <label for="adTitle">عنوان آگهی</label>
+        <input id="adTitle" maxlength="120" required
+          placeholder="مثلاً اجاره بیل مکانیکی یا راننده پایه یک">
+
+        <label for="adCategory">دسته‌بندی</label>
+        <select id="adCategory" required>
+          <option value="">انتخاب دسته‌بندی</option>
+          <option>اجاره ماشین‌آلات</option>
+          <option>خرید و فروش ماشین‌آلات</option>
+          <option>راننده جویای کار</option>
+          <option>استخدام راننده</option>
+          <option>ارائه قطعات ماشین‌آلات</option>
+          <option>خدمات فنی و تعمیرات</option>
+          <option>سایر خدمات</option>
+        </select>
+
+        <label for="adCity">استان یا شهر</label>
+        <input id="adCity" maxlength="100" required
+          placeholder="مثلاً اهواز">
+
+        <label for="adPhone">شماره تماس</label>
+        <input id="adPhone" type="tel" maxlength="20" required
+          inputmode="tel" placeholder="شماره تماس آگهی‌دهنده">
+
+        <label for="adDescription">توضیحات آگهی</label>
+        <textarea id="adDescription" maxlength="5000" required
+          placeholder="مشخصات ماشین‌آلات، سابقه کاری، شرایط همکاری یا سایر اطلاعات را بنویسید."></textarea>
+
+        <label for="adImages">تصاویر آگهی (حداکثر ۵ عکس)</label>
+        <input id="adImages" type="file"
+          accept="image/jpeg,image/png,image/webp"
+          multiple>
+
+        <p class="muted">
+          انتخاب تصویر اختیاری است. حداکثر ۵ عکس انتخاب کنید.
+        </p>
+
+        <button id="submitButton" class="primary" type="submit">
+          ثبت آگهی
+        </button>
+
+        <button id="cancelEditButton" class="primary gray"
+          type="button" style="display:none" onclick="cancelEdit()">
+          لغو ویرایش
+        </button>
+
+        <div id="formMessage" aria-live="polite"></div>
+
+      </form>
+    </div>
+  </section>
+
+  <!-- آگهی‌های شخصی -->
+  <section id="myAds" class="section">
+    <div class="box">
+      <h2>آگهی‌های من</h2>
+      <p class="muted">
+        آگهی‌های ثبت‌شده با همین شناسه کاربری در این قسمت نمایش داده می‌شوند.
+      </p>
+    </div>
+
+    <div id="myAdsList"></div>
+  </section>
+
+  <!-- پنل مدیریت -->
+  <section id="admin" class="section">
+    <div class="box">
+      <h2>پنل مدیریت</h2>
+      <p class="muted">
+        در این قسمت آگهی‌های در انتظار تأیید و آگهی‌های منتشرشده را مدیریت کنید.
+      </p>
+      <button class="primary" onclick="loadAds()">
+        به‌روزرسانی فهرست
+      </button>
+    </div>
+
+    <div id="adminAdsList"></div>
+  </section>
+
+</div>
+
+<div id="connectionStatus" class="status">
+  در حال اتصال به سرویس...
+</div>
 
 <footer>
-  تأمینو | بازار ماشین‌آلات، قطعات و کاریابی رانندگان
+  تأمینو | بازار ماشین‌آلات و فرصت‌های شغلی
 </footer>
 
+<!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
@@ -577,6 +419,7 @@ footer {
 <script>
 "use strict";
 
+/* تنظیمات پروژه قبلی Firebase؛ تغییر ندهید */
 const firebaseConfig = {
   apiKey: "AIzaSyBB12jJCxigpdASZZmjxU2KjfSWeQ8ehAY",
   authDomain: "nerkhino-8ff13.firebaseapp.com",
@@ -593,112 +436,68 @@ const auth = firebase.auth();
 const db = firebase.database();
 const storage = firebase.storage();
 
-const categories = [
-  "بیل مکانیکی",
-  "لودر",
-  "بولدوزر",
-  "گریدر",
-  "غلطک",
-  "کامیون باری",
-  "کامیون و کمپرسی",
-  "جرثقیل",
-  "کمرشکن",
-  "فنیشر",
-  "دامپتراک",
-  "سایر ماشین‌آلات معدنی",
-  "راننده جویای کار",
-  "استخدام راننده",
-  "ارائه قطعات ماشین‌آلات"
-];
-
 let currentUser = null;
-let isAdmin = false;
-let allAds = {};
+let adminLoggedIn = false;
+let allAds = [];
+let editingAdId = null;
+let editingAdPath = "ads";
 let selectedPhotos = [];
-let oldImageUrls = [];
-let authReady = false;
+
+const $ = id => document.getElementById(id);
+
+function showSection(sectionId) {
+  document.querySelectorAll(".section").forEach(section => {
+    section.classList.remove("active");
+  });
+
+  const section = $(sectionId);
+
+  if (section) {
+    section.classList.add("active");
+  }
+
+  if (sectionId === "ads") {
+    renderAds();
+  }
+
+  if (sectionId === "myAds") {
+    renderMyAds();
+  }
+
+  if (sectionId === "admin" && adminLoggedIn) {
+    renderAdminAds();
+  }
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function setMessage(message, type = "success") {
+  const box = $("formMessage");
+  box.className = type;
+  box.textContent = message;
+}
 
 function escapeHTML(value) {
-  return String(value ?? "").replace(/[&<>"']/g, ch => ({
+  return String(value ?? "").replace(/[&<>"']/g, char => ({
     "&": "&amp;",
     "<": "&lt;",
     ">": "&gt;",
     '"': "&quot;",
     "'": "&#39;"
-  })[ch]);
+  })[char]);
 }
 
-function showMessage(message, type = "") {
-  const el = document.getElementById("formMessage");
-  el.className = type;
-  el.textContent = message;
+function formatDate(value) {
+  if (!value) return "ثبت‌شده";
+
+  const date = new Date(value);
+
+  if (Number.isNaN(date.getTime())) return "ثبت‌شده";
+
+  return date.toLocaleDateString("fa-IR");
 }
 
-function formatPrice(value) {
-  if (value === "" || value === null || value === undefined) {
-    return "توافقی";
-  }
-
-  const number = Number(value);
-  if (!Number.isFinite(number)) return "توافقی";
-
-  return number.toLocaleString("fa-IR") + " تومان";
-}
-
-function isJobType(type) {
-  return type === "جویای کار" || type === "استخدام راننده";
-}
-
-function showSection(id) {
-  if (id === "admin" && !isAdmin) {
-    alert("شما اجازه دسترسی به پنل مدیریت را ندارید.");
-    return;
-  }
-
-  document.querySelectorAll(".section").forEach(section => {
-    section.classList.toggle("active", section.id === id);
-  });
-
-  document.querySelectorAll("nav button[data-section]").forEach(button => {
-    button.classList.toggle("active", button.dataset.section === id);
-  });
-
-  if (id === "ads") renderAds();
-  if (id === "myAds") loadMyAds();
-  if (id === "admin" && isAdmin) loadAdminAds();
-
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
-
-document.querySelectorAll("nav button[data-section]").forEach(button => {
-  button.addEventListener("click", () => showSection(button.dataset.section));
-});
-
-function fillCategories() {
-  const categorySelect = document.getElementById("category");
-  const filterSelect = document.getElementById("filterCategory");
-
-  categories.forEach(name => {
-    categorySelect.add(new Option(name, name));
-    filterSelect.add(new Option(name, name));
-  });
-}
-
-fillCategories();
-
-function openCategory(name) {
-  document.getElementById("filterCategory").value = name;
-  showSection("ads");
-  renderAds();
-}
-
-function prepareJobAd(type) {
-  resetForm();
-  document.getElementById("adType").value = type;
-  updateTypeFields();
-  showSection("register");
-}
-
+/* ورود ناشناس برای کاربران */
 auth.onAuthStateChanged(async user => {
   try {
     if (!user) {
@@ -707,712 +506,561 @@ auth.onAuthStateChanged(async user => {
     }
 
     currentUser = user;
-    authReady = true;
 
     const adminSnapshot = await db.ref("admins/" + user.uid).once("value");
-    isAdmin = adminSnapshot.val() === true;
 
-    document.getElementById("adminNav").classList.toggle("hidden", !isAdmin);
+    adminLoggedIn = adminSnapshot.val() === true;
 
-    await loadAdsFromDatabase();
+    $("adminNav").style.display = adminLoggedIn ? "inline-block" : "none";
+
+    $("connectionStatus").textContent =
+      adminLoggedIn
+        ? "اتصال برقرار است | دسترسی مدیر فعال است"
+        : "اتصال برقرار است";
+
+    await loadAds();
+
   } catch (error) {
     console.error(error);
-    alert(
-      "اتصال تأمینو به Firebase کامل نشد. ورود ناشناس، قوانین پایگاه داده و اینترنت را بررسی کنید."
-    );
+
+    $("connectionStatus").textContent =
+      "خطا در اتصال یا دسترسی Firebase. تنظیمات احراز هویت و پایگاه داده را بررسی کنید.";
   }
 });
 
-async function loadAdsFromDatabase() {
+/* دریافت آگهی‌ها */
+async function loadAds() {
+  if (!currentUser) return;
+
   try {
-    const snapshot = await db.ref("ads").once("value");
-    allAds = snapshot.val() || {};
+    const snapshots = await Promise.all([
+      db.ref("ads").once("value"),
+      db.ref("Ads").once("value")
+    ]);
+
+    const collected = [];
+
+    snapshots.forEach((snapshot, index) => {
+      const path = index === 0 ? "ads" : "Ads";
+
+      snapshot.forEach(child => {
+        const data = child.val() || {};
+
+        collected.push({
+          ...data,
+          id: child.key,
+          _path: path,
+          ownerUid: data.ownerUid || data.uid || data.userId || ""
+        });
+      });
+    });
+
+    const unique = new Map();
+
+    collected.forEach(ad => {
+      unique.set(ad._path + "/" + ad.id, ad);
+    });
+
+    allAds = Array.from(unique.values());
+
     renderAds();
-  } catch (error) {
-    console.error(error);
-    document.getElementById("adsList").textContent =
-      "بارگذاری آگهی‌ها ناموفق بود. قوانین Firebase را بررسی کنید.";
-  }
-}
+    renderMyAds();
 
-function createAdCard(id, ad, mode = "public") {
-  const card = document.createElement("article");
-  card.className = "ad-card";
-
-  const approved = ad.status === "approved";
-  const statusText = {
-    pending: "در انتظار تأیید",
-    approved: "منتشر شده",
-    rejected: "رد شده"
-  }[ad.status] || "نامشخص";
-
-  const statusClass = approved ? "approved" :
-    ad.status === "rejected" ? "rejected" : "pending";
-
-  const photos = Array.isArray(ad.images) ? ad.images : [];
-  const firstImage = photos.find(url => typeof url === "string");
-
-  if (firstImage) {
-    const img = document.createElement("img");
-    img.src = firstImage;
-    img.alt = ad.title || "تصویر آگهی";
-    img.loading = "lazy";
-    img.onerror = () => img.remove();
-    card.appendChild(img);
-  }
-
-  const content = document.createElement("div");
-  content.className = "ad-content";
-
-  const title = document.createElement("h3");
-  title.textContent = ad.title || "بدون عنوان";
-  content.appendChild(title);
-
-  const badge = document.createElement("span");
-  badge.className = "badge";
-  badge.textContent = ad.category || "بدون دسته‌بندی";
-  content.appendChild(badge);
-
-  const details = document.createElement("p");
-  details.textContent =
-    (ad.type || "") + " | " +
-    [ad.province, ad.city].filter(Boolean).join("، ");
-  content.appendChild(details);
-
-  if (ad.type === "جویای کار" && ad.jobDetails) {
-    const job = ad.jobDetails;
-    const jobInfo = document.createElement("p");
-    jobInfo.textContent = [
-      job.licenseType && "گواهینامه: " + job.licenseType,
-      job.jobSkill && "مهارت: " + job.jobSkill,
-      job.experience && "سابقه: " + job.experience,
-      job.desiredSalary && "حقوق درخواستی: " + formatPrice(job.desiredSalary),
-      job.availability && "وضعیت: " + job.availability
-    ].filter(Boolean).join(" | ");
-    content.appendChild(jobInfo);
-  }
-
-  if (ad.type === "استخدام راننده" && ad.jobDetails) {
-    const job = ad.jobDetails;
-    const jobInfo = document.createElement("p");
-    jobInfo.textContent = [
-      job.requiredPosition && "سمت: " + job.requiredPosition,
-      job.salary && "حقوق پیشنهادی: " + formatPrice(job.salary),
-      job.workType && "همکاری: " + job.workType,
-      job.requiredExperience && "سابقه موردنیاز: " + job.requiredExperience
-    ].filter(Boolean).join(" | ");
-    content.appendChild(jobInfo);
-  }
-
-  if (!isJobType(ad.type)) {
-    const price = document.createElement("p");
-    price.className = "price";
-    price.textContent = formatPrice(ad.price);
-    content.appendChild(price);
-  }
-
-  const description = document.createElement("p");
-  description.textContent = ad.description || "";
-  content.appendChild(description);
-
-  if (ad.type === "ارائه قطعات" && ad.partDetails) {
-    const part = ad.partDetails;
-    const partInfo = document.createElement("p");
-    partInfo.textContent = [
-      part.name && "قطعه: " + part.name,
-      part.category && "گروه: " + part.category,
-      part.machine && "مدل ماشین: " + part.machine,
-      part.condition && "وضعیت: " + part.condition,
-      part.partNumber && "شماره فنی: " + part.partNumber,
-      part.quantity && "تعداد: " + part.quantity
-    ].filter(Boolean).join(" | ");
-    content.appendChild(partInfo);
-  }
-
-  if (mode !== "public") {
-    const status = document.createElement("p");
-    status.className = "status " + statusClass;
-    status.textContent = statusText;
-    content.appendChild(status);
-  }
-
-  if (mode === "public" && approved && ad.phone) {
-    const phoneLink = document.createElement("a");
-    phoneLink.className = "btn green";
-    phoneLink.href = "tel:" + String(ad.phone).replace(/[^\d+]/g, "");
-    phoneLink.textContent = "تماس با آگهی‌دهنده";
-    content.appendChild(phoneLink);
-  }
-
-  if (mode === "owner") {
-    const editButton = document.createElement("button");
-    editButton.className = "btn";
-    editButton.textContent = "ویرایش";
-    editButton.addEventListener("click", () => editAd(id, ad));
-    content.appendChild(editButton);
-
-    const deleteButton = document.createElement("button");
-    deleteButton.className = "btn red";
-    deleteButton.textContent = "حذف آگهی";
-    deleteButton.addEventListener("click", () => deleteAd(id, ad));
-    content.appendChild(deleteButton);
-  }
-
-  if (mode === "admin") {
-    const approveButton = document.createElement("button");
-    approveButton.className = "btn green";
-    approveButton.textContent = "تأیید و انتشار";
-    approveButton.addEventListener("click", () => approveAd(id));
-    content.appendChild(approveButton);
-
-    const rejectButton = document.createElement("button");
-    rejectButton.className = "btn gray";
-    rejectButton.textContent = "رد آگهی";
-    rejectButton.addEventListener("click", () => rejectAd(id));
-    content.appendChild(rejectButton);
-
-    const deleteButton = document.createElement("button");
-    deleteButton.className = "btn red";
-    deleteButton.textContent = "حذف";
-    deleteButton.addEventListener("click", () => deleteAd(id, ad, true));
-    content.appendChild(deleteButton);
-  }
-
-  card.appendChild(content);
-  return card;
-}
-
-function renderAds() {
-  const list = document.getElementById("adsList");
-  list.replaceChildren();
-
-  const text = document.getElementById("searchText").value.trim().toLowerCase();
-  const category = document.getElementById("filterCategory").value;
-  const city = document.getElementById("filterCity").value.trim().toLowerCase();
-  const min = document.getElementById("minPrice").value;
-  const max = document.getElementById("maxPrice").value;
-
-  const entries = Object.entries(allAds).filter(([id, ad]) => {
-    if (!ad || ad.status !== "approved") return false;
-
-    const searchable = [
-      ad.title, ad.description, ad.category, ad.city,
-      ad.province, ad.type
-    ].join(" ").toLowerCase();
-
-    if (text && !searchable.includes(text)) return false;
-    if (category && ad.category !== category) return false;
-
-    const location = [ad.city, ad.province].join(" ").toLowerCase();
-    if (city && !location.includes(city)) return false;
-
-    // آگهی‌های کاریابی و استخدام، قیمت کالا ندارند.
-    if (!isJobType(ad.type)) {
-      const price = Number(ad.price);
-
-      if (min !== "" && (!Number.isFinite(price) || price < Number(min))) {
-        return false;
-      }
-
-      if (max !== "" && (!Number.isFinite(price) || price > Number(max))) {
-        return false;
-      }
-    } else if (min !== "" || max !== "") {
-      return false;
+    if (adminLoggedIn) {
+      renderAdminAds();
     }
 
-    return true;
-  });
+  } catch (error) {
+    console.error(error);
 
-  entries.sort((a, b) =>
-    Number(b[1].createdAt || 0) - Number(a[1].createdAt || 0)
-  );
-
-  if (!entries.length) {
-    list.textContent = "آگهی تأییدشده‌ای مطابق جست‌وجوی شما پیدا نشد.";
-    return;
+    $("adsList").textContent =
+      "دریافت آگهی‌ها ناموفق بود. دسترسی پایگاه داده را بررسی کنید.";
   }
-
-  entries.forEach(([id, ad]) => list.appendChild(createAdCard(id, ad)));
 }
 
-function clearFilters() {
-  ["searchText", "filterCity", "minPrice", "maxPrice"].forEach(id => {
-    document.getElementById(id).value = "";
-  });
-
-  document.getElementById("filterCategory").value = "";
+/* جست‌وجو */
+function clearSearch() {
+  $("searchText").value = "";
+  $("searchCategory").value = "";
+  $("searchCity").value = "";
   renderAds();
 }
 
-async function loadMyAds() {
-  const list = document.getElementById("myAdsList");
+function renderAds() {
+  const list = $("adsList");
+
+  const query = $("searchText").value.trim().toLowerCase();
+  const category = $("searchCategory").value;
+  const city = $("searchCity").value.trim().toLowerCase();
+
+  const results = allAds.filter(ad => {
+    if (ad.status !== "approved") return false;
+
+    const title = String(ad.title || "").toLowerCase();
+    const description = String(ad.description || "").toLowerCase();
+    const adCategory = String(ad.category || "");
+    const adCity = String(ad.city || ad.location || "").toLowerCase();
+
+    const matchesText =
+      !query || title.includes(query) || description.includes(query);
+
+    const matchesCategory =
+      !category || adCategory === category;
+
+    const matchesCity =
+      !city || adCity.includes(city);
+
+    return matchesText && matchesCategory && matchesCity;
+  });
+
   list.replaceChildren();
 
-  if (!authReady || !currentUser) {
-    list.textContent = "در حال اتصال به سامانه...";
+  if (results.length === 0) {
+    const empty = document.createElement("div");
+    empty.className = "box";
+    empty.textContent = "آگهی تأییدشده‌ای مطابق جست‌وجوی شما پیدا نشد.";
+    list.appendChild(empty);
     return;
   }
 
-  try {
-    const snapshot = await db.ref("ads")
-      .orderByChild("ownerUid")
-      .equalTo(currentUser.uid)
-      .once("value");
+  results.forEach(ad => {
+    list.appendChild(createAdCard(ad, "public"));
+  });
+}
 
-    const ownAds = snapshot.val() || {};
-    const entries = Object.entries(ownAds);
+/* ساخت کارت آگهی */
+function createAdCard(ad, mode) {
+  const card = document.createElement("article");
+  card.className = "ad-card";
 
-    if (!entries.length) {
-      list.textContent = "هنوز آگهی‌ای با این مرورگر ثبت نکرده‌اید.";
-      return;
+  const title = document.createElement("h3");
+  title.textContent = ad.title || "بدون عنوان";
+  card.appendChild(title);
+
+  addTextLine(card, "دسته‌بندی", ad.category || "ثبت نشده");
+  addTextLine(card, "استان یا شهر", ad.city || ad.location || "ثبت نشده");
+  addTextLine(card, "توضیحات", ad.description || "توضیحی ثبت نشده");
+  addTextLine(card, "تاریخ ثبت", formatDate(ad.createdAt));
+
+  if (mode !== "public") {
+    addTextLine(card, "وضعیت", statusLabel(ad.status));
+  }
+
+  if (mode === "public" && ad.phone) {
+    const phoneLine = document.createElement("p");
+    phoneLine.append("شماره تماس: ");
+
+    const phoneLink = document.createElement("a");
+    phoneLink.href = "tel:" + String(ad.phone).replace(/[^\d+]/g, "");
+    phoneLink.textContent = ad.phone;
+
+    phoneLine.appendChild(phoneLink);
+    card.appendChild(phoneLine);
+  }
+
+  if (Array.isArray(ad.images) && ad.images.length) {
+    const imagesBox = document.createElement("div");
+    imagesBox.className = "ad-images";
+
+    ad.images.slice(0, 5).forEach(url => {
+      if (typeof url !== "string" || !url.startsWith("https://")) return;
+
+      const img = document.createElement("img");
+      img.src = url;
+      img.alt = ad.title || "تصویر آگهی";
+      img.loading = "lazy";
+      imagesBox.appendChild(img);
+    });
+
+    card.appendChild(imagesBox);
+  }
+
+  const actions = document.createElement("div");
+  actions.className = "ad-actions";
+
+  if (mode === "mine" && ad.ownerUid === currentUser?.uid) {
+    const editButton = document.createElement("button");
+    editButton.className = "orange";
+    editButton.textContent = "ویرایش";
+    editButton.onclick = () => editAd(ad);
+    actions.appendChild(editButton);
+
+    const deleteButton = document.createElement("button");
+    deleteButton.className = "red";
+    deleteButton.textContent = "حذف آگهی";
+    deleteButton.onclick = () => deleteAd(ad);
+    actions.appendChild(deleteButton);
+  }
+
+  if (mode === "admin" && adminLoggedIn) {
+    if (ad.status !== "approved") {
+      const approveButton = document.createElement("button");
+      approveButton.className = "green";
+      approveButton.textContent = "تأیید و انتشار";
+      approveButton.onclick = () => approveAd(ad);
+      actions.appendChild(approveButton);
     }
 
-    entries.sort((a, b) =>
-      Number(b[1].createdAt || 0) - Number(a[1].createdAt || 0)
-    );
+    if (ad.status !== "rejected") {
+      const rejectButton = document.createElement("button");
+      rejectButton.className = "orange";
+      rejectButton.textContent = "رد آگهی";
+      rejectButton.onclick = () => rejectAd(ad);
+      actions.appendChild(rejectButton);
+    }
 
-    entries.forEach(([id, ad]) => {
-      list.appendChild(createAdCard(id, ad, "owner"));
-    });
-  } catch (error) {
-    console.error(error);
-    list.textContent = "خطا در دریافت آگهی‌های شما. قوانین Firebase را بررسی کنید.";
+    const deleteButton = document.createElement("button");
+    deleteButton.className = "red";
+    deleteButton.textContent = "حذف";
+    deleteButton.onclick = () => adminDeleteAd(ad);
+    actions.appendChild(deleteButton);
   }
+
+  if (actions.children.length) {
+    card.appendChild(actions);
+  }
+
+  return card;
 }
 
-/* کنترل فیلدهای مخصوص هر نوع آگهی */
-function updateTypeFields() {
-  const type = document.getElementById("adType").value;
-  const isParts = type === "ارائه قطعات";
-  const isSeeker = type === "جویای کار";
-  const isEmployer = type === "استخدام راننده";
-  const isJob = isSeeker || isEmployer;
+function addTextLine(parent, label, value) {
+  const p = document.createElement("p");
+  const strong = document.createElement("strong");
+  strong.textContent = label + ": ";
 
-  document.getElementById("partsFields").classList.toggle("hidden", !isParts);
-  document.getElementById("jobSeekerFields").classList.toggle("hidden", !isSeeker);
-  document.getElementById("employerFields").classList.toggle("hidden", !isEmployer);
-
-  document.getElementById("priceFieldGroup").classList.toggle("hidden", isJob);
-
-  const category = document.getElementById("category");
-
-  if (isSeeker) {
-    category.value = "راننده جویای کار";
-  } else if (isEmployer) {
-    category.value = "استخدام راننده";
-  } else if (isParts) {
-    category.value = "ارائه قطعات ماشین‌آلات";
-  }
-
-  document.getElementById("formHeading").textContent =
-    isSeeker ? "ثبت آگهی راننده جویای کار" :
-    isEmployer ? "ثبت آگهی استخدام راننده" :
-    isParts ? "ثبت آگهی قطعات ماشین‌آلات" :
-    "ثبت آگهی جدید";
+  p.appendChild(strong);
+  p.appendChild(document.createTextNode(String(value ?? "")));
+  parent.appendChild(p);
 }
 
-document.getElementById("adType").addEventListener("change", updateTypeFields);
+function statusLabel(status) {
+  if (status === "approved") return "تأییدشده و منتشرشده";
+  if (status === "rejected") return "ردشده";
+  return "در انتظار تأیید مدیر";
+}
 
-document.getElementById("photos").addEventListener("change", event => {
-  const files = Array.from(event.target.files || []);
+/* آگهی‌های کاربر */
+function renderMyAds() {
+  const list = $("myAdsList");
+  list.replaceChildren();
 
-  if (files.length > 5) {
-    alert("حداکثر ۵ تصویر می‌توانید انتخاب کنید.");
-    event.target.value = "";
-    selectedPhotos = [];
-    document.getElementById("photoPreview").replaceChildren();
+  if (!currentUser) return;
+
+  const mine = allAds.filter(ad => ad.ownerUid === currentUser.uid);
+
+  if (mine.length === 0) {
+    list.textContent = "هنوز آگهی‌ای با این شناسه کاربری ثبت نکرده‌اید.";
     return;
   }
 
-  if (files.some(file => !file.type.startsWith("image/"))) {
-    alert("فقط فایل تصویر انتخاب کنید.");
-    event.target.value = "";
-    selectedPhotos = [];
+  mine.forEach(ad => list.appendChild(createAdCard(ad, "mine")));
+}
+
+/* پنل مدیریت */
+function renderAdminAds() {
+  const list = $("adminAdsList");
+  list.replaceChildren();
+
+  if (!adminLoggedIn) {
+    list.textContent = "دسترسی مدیر فعال نیست.";
     return;
   }
 
-  if (files.some(file => file.size > 5 * 1024 * 1024)) {
-    alert("حجم هر تصویر باید کمتر از ۵ مگابایت باشد.");
-    event.target.value = "";
-    selectedPhotos = [];
+  if (allAds.length === 0) {
+    list.textContent = "آگهی‌ای برای مدیریت وجود ندارد.";
     return;
   }
 
-  selectedPhotos = files;
-
-  const preview = document.getElementById("photoPreview");
-  preview.replaceChildren();
-
-  files.forEach(file => {
-    const img = document.createElement("img");
-    img.alt = "پیش‌نمایش تصویر";
-    img.src = URL.createObjectURL(file);
-    preview.appendChild(img);
+  allAds.forEach(ad => {
+    list.appendChild(createAdCard(ad, "admin"));
   });
+}
+
+/* انتخاب عکس‌ها */
+$("adImages").addEventListener("change", event => {
+  selectedPhotos = Array.from(event.target.files || []);
+
+  if (selectedPhotos.length > 5) {
+    selectedPhotos = [];
+    event.target.value = "";
+    alert("حداکثر می‌توانید ۵ عکس انتخاب کنید.");
+    return;
+  }
+
+  const validTypes = ["image/jpeg", "image/png", "image/webp"];
+
+  if (selectedPhotos.some(file => !validTypes.includes(file.type))) {
+    selectedPhotos = [];
+    event.target.value = "";
+    alert("فقط عکس‌های JPG، PNG یا WEBP مجاز هستند.");
+    return;
+  }
+
+  const maxSize = 5 * 1024 * 1024;
+
+  if (selectedPhotos.some(file => file.size > maxSize)) {
+    selectedPhotos = [];
+    event.target.value = "";
+    alert("حجم هر عکس باید حداکثر ۵ مگابایت باشد.");
+  }
 });
 
-async function uploadPhotos(adId) {
-  const urls = [...oldImageUrls];
-
-  for (let i = 0; i < selectedPhotos.length; i++) {
-    const file = selectedPhotos[i];
-
-    if (file.size > 5 * 1024 * 1024) {
-      throw new Error("حجم هر عکس باید کمتر از ۵ مگابایت باشد.");
-    }
-
-    const safeName = file.name.replace(/[^\w.-]/g, "_");
-    const path = `ad-images/${currentUser.uid}/${adId}/${Date.now()}-${i}-${safeName}`;
-    const ref = storage.ref(path);
-
-    const result = await ref.put(file, {
-      contentType: file.type
-    });
-
-    urls.push(await result.ref.getDownloadURL());
-  }
-
-  return urls.slice(0, 5);
-}
-
 /* ثبت یا ویرایش آگهی */
-document.getElementById("adForm").addEventListener("submit", async event => {
+$("adForm").addEventListener("submit", async event => {
   event.preventDefault();
 
-  if (!authReady || !currentUser) {
-    showMessage("اتصال به سامانه برقرار نشده؛ چند لحظه دیگر تلاش کنید.", "error");
+  if (!currentUser) {
+    setMessage("اتصال کاربر برقرار نیست. صفحه را دوباره باز کنید.", "error");
     return;
   }
 
-  const submitButton = document.getElementById("submitButton");
-  submitButton.disabled = true;
-  showMessage("در حال ثبت آگهی و بارگذاری تصاویر...");
+  const title = $("adTitle").value.trim();
+  const category = $("adCategory").value;
+  const city = $("adCity").value.trim();
+  const phone = $("adPhone").value.trim();
+  const description = $("adDescription").value.trim();
+
+  if (!title || !category || !city || !phone || !description) {
+    setMessage("لطفاً تمام فیلدهای ضروری را تکمیل کنید.", "error");
+    return;
+  }
+
+  if (selectedPhotos.length > 5) {
+    setMessage("حداکثر ۵ عکس مجاز است.", "error");
+    return;
+  }
+
+  const button = $("submitButton");
+  button.disabled = true;
+  button.textContent = "در حال ثبت آگهی...";
 
   try {
-    const editId = document.getElementById("editAdId").value;
-    const id = editId || db.ref("ads").push().key;
-    const existing = editId ? allAds[editId] : null;
+    let adId = editingAdId;
+    let path = editingAdPath;
+    let existingImages = [];
 
-    if (editId && !existing) {
-      throw new Error("آگهی موردنظر پیدا نشد. فهرست آگهی‌ها را به‌روزرسانی کنید.");
-    }
+    if (editingAdId) {
+      const existing = allAds.find(ad =>
+        ad.id === editingAdId && ad._path === editingAdPath
+      );
 
-    if (existing && existing.ownerUid !== currentUser.uid) {
-      throw new Error("اجازه ویرایش این آگهی را ندارید.");
-    }
-
-    const type = document.getElementById("adType").value;
-    let category = document.getElementById("category").value;
-    const phone = document.getElementById("phone").value.trim();
-
-    if (!/^[0-9۰-۹٠-٩+()\-\s]{7,20}$/.test(phone)) {
-      throw new Error("شماره تماس را بررسی کنید.");
-    }
-
-    const titleValue = document.getElementById("title").value.trim();
-    const cityValue = document.getElementById("city").value.trim();
-    const descriptionValue = document.getElementById("description").value.trim();
-
-    if (!titleValue || !cityValue || !descriptionValue) {
-      throw new Error("عنوان، شهر و توضیحات را کامل کنید.");
-    }
-
-    if (type === "جویای کار") {
-      category = "راننده جویای کار";
-
-      const jobSkill = document.getElementById("jobSkill").value;
-      const licenseType = document.getElementById("licenseType").value;
-      const experience = document.getElementById("experience").value;
-
-      if (!jobSkill || !licenseType || !experience) {
-        throw new Error("نوع گواهینامه، مهارت و سابقه کار را انتخاب کنید.");
+      if (!existing || existing.ownerUid !== currentUser.uid) {
+        throw new Error("اجازه ویرایش این آگهی را ندارید.");
       }
+
+      existingImages = Array.isArray(existing.images) ? existing.images : [];
+    } else {
+      adId = db.ref("ads").push().key;
+      path = "ads";
     }
 
-    if (type === "استخدام راننده") {
-      category = "استخدام راننده";
+    const uploadedImages = [];
 
-      if (!document.getElementById("requiredPosition").value) {
-        throw new Error("سمت موردنیاز را انتخاب کنید.");
-      }
+    for (let i = 0; i < selectedPhotos.length; i++) {
+      const file = selectedPhotos[i];
+
+      const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
+      const imageRef = storage.ref(
+        "ad-images/" + currentUser.uid + "/" + adId +
+        "/" + Date.now() + "_" + i + "_" + safeName
+      );
+
+      const uploaded = await imageRef.put(file);
+      const url = await uploaded.ref.getDownloadURL();
+
+      uploadedImages.push(url);
     }
 
-    let price = null;
+    const finalImages = existingImages.concat(uploadedImages).slice(0, 5);
 
-    if (!isJobType(type)) {
-      const priceInput = document.getElementById("price").value;
-      price = priceInput === "" ? null : Number(priceInput);
-
-      if (price !== null && (!Number.isFinite(price) || price < 0)) {
-        throw new Error("قیمت معتبر نیست.");
-      }
-    }
-
-    const partDetails = type === "ارائه قطعات" ? {
-      name: document.getElementById("partName").value.trim(),
-      category: document.getElementById("partCategory").value.trim(),
-      machine: document.getElementById("partMachine").value.trim(),
-      condition: document.getElementById("partCondition").value,
-      partNumber: document.getElementById("partNumber").value.trim(),
-      quantity: Math.max(
-        1,
-        Number(document.getElementById("partQuantity").value || 1)
-      )
-    } : null;
-
-    if (type === "ارائه قطعات" && !partDetails.name) {
-      throw new Error("نام قطعه را وارد کنید.");
-    }
-
-    let jobDetails = null;
-
-    if (type === "جویای کار") {
-      const desiredSalaryInput = document.getElementById("desiredSalary").value;
-
-      jobDetails = {
-        licenseType: document.getElementById("licenseType").value,
-        jobSkill: document.getElementById("jobSkill").value,
-        experience: document.getElementById("experience").value,
-        desiredSalary: desiredSalaryInput === "" ? null : Number(desiredSalaryInput),
-        availability: document.getElementById("availability").value
-      };
-
-      if (
-        jobDetails.desiredSalary !== null &&
-        (!Number.isFinite(jobDetails.desiredSalary) || jobDetails.desiredSalary < 0)
-      ) {
-        throw new Error("حقوق درخواستی معتبر نیست.");
-      }
-    }
-
-    if (type === "استخدام راننده") {
-      const salaryInput = document.getElementById("salary").value;
-
-      jobDetails = {
-        requiredPosition: document.getElementById("requiredPosition").value,
-        salary: salaryInput === "" ? null : Number(salaryInput),
-        workType: document.getElementById("workType").value,
-        requiredExperience: document.getElementById("requiredExperience").value
-      };
-
-      if (
-        jobDetails.salary !== null &&
-        (!Number.isFinite(jobDetails.salary) || jobDetails.salary < 0)
-      ) {
-        throw new Error("حقوق پیشنهادی معتبر نیست.");
-      }
-    }
-
-    const images = await uploadPhotos(id);
-
-    const ad = {
-      type,
+    const adData = {
+      title,
       category,
-      title: titleValue,
-      province: document.getElementById("province").value.trim(),
-      city: cityValue,
-      price,
+      city,
       phone,
-      description: descriptionValue,
-      images,
-      partDetails,
-      jobDetails,
+      description,
+      images: finalImages,
       ownerUid: currentUser.uid,
-      status: "pending",
-      createdAt: existing?.createdAt || Date.now(),
       updatedAt: Date.now()
     };
 
-    await db.ref("ads/" + id).set(ad);
+    if (!editingAdId) {
+      adData.createdAt = Date.now();
+      adData.status = "pending";
+    }
 
-    allAds[id] = ad;
+    await db.ref(path + "/" + adId).update(adData);
+
+    setMessage(
+      editingAdId
+        ? "تغییرات آگهی ذخیره شد."
+        : "آگهی ثبت شد و پس از تأیید مدیر منتشر می‌شود.",
+      "success"
+    );
 
     resetForm();
-    showMessage("آگهی ثبت شد و پس از تأیید مدیر منتشر می‌شود.", "success");
+    await loadAds();
 
-    await loadAdsFromDatabase();
-    showSection("myAds");
+    setTimeout(() => showSection("myAds"), 900);
+
   } catch (error) {
     console.error(error);
-    showMessage(
-      error.message || "ثبت آگهی انجام نشد. تنظیمات Firebase را بررسی کنید.",
+
+    setMessage(
+      "ثبت آگهی ناموفق بود: " + (error.message || "خطای نامشخص") +
+      " | دسترسی Firebase و فضای ذخیره تصاویر را بررسی کنید.",
       "error"
     );
+
   } finally {
-    submitButton.disabled = false;
+    button.disabled = false;
+    button.textContent = editingAdId ? "ذخیره تغییرات" : "ثبت آگهی";
   }
 });
 
 /* ویرایش آگهی */
-function editAd(id, ad) {
+function editAd(ad) {
   if (!currentUser || ad.ownerUid !== currentUser.uid) {
-    alert("اجازه ویرایش این آگهی را ندارید.");
+    alert("فقط صاحب آگهی می‌تواند آن را ویرایش کند.");
     return;
   }
 
-  document.getElementById("editAdId").value = id;
-  document.getElementById("submitButton").textContent = "ذخیره تغییرات";
-  document.getElementById("cancelEdit").classList.remove("hidden");
+  editingAdId = ad.id;
+  editingAdPath = ad._path;
 
-  document.getElementById("adType").value = ad.type || "اجاره";
-  updateTypeFields();
+  $("adTitle").value = ad.title || "";
+  $("adCategory").value = ad.category || "";
+  $("adCity").value = ad.city || ad.location || "";
+  $("adPhone").value = ad.phone || "";
+  $("adDescription").value = ad.description || "";
+  $("adImages").value = "";
 
-  document.getElementById("category").value = ad.category || categories[0];
-  document.getElementById("title").value = ad.title || "";
-  document.getElementById("province").value = ad.province || "";
-  document.getElementById("city").value = ad.city || "";
-  document.getElementById("price").value = ad.price ?? "";
-  document.getElementById("phone").value = ad.phone || "";
-  document.getElementById("description").value = ad.description || "";
-
-  const part = ad.partDetails || {};
-
-  document.getElementById("partName").value = part.name || "";
-  document.getElementById("partCategory").value = part.category || "";
-  document.getElementById("partMachine").value = part.machine || "";
-  document.getElementById("partCondition").value = part.condition || "نو";
-  document.getElementById("partNumber").value = part.partNumber || "";
-  document.getElementById("partQuantity").value = part.quantity || 1;
-
-  const job = ad.jobDetails || {};
-
-  document.getElementById("licenseType").value = job.licenseType || "";
-  document.getElementById("jobSkill").value = job.jobSkill || "";
-  document.getElementById("experience").value = job.experience || "";
-  document.getElementById("desiredSalary").value = job.desiredSalary ?? "";
-  document.getElementById("availability").value = job.availability || "آماده به کار";
-
-  document.getElementById("requiredPosition").value = job.requiredPosition || "";
-  document.getElementById("salary").value = job.salary ?? "";
-  document.getElementById("workType").value = job.workType || "تمام‌وقت";
-  document.getElementById("requiredExperience").value = job.requiredExperience || "بدون سابقه";
-
-  oldImageUrls = Array.isArray(ad.images) ? [...ad.images] : [];
   selectedPhotos = [];
-  document.getElementById("photos").value = "";
 
-  const preview = document.getElementById("photoPreview");
-  preview.replaceChildren();
+  $("formHeading").textContent = "ویرایش آگهی";
+  $("submitButton").textContent = "ذخیره تغییرات";
+  $("cancelEditButton").style.display = "block";
 
-  oldImageUrls.forEach(url => {
-    const img = document.createElement("img");
-    img.src = url;
-    img.alt = "تصویر فعلی آگهی";
-    preview.appendChild(img);
-  });
+  setMessage(
+    "در صورت انتخاب عکس جدید، عکس‌های قبلی حفظ می‌شوند. حداکثر ۵ عکس نگه داشته می‌شود.",
+    "success"
+  );
 
   showSection("register");
 }
 
-function resetForm() {
-  document.getElementById("adForm").reset();
-  document.getElementById("editAdId").value = "";
-  document.getElementById("submitButton").textContent = "ثبت آگهی";
-  document.getElementById("cancelEdit").classList.add("hidden");
-  document.getElementById("photoPreview").replaceChildren();
-
-  selectedPhotos = [];
-  oldImageUrls = [];
-
-  updateTypeFields();
-  showMessage("");
+function cancelEdit() {
+  resetForm();
+  showSection("myAds");
 }
 
-/* حذف آگهی */
-async function deleteAd(id, ad, fromAdmin = false) {
-  if (!confirm("آیا از حذف این آگهی مطمئن هستید؟")) return;
+function resetForm() {
+  $("adForm").reset();
 
-  if (fromAdmin && !isAdmin) {
-    alert("دسترسی مدیر لازم است.");
-    return;
-  }
+  editingAdId = null;
+  editingAdPath = "ads";
+  selectedPhotos = [];
 
-  if (!fromAdmin && (!currentUser || ad.ownerUid !== currentUser.uid)) {
+  $("formHeading").textContent = "ثبت آگهی جدید";
+  $("submitButton").textContent = "ثبت آگهی";
+  $("cancelEditButton").style.display = "none";
+}
+
+/* حذف آگهی توسط صاحب آن */
+async function deleteAd(ad) {
+  if (!currentUser || ad.ownerUid !== currentUser.uid) {
     alert("اجازه حذف این آگهی را ندارید.");
     return;
   }
 
+  if (!confirm("آیا از حذف این آگهی مطمئن هستید؟")) return;
+
   try {
-    await db.ref("ads/" + id).remove();
-    delete allAds[id];
+    await db.ref(ad._path + "/" + ad.id).remove();
+
+    await loadAds();
 
     alert("آگهی حذف شد.");
-    await loadAdsFromDatabase();
 
-    if (isAdmin && fromAdmin) {
-      await loadAdminAds();
-    } else {
-      await loadMyAds();
-    }
   } catch (error) {
     console.error(error);
-    alert("حذف آگهی ناموفق بود. قوانین Firebase را بررسی کنید.");
+    alert("حذف آگهی ناموفق بود. دسترسی پایگاه داده را بررسی کنید.");
   }
 }
 
-/* پنل مدیریت */
-async function loadAdminAds() {
-  if (!isAdmin || !currentUser) {
-    alert("دسترسی مدیر لازم است.");
+/* تأیید آگهی توسط مدیر */
+async function approveAd(ad) {
+  if (!adminLoggedIn) {
+    alert("ابتدا دسترسی مدیر را فعال کنید.");
     return;
   }
 
-  const list = document.getElementById("adminAdsList");
-  list.replaceChildren();
+  if (!confirm("آیا این آگهی تأیید و منتشر شود؟")) return;
 
   try {
-    const snapshot = await db.ref("ads").once("value");
-    const ads = snapshot.val() || {};
-
-    const entries = Object.entries(ads).filter(
-      ([id, ad]) => ad && ad.status === "pending"
-    );
-
-    if (!entries.length) {
-      list.textContent = "آگهی در انتظار تأیید وجود ندارد.";
-      return;
-    }
-
-    entries.forEach(([id, ad]) => {
-      list.appendChild(createAdCard(id, ad, "admin"));
+    await db.ref(ad._path + "/" + ad.id).update({
+      status: "approved",
+      approvedAt: Date.now()
     });
+
+    await loadAds();
+    alert("آگهی تأیید و منتشر شد.");
+
   } catch (error) {
     console.error(error);
-    list.textContent = "دریافت آگهی‌ها ناموفق بود.";
+    alert("تأیید آگهی ناموفق بود.");
   }
 }
 
-async function approveAd(id) {
-  if (!isAdmin) return alert("دسترسی مدیر لازم است.");
-  if (!confirm("آیا آگهی را تأیید و منتشر می‌کنید؟")) return;
+/* رد آگهی توسط مدیر */
+async function rejectAd(ad) {
+  if (!adminLoggedIn) {
+    alert("دسترسی مدیر فعال نیست.");
+    return;
+  }
+
+  if (!confirm("آیا این آگهی رد شود؟")) return;
 
   try {
-    await db.ref("ads/" + id + "/status").set("approved");
-    await loadAdsFromDatabase();
-    await loadAdminAds();
+    await db.ref(ad._path + "/" + ad.id).update({
+      status: "rejected",
+      rejectedAt: Date.now()
+    });
+
+    await loadAds();
+    alert("آگهی رد شد.");
+
   } catch (error) {
     console.error(error);
-    alert("تأیید ناموفق بود. قوانین Firebase را بررسی کنید.");
+    alert("رد آگهی ناموفق بود.");
   }
 }
 
-async function rejectAd(id) {
-  if (!isAdmin) return alert("دسترسی مدیر لازم است.");
-  if (!confirm("آیا آگهی را رد می‌کنید؟")) return;
+/* حذف آگهی توسط مدیر */
+async function adminDeleteAd(ad) {
+  if (!adminLoggedIn) {
+    alert("دسترسی مدیر فعال نیست.");
+    return;
+  }
+
+  if (!confirm("این آگهی برای همیشه از پایگاه داده حذف شود؟")) return;
 
   try {
-    await db.ref("ads/" + id + "/status").set("rejected");
-    await loadAdsFromDatabase();
-    await loadAdminAds();
+    await db.ref(ad._path + "/" + ad.id).remove();
+
+    await loadAds();
+    alert("آگهی حذف شد.");
+
   } catch (error) {
     console.error(error);
-    alert("رد آگهی ناموفق بود. قوانین Firebase را بررسی کنید.");
+    alert("حذف آگهی ناموفق بود.");
   }
 }
 
-/* نمایش صحیح فرم در شروع */
-updateTypeFields();
+/* به‌روزرسانی نتایج جست‌وجو با تغییر فیلترها */
+["searchText", "searchCategory", "searchCity"].forEach(id => {
+  $(id).addEventListener("input", renderAds);
+});
 </script>
 
 </body>
