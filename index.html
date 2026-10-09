@@ -1,7 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#1565c0">
 <title>نرخینو | بازار ماشین‌آلات</title>
@@ -17,11 +17,7 @@
   --green: #16834a;
   --red: #bd2935;
 }
-
-* {
-  box-sizing: border-box;
-}
-
+* { box-sizing: border-box; }
 body {
   margin: 0;
   font-family: Tahoma, Arial, sans-serif;
@@ -29,46 +25,25 @@ body {
   color: #172334;
   line-height: 1.8;
 }
-
 header {
   background: linear-gradient(135deg, #0d47a1, #1976d2);
   color: white;
   padding: 18px 14px 22px;
 }
-
-header .wrap,
-main,
-.nav {
+header .wrap, main, .nav {
   max-width: 1050px;
   margin: auto;
 }
-
-.brand {
-  font-size: 25px;
-  font-weight: bold;
-}
-
-.subtitle {
-  opacity: .9;
-  font-size: 13px;
-}
-
+.brand { font-size: 25px; font-weight: bold; }
+.subtitle { opacity: .9; font-size: 13px; }
 .nav {
   display: flex;
   gap: 7px;
   flex-wrap: wrap;
   padding: 10px 12px;
 }
-
-.nav button {
-  flex: 1 1 auto;
-  min-width: 90px;
-}
-
-main {
-  padding: 0 12px 35px;
-}
-
+.nav button { flex: 1 1 auto; min-width: 90px; }
+main { padding: 0 12px 35px; }
 .card {
   background: white;
   border: 1px solid var(--line);
@@ -77,32 +52,15 @@ main {
   margin: 10px 0;
   box-shadow: 0 2px 8px #18324b0b;
 }
-
 .grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
 }
-
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.field.full {
-  grid-column: 1 / -1;
-}
-
-label {
-  font-size: 13px;
-  font-weight: bold;
-  color: #31465e;
-}
-
-input,
-select,
-textarea {
+.field { display: flex; flex-direction: column; gap: 4px; }
+.field.full { grid-column: 1 / -1; }
+label { font-size: 13px; font-weight: bold; color: #31465e; }
+input, select, textarea {
   width: 100%;
   padding: 11px;
   border: 1px solid #cbd5e1;
@@ -111,14 +69,8 @@ textarea {
   background: white;
   color: #172334;
 }
-
-textarea {
-  min-height: 90px;
-  resize: vertical;
-}
-
-button,
-.btn {
+textarea { min-height: 90px; resize: vertical; }
+button {
   border: 0;
   border-radius: 9px;
   padding: 10px 13px;
@@ -128,34 +80,12 @@ button,
   font-size: 14px;
   cursor: pointer;
 }
-
-button.secondary {
-  background: #e7eef7;
-  color: #16324f;
-}
-
-button.danger {
-  background: var(--red);
-}
-
-button.green {
-  background: var(--green);
-}
-
-button:disabled {
-  opacity: .55;
-  cursor: wait;
-}
-
-.hidden {
-  display: none !important;
-}
-
-.muted {
-  color: var(--muted);
-  font-size: 13px;
-}
-
+button.secondary { background: #e7eef7; color: #16324f; }
+button.danger { background: var(--red); }
+button.green { background: var(--green); }
+button:disabled { opacity: .55; cursor: wait; }
+.hidden { display: none !important; }
+.muted { color: var(--muted); font-size: 13px; }
 .row {
   display: flex;
   align-items: center;
@@ -163,14 +93,7 @@ button:disabled {
   gap: 10px;
   flex-wrap: wrap;
 }
-
-.actions {
-  display: flex;
-  gap: 7px;
-  flex-wrap: wrap;
-  margin-top: 10px;
-}
-
+.actions { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 10px; }
 .pill {
   display: inline-block;
   padding: 3px 9px;
@@ -179,38 +102,21 @@ button:disabled {
   color: #174a85;
   font-size: 12px;
 }
-
-.ad {
-  overflow: hidden;
-}
-
+.ad { overflow: hidden; }
 .ad img {
   width: 100%;
   max-height: 240px;
   object-fit: cover;
   border-radius: 10px;
 }
-
-.ad h3 {
-  margin: 6px 0;
-}
-
-.price {
-  font-size: 18px;
-  font-weight: bold;
-  color: #0b7840;
-}
-
+.ad h3 { margin: 6px 0; }
+.price { font-size: 18px; font-weight: bold; color: #0b7840; }
 .adgrid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
 }
-
-.adgrid .card {
-  margin: 0;
-}
-
+.adgrid .card { margin: 0; }
 .notice {
   padding: 10px;
   border-radius: 9px;
@@ -218,57 +124,27 @@ button:disabled {
   color: #6c5100;
   font-size: 13px;
 }
-
-.success {
-  color: var(--green);
-}
-
-.error {
-  color: var(--red);
-}
-
-.section-title {
-  margin: 12px 2px 5px;
-  font-size: 19px;
-}
-
+.success { color: var(--green); }
+.error { color: var(--red); }
 .part-box {
   background: #f4f8ff;
   border: 1px dashed #9bb9e2;
   padding: 12px;
   border-radius: 10px;
 }
-
 .footer {
   text-align: center;
   color: var(--muted);
   font-size: 12px;
   padding: 18px;
 }
+.small { font-size: 12px; }
 
-.small {
-  font-size: 12px;
-}
-
-@media (max-width: 650px) {
-  .grid,
-  .adgrid {
-    grid-template-columns: 1fr;
-  }
-
-  .nav button {
-    min-width: 28%;
-    padding: 8px 5px;
-    font-size: 12px;
-  }
-
-  .card {
-    padding: 12px;
-  }
-
-  .brand {
-    font-size: 23px;
-  }
+@media(max-width:650px) {
+  .grid, .adgrid { grid-template-columns: 1fr; }
+  .nav button { min-width: 28%; padding: 8px 5px; font-size: 12px; }
+  .card { padding: 12px; }
+  .brand { font-size: 23px; }
 }
 </style>
 </head>
@@ -278,12 +154,10 @@ button:disabled {
 <header>
   <div class="wrap">
     <div class="brand">🚜 نرخینو</div>
-
     <div class="subtitle">
       سامانه ثبت و جست‌وجوی ماشین‌آلات راه‌سازی،
       معدنی، قطعات و فرصت‌های شغلی
     </div>
-
     <div id="userStatus" class="small" style="margin-top:8px">
       برای ثبت و مدیریت آگهی وارد حساب شوید.
     </div>
@@ -301,108 +175,64 @@ button:disabled {
 
 <main>
 
-<!-- صفحه اصلی -->
 <section id="home" class="section">
-
   <div class="card">
-    <h2 style="margin-top:0">به نرخینو خوش آمدید</h2>
-
-    <p>
-      آگهی اجاره و خریدوفروش ماشین‌آلات،
-      استخدام راننده و ارائه قطعات را ثبت کنید.
-    </p>
-
+    <h2>به نرخینو خوش آمدید</h2>
+    <p>آگهی اجاره و خریدوفروش ماشین‌آلات، استخدام راننده و ارائه قطعات را ثبت کنید.</p>
     <div class="actions">
-      <button onclick="showSection('register')">
-        ＋ ثبت آگهی
-      </button>
-
-      <button class="secondary" onclick="showSection('ads')">
-        مشاهده آگهی‌ها
-      </button>
+      <button onclick="showSection('register')">＋ ثبت آگهی</button>
+      <button class="secondary" onclick="showSection('ads')">مشاهده آگهی‌ها</button>
     </div>
   </div>
 
   <div class="grid">
-
     <div class="card">
       <h3>🔎 جست‌وجوی پیشرفته</h3>
-      <p class="muted">
-        جست‌وجو بر اساس شهر، قیمت، دسته‌بندی و نوع آگهی.
-      </p>
+      <p class="muted">بر اساس شهر، قیمت، دسته‌بندی و نوع آگهی.</p>
       <button onclick="showSection('ads')">جست‌وجو</button>
     </div>
-
     <div class="card">
       <h3>👤 پنل کاربری</h3>
-      <p class="muted">
-        آگهی‌های خود را مشاهده، ویرایش یا حذف کنید.
-      </p>
-      <button onclick="showSection('account')">
-        ورود به پنل
-      </button>
+      <p class="muted">آگهی‌های خود را ببینید، ویرایش یا حذف کنید.</p>
+      <button onclick="showSection('account')">ورود به پنل</button>
     </div>
-
   </div>
 
   <div class="card">
     <div class="row">
-      <h3 style="margin:0">آخرین آگهی‌های منتشرشده</h3>
-      <button class="secondary" onclick="loadAds()">
-        به‌روزرسانی
-      </button>
+      <h3>آخرین آگهی‌های منتشرشده</h3>
+      <button class="secondary" onclick="loadAds()">به‌روزرسانی</button>
     </div>
-
-    <div id="latestAds" class="adgrid" style="margin-top:12px"></div>
+    <div id="latestAds" class="adgrid"></div>
   </div>
-
 </section>
 
-<!-- ورود و ثبت‌نام -->
 <section id="auth" class="section hidden">
-
   <div class="card">
     <h2>ورود یا ساخت حساب</h2>
-
     <div class="grid">
-
       <div class="field">
         <label>ایمیل</label>
-        <input
-          id="authEmail"
-          type="email"
-          autocomplete="email"
-          placeholder="name@example.com">
+        <input id="authEmail" type="email" autocomplete="email">
       </div>
-
       <div class="field">
         <label>رمز عبور (حداقل ۶ نویسه)</label>
-        <input
-          id="authPassword"
-          type="password"
-          autocomplete="current-password">
+        <input id="authPassword" type="password" autocomplete="current-password">
       </div>
-
     </div>
-
     <div class="actions">
       <button onclick="signIn()">ورود</button>
       <button class="secondary" onclick="signUp()">ساخت حساب</button>
       <button class="secondary" onclick="resetPassword()">فراموشی رمز</button>
     </div>
-
     <p id="authMsg" class="muted"></p>
   </div>
-
 </section>
 
-<!-- فرم ثبت آگهی -->
 <section id="register" class="section hidden">
-
   <div class="card">
-
     <div class="row">
-      <h2 style="margin:0">ثبت آگهی</h2>
+      <h2>ثبت آگهی</h2>
       <span class="pill">حداکثر ۵ تصویر</span>
     </div>
 
@@ -411,11 +241,9 @@ button:disabled {
     </div>
 
     <form id="adForm" onsubmit="submitAd(event)">
-
       <input type="hidden" id="editingId">
 
-      <div class="grid" style="margin-top:12px">
-
+      <div class="grid">
         <div class="field">
           <label>نام آگهی‌دهنده</label>
           <input id="ownerName" required maxlength="80">
@@ -432,9 +260,7 @@ button:disabled {
             <option value="اجاره">اجاره</option>
             <option value="خرید و فروش">خرید و فروش</option>
             <option value="استخدام راننده">استخدام راننده</option>
-            <option value="ارائه قطعات ماشین‌آلات">
-              ارائه قطعات ماشین‌آلات
-            </option>
+            <option value="ارائه قطعات ماشین‌آلات">ارائه قطعات ماشین‌آلات</option>
           </select>
         </div>
 
@@ -460,28 +286,17 @@ button:disabled {
 
         <div class="field">
           <label>عنوان آگهی</label>
-          <input
-            id="title"
-            required
-            maxlength="100"
-            placeholder="مثلاً بیل مکانیکی کوماتسو برای اجاره">
+          <input id="title" required maxlength="100">
         </div>
 
         <div class="field">
           <label>شهر</label>
-          <input
-            id="city"
-            required
-            maxlength="60"
-            placeholder="مثلاً اهواز">
+          <input id="city" required maxlength="60">
         </div>
 
         <div class="field">
           <label>قیمت (تومان)</label>
-          <input
-            id="price"
-            inputmode="numeric"
-            placeholder="برای توافقی خالی بگذارید">
+          <input id="price" inputmode="numeric" placeholder="توافقی: خالی بگذارید">
         </div>
 
         <div class="field">
@@ -496,39 +311,25 @@ button:disabled {
 
         <div class="field full">
           <label>توضیحات</label>
-          <textarea
-            id="description"
-            maxlength="3000"
-            required
-            placeholder="مشخصات، شرایط اجاره یا فروش، ساعات کار و..."></textarea>
+          <textarea id="description" maxlength="3000" required></textarea>
         </div>
 
-        <!-- مشخصات اختصاصی قطعات -->
         <div id="partFields" class="field full hidden">
-
           <div class="part-box">
-            <h3 style="margin-top:0">مشخصات قطعه</h3>
-
+            <h3>مشخصات قطعه</h3>
             <div class="grid">
-
               <div class="field">
                 <label>نام قطعه</label>
                 <input id="partName" maxlength="100">
               </div>
-
               <div class="field">
                 <label>دسته‌بندی قطعه</label>
-                <input
-                  id="partCategory"
-                  maxlength="80"
-                  placeholder="مثلاً موتور، هیدرولیک، فیلتر">
+                <input id="partCategory" maxlength="80">
               </div>
-
               <div class="field">
                 <label>برند / مدل دستگاه</label>
                 <input id="partModel" maxlength="100">
               </div>
-
               <div class="field">
                 <label>وضعیت قطعه</label>
                 <select id="partCondition">
@@ -537,78 +338,46 @@ button:disabled {
                   <option>تعمیرشده</option>
                 </select>
               </div>
-
               <div class="field">
                 <label>شماره فنی</label>
                 <input id="partNumber" maxlength="80">
               </div>
-
               <div class="field">
                 <label>تعداد</label>
                 <input id="partQuantity" inputmode="numeric" maxlength="20">
               </div>
-
             </div>
           </div>
-
         </div>
 
         <div class="field full">
           <label>تصاویر آگهی (حداکثر ۵ عکس)</label>
-          <input
-            id="images"
-            type="file"
-            accept="image/*"
-            multiple
-            onchange="checkImages()">
-
-          <div class="muted">
-            تصاویر پیش از بارگذاری کوچک‌سازی می‌شوند.
-          </div>
-
+          <input id="images" type="file" accept="image/*" multiple onchange="checkImages()">
           <div id="imageHint" class="muted"></div>
         </div>
-
       </div>
 
       <div class="actions">
         <button id="submitAdBtn" type="submit">ثبت آگهی</button>
-        <button class="secondary" type="button" onclick="resetAdForm()">
-          پاک کردن فرم
-        </button>
+        <button class="secondary" type="button" onclick="resetAdForm()">پاک کردن فرم</button>
       </div>
-
       <p id="adFormMsg" class="muted"></p>
-
     </form>
   </div>
-
 </section>
 
-<!-- جست‌وجوی آگهی‌ها -->
 <section id="ads" class="section hidden">
-
   <div class="card">
-    <h2 style="margin-top:0">جست‌وجوی آگهی‌ها</h2>
-
+    <h2>جست‌وجوی آگهی‌ها</h2>
     <div class="grid">
-
       <div class="field">
         <label>عبارت جست‌وجو</label>
-        <input
-          id="searchText"
-          placeholder="عنوان، توضیحات، برند..."
-          oninput="renderAds()">
+        <input id="searchText" oninput="renderAds()">
       </div>
-
       <div class="field">
         <label>شهر</label>
-        <input
-          id="filterCity"
-          placeholder="همه شهرها"
-          oninput="renderAds()">
+        <input id="filterCity" oninput="renderAds()">
       </div>
-
       <div class="field">
         <label>نوع آگهی</label>
         <select id="filterType" onchange="renderAds()">
@@ -619,69 +388,51 @@ button:disabled {
           <option>ارائه قطعات ماشین‌آلات</option>
         </select>
       </div>
-
       <div class="field">
         <label>دسته‌بندی</label>
         <select id="filterCategory" onchange="renderAds()">
           <option value="">همه دسته‌ها</option>
         </select>
       </div>
-
       <div class="field">
-        <label>حداقل قیمت (تومان)</label>
+        <label>حداقل قیمت</label>
         <input id="minPrice" inputmode="numeric" oninput="renderAds()">
       </div>
-
       <div class="field">
-        <label>حداکثر قیمت (تومان)</label>
+        <label>حداکثر قیمت</label>
         <input id="maxPrice" inputmode="numeric" oninput="renderAds()">
       </div>
-
     </div>
-
     <div class="actions">
       <button class="secondary" onclick="clearFilters()">پاک‌کردن فیلترها</button>
       <button class="secondary" onclick="loadAds()">به‌روزرسانی</button>
     </div>
   </div>
-
   <div id="adsList" class="adgrid"></div>
-
 </section>
 
-<!-- پنل کاربر -->
 <section id="account" class="section hidden">
-
   <div class="card">
-
     <div class="row">
-      <h2 style="margin:0">پنل کاربران</h2>
-      <button id="authToggle" onclick="showSection('auth')">
-        ورود / ثبت‌نام
-      </button>
+      <h2>پنل کاربران</h2>
+      <button id="authToggle" onclick="showSection('auth')">ورود / ثبت‌نام</button>
     </div>
 
-    <div id="accountInfo" class="muted" style="margin-top:10px">
-      برای مشاهده پنل وارد حساب شوید.
-    </div>
+    <div id="accountInfo" class="muted">برای مشاهده پنل وارد حساب شوید.</div>
 
-    <div id="profileFields" class="grid hidden" style="margin-top:12px">
-
+    <div id="profileFields" class="grid hidden">
       <div class="field">
         <label>نام نمایشی</label>
         <input id="profileName" maxlength="80">
       </div>
-
       <div class="field">
         <label>شماره تماس</label>
         <input id="profilePhone" maxlength="25">
       </div>
-
       <div class="field">
         <label>شهر</label>
         <input id="profileCity" maxlength="60">
       </div>
-
       <div class="field">
         <label>اعلان‌ها</label>
         <select id="notifyPreference">
@@ -689,84 +440,990 @@ button:disabled {
           <option value="off">خاموش</option>
         </select>
       </div>
-
     </div>
 
     <div id="profileActions" class="actions hidden">
       <button onclick="saveProfile()">ذخیره تنظیمات</button>
-      <button class="secondary" onclick="resetPasswordFromAccount()">
-        ارسال لینک تغییر رمز
-      </button>
+      <button class="secondary" onclick="resetPasswordFromAccount()">بازیابی رمز</button>
       <button class="danger" onclick="signOutUser()">خروج از حساب</button>
     </div>
-
   </div>
 
-  <h3 class="section-title">آگهی‌های من</h3>
+  <h3>آگهی‌های من</h3>
   <div id="myAds" class="adgrid"></div>
 
   <div class="card">
     <h3>امنیت و حریم خصوصی</h3>
     <p class="muted">
-      اطلاعات تماس برای ارتباط درباره آگهی استفاده می‌شود.
-      از رمز عبور قوی استفاده کنید و آن را در اختیار دیگران قرار ندهید.
-      برای درخواست حذف اطلاعات با مدیر سامانه تماس بگیرید.
+      رمز عبور خود را در اختیار دیگران قرار ندهید.
+      برای حذف اطلاعات حساب با مدیر سامانه تماس بگیرید.
     </p>
   </div>
-
 </section>
 
-<!-- پیام‌ها و اعلان‌ها -->
 <section id="messages" class="section hidden">
-
   <div class="card">
-    <h2 style="margin-top:0">پیام‌ها و اعلان‌ها</h2>
-
-    <p class="muted">
-      برای پیام دادن، از دکمه «پیام به آگهی‌دهنده» در آگهی منتشرشده استفاده کنید.
-    </p>
-
+    <h2>پیام‌ها و اعلان‌ها</h2>
     <div class="row">
       <h3>پیام‌های من</h3>
       <button class="secondary" onclick="loadMessages()">به‌روزرسانی</button>
     </div>
-
     <div id="messagesList"></div>
-
     <hr>
-
     <div class="row">
       <h3>اعلان‌ها</h3>
       <button class="secondary" onclick="loadNotifications()">به‌روزرسانی</button>
     </div>
-
     <div id="notificationsList"></div>
   </div>
-
 </section>
 
-<!-- پنل مدیریت -->
 <section id="admin" class="section hidden">
-
   <div class="card">
-    <h2 style="margin-top:0">مدیریت آگهی‌ها</h2>
-
+    <h2>مدیریت آگهی‌ها</h2>
     <p class="notice">
-      دسترسی مدیر فقط برای حساب‌هایی فعال است که شناسه کاربری آن‌ها
-      در مسیر admins/{uid} در پایگاه داده روی true تنظیم شده باشد.
+      فقط حساب‌هایی که شناسه آن‌ها در مسیر admins/{uid} برابر true باشد، مدیر هستند.
     </p>
-
-    <div class="actions">
-      <button onclick="loadAdminAds()">بارگذاری آگهی‌های در انتظار</button>
-    </div>
-
+    <button onclick="loadAdminAds()">بارگذاری آگهی‌های در انتظار</button>
     <div id="adminList"></div>
   </div>
-
 </section>
 
-<div class="footer">
-  نرخینو — نسخه آزمایشی وب‌اپلیکیشن
-</div>
-
+<div class="footer">نرخینو — نسخه وب‌اپلیکیشن</div>
 </main>
+
+<script type="module">
+import { initializeApp } from
+'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
+
+import {
+  getAuth, onAuthStateChanged, createUserWithEmailAndPassword,
+  signInWithEmailAndPassword, sendPasswordResetEmail, signOut,
+  updateProfile
+} from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
+
+import {
+  getDatabase, ref, get, set, update, remove, push, runTransaction
+} from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js';
+
+import {
+  getStorage, ref as storageRef, uploadBytes, getDownloadURL
+} from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBB12jJCxigpdASZZmjxU2XjfSWeQ8ehAY",
+  authDomain: "nerkhino-8ff13.firebaseapp.com",
+  databaseURL: "https://nerkhino-8ff13-default-rtdb.firebaseio.com",
+  projectId: "nerkhino-8ff13",
+  storageBucket: "nerkhino-8ff13.firebasestorage.app",
+  messagingSenderId: "210006577129",
+  appId: "1:210006577129:web:295950d0412c28ebac0578"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getDatabase(app);
+const storage = getStorage(app);
+
+const $ = id => document.getElementById(id);
+
+const categories = [
+  'بیل مکانیکی','لودر','بولدوزر','گریدر','غلطک',
+  'کامیون باری','کامیون و کمپرسی','جرثقیل','کمرشکن',
+  'فنیشر','دامپتراک','سایر ماشین‌آلات معدنی',
+  'استخدام راننده','ارائه قطعات ماشین‌آلات'
+];
+
+let currentUser = null;
+let profile = {};
+let allAds = {};
+let isAdmin = false;
+let existingImages = [];
+
+const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({
+  '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
+}[char]));
+
+const num = value => {
+  const parsed = Number(String(value || '').replace(/[^0-9.]/g, ''));
+  return Number.isFinite(parsed) ? parsed : 0;
+};
+
+function showMessage(id, text, cls = 'muted') {
+  const element = $(id);
+  if (element) {
+    element.className = cls;
+    element.textContent = text;
+  }
+}
+
+function errorText(error) {
+  const errors = {
+    'auth/email-already-in-use': 'این ایمیل قبلاً ثبت شده است.',
+    'auth/invalid-email': 'ایمیل معتبر نیست.',
+    'auth/invalid-credential': 'ایمیل یا رمز عبور نادرست است.',
+    'auth/weak-password': 'رمز عبور باید حداقل ۶ نویسه داشته باشد.',
+    'auth/network-request-failed': 'اتصال اینترنت را بررسی کنید.',
+    'PERMISSION_DENIED': 'دسترسی رد شد؛ قوانین Firebase را بررسی کنید.',
+    'storage/unauthorized': 'اجازه بارگذاری تصویر وجود ندارد.'
+  };
+  return errors[error?.code] || error?.message || 'خطایی رخ داد.';
+}
+
+/* جابه‌جایی بین صفحات */
+window.showSection = id => {
+  if (id === 'register' && !currentUser) {
+    $('registerLoginHint').classList.remove('hidden');
+  }
+
+  document.querySelectorAll('.section').forEach(section => {
+    section.classList.add('hidden');
+  });
+
+  $(id)?.classList.remove('hidden');
+
+  if (id === 'account') loadMyAds();
+  if (id === 'messages') {
+    loadMessages();
+    loadNotifications();
+  }
+  if (id === 'admin') loadAdminAds();
+};
+
+/* ساخت حساب */
+window.signUp = async () => {
+  try {
+    const email = $('authEmail').value.trim();
+    const password = $('authPassword').value;
+
+    if (!email || password.length < 6) {
+      throw new Error('ایمیل و رمز عبور حداقل ۶ نویسه را وارد کنید.');
+    }
+
+    await createUserWithEmailAndPassword(auth, email, password);
+    showMessage('authMsg', 'حساب ساخته شد.', 'success');
+  } catch (error) {
+    showMessage('authMsg', errorText(error), 'error');
+  }
+};
+
+/* ورود */
+window.signIn = async () => {
+  try {
+    await signInWithEmailAndPassword(
+      auth,
+      $('authEmail').value.trim(),
+      $('authPassword').value
+    );
+
+    showMessage('authMsg', 'ورود موفق بود.', 'success');
+    showSection('account');
+  } catch (error) {
+    showMessage('authMsg', errorText(error), 'error');
+  }
+};
+
+/* بازیابی رمز */
+window.resetPassword = async () => {
+  try {
+    const email = $('authEmail').value.trim();
+    if (!email) throw new Error('ابتدا ایمیل خود را وارد کنید.');
+
+    await sendPasswordResetEmail(auth, email);
+    showMessage('authMsg', 'لینک بازیابی رمز ارسال شد.', 'success');
+  } catch (error) {
+    showMessage('authMsg', errorText(error), 'error');
+  }
+};
+
+window.resetPasswordFromAccount = async () => {
+  try {
+    if (!currentUser?.email) throw new Error('ابتدا وارد حساب شوید.');
+    await sendPasswordResetEmail(auth, currentUser.email);
+    alert('لینک بازیابی رمز به ایمیل شما ارسال شد.');
+  } catch (error) {
+    alert(errorText(error));
+  }
+};
+
+window.signOutUser = async () => {
+  await signOut(auth);
+  showSection('home');
+};
+
+/* وضعیت ورود کاربر */
+onAuthStateChanged(auth, async user => {
+  currentUser = user;
+  isAdmin = false;
+  profile = {};
+
+  if (user) {
+    $('userStatus').textContent = 'واردشده: ' + (user.email || 'کاربر');
+    $('registerLoginHint').classList.add('hidden');
+
+    try {
+      const results = await Promise.all([
+        get(ref(db, 'users/' + user.uid)),
+        get(ref(db, 'admins/' + user.uid))
+      ]);
+
+      profile = results[0].val() || {};
+      isAdmin = results[1].val() === true;
+
+      $('accountInfo').textContent =
+        'ایمیل: ' + user.email + ' | شناسه: ' + user.uid;
+
+      $('profileFields').classList.remove('hidden');
+      $('profileActions').classList.remove('hidden');
+
+      $('profileName').value = profile.name || user.displayName || '';
+      $('profilePhone').value = profile.phone || '';
+      $('profileCity').value = profile.city || '';
+      $('notifyPreference').value =
+        profile.notifications === false ? 'off' : 'on';
+
+      $('authToggle').textContent = 'خروج از حساب';
+      $('authToggle').onclick = signOutUser;
+
+      if (profile.name) $('ownerName').value = profile.name;
+      if (profile.phone) $('phone').value = profile.phone;
+    } catch (error) {
+      console.error(error);
+      $('accountInfo').textContent =
+        'وارد حساب شده‌اید؛ برای دریافت اطلاعات قوانین Firebase را بررسی کنید.';
+    }
+  } else {
+    $('userStatus').textContent = 'برای ثبت و مدیریت آگهی وارد حساب شوید.';
+    $('accountInfo').textContent = 'برای مشاهده پنل وارد حساب شوید.';
+    $('profileFields').classList.add('hidden');
+    $('profileActions').classList.add('hidden');
+    $('authToggle').textContent = 'ورود / ثبت‌نام';
+    $('authToggle').onclick = () => showSection('auth');
+  }
+
+  loadAds();
+});
+
+/* ذخیره تنظیمات کاربر */
+window.saveProfile = async () => {
+  if (!currentUser) return alert('ابتدا وارد حساب شوید.');
+
+  try {
+    profile = {
+      ...profile,
+      name: $('profileName').value.trim(),
+      phone: $('profilePhone').value.trim(),
+      city: $('profileCity').value.trim(),
+      notifications: $('notifyPreference').value === 'on',
+      email: currentUser.email,
+      updatedAt: Date.now()
+    };
+
+    await set(ref(db, 'users/' + currentUser.uid), profile);
+
+    if (profile.name) {
+      await updateProfile(currentUser, { displayName: profile.name });
+    }
+
+    $('ownerName').value = profile.name;
+    $('phone').value = profile.phone;
+
+    alert('تنظیمات ذخیره شد.');
+  } catch (error) {
+    alert(errorText(error));
+  }
+};
+
+/* نمایش فرم قطعات */
+window.togglePartFields = () => {
+  $('partFields').classList.toggle(
+    'hidden',
+    $('adType').value !== 'ارائه قطعات ماشین‌آلات'
+  );
+};
+
+/* کنترل تعداد عکس‌ها */
+window.checkImages = () => {
+  const files = [...$('images').files];
+
+  if (files.length > 5) {
+    $('images').value = '';
+    showMessage('imageHint', 'حداکثر ۵ تصویر انتخاب کنید.', 'error');
+    return;
+  }
+
+  showMessage(
+    'imageHint',
+    files.length ? `${files.length} تصویر انتخاب شده است.` : 'تصویری انتخاب نشده است.'
+  );
+};
+
+/* فشرده‌سازی تصویر */
+function compressImage(file) {
+  return new Promise((resolve, reject) => {
+    if (!file.type.startsWith('image/')) {
+      reject(new Error('فقط فایل تصویری مجاز است.'));
+      return;
+    }
+
+    const image = new Image();
+    const url = URL.createObjectURL(file);
+
+    image.onload = () => {
+      const maxSize = 1500;
+      const scale = Math.min(
+        1,
+        maxSize / Math.max(image.width, image.height)
+      );
+
+      const canvas = document.createElement('canvas');
+      canvas.width = Math.round(image.width * scale);
+      canvas.height = Math.round(image.height * scale);
+
+      canvas.getContext('2d').drawImage(
+        image, 0, 0, canvas.width, canvas.height
+      );
+
+      canvas.toBlob(blob => {
+        URL.revokeObjectURL(url);
+
+        if (blob) resolve(blob);
+        else reject(new Error('فشرده‌سازی تصویر ناموفق بود.'));
+      }, 'image/jpeg', 0.78);
+    };
+
+    image.onerror = () => {
+      URL.revokeObjectURL(url);
+      reject(new Error('تصویر قابل خواندن نیست.'));
+    };
+
+    image.src = url;
+  });
+}
+
+/* بارگذاری تصاویر در Firebase Storage */
+async function uploadImages(files, adId) {
+  const urls = [];
+
+  for (let index = 0; index < files.length; index++) {
+    const blob = await compressImage(files[index]);
+
+    if (blob.size > 5 * 1024 * 1024) {
+      throw new Error('حجم تصویر پس از فشرده‌سازی بیشتر از ۵ مگابایت است.');
+    }
+
+    const path =
+      `ad-images/${currentUser.uid}/${adId}/${Date.now()}_${index}.jpg`;
+
+    const imageRef = storageRef(storage, path);
+
+    await uploadBytes(imageRef, blob, { contentType: 'image/jpeg' });
+    urls.push(await getDownloadURL(imageRef));
+  }
+
+  return urls;
+}
+
+/* ثبت و ویرایش آگهی */
+window.submitAd = async event => {
+  event.preventDefault();
+
+  if (!currentUser) {
+    showSection('auth');
+    return showMessage('adFormMsg', 'برای ثبت آگهی ابتدا وارد حساب شوید.', 'error');
+  }
+
+  const files = [...$('images').files];
+
+  if (files.length > 5) {
+    return showMessage('adFormMsg', 'حداکثر ۵ تصویر انتخاب کنید.', 'error');
+  }
+
+  const type = $('adType').value;
+
+  if (
+    type === 'ارائه قطعات ماشین‌آلات' &&
+    !$('partName').value.trim()
+  ) {
+    return showMessage('adFormMsg', 'نام قطعه را وارد کنید.', 'error');
+  }
+
+  const button = $('submitAdBtn');
+  button.disabled = true;
+
+  showMessage('adFormMsg', 'در حال ذخیره آگهی و تصاویر...');
+
+  try {
+    const editingId = $('editingId').value;
+    const adId = editingId || push(ref(db, 'ads')).key;
+
+    let images = existingImages.slice();
+
+    if (files.length) {
+      images = images.concat(await uploadImages(files, adId));
+    }
+
+    images = images.slice(0, 5);
+
+    const partDetails =
+      type === 'ارائه قطعات ماشین‌آلات'
+        ? {
+            name: $('partName').value.trim(),
+            category: $('partCategory').value.trim(),
+            model: $('partModel').value.trim(),
+            condition: $('partCondition').value,
+            partNumber: $('partNumber').value.trim(),
+            quantity: $('partQuantity').value.trim()
+          }
+        : null;
+
+    const old = editingId ? (allAds[editingId] || {}) : {};
+
+    const ad = {
+      ownerUid: currentUser.uid,
+      ownerName: $('ownerName').value.trim(),
+      phone: $('phone').value.trim(),
+      type,
+      category: $('category').value,
+      title: $('title').value.trim(),
+      city: $('city').value.trim(),
+      price: num($('price').value),
+      priceText: $('price').value.trim(),
+      condition: $('condition').value,
+      description: $('description').value.trim(),
+      images,
+      partDetails,
+      status: 'pending',
+      createdAt: old.createdAt || Date.now(),
+      updatedAt: Date.now(),
+      views: old.views || 0
+    };
+
+    await set(ref(db, 'ads/' + adId), ad);
+
+    showMessage(
+      'adFormMsg',
+      'آگهی ثبت شد و پس از تأیید مدیر منتشر می‌شود.',
+      'success'
+    );
+
+    resetAdForm();
+    await loadAds();
+    showSection('account');
+  } catch (error) {
+    showMessage('adFormMsg', errorText(error), 'error');
+  } finally {
+    button.disabled = false;
+  }
+};
+
+window.resetAdForm = () => {
+  $('adForm').reset();
+  $('editingId').value = '';
+  existingImages = [];
+  $('partFields').classList.add('hidden');
+  $('imageHint').textContent = '';
+
+  if (profile.name) $('ownerName').value = profile.name;
+  if (profile.phone) $('phone').value = profile.phone;
+};
+
+/* دریافت آگهی‌ها */
+window.loadAds = async () => {
+  try {
+    const snapshot = await get(ref(db, 'ads'));
+    allAds = snapshot.val() || {};
+
+    renderAds();
+    renderLatest();
+    loadMyAds();
+  } catch (error) {
+    console.error(error);
+
+    $('adsList').innerHTML =
+      '<div class="card">آگهی‌ها بارگذاری نشدند. قوانین Firebase را بررسی کنید.</div>';
+
+    $('latestAds').innerHTML =
+      '<div class="card">اتصال به پایگاه داده ناموفق بود.</div>';
+  }
+};
+
+function publicAds() {
+  return Object.entries(allAds)
+    .filter(([id, ad]) => ad && ad.status === 'approved')
+    .sort((a, b) => (b[1].createdAt || 0) - (a[1].createdAt || 0));
+}
+
+/* نمایش کارت آگهی */
+function cardHTML(id, ad, own = false) {
+  const image = ad.images?.[0]
+    ? `<img loading="lazy" src="${esc(ad.images[0])}" alt="تصویر آگهی">`
+    : '';
+
+  const price = ad.price
+    ? Number(ad.price).toLocaleString('fa-IR') + ' تومان'
+    : (ad.priceText || 'توافقی');
+
+  const part = ad.partDetails
+    ? `<p class="muted">
+        قطعه: ${esc(ad.partDetails.name || '')} |
+        وضعیت: ${esc(ad.partDetails.condition || '')} |
+        مدل: ${esc(ad.partDetails.model || '')}
+       </p>`
+    : '';
+
+  const status = own
+    ? `<span class="pill">${
+        ad.status === 'approved'
+          ? 'منتشرشده'
+          : ad.status === 'pending'
+            ? 'در انتظار تأیید'
+            : 'ردشده'
+      }</span>`
+    : '';
+
+  const actions = own
+    ? `
+      <button class="secondary" onclick="editAd('${id}')">ویرایش</button>
+      <button class="danger" onclick="deleteAd('${id}')">حذف</button>`
+    : `
+      <button onclick="contactSeller('${id}')">پیام به آگهی‌دهنده</button>
+      <button class="secondary" onclick="favoriteAd('${id}')">♡ ذخیره</button>
+      <button class="secondary" onclick="showDetails('${id}')">جزئیات / تماس</button>`;
+
+  return `
+    <article class="card ad">
+      ${image}
+      <div class="row">
+        <span class="pill">${esc(ad.type || 'آگهی')}</span>
+        ${status}
+      </div>
+      <h3>${esc(ad.title)}</h3>
+      <div class="muted">📍 ${esc(ad.city)} · ${esc(ad.category)}</div>
+      <div class="price">${esc(price)}</div>
+      ${part}
+      <p>${esc((ad.description || '').slice(0, 210))}</p>
+      <div class="muted">👁 بازدید: ${Number(ad.views || 0).toLocaleString('fa-IR')}</div>
+      <div class="actions">${actions}</div>
+    </article>`;
+}
+
+/* فیلتر آگهی‌ها */
+window.renderAds = () => {
+  const query = $('searchText').value.trim().toLowerCase();
+  const city = $('filterCity').value.trim().toLowerCase();
+  const type = $('filterType').value;
+  const category = $('filterCategory').value;
+  const min = num($('minPrice').value);
+  const max = num($('maxPrice').value);
+
+  const ads = publicAds().filter(([id, ad]) => {
+    const searchable = [
+      ad.title, ad.description, ad.category,
+      ad.partDetails?.name, ad.partDetails?.model
+    ].join(' ').toLowerCase();
+
+    return (!query || searchable.includes(query)) &&
+      (!city || (ad.city || '').toLowerCase().includes(city)) &&
+      (!type || ad.type === type) &&
+      (!category || ad.category === category) &&
+      (!min || Number(ad.price || 0) >= min) &&
+      (!max || Number(ad.price || 0) <= max);
+  });
+
+  $('adsList').innerHTML = ads.length
+    ? ads.map(([id, ad]) => cardHTML(id, ad)).join('')
+    : '<div class="card">آگهی منتشرشده‌ای مطابق این فیلترها پیدا نشد.</div>';
+};
+
+function renderLatest() {
+  $('latestAds').innerHTML = publicAds().slice(0, 4)
+    .map(([id, ad]) => cardHTML(id, ad))
+    .join('') || '<div class="card">هنوز آگهی منتشرشده‌ای وجود ندارد.</div>';
+}
+
+window.clearFilters = () => {
+  ['searchText', 'filterCity', 'filterType', 'filterCategory', 'minPrice', 'maxPrice']
+    .forEach(id => $(id).value = '');
+
+  renderAds();
+};
+
+/* علاقه‌مندی‌ها */
+window.favoriteAd = id => {
+  const favorites = JSON.parse(localStorage.getItem('nerkhino_favorites') || '[]');
+  const next = favorites.includes(id)
+    ? favorites.filter(item => item !== id)
+    : [...favorites, id];
+
+  localStorage.setItem('nerkhino_favorites', JSON.stringify(next));
+
+  alert(next.includes(id)
+    ? 'به علاقه‌مندی‌ها اضافه شد.'
+    : 'از علاقه‌مندی‌ها حذف شد.');
+};
+
+/* جزئیات آگهی */
+window.showDetails = async id => {
+  const ad = allAds[id];
+  if (!ad) return;
+
+  try {
+    await runTransaction(ref(db, 'ads/' + id + '/views'), value =>
+      (Number(value) || 0) + 1
+    );
+
+    ad.views = Number(ad.views || 0) + 1;
+  } catch (error) {
+    console.warn('شمارش بازدید انجام نشد:', error);
+  }
+
+  const part = ad.partDetails
+    ? `\nنام قطعه: ${ad.partDetails.name || ''}
+دسته قطعه: ${ad.partDetails.category || ''}
+مدل دستگاه: ${ad.partDetails.model || ''}
+وضعیت قطعه: ${ad.partDetails.condition || ''}
+شماره فنی: ${ad.partDetails.partNumber || ''}
+تعداد: ${ad.partDetails.quantity || ''}`
+    : '';
+
+  alert(
+    `${ad.title}
+شهر: ${ad.city}
+نوع: ${ad.type}
+دسته: ${ad.category}
+قیمت: ${ad.price ? Number(ad.price).toLocaleString('fa-IR') + ' تومان' : 'توافقی'}
+آگهی‌دهنده: ${ad.ownerName}
+تماس: ${ad.phone}
+توضیحات: ${ad.description}${part}`
+  );
+};
+
+/* ارسال پیام به آگهی‌دهنده */
+window.contactSeller = async id => {
+  if (!currentUser) {
+    showSection('auth');
+    return alert('برای ارسال پیام وارد حساب شوید.');
+  }
+
+  const ad = allAds[id];
+
+  if (!ad || ad.ownerUid === currentUser.uid) {
+    return alert('نمی‌توانید به آگهی خودتان پیام بدهید.');
+  }
+
+  const text = prompt('پیام خود را بنویسید:');
+
+  if (!text || !text.trim()) return;
+  if (text.length > 1500) return alert('پیام بیش از حد طولانی است.');
+
+  try {
+    const payload = {
+      fromUid: currentUser.uid,
+      toUid: ad.ownerUid,
+      adId: id,
+      adTitle: ad.title,
+      text: text.trim(),
+      at: Date.now(),
+      read: false
+    };
+
+    const messageRef = push(ref(db, 'messages'));
+    await set(messageRef, payload);
+
+    await push(ref(db, 'notifications/' + ad.ownerUid), {
+      title: 'پیام جدید درباره آگهی',
+      body: ad.title,
+      at: Date.now(),
+      read: false
+    });
+
+    alert('پیام ارسال شد.');
+  } catch (error) {
+    alert(errorText(error));
+  }
+};
+
+/* آگهی‌های شخصی */
+window.loadMyAds = async () => {
+  if (!currentUser) {
+    $('myAds').innerHTML = '<div class="card">برای دیدن آگهی‌ها وارد شوید.</div>';
+    return;
+  }
+
+  const entries = Object.entries(allAds)
+    .filter(([id, ad]) => ad?.ownerUid === currentUser.uid)
+    .sort((a, b) => (b[1].updatedAt || 0) - (a[1].updatedAt || 0));
+
+  $('myAds').innerHTML = entries.length
+    ? entries.map(([id, ad]) => cardHTML(id, ad, true)).join('')
+    : '<div class="card">هنوز آگهی ثبت نکرده‌اید.</div>';
+};
+
+/* ویرایش آگهی */
+window.editAd = id => {
+  const ad = allAds[id];
+
+  if (!ad || ad.ownerUid !== currentUser?.uid) {
+    return alert('اجازه ویرایش این آگهی را ندارید.');
+  }
+
+  $('editingId').value = id;
+
+  $('ownerName').value = ad.ownerName || '';
+  $('phone').value = ad.phone || '';
+  $('adType').value = ad.type || 'اجاره';
+  $('category').value = ad.category || categories[0];
+  $('title').value = ad.title || '';
+  $('city').value = ad.city || '';
+  $('price').value = ad.priceText || '';
+  $('condition').value = ad.condition || '';
+  $('description').value = ad.description || '';
+
+  togglePartFields();
+
+  const part = ad.partDetails || {};
+
+  $('partName').value = part.name || '';
+  $('partCategory').value = part.category || '';
+  $('partModel').value = part.model || '';
+  $('partCondition').value = part.condition || 'نو';
+  $('partNumber').value = part.partNumber || '';
+  $('partQuantity').value = part.quantity || '';
+
+  existingImages = ad.images || [];
+
+  showMessage(
+    'adFormMsg',
+    `ویرایش آگهی؛ ${existingImages.length} تصویر فعلی حفظ می‌شود.`
+  );
+
+  showSection('register');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
+/* حذف آگهی */
+window.deleteAd = async id => {
+  const ad = allAds[id];
+
+  if (!ad || (!isAdmin && ad.ownerUid !== currentUser?.uid)) {
+    return alert('اجازه حذف این آگهی را ندارید.');
+  }
+
+  if (!confirm('آیا از حذف این آگهی مطمئن هستید؟')) return;
+
+  try {
+    await remove(ref(db, 'ads/' + id));
+    await loadAds();
+    loadMyAds();
+    alert('آگهی حذف شد.');
+  } catch (error) {
+    alert(errorText(error));
+  }
+};
+
+/* پیام‌های کاربر */
+window.loadMessages = async () => {
+  if (!currentUser) {
+    $('messagesList').innerHTML = '<p>برای مشاهده پیام‌ها وارد شوید.</p>';
+    return;
+  }
+
+  try {
+    const snapshot = await get(ref(db, 'messages'));
+    const allMessages = snapshot.val() || {};
+
+    const messages = Object.entries(allMessages)
+      .filter(([id, message]) =>
+        message.fromUid === currentUser.uid ||
+        message.toUid === currentUser.uid
+      )
+      .sort((a, b) => (b[1].at || 0) - (a[1].at || 0));
+
+    $('messagesList').innerHTML = messages.map(([id, message]) => `
+      <div class="card">
+        <b>${esc(message.adTitle || 'گفت‌وگو')}</b>
+        <div class="muted">
+          ${message.fromUid === currentUser.uid ? 'ارسالی' : 'دریافتی'}
+          · ${new Date(message.at || Date.now()).toLocaleString('fa-IR')}
+        </div>
+        <p>${esc(message.text)}</p>
+        ${message.toUid === currentUser.uid
+          ? `<button onclick="replyMessage('${id}')">پاسخ</button>`
+          : ''}
+      </div>
+    `).join('') || '<p class="muted">پیامی ندارید.</p>';
+  } catch (error) {
+    $('messagesList').textContent = errorText(error);
+  }
+};
+
+/* پاسخ به پیام */
+window.replyMessage = async id => {
+  try {
+    const snapshot = await get(ref(db, 'messages/' + id));
+    const message = snapshot.val();
+
+    if (!message || message.toUid !== currentUser?.uid) {
+      return alert('این پیام در دسترس نیست.');
+    }
+
+    const text = prompt('پاسخ خود را بنویسید:');
+    if (!text?.trim()) return;
+
+    const reply = {
+      fromUid: currentUser.uid,
+      toUid: message.fromUid,
+      adId: message.adId,
+      adTitle: message.adTitle,
+      text: text.trim().slice(0, 1500),
+      at: Date.now(),
+      read: false
+    };
+
+    await set(push(ref(db, 'messages')), reply);
+
+    await push(ref(db, 'notifications/' + message.fromUid), {
+      title: 'پاسخ جدید',
+      body: message.adTitle || 'پیام جدید',
+      at: Date.now(),
+      read: false
+    });
+
+    await loadMessages();
+    alert('پاسخ ارسال شد.');
+  } catch (error) {
+    alert(errorText(error));
+  }
+};
+
+/* اعلان‌ها */
+window.loadNotifications = async () => {
+  if (!currentUser) {
+    $('notificationsList').innerHTML = '<p>برای مشاهده اعلان‌ها وارد شوید.</p>';
+    return;
+  }
+
+  try {
+    const snapshot = await get(ref(db, 'notifications/' + currentUser.uid));
+    const notifications = Object.entries(snapshot.val() || {})
+      .sort((a, b) => (b[1].at || 0) - (a[1].at || 0));
+
+    $('notificationsList').innerHTML = notifications.map(([id, item]) => `
+      <div class="card">
+        <b>${esc(item.title || 'اعلان')}</b>
+        <p>${esc(item.body || '')}</p>
+        <div class="muted">
+          ${new Date(item.at || Date.now()).toLocaleString('fa-IR')}
+        </div>
+      </div>
+    `).join('') || '<p class="muted">اعلانی ندارید.</p>';
+  } catch (error) {
+    $('notificationsList').textContent = errorText(error);
+  }
+};
+
+/* پنل مدیریت */
+window.loadAdminAds = async () => {
+  if (!currentUser) {
+    $('adminList').innerHTML = '<p>برای مدیریت وارد حساب شوید.</p>';
+    return;
+  }
+
+  try {
+    const adminSnapshot = await get(ref(db, 'admins/' + currentUser.uid));
+    isAdmin = adminSnapshot.val() === true;
+
+    if (!isAdmin) {
+      $('adminList').innerHTML =
+        '<div class="notice">این حساب دسترسی مدیر ندارد.</div>';
+      return;
+    }
+
+    const pending = Object.entries(allAds)
+      .filter(([id, ad]) => ad?.status === 'pending');
+
+    $('adminList').innerHTML = pending.map(([id, ad]) => `
+      <div class="card">
+        <b>${esc(ad.title)}</b>
+        <p>
+          ${esc(ad.city)} · ${esc(ad.type)} ·
+          ${esc(ad.ownerName)} · ${esc(ad.phone)}
+        </p>
+        <div class="actions">
+          <button class="green" onclick="approveAd('${id}')">تأیید و انتشار</button>
+          <button class="danger" onclick="rejectAd('${id}')">رد / حذف</button>
+        </div>
+      </div>
+    `).join('') || '<p>آگهی در انتظار تأیید وجود ندارد.</p>';
+  } catch (error) {
+    $('adminList').textContent = errorText(error);
+  }
+};
+
+window.approveAd = async id => {
+  if (!isAdmin) return alert('دسترسی مدیر ندارید.');
+
+  try {
+    await update(ref(db, 'ads/' + id), {
+      status: 'approved',
+      approvedAt: Date.now(),
+      approvedBy: currentUser.uid
+    });
+
+    const ad = allAds[id];
+
+    if (ad?.ownerUid) {
+      await push(ref(db, 'notifications/' + ad.ownerUid), {
+        title: 'آگهی شما منتشر شد',
+        body: ad.title,
+        at: Date.now(),
+        read: false
+      });
+    }
+
+    await loadAds();
+    await loadAdminAds();
+  } catch (error) {
+    alert(errorText(error));
+  }
+};
+
+window.rejectAd = async id => {
+  if (!isAdmin) return alert('دسترسی مدیر ندارید.');
+  if (!confirm('آگهی رد و حذف شود؟')) return;
+
+  try {
+    const ad = allAds[id];
+
+    await remove(ref(db, 'ads/' + id));
+
+    if (ad?.ownerUid) {
+      await push(ref(db, 'notifications/' + ad.ownerUid), {
+        title: 'آگهی منتشر نشد',
+        body: ad.title,
+        at: Date.now(),
+        read: false
+      });
+    }
+
+    await loadAds();
+    await loadAdminAds();
+  } catch (error) {
+    alert(errorText(error));
+  }
+};
+
+/* پرکردن فهرست دسته‌بندی‌های جست‌وجو */
+categories.forEach(category => {
+  const option = document.createElement('option');
+  option.value = category;
+  option.textContent = category;
+  $('filterCategory').appendChild(option);
+});
+
+/* بارگذاری اولیه */
+loadAds();
+</script>
+</body>
+</html>
