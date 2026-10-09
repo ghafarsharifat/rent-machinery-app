@@ -526,25 +526,54 @@ function categoryOptions(selected=""){
   ).join("");
 }
 
-function setupCategories(){
-  $("categoryGrid").innerHTML = categories.map(c=>`
+
+function categoryOptions(selected = "") {
+  return categories.map(c =>
+    `<option value="${esc(c)}" ${c === selected ? "selected" : ""}>${esc(c)}</option>`
+  ).join("");
+}
+
+// تصاویر نمایشی دسته‌بندی‌ها
+const categoryImages = {
+  "بیل مکانیکی": "https://images.unsplash.com/photo-1580901368919-7738efb0f87e?auto=format&fit=crop&w=500&q=80",
+  "لودر": "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=500&q=80",
+  "بولدوزر": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=500&q=80",
+  "گریدر": "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=500&q=80",
+  "غلطک": "https://images.unsplash.com/photo-1580901368919-7738efb0f87e?auto=format&fit=crop&w=500&q=80",
+  "کامیون باری": "https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=500&q=80",
+  "کامیون کمپرسی": "https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=500&q=80",
+  "چرثقیل": "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=500&q=80",
+  "کمرشکن": "https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=500&q=80",
+  "فنیشر": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=500&q=80",
+  "دامپتراک": "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=500&q=80",
+  "سایر ماشین‌آلات معدنی": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=500&q=80"
+};
+
+function setupCategories() {
+  $("categoryGrid").innerHTML = categories.map(c => `
     <button class="category" onclick="chooseCategory('${esc(c)}')">
-      <span class="icon">${categoryIcons[c]||"🚜"}</span>
+      <img
+        class="category-image"
+        src="${categoryImages[c] || ""}"
+        alt="${esc(c)}"
+        loading="lazy"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='inline-block';"
+      >
+      <span class="icon" style="display:none">${categoryIcons[c] || "🚜"}</span>
       <span>${esc(c)}</span>
     </button>
   `).join("");
 
   $("filterCategory").innerHTML =
-    '<option value="">همه دستگاه‌ها</option>'+categoryOptions();
+    '<option value="">همه دستگاه‌ها</option>' + categoryOptions();
 }
 
-window.chooseCategory = function(category){
+window.chooseCategory = function(category) {
   activeCategory = category;
   $("filterCategory").value = category;
   showSection("ads");
   showAllAds();
 };
-
 window.showSection = function(sectionId){
   document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
   const target = $(sectionId);
