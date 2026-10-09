@@ -4,9 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#1565c0">
-
 <title>نرخینو | اجاره، خرید و فروش ماشین‌آلات</title>
-
 <link rel="manifest" href="/rent-machinery-app/manifest.json">
 
 <style>
@@ -32,7 +30,7 @@ body {
 
 header {
   background: var(--dark);
-  color: white;
+  color: #fff;
   text-align: center;
   padding: 20px 12px;
 }
@@ -53,7 +51,7 @@ nav {
   justify-content: center;
   gap: 8px;
   padding: 12px;
-  background: white;
+  background: #fff;
   box-shadow: 0 2px 8px #00000010;
 }
 
@@ -65,12 +63,17 @@ button,
   border-radius: 8px;
   padding: 10px 14px;
   background: var(--blue);
-  color: white;
+  color: #fff;
   font-size: 14px;
 }
 
 button:hover {
   opacity: .9;
+}
+
+button:disabled {
+  opacity: .6;
+  cursor: not-allowed;
 }
 
 .nav-button {
@@ -95,7 +98,7 @@ button:hover {
 
 .panel,
 .card {
-  background: white;
+  background: #fff;
   border-radius: 12px;
   padding: 18px;
   margin-bottom: 16px;
@@ -104,7 +107,7 @@ button:hover {
 
 .hero {
   background: linear-gradient(135deg, #173b63, #1565c0);
-  color: white;
+  color: #fff;
   padding: 25px 18px;
   border-radius: 14px;
   margin-bottom: 18px;
@@ -123,10 +126,11 @@ button:hover {
 .category-card {
   border: 1px solid #e3e8ef;
   border-radius: 12px;
-  background: white;
+  background: #fff;
   padding: 16px;
   text-align: center;
   cursor: pointer;
+  color: #222;
 }
 
 .category-icon {
@@ -149,7 +153,7 @@ textarea {
   border-radius: 8px;
   font-family: inherit;
   font-size: 15px;
-  background: white;
+  background: #fff;
 }
 
 textarea {
@@ -159,7 +163,7 @@ textarea {
 
 .primary {
   background: var(--blue);
-  color: white;
+  color: #fff;
   width: 100%;
   margin-top: 18px;
   padding: 13px;
@@ -202,6 +206,7 @@ textarea {
   font-size: 12px;
   background: #fff3cd;
   color: #755700;
+  margin: 3px;
 }
 
 .badge.approved {
@@ -254,7 +259,7 @@ footer {
   display: none !important;
 }
 
-@media (max-width: 480px) {
+@media(max-width:480px) {
   header h1 {
     font-size: 25px;
   }
@@ -284,6 +289,7 @@ footer {
   <button class="nav-button" onclick="showSection('ads')">🔎 آگهی‌ها</button>
   <button class="nav-button" onclick="showSection('addresses')">📍 نشانی‌ها</button>
   <button class="nav-button" onclick="showSection('favorites')">❤️ علاقه‌مندی‌ها</button>
+  <button class="nav-button" onclick="showSection('featured')">⭐ آگهی منتخب</button>
   <button class="nav-button" onclick="showSection('admin')">🔐 مدیریت</button>
 </nav>
 
@@ -292,7 +298,7 @@ footer {
 <section id="home" class="section active">
 
   <div class="hero">
-    <h2>ماشین‌آلات موردنیازت را پیدا کن</h2>
+    <h2>ماشین‌آلات را آگهی کن، سریع پیدا کن</h2>
     <p>
       ثبت و جستجوی آگهی اجاره، خرید و فروش ماشین‌آلات،
       استخدام راننده و ارائه قطعات ماشین‌آلات.
@@ -316,11 +322,10 @@ footer {
 </section>
 
 <section id="register" class="section">
+
   <div class="panel">
     <h2>📝 ثبت آگهی</h2>
-    <p class="muted">
-      آگهی شما پس از بررسی و تأیید مدیر منتشر خواهد شد.
-    </p>
+    <p class="muted">آگهی شما پس از بررسی و تأیید مدیر منتشر خواهد شد.</p>
 
     <div id="registerMessage" aria-live="polite"></div>
 
@@ -388,6 +393,7 @@ footer {
         accept="image/jpeg,image/png,image/webp"
         multiple
       >
+
       <p class="muted">
         برای کاهش مصرف اینترنت، تصاویر پیش از ارسال کوچک می‌شوند.
       </p>
@@ -398,9 +404,11 @@ footer {
 
     </form>
   </div>
+
 </section>
 
 <section id="ads" class="section">
+
   <div class="panel">
     <h2>🔎 جستجوی آگهی‌ها</h2>
 
@@ -425,36 +433,49 @@ footer {
   </div>
 
   <div id="adsList" class="grid"></div>
+
 </section>
 
 <section id="addresses" class="section">
+
   <div class="panel">
     <h2>📍 نشانی‌های فعالیت</h2>
-    <p>
-      نشانی شهر یا منطقه فعالیت آگهی‌دهندگان در این بخش نمایش داده می‌شود.
-    </p>
+    <p>نشانی شهر یا منطقه فعالیت آگهی‌دهندگان در این بخش نمایش داده می‌شود.</p>
     <div id="addressList"></div>
   </div>
+
 </section>
 
 <section id="favorites" class="section">
+
   <div class="panel">
     <h2>❤️ آگهی‌های موردعلاقه</h2>
-    <p class="muted">
-      فهرست علاقه‌مندی‌ها در همین دستگاه ذخیره می‌شود.
-    </p>
+    <p class="muted">فهرست علاقه‌مندی‌ها در همین دستگاه ذخیره می‌شود.</p>
     <div id="favoritesList" class="grid"></div>
   </div>
+
+</section>
+
+<section id="featured" class="section">
+
+  <div class="panel">
+    <h2>⭐ آگهی منتخب</h2>
+    <p class="muted">
+      آگهی‌هایی که مدیریت نرخینو انتخاب کرده باشد در این قسمت نمایش داده می‌شوند.
+    </p>
+    <div id="featuredList" class="grid"></div>
+  </div>
+
 </section>
 
 <section id="admin" class="section">
+
   <div class="panel">
     <h2>🔐 پنل مدیریت</h2>
 
     <p class="muted">
-      این بخش نمایشی است و رمز داخل کد HTML به‌تنهایی امنیت واقعی ایجاد نمی‌کند.
-      برای مدیریت امن آگهی‌های عمومی، باید احراز هویت مدیر و قوانین امن Firebase
-      تنظیم شوند.
+      این رمز فقط آزمایشی است و امنیت واقعی ایجاد نمی‌کند.
+      برای استفاده عمومی، احراز هویت مدیر و قوانین امن Firebase لازم است.
     </p>
 
     <div id="adminLogin">
@@ -465,7 +486,9 @@ footer {
     </div>
 
     <div id="adminContent" class="hidden">
+
       <button class="secondary" onclick="logoutAdmin()">خروج از پنل</button>
+
       <h3>آگهی‌های در انتظار بررسی</h3>
       <div id="pendingAds" class="grid"></div>
 
@@ -473,8 +496,10 @@ footer {
 
       <h3>آگهی‌های منتشرشده</h3>
       <div id="approvedAds" class="grid"></div>
+
     </div>
   </div>
+
 </section>
 
 </main>
@@ -484,8 +509,10 @@ footer {
 </footer>
 
 <script type="module">
-import { initializeApp }
-  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+  initializeApp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 import {
   getDatabase,
@@ -505,7 +532,6 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
 
-/* تنظیمات پروژه Firebase نرخینو */
 const firebaseConfig = {
   apiKey: "AIzaSyBB12jJCxigpdASZZmjxU2XjfSWeQ8ehAY",
   authDomain: "nerkhino-8ff13.firebaseapp.com",
@@ -518,20 +544,20 @@ const firebaseConfig = {
 
 
 const categories = [
-  {name:"بیل مکانیکی", icon:"🚜"},
-  {name:"لودر", icon:"🚧"},
-  {name:"بولدوزر", icon:"🚜"},
-  {name:"گریدر", icon:"🛣️"},
-  {name:"غلطک", icon:"🚧"},
-  {name:"کامیون باری", icon:"🚚"},
-  {name:"کامیون کمپرسی", icon:"🚛"},
-  {name:"جرثقیل", icon:"🏗️"},
-  {name:"کمرشکن", icon:"🚛"},
-  {name:"فنیشر", icon:"🛣️"},
-  {name:"دامپتراک", icon:"🚚"},
-  {name:"سایر ماشین‌آلات معدنی", icon:"⛏️"},
-  {name:"استخدام راننده", icon:"👷"},
-  {name:"قطعات ماشین‌آلات", icon:"⚙️"}
+  {name:"بیل مکانیکی",icon:"🚜"},
+  {name:"لودر",icon:"🚧"},
+  {name:"بولدوزر",icon:"🚜"},
+  {name:"گریدر",icon:"🛣️"},
+  {name:"غلطک",icon:"🚧"},
+  {name:"کامیون باری",icon:"🚚"},
+  {name:"کامیون کمپرسی",icon:"🚛"},
+  {name:"جرثقیل",icon:"🏗️"},
+  {name:"کمرشکن",icon:"🚛"},
+  {name:"فنیشر",icon:"🛣️"},
+  {name:"دامپتراک",icon:"🚚"},
+  {name:"سایر ماشین‌آلات معدنی",icon:"⛏️"},
+  {name:"استخدام راننده",icon:"👷"},
+  {name:"قطعات ماشین‌آلات",icon:"⚙️"}
 ];
 
 
@@ -540,52 +566,62 @@ let storage;
 let allAds = {};
 let firebaseReady = false;
 let adminLoggedIn = false;
-let unsubscribeAds = null;
 
 const $ = id => document.getElementById(id);
 
 
-function showMessage(elementId, message, type = "success") {
-  const element = $(elementId);
-  if (!element) return;
+function showMessage(id, message, type = "success") {
+  const el = $(id);
 
-  element.className = type;
-  element.textContent = message;
+  if (el) {
+    el.className = type;
+    el.textContent = message;
+  }
 }
 
 
 function escapeHTML(value) {
-  return String(value ?? "").replace(/[&<>"']/g, character => ({
+  return String(value ?? "").replace(/[&<>"']/g, char => ({
     "&": "&amp;",
     "<": "&lt;",
     ">": "&gt;",
     '"': "&quot;",
     "'": "&#039;"
-  })[character]);
+  })[char]);
 }
 
 
-window.showSection = function(sectionId) {
+window.showSection = function(id) {
   document.querySelectorAll(".section").forEach(section => {
     section.classList.remove("active");
   });
 
-  const target = $(sectionId);
-  if (target) target.classList.add("active");
+  if ($(id)) {
+    $(id).classList.add("active");
+  }
 
-  window.scrollTo({top: 0, behavior: "smooth"});
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 
-  if (sectionId === "ads") renderAds();
-  if (sectionId === "addresses") renderAddresses();
-  if (sectionId === "favorites") renderFavorites();
-  if (sectionId === "admin" && adminLoggedIn) renderAdmin();
+  if (id === "ads") renderAds();
+  if (id === "addresses") renderAddresses();
+  if (id === "favorites") renderFavorites();
+  if (id === "featured") renderFeatured();
+
+  if (id === "admin" && adminLoggedIn) {
+    renderAdmin();
+  }
 };
 
 
 function populateCategories() {
   $("categoryGrid").innerHTML = categories.map(category => `
-    <button class="category-card"
-      onclick="chooseCategory('${escapeHTML(category.name)}')">
+    <button
+      class="category-card"
+      onclick="chooseCategory('${escapeHTML(category.name)}')"
+    >
       <div class="category-icon">${category.icon}</div>
       <strong>${escapeHTML(category.name)}</strong>
     </button>
@@ -617,13 +653,15 @@ window.chooseCategory = function(category) {
 
 function setConnectionStatus(message, ok = false) {
   $("connectionStatus").textContent = message;
-  $("connectionStatus").style.color = ok ? "#a8f0bd" : "#ffd2d2";
+  $("connectionStatus").style.color =
+    ok ? "#a8f0bd" : "#ffd2d2";
 }
 
 
 function connectFirebase() {
   try {
     const app = initializeApp(firebaseConfig);
+
     db = getDatabase(app);
     storage = getStorage(app);
 
@@ -633,17 +671,27 @@ function connectFirebase() {
         allAds = snapshot.val() || {};
         firebaseReady = true;
 
-        setConnectionStatus("اتصال به پایگاه داده برقرار است", true);
+        setConnectionStatus(
+          "اتصال به پایگاه داده برقرار است",
+          true
+        );
+
         renderAds();
         renderHomeAds();
         renderAddresses();
+        renderFavorites();
+        renderFeatured();
 
-        if (adminLoggedIn) renderAdmin();
+        if (adminLoggedIn) {
+          renderAdmin();
+        }
       },
       error => {
         firebaseReady = false;
+
         setConnectionStatus("خطا در دریافت آگهی‌ها");
-        console.error("Firebase database error:", error);
+
+        console.error(error);
 
         $("adsList").innerHTML =
           '<p class="error">دریافت آگهی‌ها ممکن نیست. قوانین Firebase را بررسی کنید.</p>';
@@ -657,7 +705,6 @@ function connectFirebase() {
 }
 
 
-/* تبدیل تصویر به اندازه مناسب برای بارگذاری */
 async function compressImage(file) {
   if (!file.type.startsWith("image/")) {
     throw new Error("یکی از فایل‌های انتخاب‌شده تصویر نیست.");
@@ -667,60 +714,75 @@ async function compressImage(file) {
     throw new Error("حجم هر تصویر باید کمتر از ۱۲ مگابایت باشد.");
   }
 
-  const imageURL = URL.createObjectURL(file);
+  const url = URL.createObjectURL(file);
 
   try {
     const image = new Image();
 
     await new Promise((resolve, reject) => {
       image.onload = resolve;
-      image.onerror = () => reject(new Error("خواندن تصویر ناموفق بود."));
-      image.src = imageURL;
+      image.onerror = () => reject(
+        new Error("خواندن تصویر ناموفق بود.")
+      );
+      image.src = url;
     });
 
-    const maxSide = 1200;
     const ratio = Math.min(
       1,
-      maxSide / Math.max(image.width, image.height)
+      1200 / Math.max(image.width, image.height)
     );
 
     const canvas = document.createElement("canvas");
-    canvas.width = Math.max(1, Math.round(image.width * ratio));
-    canvas.height = Math.max(1, Math.round(image.height * ratio));
 
-    const context = canvas.getContext("2d");
-    context.drawImage(image, 0, 0, canvas.width, canvas.height);
+    canvas.width = Math.max(
+      1,
+      Math.round(image.width * ratio)
+    );
+
+    canvas.height = Math.max(
+      1,
+      Math.round(image.height * ratio)
+    );
+
+    canvas.getContext("2d").drawImage(
+      image,
+      0,
+      0,
+      canvas.width,
+      canvas.height
+    );
 
     const blob = await new Promise(resolve => {
       canvas.toBlob(resolve, "image/jpeg", 0.78);
     });
 
-    if (!blob) throw new Error("آماده‌سازی تصویر ناموفق بود.");
+    if (!blob) {
+      throw new Error("آماده‌سازی تصویر ناموفق بود.");
+    }
 
     return blob;
+
   } finally {
-    URL.revokeObjectURL(imageURL);
+    URL.revokeObjectURL(url);
   }
 }
 
 
-async function uploadImages(files, adKey) {
+async function uploadImages(files, key) {
   const urls = [];
 
   for (let i = 0; i < files.length; i++) {
     const blob = await compressImage(files[i]);
 
-    const path =
-      `adImages/${adKey}/${Date.now()}_${i}.jpg`;
+    const path = `adImages/${key}/${Date.now()}_${i}.jpg`;
 
-    const imageRef = storageRef(storage, path);
+    const fileRef = storageRef(storage, path);
 
-    await uploadBytes(imageRef, blob, {
+    await uploadBytes(fileRef, blob, {
       contentType: "image/jpeg"
     });
 
-    const url = await getDownloadURL(imageRef);
-    urls.push(url);
+    urls.push(await getDownloadURL(fileRef));
   }
 
   return urls;
@@ -736,7 +798,7 @@ $("adForm").addEventListener("submit", async event => {
   if (!firebaseReady) {
     showMessage(
       "registerMessage",
-      "اتصال به Firebase برقرار نیست. ابتدا اتصال و قوانین دسترسی را بررسی کنید.",
+      "اتصال به Firebase برقرار نیست. اتصال و قوانین دسترسی را بررسی کنید.",
       "error"
     );
     return;
@@ -764,7 +826,7 @@ $("adForm").addEventListener("submit", async event => {
 
   const ad = {
     ownerName: $("ownerName").value.trim(),
-    phone,
+    phone: phone,
     adType: $("adType").value,
     machine: $("machine").value,
     title: $("title").value.trim(),
@@ -772,6 +834,7 @@ $("adForm").addEventListener("submit", async event => {
     price: $("price").value.trim(),
     description: $("description").value.trim(),
     status: "pending",
+    featured: false,
     createdAt: Date.now(),
     images: []
   };
@@ -793,14 +856,19 @@ $("adForm").addEventListener("submit", async event => {
 
   button.disabled = true;
   button.textContent = "در حال ثبت آگهی...";
-  showMessage("registerMessage", "لطفاً منتظر بمانید...", "success");
+
+  showMessage(
+    "registerMessage",
+    "لطفاً منتظر بمانید...",
+    "success"
+  );
 
   try {
     const adRef = push(ref(db, "ads"));
-    const adKey = adRef.key;
+    const key = adRef.key;
 
     if (files.length) {
-      ad.images = await uploadImages(files, adKey);
+      ad.images = await uploadImages(files, key);
     }
 
     await set(adRef, ad);
@@ -816,13 +884,13 @@ $("adForm").addEventListener("submit", async event => {
     showSection("ads");
 
   } catch (error) {
-    console.error("Ad registration failed:", error);
+    console.error(error);
 
     let message = "ثبت آگهی ناموفق بود.";
 
     if (error.code === "PERMISSION_DENIED") {
       message =
-        "دسترسی Firebase رد شد. قوانین پایگاه داده یا Storage اجازه ثبت نمی‌دهند.";
+        "دسترسی Firebase رد شد. قوانین پایگاه داده یا Storage را بررسی کنید.";
     } else if (
       error.code === "storage/unauthorized" ||
       error.code === "storage/unauthenticated"
@@ -844,57 +912,106 @@ $("adForm").addEventListener("submit", async event => {
 });
 
 
-function getApprovedAds() {
+function getAllAds() {
   return Object.entries(allAds)
-    .filter(([key, ad]) => ad && ad.status === "approved")
-    .map(([key, ad]) => ({...ad, key}));
+    .filter(([key, ad]) => ad)
+    .map(([key, ad]) => ({
+      ...ad,
+      key
+    }));
+}
+
+
+function getApprovedAds() {
+  return getAllAds().filter(ad => ad.status === "approved");
 }
 
 
 function makeAdCard(ad, adminMode = false) {
-  const category = categories.find(item => item.name === ad.machine);
+  const category = categories.find(
+    item => item.name === ad.machine
+  );
+
   const icon = category ? category.icon : "🚜";
 
-  const imageHTML = Array.isArray(ad.images) && ad.images.length
-    ? ad.images.map(url => `
-        <img class="ad-image"
-          src="${escapeHTML(url)}"
-          alt="${escapeHTML(ad.title)}"
-          loading="lazy">
-      `).join("")
-    : `<div class="category-icon">${icon}</div>`;
+  const imageHTML =
+    Array.isArray(ad.images) && ad.images.length
+      ? ad.images.map(url => `
+          <img
+            class="ad-image"
+            src="${escapeHTML(url)}"
+            alt="${escapeHTML(ad.title)}"
+            loading="lazy"
+          >
+        `).join("")
+      : `<div class="category-icon">${icon}</div>`;
 
   const favoriteButton = !adminMode
-    ? `<button class="secondary"
-         onclick="toggleFavorite('${ad.key}')">❤️ علاقه‌مندی</button>`
+    ? `<button class="secondary" onclick="toggleFavorite('${ad.key}')">
+         ❤️ علاقه‌مندی
+       </button>`
     : "";
 
-  const adminButtons = adminMode ? `
-    <button class="green"
-      onclick="approveAd('${ad.key}')">تأیید و انتشار</button>
-    <button class="danger"
-      onclick="deleteAd('${ad.key}')">حذف آگهی</button>
-  ` : "";
+  let adminButtons = "";
 
-  const statusHTML = ad.status === "approved"
+  if (adminMode) {
+    if (ad.status === "pending") {
+      adminButtons += `
+        <button class="green" onclick="approveAd('${ad.key}')">
+          تأیید و انتشار
+        </button>
+      `;
+    }
+
+    if (ad.status === "approved") {
+      adminButtons += `
+        <button
+          class="${ad.featured === true ? "secondary" : "green"}"
+          onclick="toggleFeatured('${ad.key}', ${ad.featured === true ? "false" : "true"})"
+        >
+          ${ad.featured === true
+            ? "حذف از آگهی منتخب"
+            : "⭐ انتخاب به‌عنوان آگهی منتخب"}
+        </button>
+      `;
+    }
+
+    adminButtons += `
+      <button class="danger" onclick="deleteAd('${ad.key}')">
+        حذف آگهی
+      </button>
+    `;
+  }
+
+  const status = ad.status === "approved"
     ? '<span class="badge approved">منتشرشده</span>'
     : '<span class="badge">در انتظار تأیید</span>';
+
+  const featuredBadge = ad.featured === true
+    ? '<span class="badge">⭐ آگهی منتخب</span>'
+    : "";
 
   return `
     <article class="card">
       ${imageHTML}
+
       <h3>${escapeHTML(ad.title)}</h3>
-      ${statusHTML}
+
+      ${status}
+      ${featuredBadge}
+
       <p><strong>دسته‌بندی:</strong> ${escapeHTML(ad.machine)}</p>
       <p><strong>نوع آگهی:</strong> ${escapeHTML(ad.adType)}</p>
       <p><strong>منطقه:</strong> ${escapeHTML(ad.city)}</p>
       <p><strong>قیمت/شرایط:</strong> ${escapeHTML(ad.price || "توافقی")}</p>
       <p>${escapeHTML(ad.description)}</p>
       <p><strong>نام:</strong> ${escapeHTML(ad.ownerName)}</p>
+
       <p>
         <strong>تماس:</strong>
         <a href="tel:${escapeHTML(ad.phone)}">${escapeHTML(ad.phone)}</a>
       </p>
+
       <div class="card-actions">
         ${favoriteButton}
         ${adminButtons}
@@ -909,10 +1026,8 @@ window.renderAds = function() {
   const category = $("filterCategory").value;
   const type = $("filterType").value;
 
-  let ads = getApprovedAds();
-
-  ads = ads.filter(ad => {
-    const searchable = [
+  const ads = getApprovedAds().filter(ad => {
+    const searchContent = [
       ad.title,
       ad.machine,
       ad.city,
@@ -921,7 +1036,7 @@ window.renderAds = function() {
     ].join(" ").toLowerCase();
 
     return (
-      (!text || searchable.includes(text)) &&
+      (!text || searchContent.includes(text)) &&
       (!category || ad.machine === category) &&
       (!type || ad.adType === type)
     );
@@ -940,13 +1055,16 @@ function renderHomeAds() {
 
   $("homeAds").innerHTML = ads.length
     ? ads.map(ad => makeAdCard(ad)).join("")
-    : '<p>هنوز آگهی منتشرشده‌ای وجود ندارد.</p>';
+    : "<p>هنوز آگهی منتشرشده‌ای وجود ندارد.</p>";
 }
 
 
 function renderAddresses() {
   const ads = getApprovedAds();
-  const cities = [...new Set(ads.map(ad => ad.city).filter(Boolean))];
+
+  const cities = [
+    ...new Set(ads.map(ad => ad.city).filter(Boolean))
+  ];
 
   $("addressList").innerHTML = cities.length
     ? cities.map(city => {
@@ -975,8 +1093,10 @@ window.searchCity = function(city) {
 
 function readFavorites() {
   try {
-    return JSON.parse(localStorage.getItem("nerkhinoFavorites") || "[]");
-  } catch {
+    return JSON.parse(
+      localStorage.getItem("nerkhinoFavorites") || "[]"
+    );
+  } catch (error) {
     return [];
   }
 }
@@ -985,11 +1105,15 @@ function readFavorites() {
 window.toggleFavorite = function(key) {
   const favorites = readFavorites();
 
-  const updated = favorites.includes(key)
+  const next = favorites.includes(key)
     ? favorites.filter(item => item !== key)
     : [...favorites, key];
 
-  localStorage.setItem("nerkhinoFavorites", JSON.stringify(updated));
+  localStorage.setItem(
+    "nerkhinoFavorites",
+    JSON.stringify(next)
+  );
+
   renderFavorites();
 };
 
@@ -997,32 +1121,45 @@ window.toggleFavorite = function(key) {
 function renderFavorites() {
   const favorites = readFavorites();
 
-  const ads = getApprovedAds()
-    .filter(ad => favorites.includes(ad.key));
+  const ads = getApprovedAds().filter(
+    ad => favorites.includes(ad.key)
+  );
 
   $("favoritesList").innerHTML = ads.length
     ? ads.map(ad => makeAdCard(ad)).join("")
     : "<p>هنوز آگهی‌ای به علاقه‌مندی‌ها اضافه نکرده‌اید.</p>";
-};
+}
 
 
-/*
-  رمز زیر فقط برای آزمایش رابط کاربری است.
-  برای استفاده عمومی، پنل مدیریت باید با Firebase Authentication
-  و قوانین دسترسی مبتنی بر UID مدیر محافظت شود.
-*/
+function renderFeatured() {
+  const ads = getApprovedAds()
+    .filter(ad => ad.featured === true)
+    .sort((a, b) =>
+      (b.featuredAt || b.approvedAt || b.createdAt || 0) -
+      (a.featuredAt || a.approvedAt || a.createdAt || 0)
+    );
+
+  $("featuredList").innerHTML = ads.length
+    ? ads.map(ad => makeAdCard(ad)).join("")
+    : '<p class="panel">هنوز آگهی منتخبی وجود ندارد.</p>';
+}
+
+
 const ADMIN_TEST_PASSWORD = "1234";
 
 
 window.loginAdmin = function() {
-  const password = $("adminPassword").value;
-
-  if (password !== ADMIN_TEST_PASSWORD) {
-    showMessage("adminMessage", "رمز واردشده صحیح نیست.", "error");
+  if ($("adminPassword").value !== ADMIN_TEST_PASSWORD) {
+    showMessage(
+      "adminMessage",
+      "رمز واردشده صحیح نیست.",
+      "error"
+    );
     return;
   }
 
   adminLoggedIn = true;
+
   $("adminLogin").classList.add("hidden");
   $("adminContent").classList.remove("hidden");
 
@@ -1032,6 +1169,7 @@ window.loginAdmin = function() {
 
 window.logoutAdmin = function() {
   adminLoggedIn = false;
+
   $("adminLogin").classList.remove("hidden");
   $("adminContent").classList.add("hidden");
   $("adminPassword").value = "";
@@ -1041,12 +1179,15 @@ window.logoutAdmin = function() {
 function renderAdmin() {
   if (!adminLoggedIn) return;
 
-  const entries = Object.entries(allAds)
-    .filter(([key, ad]) => ad)
-    .map(([key, ad]) => ({...ad, key}));
+  const entries = getAllAds();
 
-  const pending = entries.filter(ad => ad.status === "pending");
-  const approved = entries.filter(ad => ad.status === "approved");
+  const pending = entries.filter(
+    ad => ad.status === "pending"
+  );
+
+  const approved = entries.filter(
+    ad => ad.status === "approved"
+  );
 
   $("pendingAds").innerHTML = pending.length
     ? pending.map(ad => makeAdCard(ad, true)).join("")
@@ -1064,7 +1205,9 @@ window.approveAd = async function(key) {
     return;
   }
 
-  if (!confirm("آیا از انتشار این آگهی مطمئن هستید؟")) return;
+  if (!confirm("آیا از انتشار این آگهی مطمئن هستید؟")) {
+    return;
+  }
 
   try {
     await update(ref(db, "ads/" + key), {
@@ -1076,8 +1219,37 @@ window.approveAd = async function(key) {
 
   } catch (error) {
     console.error(error);
+
     alert(
-      "تأیید آگهی ناموفق بود. قوانین امنیتی Firebase اجازه این کار را نمی‌دهند."
+      "تأیید آگهی ناموفق بود. قوانین امنیتی Firebase را بررسی کنید."
+    );
+  }
+};
+
+
+window.toggleFeatured = async function(key, featured) {
+  if (!adminLoggedIn) {
+    alert("ابتدا وارد پنل مدیریت شوید.");
+    return;
+  }
+
+  try {
+    await update(ref(db, "ads/" + key), {
+      featured: featured,
+      featuredAt: featured ? Date.now() : null
+    });
+
+    alert(
+      featured
+        ? "آگهی به بخش آگهی منتخب اضافه شد."
+        : "آگهی از آگهی منتخب برداشته شد."
+    );
+
+  } catch (error) {
+    console.error(error);
+
+    alert(
+      "تغییر آگهی منتخب ناموفق بود. قوانین Firebase را بررسی کنید."
     );
   }
 };
@@ -1089,16 +1261,19 @@ window.deleteAd = async function(key) {
     return;
   }
 
-  if (!confirm("آیا از حذف این آگهی مطمئن هستید؟")) return;
+  if (!confirm("آیا از حذف این آگهی مطمئن هستید؟")) {
+    return;
+  }
 
   try {
     await remove(ref(db, "ads/" + key));
-    alert("درخواست حذف انجام شد.");
+    alert("آگهی حذف شد.");
 
   } catch (error) {
     console.error(error);
+
     alert(
-      "حذف آگهی ناموفق بود. قوانین امنیتی Firebase را بررسی کنید."
+      "حذف آگهی ناموفق بود. قوانین Firebase را بررسی کنید."
     );
   }
 };
