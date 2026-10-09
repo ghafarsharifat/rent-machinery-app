@@ -531,13 +531,6 @@ function getPublicAds(){
   );
 }
 
-function categoryOptions(selected=""){
-  return categories.map(c=>
-    `<option value="${esc(c)}" ${c===selected?"selected":""}>${esc(c)}</option>`
-  ).join("");
-}
-
-
 function categoryOptions(selected = "") {
   return categories.map(c =>
     `<option value="${esc(c)}" ${c === selected ? "selected" : ""}>${esc(c)}</option>`
