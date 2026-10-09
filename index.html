@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>تأمینو | بازار ماشین‌آلات سنگین</title>
+<title>تأمینو | بازار ماشین‌آلات سنگین</title>
 <meta name="theme-color" content="#1565c0">
-<meta name="description" content="ثبت و جست‌وجوی آگهی ماشین‌آلات راهسازی، معدنی، قطعات و استخدام راننده">
+<meta name="description" content="بازار ماشین‌آلات راه‌سازی و معدنی، قطعات، کاریابی و استخدام رانندگان">
 
 <link rel="manifest" href="/rent-machinery-app/manifest.json">
 
@@ -130,6 +130,7 @@ button {
 }
 
 .btn {
+  display: inline-block;
   border: 0;
   border-radius: 8px;
   padding: 11px 16px;
@@ -138,6 +139,7 @@ button {
   color: white;
   font-size: 14px;
   margin-top: 12px;
+  text-decoration: none;
 }
 
 .btn:disabled {
@@ -231,6 +233,10 @@ button {
   margin-bottom: 14px;
 }
 
+.notice p {
+  margin: 6px 0;
+}
+
 .error {
   color: var(--red);
 }
@@ -287,8 +293,8 @@ footer {
 <body>
 
 <header>
-  <h1>تامینو</h1>
-  <p>بازار اجاره، خریدوفروش ماشین‌آلات و قطعات</p>
+  <h1>تأمینو</h1>
+  <p>بازار ماشین‌آلات، قطعات و فرصت‌های شغلی</p>
 </header>
 
 <nav>
@@ -303,22 +309,33 @@ footer {
 
 <section id="home" class="section active">
   <div class="panel">
-    <h2>به تامینو خوش آمدید</h2>
-    <p>
-      آگهی ماشین‌آلات راهسازی و معدنی، اجاره تجهیزات،
-      خریدوفروش قطعات و استخدام راننده را ثبت یا جست‌وجو کنید.
-    </p>
-    <button class="btn" onclick="showSection('ads')">
-      مشاهده آگهی‌ها
-    </button>
-    <button class="btn green" onclick="showSection('register')">
-      ثبت آگهی جدید
-    </button>
+    <h2>دسته‌بندی‌های تأمینو</h2>
+
+    <div class="grid">
+      <button class="btn" onclick="openCategory('بیل مکانیکی')">بیل مکانیکی</button>
+      <button class="btn" onclick="openCategory('لودر')">لودر</button>
+      <button class="btn" onclick="openCategory('بولدوزر')">بولدوزر</button>
+      <button class="btn" onclick="openCategory('گریدر')">گریدر</button>
+      <button class="btn" onclick="openCategory('غلطک')">غلطک</button>
+      <button class="btn" onclick="openCategory('کامیون و کمپرسی')">کامیون و کمپرسی</button>
+      <button class="btn" onclick="openCategory('جرثقیل')">جرثقیل</button>
+      <button class="btn" onclick="openCategory('کمرشکن')">کمرشکن</button>
+      <button class="btn" onclick="openCategory('سایر ماشین‌آلات معدنی')">سایر ماشین‌آلات معدنی</button>
+      <button class="btn green" onclick="openCategory('راننده جویای کار')">🚛 راننده جویای کار</button>
+      <button class="btn green" onclick="openCategory('استخدام راننده')">🏗️ استخدام راننده</button>
+      <button class="btn" onclick="openCategory('ارائه قطعات ماشین‌آلات')">قطعات ماشین‌آلات</button>
+    </div>
+
+    <button class="btn" onclick="showSection('ads')">مشاهده همه آگهی‌ها</button>
+    <button class="btn green" onclick="showSection('register')">ثبت آگهی جدید</button>
   </div>
 
   <div class="panel">
-    <h2>دسته‌بندی‌های تامینو</h2>
-    <div id="categoryButtons" class="grid"></div>
+    <h2>کاریابی و استخدام رانندگان</h2>
+    <p><strong>راننده جویای کار:</strong> مشخصات شغلی خود را ثبت کنید تا کارفرمایان بتوانند آگهی شما را ببینند.</p>
+    <p><strong>کارفرما:</strong> اگر به راننده یا اپراتور ماشین‌آلات نیاز دارید، آگهی استخدام ثبت کنید.</p>
+    <button class="btn green" onclick="prepareJobAd('جویای کار')">ثبت آگهی راننده جویای کار</button>
+    <button class="btn" onclick="prepareJobAd('استخدام راننده')">ثبت آگهی استخدام راننده</button>
   </div>
 </section>
 
@@ -327,7 +344,7 @@ footer {
     <h2>جست‌وجوی آگهی‌ها</h2>
 
     <label for="searchText">عنوان یا توضیحات</label>
-    <input id="searchText" placeholder="مثلاً بیل مکانیکی کوماتسو">
+    <input id="searchText" placeholder="مثلاً راننده پایه یک یا بیل مکانیکی">
 
     <label for="filterCategory">دسته‌بندی</label>
     <select id="filterCategory">
@@ -355,8 +372,10 @@ footer {
     <h2 id="formHeading">ثبت آگهی جدید</h2>
 
     <div class="notice">
-      نام آگهی‌دهنده دریافت نمی‌شود. شماره تماس برای ارتباط با آگهی‌دهنده
-      در آگهی نمایش داده می‌شود. آگهی پس از تأیید مدیر منتشر خواهد شد.
+      <strong>راهنمای ثبت آگهی</strong>
+      <p>🚛 راننده جویای کار: نوع گواهینامه، سابقه کار و مهارت‌های خود را وارد کنید.</p>
+      <p>🏗️ کارفرما: نوع راننده یا اپراتور موردنیاز و شرایط استخدام را مشخص کنید.</p>
+      <p>شماره تماس در آگهی منتشرشده نمایش داده می‌شود. آگهی پس از تأیید مدیر منتشر خواهد شد.</p>
     </div>
 
     <form id="adForm">
@@ -366,7 +385,8 @@ footer {
       <select id="adType" required>
         <option value="اجاره">اجاره ماشین‌آلات</option>
         <option value="خرید و فروش">خرید و فروش ماشین‌آلات</option>
-        <option value="استخدام راننده">استخدام راننده</option>
+        <option value="جویای کار">راننده جویای کار</option>
+        <option value="استخدام راننده">استخدام راننده توسط کارفرما</option>
         <option value="ارائه قطعات">ارائه قطعات ماشین‌آلات</option>
       </select>
 
@@ -374,8 +394,92 @@ footer {
       <select id="category" required></select>
 
       <label for="title">عنوان آگهی</label>
-      <input id="title" required maxlength="100"
-             placeholder="مثلاً اجاره بیل مکانیکی">
+      <input id="title" required maxlength="100" placeholder="عنوان آگهی را وارد کنید">
+
+      <div id="jobSeekerFields" class="hidden">
+        <h3>مشخصات راننده جویای کار</h3>
+
+        <label for="licenseType">نوع گواهینامه</label>
+        <select id="licenseType">
+          <option value="">انتخاب کنید</option>
+          <option value="پایه یک">پایه یک</option>
+          <option value="پایه دو">پایه دو</option>
+          <option value="پایه سه">پایه سه</option>
+          <option value="ویژه">گواهینامه ویژه ماشین‌آلات</option>
+          <option value="سایر">سایر</option>
+        </select>
+
+        <label for="jobSkill">نوع رانندگی یا مهارت</label>
+        <select id="jobSkill">
+          <option value="">انتخاب کنید</option>
+          <option value="راننده کامیون و کمپرسی">راننده کامیون و کمپرسی</option>
+          <option value="راننده کمرشکن">راننده کمرشکن</option>
+          <option value="اپراتور بیل مکانیکی">اپراتور بیل مکانیکی</option>
+          <option value="اپراتور لودر">اپراتور لودر</option>
+          <option value="اپراتور بولدوزر">اپراتور بولدوزر</option>
+          <option value="اپراتور گریدر">اپراتور گریدر</option>
+          <option value="اپراتور جرثقیل">اپراتور جرثقیل</option>
+          <option value="سایر ماشین‌آلات">سایر ماشین‌آلات</option>
+        </select>
+
+        <label for="experience">سابقه کار</label>
+        <select id="experience">
+          <option value="">انتخاب کنید</option>
+          <option value="بدون سابقه">بدون سابقه</option>
+          <option value="کمتر از ۲ سال">کمتر از ۲ سال</option>
+          <option value="۲ تا ۵ سال">۲ تا ۵ سال</option>
+          <option value="۵ تا ۱۰ سال">۵ تا ۱۰ سال</option>
+          <option value="بیشتر از ۱۰ سال">بیشتر از ۱۰ سال</option>
+        </select>
+
+        <label for="desiredSalary">حقوق درخواستی ماهانه (تومان)</label>
+        <input id="desiredSalary" type="number" min="0" placeholder="اختیاری">
+
+        <label for="availability">وضعیت شروع به کار</label>
+        <select id="availability">
+          <option value="آماده به کار">آماده به کار</option>
+          <option value="از تاریخ مشخص">از تاریخ مشخص</option>
+          <option value="توافقی">توافقی</option>
+        </select>
+      </div>
+
+      <div id="employerFields" class="hidden">
+        <h3>شرایط استخدام</h3>
+
+        <label for="requiredPosition">سمت موردنیاز</label>
+        <select id="requiredPosition">
+          <option value="">انتخاب کنید</option>
+          <option value="راننده پایه یک">راننده پایه یک</option>
+          <option value="راننده پایه دو">راننده پایه دو</option>
+          <option value="راننده کامیون و کمپرسی">راننده کامیون و کمپرسی</option>
+          <option value="راننده کمرشکن">راننده کمرشکن</option>
+          <option value="اپراتور بیل مکانیکی">اپراتور بیل مکانیکی</option>
+          <option value="اپراتور لودر">اپراتور لودر</option>
+          <option value="اپراتور بولدوزر">اپراتور بولدوزر</option>
+          <option value="اپراتور گریدر">اپراتور گریدر</option>
+          <option value="اپراتور جرثقیل">اپراتور جرثقیل</option>
+          <option value="اپراتور سایر ماشین‌آلات">اپراتور سایر ماشین‌آلات</option>
+        </select>
+
+        <label for="salary">حقوق پیشنهادی ماهانه (تومان)</label>
+        <input id="salary" type="number" min="0" placeholder="اختیاری">
+
+        <label for="workType">نوع همکاری</label>
+        <select id="workType">
+          <option value="تمام‌وقت">تمام‌وقت</option>
+          <option value="پاره‌وقت">پاره‌وقت</option>
+          <option value="پروژه‌ای">پروژه‌ای</option>
+          <option value="توافقی">توافقی</option>
+        </select>
+
+        <label for="requiredExperience">سابقه کار موردنیاز</label>
+        <select id="requiredExperience">
+          <option value="بدون سابقه">بدون سابقه</option>
+          <option value="حداقل ۲ سال">حداقل ۲ سال</option>
+          <option value="حداقل ۵ سال">حداقل ۵ سال</option>
+          <option value="توافقی">توافقی</option>
+        </select>
+      </div>
 
       <label for="province">استان</label>
       <input id="province" maxlength="60" placeholder="نام استان">
@@ -383,17 +487,18 @@ footer {
       <label for="city">شهر</label>
       <input id="city" required maxlength="60" placeholder="نام شهر">
 
-      <label for="price">قیمت به تومان</label>
-      <input id="price" type="number" min="0"
-             placeholder="برای قیمت توافقی خالی بگذارید">
+      <div id="priceFieldGroup">
+        <label for="price">قیمت به تومان</label>
+        <input id="price" type="number" min="0" placeholder="برای قیمت توافقی خالی بگذارید">
+      </div>
 
       <label for="phone">شماره تماس</label>
       <input id="phone" type="tel" required maxlength="20"
-             inputmode="tel" placeholder="شماره تماس آگهی‌دهنده">
+             inputmode="tel" placeholder="شماره تماس">
 
       <label for="description">توضیحات</label>
       <textarea id="description" required maxlength="3000"
-                placeholder="مشخصات، شرایط اجاره یا فروش..."></textarea>
+                placeholder="توضیحات کامل آگهی را وارد کنید"></textarea>
 
       <div id="partsFields" class="hidden">
         <h3>مشخصات قطعه</h3>
@@ -402,8 +507,7 @@ footer {
         <input id="partName" maxlength="100">
 
         <label for="partCategory">گروه قطعه</label>
-        <input id="partCategory" maxlength="80"
-               placeholder="مثلاً موتور، هیدرولیک، زیربندی">
+        <input id="partCategory" maxlength="80" placeholder="مثلاً موتور، هیدرولیک، زیربندی">
 
         <label for="partMachine">برند یا مدل ماشین</label>
         <input id="partMachine" maxlength="100">
@@ -425,16 +529,11 @@ footer {
       <label for="photos">تصاویر آگهی (حداکثر ۵ عکس)</label>
       <input id="photos" type="file" accept="image/*" multiple>
       <div id="photoPreview" class="photo-preview"></div>
-      <p class="small">
-        برای کاهش مصرف اینترنت، تصاویر پیش از ارسال کوچک می‌شوند.
-        هر تصویر باید کمتر از ۵ مگابایت باشد.
-      </p>
+      <p class="small">هر تصویر باید کمتر از ۵ مگابایت باشد.</p>
 
-      <button id="submitButton" class="btn green" type="submit">
-        ثبت آگهی
-      </button>
-      <button id="cancelEdit" class="btn gray hidden" type="button"
-              onclick="resetForm()">
+      <button id="submitButton" class="btn green" type="submit">ثبت آگهی</button>
+
+      <button id="cancelEdit" class="btn gray hidden" type="button" onclick="resetForm()">
         لغو ویرایش
       </button>
     </form>
@@ -447,7 +546,7 @@ footer {
   <div class="panel">
     <h2>آگهی‌های من</h2>
     <p class="small">
-      آگهی‌های ثبت‌شده با همین مرورگر و شناسه ناشناس نمایش داده می‌شوند.
+      آگهی‌های ثبت‌شده با همین شناسه مرورگر نمایش داده می‌شوند.
       با پاک شدن داده‌های مرورگر ممکن است دسترسی به آگهی‌های قبلی از دست برود.
     </p>
     <button class="btn" onclick="loadMyAds()">به‌روزرسانی</button>
@@ -458,7 +557,7 @@ footer {
 <section id="admin" class="section">
   <div class="panel">
     <h2>پنل مدیریت</h2>
-    <p>فقط شناسه‌هایی که در Firebase به‌عنوان مدیر مجاز شده‌اند، به این بخش دسترسی دارند.</p>
+    <p>فقط شناسه‌های مجازشده در Firebase اجازه مدیریت دارند.</p>
     <button class="btn" onclick="loadAdminAds()">بارگذاری آگهی‌های در انتظار</button>
   </div>
   <div id="adminAdsList" class="grid"></div>
@@ -467,7 +566,7 @@ footer {
 </main>
 
 <footer>
-  تامینو | سامانه آگهی ماشین‌آلات و قطعات
+  تأمینو | بازار ماشین‌آلات، قطعات و کاریابی رانندگان
 </footer>
 
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
@@ -478,9 +577,8 @@ footer {
 <script>
 "use strict";
 
-/* تنظیمات پروژه Firebase تامینو */
 const firebaseConfig = {
-  apiKey: "AIzaSyBB12jJCxigpdASZZmjxU2XjfSWeQ8ehAY",
+  apiKey: "AIzaSyBB12jJCxigpdASZZmjxU2KjfSWeQ8ehAY",
   authDomain: "nerkhino-8ff13.firebaseapp.com",
   databaseURL: "https://nerkhino-8ff13-default-rtdb.firebaseio.com",
   projectId: "nerkhino-8ff13",
@@ -508,6 +606,7 @@ const categories = [
   "فنیشر",
   "دامپتراک",
   "سایر ماشین‌آلات معدنی",
+  "راننده جویای کار",
   "استخدام راننده",
   "ارائه قطعات ماشین‌آلات"
 ];
@@ -519,7 +618,6 @@ let selectedPhotos = [];
 let oldImageUrls = [];
 let authReady = false;
 
-/* ابزارهای عمومی */
 function escapeHTML(value) {
   return String(value ?? "").replace(/[&<>"']/g, ch => ({
     "&": "&amp;",
@@ -547,6 +645,10 @@ function formatPrice(value) {
   return number.toLocaleString("fa-IR") + " تومان";
 }
 
+function isJobType(type) {
+  return type === "جویای کار" || type === "استخدام راننده";
+}
+
 function showSection(id) {
   if (id === "admin" && !isAdmin) {
     alert("شما اجازه دسترسی به پنل مدیریت را ندارید.");
@@ -572,7 +674,6 @@ document.querySelectorAll("nav button[data-section]").forEach(button => {
   button.addEventListener("click", () => showSection(button.dataset.section));
 });
 
-/* آماده‌سازی دسته‌بندی‌ها */
 function fillCategories() {
   const categorySelect = document.getElementById("category");
   const filterSelect = document.getElementById("filterCategory");
@@ -580,23 +681,24 @@ function fillCategories() {
   categories.forEach(name => {
     categorySelect.add(new Option(name, name));
     filterSelect.add(new Option(name, name));
-
-    const button = document.createElement("button");
-    button.className = "btn";
-    button.textContent = name;
-    button.addEventListener("click", () => {
-      filterSelect.value = name;
-      showSection("ads");
-      renderAds();
-    });
-
-    document.getElementById("categoryButtons").appendChild(button);
   });
 }
 
 fillCategories();
 
-/* ورود ناشناس خودکار؛ هیچ فرم ورود یا ثبت‌نامی به کاربر نشان داده نمی‌شود */
+function openCategory(name) {
+  document.getElementById("filterCategory").value = name;
+  showSection("ads");
+  renderAds();
+}
+
+function prepareJobAd(type) {
+  resetForm();
+  document.getElementById("adType").value = type;
+  updateTypeFields();
+  showSection("register");
+}
+
 auth.onAuthStateChanged(async user => {
   try {
     if (!user) {
@@ -610,20 +712,17 @@ auth.onAuthStateChanged(async user => {
     const adminSnapshot = await db.ref("admins/" + user.uid).once("value");
     isAdmin = adminSnapshot.val() === true;
 
-    document.getElementById("adminNav")
-      .classList.toggle("hidden", !isAdmin);
+    document.getElementById("adminNav").classList.toggle("hidden", !isAdmin);
 
     await loadAdsFromDatabase();
   } catch (error) {
     console.error(error);
     alert(
-      "اتصال نرخینو به Firebase کامل نشد. تنظیمات ورود ناشناس، " +
-      "قوانین پایگاه داده و اتصال اینترنت را بررسی کنید."
+      "اتصال تأمینو به Firebase کامل نشد. ورود ناشناس، قوانین پایگاه داده و اینترنت را بررسی کنید."
     );
   }
 });
 
-/* دریافت آگهی‌ها */
 async function loadAdsFromDatabase() {
   try {
     const snapshot = await db.ref("ads").once("value");
@@ -636,7 +735,6 @@ async function loadAdsFromDatabase() {
   }
 }
 
-/* کارت آگهی */
 function createAdCard(id, ad, mode = "public") {
   const card = document.createElement("article");
   card.className = "ad-card";
@@ -681,10 +779,37 @@ function createAdCard(id, ad, mode = "public") {
     [ad.province, ad.city].filter(Boolean).join("، ");
   content.appendChild(details);
 
-  const price = document.createElement("p");
-  price.className = "price";
-  price.textContent = formatPrice(ad.price);
-  content.appendChild(price);
+  if (ad.type === "جویای کار" && ad.jobDetails) {
+    const job = ad.jobDetails;
+    const jobInfo = document.createElement("p");
+    jobInfo.textContent = [
+      job.licenseType && "گواهینامه: " + job.licenseType,
+      job.jobSkill && "مهارت: " + job.jobSkill,
+      job.experience && "سابقه: " + job.experience,
+      job.desiredSalary && "حقوق درخواستی: " + formatPrice(job.desiredSalary),
+      job.availability && "وضعیت: " + job.availability
+    ].filter(Boolean).join(" | ");
+    content.appendChild(jobInfo);
+  }
+
+  if (ad.type === "استخدام راننده" && ad.jobDetails) {
+    const job = ad.jobDetails;
+    const jobInfo = document.createElement("p");
+    jobInfo.textContent = [
+      job.requiredPosition && "سمت: " + job.requiredPosition,
+      job.salary && "حقوق پیشنهادی: " + formatPrice(job.salary),
+      job.workType && "همکاری: " + job.workType,
+      job.requiredExperience && "سابقه موردنیاز: " + job.requiredExperience
+    ].filter(Boolean).join(" | ");
+    content.appendChild(jobInfo);
+  }
+
+  if (!isJobType(ad.type)) {
+    const price = document.createElement("p");
+    price.className = "price";
+    price.textContent = formatPrice(ad.price);
+    content.appendChild(price);
+  }
 
   const description = document.createElement("p");
   description.textContent = ad.description || "";
@@ -757,7 +882,6 @@ function createAdCard(id, ad, mode = "public") {
   return card;
 }
 
-/* نمایش و جست‌وجوی آگهی‌های تأییدشده */
 function renderAds() {
   const list = document.getElementById("adsList");
   list.replaceChildren();
@@ -782,11 +906,18 @@ function renderAds() {
     const location = [ad.city, ad.province].join(" ").toLowerCase();
     if (city && !location.includes(city)) return false;
 
-    const price = Number(ad.price);
-    if (min !== "" && (!Number.isFinite(price) || price < Number(min))) {
-      return false;
-    }
-    if (max !== "" && (!Number.isFinite(price) || price > Number(max))) {
+    // آگهی‌های کاریابی و استخدام، قیمت کالا ندارند.
+    if (!isJobType(ad.type)) {
+      const price = Number(ad.price);
+
+      if (min !== "" && (!Number.isFinite(price) || price < Number(min))) {
+        return false;
+      }
+
+      if (max !== "" && (!Number.isFinite(price) || price > Number(max))) {
+        return false;
+      }
+    } else if (min !== "" || max !== "") {
       return false;
     }
 
@@ -809,11 +940,11 @@ function clearFilters() {
   ["searchText", "filterCity", "minPrice", "maxPrice"].forEach(id => {
     document.getElementById(id).value = "";
   });
+
   document.getElementById("filterCategory").value = "";
   renderAds();
 }
 
-/* آگهی‌های متعلق به همین شناسه ناشناس */
 async function loadMyAds() {
   const list = document.getElementById("myAdsList");
   list.replaceChildren();
@@ -850,7 +981,39 @@ async function loadMyAds() {
   }
 }
 
-/* تصاویر */
+/* کنترل فیلدهای مخصوص هر نوع آگهی */
+function updateTypeFields() {
+  const type = document.getElementById("adType").value;
+  const isParts = type === "ارائه قطعات";
+  const isSeeker = type === "جویای کار";
+  const isEmployer = type === "استخدام راننده";
+  const isJob = isSeeker || isEmployer;
+
+  document.getElementById("partsFields").classList.toggle("hidden", !isParts);
+  document.getElementById("jobSeekerFields").classList.toggle("hidden", !isSeeker);
+  document.getElementById("employerFields").classList.toggle("hidden", !isEmployer);
+
+  document.getElementById("priceFieldGroup").classList.toggle("hidden", isJob);
+
+  const category = document.getElementById("category");
+
+  if (isSeeker) {
+    category.value = "راننده جویای کار";
+  } else if (isEmployer) {
+    category.value = "استخدام راننده";
+  } else if (isParts) {
+    category.value = "ارائه قطعات ماشین‌آلات";
+  }
+
+  document.getElementById("formHeading").textContent =
+    isSeeker ? "ثبت آگهی راننده جویای کار" :
+    isEmployer ? "ثبت آگهی استخدام راننده" :
+    isParts ? "ثبت آگهی قطعات ماشین‌آلات" :
+    "ثبت آگهی جدید";
+}
+
+document.getElementById("adType").addEventListener("change", updateTypeFields);
+
 document.getElementById("photos").addEventListener("change", event => {
   const files = Array.from(event.target.files || []);
 
@@ -865,6 +1028,14 @@ document.getElementById("photos").addEventListener("change", event => {
   if (files.some(file => !file.type.startsWith("image/"))) {
     alert("فقط فایل تصویر انتخاب کنید.");
     event.target.value = "";
+    selectedPhotos = [];
+    return;
+  }
+
+  if (files.some(file => file.size > 5 * 1024 * 1024)) {
+    alert("حجم هر تصویر باید کمتر از ۵ مگابایت باشد.");
+    event.target.value = "";
+    selectedPhotos = [];
     return;
   }
 
@@ -881,16 +1052,6 @@ document.getElementById("photos").addEventListener("change", event => {
   });
 });
 
-/* فیلدهای مخصوص قطعات */
-document.getElementById("adType").addEventListener("change", () => {
-  const isParts = document.getElementById("adType").value === "ارائه قطعات";
-  document.getElementById("partsFields").classList.toggle("hidden", !isParts);
-
-  if (isParts) {
-    document.getElementById("category").value = "ارائه قطعات ماشین‌آلات";
-  }
-});
-
 async function uploadPhotos(adId) {
   const urls = [...oldImageUrls];
 
@@ -901,7 +1062,8 @@ async function uploadPhotos(adId) {
       throw new Error("حجم هر عکس باید کمتر از ۵ مگابایت باشد.");
     }
 
-    const path = `ad-images/${currentUser.uid}/${adId}/${Date.now()}-${i}-${file.name.replace(/[^\w.-]/g, "_")}`;
+    const safeName = file.name.replace(/[^\w.-]/g, "_");
+    const path = `ad-images/${currentUser.uid}/${adId}/${Date.now()}-${i}-${safeName}`;
     const ref = storage.ref(path);
 
     const result = await ref.put(file, {
@@ -932,23 +1094,59 @@ document.getElementById("adForm").addEventListener("submit", async event => {
     const id = editId || db.ref("ads").push().key;
     const existing = editId ? allAds[editId] : null;
 
+    if (editId && !existing) {
+      throw new Error("آگهی موردنظر پیدا نشد. فهرست آگهی‌ها را به‌روزرسانی کنید.");
+    }
+
     if (existing && existing.ownerUid !== currentUser.uid) {
       throw new Error("اجازه ویرایش این آگهی را ندارید.");
     }
 
     const type = document.getElementById("adType").value;
-    const category = document.getElementById("category").value;
+    let category = document.getElementById("category").value;
     const phone = document.getElementById("phone").value.trim();
 
     if (!/^[0-9۰-۹٠-٩+()\-\s]{7,20}$/.test(phone)) {
       throw new Error("شماره تماس را بررسی کنید.");
     }
 
-    const priceInput = document.getElementById("price").value;
-    const price = priceInput === "" ? null : Number(priceInput);
+    const titleValue = document.getElementById("title").value.trim();
+    const cityValue = document.getElementById("city").value.trim();
+    const descriptionValue = document.getElementById("description").value.trim();
 
-    if (price !== null && (!Number.isFinite(price) || price < 0)) {
-      throw new Error("قیمت معتبر نیست.");
+    if (!titleValue || !cityValue || !descriptionValue) {
+      throw new Error("عنوان، شهر و توضیحات را کامل کنید.");
+    }
+
+    if (type === "جویای کار") {
+      category = "راننده جویای کار";
+
+      const jobSkill = document.getElementById("jobSkill").value;
+      const licenseType = document.getElementById("licenseType").value;
+      const experience = document.getElementById("experience").value;
+
+      if (!jobSkill || !licenseType || !experience) {
+        throw new Error("نوع گواهینامه، مهارت و سابقه کار را انتخاب کنید.");
+      }
+    }
+
+    if (type === "استخدام راننده") {
+      category = "استخدام راننده";
+
+      if (!document.getElementById("requiredPosition").value) {
+        throw new Error("سمت موردنیاز را انتخاب کنید.");
+      }
+    }
+
+    let price = null;
+
+    if (!isJobType(type)) {
+      const priceInput = document.getElementById("price").value;
+      price = priceInput === "" ? null : Number(priceInput);
+
+      if (price !== null && (!Number.isFinite(price) || price < 0)) {
+        throw new Error("قیمت معتبر نیست.");
+      }
     }
 
     const partDetails = type === "ارائه قطعات" ? {
@@ -958,7 +1156,8 @@ document.getElementById("adForm").addEventListener("submit", async event => {
       condition: document.getElementById("partCondition").value,
       partNumber: document.getElementById("partNumber").value.trim(),
       quantity: Math.max(
-        1, Number(document.getElementById("partQuantity").value || 1)
+        1,
+        Number(document.getElementById("partQuantity").value || 1)
       )
     } : null;
 
@@ -966,32 +1165,69 @@ document.getElementById("adForm").addEventListener("submit", async event => {
       throw new Error("نام قطعه را وارد کنید.");
     }
 
+    let jobDetails = null;
+
+    if (type === "جویای کار") {
+      const desiredSalaryInput = document.getElementById("desiredSalary").value;
+
+      jobDetails = {
+        licenseType: document.getElementById("licenseType").value,
+        jobSkill: document.getElementById("jobSkill").value,
+        experience: document.getElementById("experience").value,
+        desiredSalary: desiredSalaryInput === "" ? null : Number(desiredSalaryInput),
+        availability: document.getElementById("availability").value
+      };
+
+      if (
+        jobDetails.desiredSalary !== null &&
+        (!Number.isFinite(jobDetails.desiredSalary) || jobDetails.desiredSalary < 0)
+      ) {
+        throw new Error("حقوق درخواستی معتبر نیست.");
+      }
+    }
+
+    if (type === "استخدام راننده") {
+      const salaryInput = document.getElementById("salary").value;
+
+      jobDetails = {
+        requiredPosition: document.getElementById("requiredPosition").value,
+        salary: salaryInput === "" ? null : Number(salaryInput),
+        workType: document.getElementById("workType").value,
+        requiredExperience: document.getElementById("requiredExperience").value
+      };
+
+      if (
+        jobDetails.salary !== null &&
+        (!Number.isFinite(jobDetails.salary) || jobDetails.salary < 0)
+      ) {
+        throw new Error("حقوق پیشنهادی معتبر نیست.");
+      }
+    }
+
     const images = await uploadPhotos(id);
 
     const ad = {
       type,
       category,
-      title: document.getElementById("title").value.trim(),
+      title: titleValue,
       province: document.getElementById("province").value.trim(),
-      city: document.getElementById("city").value.trim(),
+      city: cityValue,
       price,
       phone,
-      description: document.getElementById("description").value.trim(),
+      description: descriptionValue,
       images,
       partDetails,
+      jobDetails,
       ownerUid: currentUser.uid,
       status: "pending",
       createdAt: existing?.createdAt || Date.now(),
       updatedAt: Date.now()
     };
 
-    if (!ad.title || !ad.city || !ad.description) {
-      throw new Error("عنوان، شهر و توضیحات را کامل کنید.");
-    }
-
     await db.ref("ads/" + id).set(ad);
 
     allAds[id] = ad;
+
     resetForm();
     showMessage("آگهی ثبت شد و پس از تأیید مدیر منتشر می‌شود.", "success");
 
@@ -999,13 +1235,16 @@ document.getElementById("adForm").addEventListener("submit", async event => {
     showSection("myAds");
   } catch (error) {
     console.error(error);
-    showMessage(error.message || "ثبت آگهی انجام نشد. تنظیمات Firebase را بررسی کنید.", "error");
+    showMessage(
+      error.message || "ثبت آگهی انجام نشد. تنظیمات Firebase را بررسی کنید.",
+      "error"
+    );
   } finally {
     submitButton.disabled = false;
   }
 });
 
-/* ویرایش */
+/* ویرایش آگهی */
 function editAd(id, ad) {
   if (!currentUser || ad.ownerUid !== currentUser.uid) {
     alert("اجازه ویرایش این آگهی را ندارید.");
@@ -1013,11 +1252,12 @@ function editAd(id, ad) {
   }
 
   document.getElementById("editAdId").value = id;
-  document.getElementById("formHeading").textContent = "ویرایش آگهی";
   document.getElementById("submitButton").textContent = "ذخیره تغییرات";
   document.getElementById("cancelEdit").classList.remove("hidden");
 
   document.getElementById("adType").value = ad.type || "اجاره";
+  updateTypeFields();
+
   document.getElementById("category").value = ad.category || categories[0];
   document.getElementById("title").value = ad.title || "";
   document.getElementById("province").value = ad.province || "";
@@ -1027,6 +1267,7 @@ function editAd(id, ad) {
   document.getElementById("description").value = ad.description || "";
 
   const part = ad.partDetails || {};
+
   document.getElementById("partName").value = part.name || "";
   document.getElementById("partCategory").value = part.category || "";
   document.getElementById("partMachine").value = part.machine || "";
@@ -1034,8 +1275,18 @@ function editAd(id, ad) {
   document.getElementById("partNumber").value = part.partNumber || "";
   document.getElementById("partQuantity").value = part.quantity || 1;
 
-  document.getElementById("partsFields")
-    .classList.toggle("hidden", ad.type !== "ارائه قطعات");
+  const job = ad.jobDetails || {};
+
+  document.getElementById("licenseType").value = job.licenseType || "";
+  document.getElementById("jobSkill").value = job.jobSkill || "";
+  document.getElementById("experience").value = job.experience || "";
+  document.getElementById("desiredSalary").value = job.desiredSalary ?? "";
+  document.getElementById("availability").value = job.availability || "آماده به کار";
+
+  document.getElementById("requiredPosition").value = job.requiredPosition || "";
+  document.getElementById("salary").value = job.salary ?? "";
+  document.getElementById("workType").value = job.workType || "تمام‌وقت";
+  document.getElementById("requiredExperience").value = job.requiredExperience || "بدون سابقه";
 
   oldImageUrls = Array.isArray(ad.images) ? [...ad.images] : [];
   selectedPhotos = [];
@@ -1057,14 +1308,14 @@ function editAd(id, ad) {
 function resetForm() {
   document.getElementById("adForm").reset();
   document.getElementById("editAdId").value = "";
-  document.getElementById("formHeading").textContent = "ثبت آگهی جدید";
   document.getElementById("submitButton").textContent = "ثبت آگهی";
   document.getElementById("cancelEdit").classList.add("hidden");
-  document.getElementById("partsFields").classList.add("hidden");
   document.getElementById("photoPreview").replaceChildren();
 
   selectedPhotos = [];
   oldImageUrls = [];
+
+  updateTypeFields();
   showMessage("");
 }
 
@@ -1113,6 +1364,7 @@ async function loadAdminAds() {
   try {
     const snapshot = await db.ref("ads").once("value");
     const ads = snapshot.val() || {};
+
     const entries = Object.entries(ads).filter(
       ([id, ad]) => ad && ad.status === "pending"
     );
@@ -1133,7 +1385,6 @@ async function loadAdminAds() {
 
 async function approveAd(id) {
   if (!isAdmin) return alert("دسترسی مدیر لازم است.");
-
   if (!confirm("آیا آگهی را تأیید و منتشر می‌کنید؟")) return;
 
   try {
@@ -1148,7 +1399,6 @@ async function approveAd(id) {
 
 async function rejectAd(id) {
   if (!isAdmin) return alert("دسترسی مدیر لازم است.");
-
   if (!confirm("آیا آگهی را رد می‌کنید؟")) return;
 
   try {
@@ -1160,6 +1410,9 @@ async function rejectAd(id) {
     alert("رد آگهی ناموفق بود. قوانین Firebase را بررسی کنید.");
   }
 }
+
+/* نمایش صحیح فرم در شروع */
+updateTypeFields();
 </script>
 
 </body>
