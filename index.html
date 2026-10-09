@@ -1,885 +1,772 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#132b3a">
-<meta name="description" content="نرخینو؛ ثبت و مشاهده آگهی اجاره، خریدوفروش ماشین‌آلات سنگین، استخدام راننده و قطعات یدکی.">
-<title>نرخینو | بازار ماشین‌آلات سنگین</title>
+<meta name="theme-color" content="#1565c0">
+<title>نرخینو | بازار ماشین‌آلات</title>
 <link rel="manifest" href="/rent-machinery-app/manifest.json">
 
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Tahoma,Arial,sans-serif;background:#f2f5f7;color:#17212b;line-height:1.8}
-header{background:linear-gradient(120deg,#132b3a,#1c4053);color:white;padding:22px 16px;border-radius:0 0 22px 22px}
-header h1{margin:0;font-size:27px}
-header p{margin:4px 0;color:#d6e2e8}
-.container{max-width:1000px;margin:auto;padding:15px}
-button,input,select,textarea{font:inherit}
-button{cursor:pointer;border:0;border-radius:10px;padding:10px 14px}
-.primary{background:#ff9f1c;color:#17212b;font-weight:bold}
-.dark{background:#132b3a;color:white}
-.light{background:#e8eef2;color:#132b3a}
-.danger{background:#ffe9e7;color:#b52c21}
-.success-btn{background:#e5f7ec;color:#116b43}
-button:disabled{opacity:.6;cursor:wait}
-nav{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;background:white;padding:7px;border-radius:14px;position:sticky;top:0;z-index:5;box-shadow:0 3px 12px #0001}
-nav button{background:transparent;font-size:12px;padding:9px 2px;color:#344854}
-nav button.active{background:#132b3a;color:white}
-.section{display:none;padding-top:20px}
-.section.active{display:block}
-h2{font-size:20px;margin:0 0 14px}
-.card{background:white;border-radius:15px;padding:15px;margin-bottom:13px;border:1px solid #e0e6ea;box-shadow:0 4px 14px #00000008}
-.categories{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.category{background:white;border:1px solid #e0e6ea;padding:12px 4px;font-size:12px;font-weight:bold}
-.category span{display:block;font-size:24px}
-input,select,textarea{width:100%;padding:11px;border:1px solid #d5dee4;border-radius:10px;background:white;margin-top:5px;color:#17212b}
-input:focus,select:focus,textarea:focus{outline:2px solid #b9d9e8;border-color:#4384a0}
-label{display:block;font-size:13px;font-weight:bold;margin-top:12px}
-textarea{min-height:100px;resize:vertical}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.full{grid-column:1/-1}
-.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.ad{background:white;border:1px solid #e0e6ea;border-radius:14px;overflow:hidden;min-width:0}
-.ad img.cover{width:100%;height:170px;object-fit:cover;background:#e7ecef}
-.adbody{padding:12px}
-.ad h3{font-size:15px;margin:0 0 6px;overflow-wrap:anywhere}
-.muted{color:#687783;font-size:12px}
-.price{color:#16845b;font-weight:bold}
-.actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
-.actions button,.actions a{font-size:11px;padding:7px 9px;border-radius:8px}
-.actions a{background:#e7f7ed;color:#126b44;text-decoration:none}
-.notice{padding:12px;border-radius:10px;margin:10px 0;display:none;font-size:13px}
-.notice.show{display:block}
-.success{background:#e5f7ec;color:#116b43}
-.error{background:#ffebe9;color:#a4261c}
-.info{background:#e8f3fb;color:#205a7c}
-.empty{background:white;border:1px dashed #ccd6dc;border-radius:14px;text-align:center;padding:25px;color:#687783}
-.preview{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin-top:8px}
-.preview img{width:100%;height:60px;object-fit:cover;border-radius:7px}
-.part-fields{background:#f5f9fc;border:1px solid #dce8ef;border-radius:13px;padding:12px}
-.part-fields h3{margin:0 0 5px;color:#132b3a}
-.part-note{font-size:12px;color:#687783;margin:4px 0 8px}
-.part-detail{background:#f4f8fa;border-radius:9px;padding:9px;margin-top:8px;font-size:12px}
-.part-detail b{color:#132b3a}
-.ad-gallery{display:flex;gap:6px;overflow-x:auto;margin-bottom:8px}
-.ad-gallery img{width:75px;height:65px;object-fit:cover;border-radius:7px}
-footer{text-align:center;color:#7b8992;font-size:11px;padding:25px}
-.status{display:inline-block;padding:2px 8px;border-radius:20px;background:#eef2f4;font-size:10px}
-.admin-bar{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}
-.check-row{display:flex;align-items:center;gap:8px}
-.check-row input{width:auto;margin:0}
-.top-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
-.search-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+:root {
+  --blue: #1565c0;
+  --dark: #16324f;
+  --bg: #f3f6fa;
+  --line: #dce4ee;
+  --muted: #65758b;
+  --green: #16834a;
+  --red: #bd2935;
+}
 
-@media(max-width:560px){
-.container{padding:10px}
-.cards{grid-template-columns:1fr}
-.grid{grid-template-columns:1fr}
-.full{grid-column:auto}
-nav button{font-size:10px}
-.categories{grid-template-columns:repeat(3,1fr)}
-.search-row{grid-template-columns:1fr}
-.ad img.cover{height:190px}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Tahoma, Arial, sans-serif;
+  background: var(--bg);
+  color: #172334;
+  line-height: 1.8;
+}
+
+header {
+  background: linear-gradient(135deg, #0d47a1, #1976d2);
+  color: white;
+  padding: 18px 14px 22px;
+}
+
+header .wrap,
+main,
+.nav {
+  max-width: 1050px;
+  margin: auto;
+}
+
+.brand {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.subtitle {
+  opacity: .9;
+  font-size: 13px;
+}
+
+.nav {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  padding: 10px 12px;
+}
+
+.nav button {
+  flex: 1 1 auto;
+  min-width: 90px;
+}
+
+main {
+  padding: 0 12px 35px;
+}
+
+.card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  padding: 15px;
+  margin: 10px 0;
+  box-shadow: 0 2px 8px #18324b0b;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field.full {
+  grid-column: 1 / -1;
+}
+
+label {
+  font-size: 13px;
+  font-weight: bold;
+  color: #31465e;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 11px;
+  border: 1px solid #cbd5e1;
+  border-radius: 9px;
+  font: inherit;
+  background: white;
+  color: #172334;
+}
+
+textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+button,
+.btn {
+  border: 0;
+  border-radius: 9px;
+  padding: 10px 13px;
+  background: var(--blue);
+  color: white;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+button.secondary {
+  background: #e7eef7;
+  color: #16324f;
+}
+
+button.danger {
+  background: var(--red);
+}
+
+button.green {
+  background: var(--green);
+}
+
+button:disabled {
+  opacity: .55;
+  cursor: wait;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.actions {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.pill {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 99px;
+  background: #eaf1fb;
+  color: #174a85;
+  font-size: 12px;
+}
+
+.ad {
+  overflow: hidden;
+}
+
+.ad img {
+  width: 100%;
+  max-height: 240px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.ad h3 {
+  margin: 6px 0;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #0b7840;
+}
+
+.adgrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.adgrid .card {
+  margin: 0;
+}
+
+.notice {
+  padding: 10px;
+  border-radius: 9px;
+  background: #fff8df;
+  color: #6c5100;
+  font-size: 13px;
+}
+
+.success {
+  color: var(--green);
+}
+
+.error {
+  color: var(--red);
+}
+
+.section-title {
+  margin: 12px 2px 5px;
+  font-size: 19px;
+}
+
+.part-box {
+  background: #f4f8ff;
+  border: 1px dashed #9bb9e2;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  padding: 18px;
+}
+
+.small {
+  font-size: 12px;
+}
+
+@media (max-width: 650px) {
+  .grid,
+  .adgrid {
+    grid-template-columns: 1fr;
+  }
+
+  .nav button {
+    min-width: 28%;
+    padding: 8px 5px;
+    font-size: 12px;
+  }
+
+  .card {
+    padding: 12px;
+  }
+
+  .brand {
+    font-size: 23px;
+  }
 }
 </style>
 </head>
 
 <body>
+
 <header>
-<h1>🚜 نرخینو</h1>
-<p>بازار تخصصی ماشین‌آلات راه‌سازی و معدنی</p>
-<p>اجاره | خرید و فروش | استخدام راننده | فروش قطعات یدکی</p>
-<div class="top-actions">
-<button class="light" onclick="showSection('ads')">مشاهده آگهی‌ها</button>
-<button class="primary" onclick="showSection('register')">＋ ثبت آگهی</button>
-<span id="connectionStatus" class="muted" style="color:#d6e2e8;align-self:center">در حال اتصال...</span>
-</div>
+  <div class="wrap">
+    <div class="brand">🚜 نرخینو</div>
+
+    <div class="subtitle">
+      سامانه ثبت و جست‌وجوی ماشین‌آلات راه‌سازی،
+      معدنی، قطعات و فرصت‌های شغلی
+    </div>
+
+    <div id="userStatus" class="small" style="margin-top:8px">
+      برای ثبت و مدیریت آگهی وارد حساب شوید.
+    </div>
+  </div>
 </header>
 
-<div class="container">
-<nav>
-<button class="active" data-section="home" onclick="showSection('home',this)">⌂ خانه</button>
-<button data-section="ads" onclick="showSection('ads',this)">▦ آگهی‌ها</button>
-<button data-section="register" onclick="showSection('register',this)">＋ ثبت آگهی</button>
-<button data-section="favorites" onclick="showSection('favorites',this)">♡ ذخیره‌ها</button>
-<button data-section="admin" onclick="showSection('admin',this)">⚙ مدیریت</button>
-</nav>
-
-<section id="home" class="section active">
-<h2>دسته‌بندی‌ها</h2>
-<div id="categories" class="categories"></div>
-
-<h2 style="margin-top:22px">آخرین آگهی‌ها</h2>
-<div id="homeAds" class="cards">
-<div class="empty">در حال بارگذاری آگهی‌ها...</div>
+<div class="nav">
+  <button onclick="showSection('home')">خانه</button>
+  <button onclick="showSection('ads')">جست‌وجوی آگهی</button>
+  <button onclick="showSection('register')">ثبت آگهی</button>
+  <button onclick="showSection('account')">پنل کاربران</button>
+  <button onclick="showSection('messages')">پیام‌ها</button>
+  <button onclick="showSection('admin')">مدیریت</button>
 </div>
 
-<h2 style="margin-top:22px">آگهی‌های منتخب ⭐</h2>
-<div id="featuredAds" class="cards">
-<div class="empty">در حال بارگذاری...</div>
-</div>
-</section>
+<main>
 
-<section id="ads" class="section">
-<h2>جست‌وجوی آگهی‌ها</h2>
-<div class="card">
-<input id="search" placeholder="نام دستگاه، قطعه، شهر یا عنوان آگهی" oninput="renderAds()">
-<div class="search-row">
-<select id="filterCategory" onchange="renderAds()">
-<option value="">همه دسته‌بندی‌ها</option>
-</select>
-<select id="filterType" onchange="renderAds()">
-<option value="">همه نوع آگهی‌ها</option>
-<option>اجاره</option>
-<option>خرید و فروش</option>
-<option>استخدام راننده</option>
-<option>ارائه قطعات</option>
-</select>
-</div>
-</div>
-<div id="adsList" class="cards"></div>
-</section>
+<!-- صفحه اصلی -->
+<section id="home" class="section">
 
-<section id="register" class="section">
-<h2>ثبت آگهی جدید</h2>
-<div class="card">
-<p class="muted">آگهی پس از بررسی مدیر منتشر می‌شود. امکان انتخاب حداکثر ۵ عکس وجود دارد.</p>
-<div id="registerMessage" class="notice"></div>
+  <div class="card">
+    <h2 style="margin-top:0">به نرخینو خوش آمدید</h2>
 
-<form id="adForm">
-<div class="grid">
+    <p>
+      آگهی اجاره و خریدوفروش ماشین‌آلات،
+      استخدام راننده و ارائه قطعات را ثبت کنید.
+    </p>
 
-<div>
-<label for="ownerName">نام و نام خانوادگی *</label>
-<input id="ownerName" required maxlength="70" autocomplete="name">
-</div>
-
-<div>
-<label for="phone">شماره تماس *</label>
-<input id="phone" required inputmode="tel" maxlength="20" autocomplete="tel" placeholder="مثلاً 0912xxxxxxx">
-</div>
-
-<div>
-<label for="type">نوع آگهی *</label>
-<select id="type" required>
-<option>اجاره</option>
-<option>خرید و فروش</option>
-<option>استخدام راننده</option>
-<option value="ارائه قطعات">فروش / ارائه قطعات یدکی</option>
-</select>
-</div>
-
-<div>
-<label for="category">دسته‌بندی *</label>
-<select id="category" required></select>
-</div>
-
-<div class="full">
-<label for="title">عنوان آگهی *</label>
-<input id="title" required maxlength="100" placeholder="مثلاً اجاره بیل مکانیکی یا فروش پمپ هیدرولیک">
-</div>
-
-<div>
-<label for="city">شهر و استان *</label>
-<input id="city" required maxlength="70" placeholder="مثلاً اهواز، خوزستان">
-</div>
-
-<div>
-<label for="price">قیمت یا شرایط</label>
-<input id="price" maxlength="80" placeholder="مثلاً ۵ میلیون تومان یا توافقی">
-</div>
-
-<div id="partsFields" class="full" style="display:none" aria-hidden="true">
-<div class="part-fields">
-<h3>🔧 مشخصات اختصاصی قطعه یدکی</h3>
-<p class="part-note">این اطلاعات فقط برای آگهی فروش قطعات نمایش داده می‌شود.</p>
-
-<div class="grid">
-<div>
-<label for="partName">نام قطعه *</label>
-<input id="partName" maxlength="100" placeholder="مثلاً پمپ هیدرولیک">
-</div>
-
-<div>
-<label for="partCategory">نوع قطعه *</label>
-<select id="partCategory">
-<option value="">انتخاب نوع قطعه</option>
-<option>موتور و متعلقات</option>
-<option>گیربکس و انتقال قدرت</option>
-<option>قطعات هیدرولیک</option>
-<option>زیربندی و زنجیر</option>
-<option>باکت و ناخن باکت</option>
-<option>قطعات برقی</option>
-<option>فیلتر و قطعات مصرفی</option>
-<option>قطعات کابین</option>
-<option>قطعات بدنه</option>
-<option>لاستیک و چرخ</option>
-<option>سایر قطعات</option>
-</select>
-</div>
-
-<div>
-<label for="partBrand">برند دستگاه</label>
-<select id="partBrand">
-<option value="">انتخاب برند</option>
-<option>کوماتسو</option>
-<option>کاترپیلار</option>
-<option>هیوندای</option>
-<option>ولوو</option>
-<option>هیتاچی</option>
-<option>لیبهر</option>
-<option>دوو</option>
-<option>سایر برندها</option>
-</select>
-</div>
-
-<div>
-<label for="partModel">مدل دستگاه</label>
-<input id="partModel" maxlength="80" placeholder="مثلاً PC200">
-</div>
-
-<div>
-<label for="partCondition">وضعیت قطعه *</label>
-<select id="partCondition">
-<option value="">انتخاب وضعیت</option>
-<option>نو</option>
-<option>کارکرده</option>
-<option>تعمیرشده</option>
-</select>
-</div>
-
-<div>
-<label for="partNumber">شماره فنی قطعه</label>
-<input id="partNumber" maxlength="100" placeholder="در صورت موجود بودن">
-</div>
-
-<div>
-<label for="partQuantity">تعداد موجود</label>
-<input id="partQuantity" type="number" min="1" max="100000" step="1" placeholder="مثلاً 5">
-</div>
-</div>
-</div>
-</div>
-
-<div class="full">
-<label for="description">توضیحات *</label>
-<textarea id="description" required maxlength="1800" placeholder="مشخصات، شرایط فروش یا اجاره و راه‌های هماهنگی را بنویسید"></textarea>
-</div>
-
-<div class="full">
-<label for="images">تصاویر آگهی (حداکثر ۵ تصویر)</label>
-<input id="images" type="file" accept="image/jpeg,image/png,image/webp" multiple>
-<div id="imagePreview" class="preview"></div>
-<p class="muted">عکس‌ها برای بارگذاری سریع‌تر فشرده می‌شوند.</p>
-</div>
-
-<div class="full">
-<label class="check-row">
-<input type="checkbox" id="agree" required>
-اطلاعات آگهی صحیح است و اجازه انتشار شماره تماس را دارم.
-</label>
-</div>
-
-<div class="full">
-<button id="submitButton" class="primary" type="submit" style="width:100%">ثبت آگهی برای بررسی</button>
-</div>
-
-</div>
-</form>
-</div>
-</section>
-
-<section id="favorites" class="section">
-<h2>آگهی‌های ذخیره‌شده</h2>
-<div id="favoritesList" class="cards"></div>
-</section>
-
-<section id="admin" class="section">
-<h2>پنل مدیریت</h2>
-<div class="card">
-<p class="muted">ورود آزمایشی مدیر. رمز ثابت داخل کد برای مدیریت عمومی امن نیست؛ پیش از انتشار عمومی، احراز هویت امن راه‌اندازی شود.</p>
-<label for="adminPassword">رمز مدیر</label>
-<input id="adminPassword" type="password" autocomplete="current-password">
-<button class="dark" onclick="loginAdmin()" style="margin-top:10px">ورود</button>
-<button class="light" onclick="logoutAdmin()" style="margin-top:10px">خروج</button>
-<div id="adminMessage" class="notice"></div>
-
-<div id="adminPanel" style="display:none">
-<hr>
-<div class="admin-bar">
-<button class="light" onclick="adminFilter='pending';renderAdmin()">در انتظار تأیید</button>
-<button class="light" onclick="adminFilter='approved';renderAdmin()">منتشرشده</button>
-<button class="light" onclick="adminFilter='all';renderAdmin()">همه آگهی‌ها</button>
-</div>
-<div id="adminList" class="cards"></div>
-</div>
-</div>
-</section>
-
-<footer>
-نرخینو © <span id="year"></span><br>
-بازار تخصصی ماشین‌آلات سنگین و قطعات یدکی
-</footer>
-</div>
-
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import {
-  getDatabase, ref, push, set, onValue, update, remove
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
-import {
-  getStorage, ref as storageRef, uploadBytes, getDownloadURL
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyBB12jJCxigpdASZZmjxU2XjfSWeQ8ehAY",
-  authDomain: "nerkhino-8ff13.firebaseapp.com",
-  databaseURL: "https://nerkhino-8ff13-default-rtdb.firebaseio.com",
-  projectId: "nerkhino-8ff13",
-  storageBucket: "nerkhino-8ff13.firebasestorage.app",
-  messagingSenderId: "210006577129",
-  appId: "1:210006577129:web:295950d0412c28ebac0578"
-};
-
-const CATEGORIES = [
-  "بیل مکانیکی",
-  "لودر",
-  "بولدوزر",
-  "گریدر",
-  "غلطک",
-  "کامیون باری",
-  "کامیون و کمپرسی",
-  "جرثقیل",
-  "کمرشکن",
-  "فنیشر",
-  "دامپتراک",
-  "سایر ماشین‌آلات معدنی",
-  "استخدام راننده",
-  "ارائه قطعات ماشین‌آلات"
-];
-
-const EMOJIS = [
-  "🚜","🚧","🏗️","🛣️","🚜","🚚","🚛",
-  "🏗️","🚛","🛣️","⛏️","⚙️","👷","🔩"
-];
-
-const ADMIN_PASSWORD = "1234"; // رمز آزمایشی؛ برای مدیریت عمومی امن نیست.
-const $ = id => document.getElementById(id);
-
-let db, storage, ads = {}, adminLoggedIn = false, adminFilter = "pending", favorites = [];
-
-try {
-  favorites = JSON.parse(localStorage.getItem("nerkhinoFavorites") || "[]");
-  if (!Array.isArray(favorites)) favorites = [];
-} catch {
-  favorites = [];
-}
-
-function esc(v = "") {
-  return String(v).replace(/[&<>"']/g, c => ({
-    "&":"&amp;",
-    "<":"&lt;",
-    ">":"&gt;",
-    '"':"&quot;",
-    "'":"&#39;"
-  }[c]));
-}
-
-function msg(id, text, type = "info") {
-  const e = $(id);
-  e.textContent = text;
-  e.className = "notice show " + type;
-}
-
-function hideMsg(id) {
-  $(id).className = "notice";
-}
-
-function showSection(id, button) {
-  document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
-  const target = $(id);
-  if (target) target.classList.add("active");
-
-  document.querySelectorAll("nav button").forEach(b => {
-    b.classList.toggle("active", b.dataset.section === id);
-  });
-
-  if (button) button.classList.add("active");
-  if (id === "ads") renderAds();
-  if (id === "favorites") renderFavorites();
-  if (id === "admin" && adminLoggedIn) renderAdmin();
-
-  window.scrollTo({top:0, behavior:"smooth"});
-}
-window.showSection = showSection;
-
-function initCategories() {
-  $("categories").innerHTML = CATEGORIES.map((c, i) =>
-    `<button class="category" onclick="chooseCategory('${esc(c)}')"><span>${EMOJIS[i]}</span>${esc(c)}</button>`
-  ).join("");
-
-  $("category").innerHTML = CATEGORIES.map(c =>
-    `<option value="${esc(c)}">${esc(c)}</option>`
-  ).join("");
-
-  $("filterCategory").innerHTML =
-    '<option value="">همه دسته‌بندی‌ها</option>' +
-    CATEGORIES.map(c => `<option value="${esc(c)}">${esc(c)}</option>`).join("");
-}
-
-window.chooseCategory = function(c) {
-  $("filterCategory").value = c;
-  showSection("ads");
-  renderAds();
-};
-
-function connectFirebase() {
-  try {
-    const app = initializeApp(firebaseConfig);
-    db = getDatabase(app);
-    storage = getStorage(app);
-
-    onValue(ref(db, "ads"), snap => {
-      ads = snap.val() || {};
-      $("connectionStatus").textContent = "اتصال برقرار است";
-      $("connectionStatus").style.color = "#a9f0c9";
-
-      renderHome();
-      renderAds();
-      renderFavorites();
-      renderFeatured();
-
-      if (adminLoggedIn) renderAdmin();
-    }, err => {
-      console.error(err);
-      $("connectionStatus").textContent = "خطای اتصال Firebase";
-      msg("registerMessage", "خواندن آگهی‌ها ناموفق بود. قوانین Firebase Realtime Database را بررسی کنید.", "error");
-    });
-  } catch (e) {
-    console.error(e);
-    $("connectionStatus").textContent = "خطا در راه‌اندازی Firebase";
-  }
-}
-
-function approvedAds() {
-  return Object.entries(ads)
-    .filter(([k, a]) => a && a.status === "approved")
-    .sort((a, b) => (b[1].createdAt || 0) - (a[1].createdAt || 0));
-}
-
-function partInfo(ad) {
-  const p = ad.partDetails;
-  if (!p || ad.type !== "ارائه قطعات") return "";
-
-  const items = [];
-  if (p.name) items.push(`<div><b>نام قطعه:</b> ${esc(p.name)}</div>`);
-  if (p.category) items.push(`<div><b>نوع قطعه:</b> ${esc(p.category)}</div>`);
-  if (p.brand) items.push(`<div><b>برند:</b> ${esc(p.brand)}</div>`);
-  if (p.model) items.push(`<div><b>مدل دستگاه:</b> ${esc(p.model)}</div>`);
-  if (p.condition) items.push(`<div><b>وضعیت:</b> ${esc(p.condition)}</div>`);
-  if (p.partNumber) items.push(`<div><b>شماره فنی:</b> ${esc(p.partNumber)}</div>`);
-  if (Number(p.quantity) > 0) items.push(`<div><b>تعداد موجود:</b> ${esc(p.quantity)}</div>`);
-
-  return items.length ? `<div class="part-detail">${items.join("")}</div>` : "";
-}
-
-function adCard(key, ad, admin = false) {
-  const images = Array.isArray(ad.images) ? ad.images.filter(Boolean) : [];
-  const image = images[0] || "";
-
-  let actions = `
-    <button class="light" onclick="toggleFavorite('${key}')">
-      ${favorites.includes(key) ? "♥ ذخیره‌شده" : "♡ ذخیره"}
-    </button>
-    <button class="light" onclick="showDetails('${key}')">جزئیات</button>
-  `;
-
-  if (ad.phone) {
-    actions += `<a href="tel:${esc(ad.phone).replace(/\s/g, "")}">تماس</a>`;
-  }
-
-  if (admin) {
-    if (ad.status !== "approved") {
-      actions += `<button class="success-btn" onclick="approveAd('${key}')">تأیید و انتشار</button>`;
-    }
-    actions += `
-      <button class="light" onclick="toggleFeatured('${key}',${!ad.featured})">
-        ${ad.featured ? "برداشتن منتخب" : "⭐ منتخب"}
+    <div class="actions">
+      <button onclick="showSection('register')">
+        ＋ ثبت آگهی
       </button>
-      <button class="danger" onclick="deleteAd('${key}')">حذف</button>
-    `;
-  }
 
-  return `
-    <article class="ad">
-      ${image
-        ? `<img class="cover" src="${esc(image)}" alt="تصویر آگهی" loading="lazy">`
-        : '<div style="height:130px;display:grid;place-items:center;background:#e8eef2;font-size:42px">🚜</div>'}
-      <div class="adbody">
-        <h3>${esc(ad.title || "آگهی")}</h3>
-        <div class="muted">${esc(ad.category || "")} · ${esc(ad.city || "")}</div>
-        <div class="muted">${esc(ad.type || "")}</div>
-        <p class="price">${esc(ad.price || "توافقی")}</p>
-        ${partInfo(ad)}
-        <p>${esc((ad.description || "").slice(0,130))}${(ad.description || "").length > 130 ? "…" : ""}</p>
-        <div class="actions">${actions}</div>
-        ${admin ? `<p class="muted">وضعیت: ${ad.status === "approved" ? "منتشرشده" : "در انتظار تأیید"} · ${esc(ad.ownerName || "")} · ${esc(ad.phone || "")}</p>` : ""}
+      <button class="secondary" onclick="showSection('ads')">
+        مشاهده آگهی‌ها
+      </button>
+    </div>
+  </div>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>🔎 جست‌وجوی پیشرفته</h3>
+      <p class="muted">
+        جست‌وجو بر اساس شهر، قیمت، دسته‌بندی و نوع آگهی.
+      </p>
+      <button onclick="showSection('ads')">جست‌وجو</button>
+    </div>
+
+    <div class="card">
+      <h3>👤 پنل کاربری</h3>
+      <p class="muted">
+        آگهی‌های خود را مشاهده، ویرایش یا حذف کنید.
+      </p>
+      <button onclick="showSection('account')">
+        ورود به پنل
+      </button>
+    </div>
+
+  </div>
+
+  <div class="card">
+    <div class="row">
+      <h3 style="margin:0">آخرین آگهی‌های منتشرشده</h3>
+      <button class="secondary" onclick="loadAds()">
+        به‌روزرسانی
+      </button>
+    </div>
+
+    <div id="latestAds" class="adgrid" style="margin-top:12px"></div>
+  </div>
+
+</section>
+
+<!-- ورود و ثبت‌نام -->
+<section id="auth" class="section hidden">
+
+  <div class="card">
+    <h2>ورود یا ساخت حساب</h2>
+
+    <div class="grid">
+
+      <div class="field">
+        <label>ایمیل</label>
+        <input
+          id="authEmail"
+          type="email"
+          autocomplete="email"
+          placeholder="name@example.com">
       </div>
-    </article>
-  `;
-}
-
-function renderHome() {
-  const rows = approvedAds();
-  $("homeAds").innerHTML = rows.length
-    ? rows.slice(0,6).map(([k,a]) => adCard(k,a)).join("")
-    : '<div class="empty">هنوز آگهی منتشرشده‌ای وجود ندارد.</div>';
-}
-
-function renderFeatured() {
-  const rows = approvedAds().filter(([k,a]) => a.featured);
-  $("featuredAds").innerHTML = rows.length
-    ? rows.map(([k,a]) => adCard(k,a)).join("")
-    : '<div class="empty">آگهی منتخب فعلاً وجود ندارد.</div>';
-}
-
-function renderAds() {
-  if (!$("adsList")) return;
-
-  const term = $("search").value.trim().toLowerCase();
-  const category = $("filterCategory").value;
-  const type = $("filterType").value;
-
-  const rows = approvedAds().filter(([k,a]) =>
-    (!category || a.category === category) &&
-    (!type || a.type === type) &&
-    (!term || [
-      a.title, a.city, a.description, a.category, a.type,
-      a.partDetails?.name, a.partDetails?.brand,
-      a.partDetails?.model, a.partDetails?.partNumber
-    ].some(v => (v || "").toLowerCase().includes(term)))
-  );
-
-  $("adsList").innerHTML = rows.length
-    ? rows.map(([k,a]) => adCard(k,a)).join("")
-    : '<div class="empty">آگهی‌ای مطابق جست‌وجو پیدا نشد.</div>';
-}
-
-function renderFavorites() {
-  const rows = favorites.map(k => [k, ads[k]])
-    .filter(([k,a]) => a && a.status === "approved");
-
-  $("favoritesList").innerHTML = rows.length
-    ? rows.map(([k,a]) => adCard(k,a)).join("")
-    : '<div class="empty">هنوز آگهی ذخیره نکرده‌اید.</div>';
-}
-
-window.toggleFavorite = function(key) {
-  favorites = favorites.includes(key)
-    ? favorites.filter(k => k !== key)
-    : [...favorites, key];
-
-  localStorage.setItem("nerkhinoFavorites", JSON.stringify(favorites));
-  renderAds();
-  renderHome();
-  renderFavorites();
-  renderFeatured();
-};
-
-window.showDetails = function(key) {
-  const ad = ads[key];
-  if (!ad) return;
-
-  const images = Array.isArray(ad.images) ? ad.images : [];
-  const w = window.open("", "_blank");
-
-  if (!w) {
-    alert("برای نمایش جزئیات، اجازه بازشدن پنجره را بدهید.");
-    return;
-  }
-
-  w.document.write(`
-    <html lang="fa" dir="rtl">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>${esc(ad.title || "جزئیات آگهی")}</title>
-    <body style="font-family:Tahoma,Arial;line-height:2;max-width:700px;margin:20px auto;padding:12px;color:#17212b">
-      <h2>${esc(ad.title || "جزئیات آگهی")}</h2>
-      <p><b>نوع آگهی:</b> ${esc(ad.type || "")}</p>
-      <p><b>دسته‌بندی:</b> ${esc(ad.category || "")}</p>
-      <p><b>شهر:</b> ${esc(ad.city || "")}</p>
-      <p><b>قیمت:</b> ${esc(ad.price || "توافقی")}</p>
-      ${partInfo(ad)}
-      <p>${esc(ad.description || "")}</p>
-      <p><b>فروشنده:</b> ${esc(ad.ownerName || "")}</p>
-      <p><b>شماره تماس:</b> ${esc(ad.phone || "")}</p>
-      ${images.map(u => `<img src="${esc(u)}" style="width:100%;max-width:400px;display:block;margin:8px 0;border-radius:8px">`).join("")}
-    </body>
-    </html>
-  `);
-  w.document.close();
-};
-
-function compressImage(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-
-    reader.onerror = () => reject(Error("خواندن تصویر ناموفق بود"));
-
-    reader.onload = () => {
-      const img = new Image();
-      img.onerror = () => reject(Error("فایل تصویر معتبر نیست"));
-
-      img.onload = () => {
-        const scale = Math.min(1, 1400 / Math.max(img.width, img.height));
-        const canvas = document.createElement("canvas");
-        canvas.width = Math.max(1, Math.round(img.width * scale));
-        canvas.height = Math.max(1, Math.round(img.height * scale));
-        canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
-
-        canvas.toBlob(
-          blob => blob ? resolve(blob) : reject(Error("فشرده‌سازی ناموفق بود")),
-          "image/jpeg",
-          .78
-        );
-      };
-
-      img.src = reader.result;
-    };
-
-    reader.readAsDataURL(file);
-  });
-}
-
-$("images").addEventListener("change", () => {
-  const files = Array.from($("images").files || []);
-  const preview = $("imagePreview");
-  preview.innerHTML = "";
-
-  if (files.length > 5) {
-    $("images").value = "";
-    msg("registerMessage", "حداکثر ۵ تصویر انتخاب کنید.", "error");
-    return;
-  }
-
-  if (files.some(f => !f.type.startsWith("image/"))) {
-    $("images").value = "";
-    msg("registerMessage", "فقط فایل تصویری انتخاب کنید.", "error");
-    return;
-  }
-
-  files.forEach(f => {
-    const im = document.createElement("img");
-    im.src = URL.createObjectURL(f);
-    im.alt = "پیش‌نمایش تصویر";
-    preview.appendChild(im);
-  });
-
-  hideMsg("registerMessage");
-});
-
-function togglePartFields() {
-  const yes = $("type").value === "ارائه قطعات";
-
-  $("partsFields").style.display = yes ? "block" : "none";
-  $("partsFields").setAttribute("aria-hidden", String(!yes));
-
-  ["partName","partCategory","partCondition"].forEach(id => {
-    $(id).required = yes;
-  });
-
-  if (yes) {
-    $("category").value = "ارائه قطعات ماشین‌آلات";
-  }
-}
-
-$("type").addEventListener("change", togglePartFields);
-
-$("adForm").addEventListener("submit", async event => {
-  event.preventDefault();
-
-  if (!db || !storage) {
-    msg("registerMessage", "اتصال Firebase برقرار نیست؛ اتصال اینترنت و تنظیمات را بررسی کنید.", "error");
-    return;
-  }
-
-  const files = Array.from($("images").files || []);
-
-  if (files.length > 5) {
-    msg("registerMessage", "حداکثر ۵ تصویر انتخاب کنید.", "error");
-    return;
-  }
-
-  if (
-    $("type").value === "ارائه قطعات" &&
-    (!$("partName").value.trim() || !$("partCategory").value || !$("partCondition").value)
-  ) {
-    msg("registerMessage", "نام قطعه، نوع قطعه و وضعیت آن را وارد کنید.", "error");
-    return;
-  }
-
-  const phone = $("phone").value.trim();
-
-  if (phone.replace(/[^\d+]/g, "").length < 8) {
-    msg("registerMessage", "شماره تماس را بررسی کنید.", "error");
-    return;
-  }
-
-  const btn = $("submitButton");
-  btn.disabled = true;
-  btn.textContent = "در حال ثبت آگهی...";
-
-  try {
-    const newRef = push(ref(db, "ads"));
-    const imageUrls = [];
-
-    for (let i = 0; i < files.length; i++) {
-      msg("registerMessage", `در حال بارگذاری تصویر ${i+1} از ${files.length}...`, "info");
-
-      const blob = await compressImage(files[i]);
-      const imageRef = storageRef(storage, `ad-images/${newRef.key}/${Date.now()}-${i}.jpg`);
-
-      await uploadBytes(imageRef, blob, {contentType:"image/jpeg"});
-      imageUrls.push(await getDownloadURL(imageRef));
-    }
-
-    const isParts = $("type").value === "ارائه قطعات";
-
-    const ad = {
-      ownerName: $("ownerName").value.trim(),
-      phone,
-      type: $("type").value,
-      category: $("category").value,
-      title: $("title").value.trim(),
-      city: $("city").value.trim(),
-      price: $("price").value.trim() || "توافقی",
-      description: $("description").value.trim(),
-      images: imageUrls,
-      status: "pending",
-      featured: false,
-      createdAt: Date.now(),
-
-      partDetails: isParts ? {
-        name: $("partName").value.trim(),
-        category: $("partCategory").value,
-        brand: $("partBrand").value,
-        model: $("partModel").value.trim(),
-        condition: $("partCondition").value,
-        partNumber: $("partNumber").value.trim(),
-        quantity: Number($("partQuantity").value) || 0
-      } : null
-    };
-
-    await set(newRef, ad);
-
-    $("adForm").reset();
-    $("imagePreview").innerHTML = "";
-    togglePartFields();
-
-    msg("registerMessage", "آگهی ثبت شد و پس از تأیید مدیر منتشر می‌شود.", "success");
-    window.scrollTo({top:0, behavior:"smooth"});
-
-  } catch (error) {
-    console.error("ثبت آگهی:", error);
-
-    let text = "ثبت آگهی ناموفق بود. اتصال اینترنت و قوانین Firebase را بررسی کنید.";
-
-    if (error.code === "storage/unauthorized") {
-      text = "مجوز بارگذاری تصویر در Firebase Storage رد شد؛ قوانین Storage را بررسی کنید.";
-    }
-
-    if (error.code === "PERMISSION_DENIED" || error.code === "database/permission-denied") {
-      text = "قوانین Realtime Database اجازه ثبت آگهی را نمی‌دهند.";
-    }
-
-    msg("registerMessage", text, "error");
-
-  } finally {
-    btn.disabled = false;
-    btn.textContent = "ثبت آگهی برای بررسی";
-  }
-});
-
-window.loginAdmin = function() {
-  if ($("adminPassword").value !== ADMIN_PASSWORD) {
-    msg("adminMessage", "رمز مدیر صحیح نیست.", "error");
-    return;
-  }
-
-  adminLoggedIn = true;
-  $("adminPanel").style.display = "block";
-  hideMsg("adminMessage");
-  renderAdmin();
-};
-
-window.logoutAdmin = function() {
-  adminLoggedIn = false;
-  $("adminPanel").style.display = "none";
-  $("adminPassword").value = "";
-  msg("adminMessage", "از پنل مدیریت خارج شدید.", "info");
-};
-
-window.renderAdmin = function() {
-  if (!adminLoggedIn) return;
-
-  const rows = Object.entries(ads)
-    .filter(([k,a]) => a && (adminFilter === "all" || a.status === adminFilter))
-    .sort((a,b) => (b[1].createdAt || 0) - (a[1].createdAt || 0));
-
-  $("adminList").innerHTML = rows.length
-    ? rows.map(([k,a]) => adCard(k,a,true)).join("")
-    : '<div class="empty">آگهی‌ای در این بخش نیست.</div>';
-};
-
-window.approveAd = async function(key) {
-  if (!adminLoggedIn) return alert("ابتدا وارد پنل مدیریت شوید.");
-  if (!confirm("آگهی منتشر شود؟")) return;
-
-  try {
-    await update(ref(db, "ads/" + key), {
-      status: "approved",
-      approvedAt: Date.now()
-    });
-    alert("آگهی تأیید شد.");
-  } catch (e) {
-    console.error(e);
-    alert("تأیید ناموفق بود؛ قوانین Firebase را بررسی کنید.");
-  }
-};
-
-window.toggleFeatured = async function(key, featured) {
-  if (!adminLoggedIn) return alert("ابتدا وارد پنل مدیریت شوید.");
-
-  try {
-    await update(ref(db, "ads/" + key), {
-      featured,
-      featuredAt: featured ? Date.now() : null
-    });
-  } catch (e) {
-    console.error(e);
-    alert("تغییر آگهی منتخب ناموفق بود.");
-  }
-};
-
-window.deleteAd = async function(key) {
-  if (!adminLoggedIn) return alert("ابتدا وارد پنل مدیریت شوید.");
-  if (!confirm("آگهی حذف شود؟")) return;
-
-  try {
-    await remove(ref(db, "ads/" + key));
-    favorites = favorites.filter(k => k !== key);
-    localStorage.setItem("nerkhinoFavorites", JSON.stringify(favorites));
-  } catch (e) {
-    console.error(e);
-    alert("حذف آگهی ناموفق بود؛ قوانین Firebase را بررسی کنید.");
-  }
-};
-
-initCategories();
-$("year").textContent = new Date().getFullYear();
-togglePartFields();
-connectFirebase();
-</script>
-</body>
-</html>
+
+      <div class="field">
+        <label>رمز عبور (حداقل ۶ نویسه)</label>
+        <input
+          id="authPassword"
+          type="password"
+          autocomplete="current-password">
+      </div>
+
+    </div>
+
+    <div class="actions">
+      <button onclick="signIn()">ورود</button>
+      <button class="secondary" onclick="signUp()">ساخت حساب</button>
+      <button class="secondary" onclick="resetPassword()">فراموشی رمز</button>
+    </div>
+
+    <p id="authMsg" class="muted"></p>
+  </div>
+
+</section>
+
+<!-- فرم ثبت آگهی -->
+<section id="register" class="section hidden">
+
+  <div class="card">
+
+    <div class="row">
+      <h2 style="margin:0">ثبت آگهی</h2>
+      <span class="pill">حداکثر ۵ تصویر</span>
+    </div>
+
+    <div id="registerLoginHint" class="notice">
+      برای ثبت آگهی ابتدا وارد حساب کاربری شوید.
+    </div>
+
+    <form id="adForm" onsubmit="submitAd(event)">
+
+      <input type="hidden" id="editingId">
+
+      <div class="grid" style="margin-top:12px">
+
+        <div class="field">
+          <label>نام آگهی‌دهنده</label>
+          <input id="ownerName" required maxlength="80">
+        </div>
+
+        <div class="field">
+          <label>شماره تماس</label>
+          <input id="phone" required inputmode="tel" maxlength="25">
+        </div>
+
+        <div class="field">
+          <label>نوع آگهی</label>
+          <select id="adType" required onchange="togglePartFields()">
+            <option value="اجاره">اجاره</option>
+            <option value="خرید و فروش">خرید و فروش</option>
+            <option value="استخدام راننده">استخدام راننده</option>
+            <option value="ارائه قطعات ماشین‌آلات">
+              ارائه قطعات ماشین‌آلات
+            </option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>دسته‌بندی</label>
+          <select id="category" required>
+            <option>بیل مکانیکی</option>
+            <option>لودر</option>
+            <option>بولدوزر</option>
+            <option>گریدر</option>
+            <option>غلطک</option>
+            <option>کامیون باری</option>
+            <option>کامیون و کمپرسی</option>
+            <option>جرثقیل</option>
+            <option>کمرشکن</option>
+            <option>فنیشر</option>
+            <option>دامپتراک</option>
+            <option>سایر ماشین‌آلات معدنی</option>
+            <option>استخدام راننده</option>
+            <option>ارائه قطعات ماشین‌آلات</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>عنوان آگهی</label>
+          <input
+            id="title"
+            required
+            maxlength="100"
+            placeholder="مثلاً بیل مکانیکی کوماتسو برای اجاره">
+        </div>
+
+        <div class="field">
+          <label>شهر</label>
+          <input
+            id="city"
+            required
+            maxlength="60"
+            placeholder="مثلاً اهواز">
+        </div>
+
+        <div class="field">
+          <label>قیمت (تومان)</label>
+          <input
+            id="price"
+            inputmode="numeric"
+            placeholder="برای توافقی خالی بگذارید">
+        </div>
+
+        <div class="field">
+          <label>وضعیت دستگاه</label>
+          <select id="condition">
+            <option value="">انتخاب نشده</option>
+            <option>نو</option>
+            <option>کارکرده</option>
+            <option>تعمیرشده</option>
+          </select>
+        </div>
+
+        <div class="field full">
+          <label>توضیحات</label>
+          <textarea
+            id="description"
+            maxlength="3000"
+            required
+            placeholder="مشخصات، شرایط اجاره یا فروش، ساعات کار و..."></textarea>
+        </div>
+
+        <!-- مشخصات اختصاصی قطعات -->
+        <div id="partFields" class="field full hidden">
+
+          <div class="part-box">
+            <h3 style="margin-top:0">مشخصات قطعه</h3>
+
+            <div class="grid">
+
+              <div class="field">
+                <label>نام قطعه</label>
+                <input id="partName" maxlength="100">
+              </div>
+
+              <div class="field">
+                <label>دسته‌بندی قطعه</label>
+                <input
+                  id="partCategory"
+                  maxlength="80"
+                  placeholder="مثلاً موتور، هیدرولیک، فیلتر">
+              </div>
+
+              <div class="field">
+                <label>برند / مدل دستگاه</label>
+                <input id="partModel" maxlength="100">
+              </div>
+
+              <div class="field">
+                <label>وضعیت قطعه</label>
+                <select id="partCondition">
+                  <option>نو</option>
+                  <option>کارکرده</option>
+                  <option>تعمیرشده</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label>شماره فنی</label>
+                <input id="partNumber" maxlength="80">
+              </div>
+
+              <div class="field">
+                <label>تعداد</label>
+                <input id="partQuantity" inputmode="numeric" maxlength="20">
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <div class="field full">
+          <label>تصاویر آگهی (حداکثر ۵ عکس)</label>
+          <input
+            id="images"
+            type="file"
+            accept="image/*"
+            multiple
+            onchange="checkImages()">
+
+          <div class="muted">
+            تصاویر پیش از بارگذاری کوچک‌سازی می‌شوند.
+          </div>
+
+          <div id="imageHint" class="muted"></div>
+        </div>
+
+      </div>
+
+      <div class="actions">
+        <button id="submitAdBtn" type="submit">ثبت آگهی</button>
+        <button class="secondary" type="button" onclick="resetAdForm()">
+          پاک کردن فرم
+        </button>
+      </div>
+
+      <p id="adFormMsg" class="muted"></p>
+
+    </form>
+  </div>
+
+</section>
+
+<!-- جست‌وجوی آگهی‌ها -->
+<section id="ads" class="section hidden">
+
+  <div class="card">
+    <h2 style="margin-top:0">جست‌وجوی آگهی‌ها</h2>
+
+    <div class="grid">
+
+      <div class="field">
+        <label>عبارت جست‌وجو</label>
+        <input
+          id="searchText"
+          placeholder="عنوان، توضیحات، برند..."
+          oninput="renderAds()">
+      </div>
+
+      <div class="field">
+        <label>شهر</label>
+        <input
+          id="filterCity"
+          placeholder="همه شهرها"
+          oninput="renderAds()">
+      </div>
+
+      <div class="field">
+        <label>نوع آگهی</label>
+        <select id="filterType" onchange="renderAds()">
+          <option value="">همه انواع</option>
+          <option>اجاره</option>
+          <option>خرید و فروش</option>
+          <option>استخدام راننده</option>
+          <option>ارائه قطعات ماشین‌آلات</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>دسته‌بندی</label>
+        <select id="filterCategory" onchange="renderAds()">
+          <option value="">همه دسته‌ها</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>حداقل قیمت (تومان)</label>
+        <input id="minPrice" inputmode="numeric" oninput="renderAds()">
+      </div>
+
+      <div class="field">
+        <label>حداکثر قیمت (تومان)</label>
+        <input id="maxPrice" inputmode="numeric" oninput="renderAds()">
+      </div>
+
+    </div>
+
+    <div class="actions">
+      <button class="secondary" onclick="clearFilters()">پاک‌کردن فیلترها</button>
+      <button class="secondary" onclick="loadAds()">به‌روزرسانی</button>
+    </div>
+  </div>
+
+  <div id="adsList" class="adgrid"></div>
+
+</section>
+
+<!-- پنل کاربر -->
+<section id="account" class="section hidden">
+
+  <div class="card">
+
+    <div class="row">
+      <h2 style="margin:0">پنل کاربران</h2>
+      <button id="authToggle" onclick="showSection('auth')">
+        ورود / ثبت‌نام
+      </button>
+    </div>
+
+    <div id="accountInfo" class="muted" style="margin-top:10px">
+      برای مشاهده پنل وارد حساب شوید.
+    </div>
+
+    <div id="profileFields" class="grid hidden" style="margin-top:12px">
+
+      <div class="field">
+        <label>نام نمایشی</label>
+        <input id="profileName" maxlength="80">
+      </div>
+
+      <div class="field">
+        <label>شماره تماس</label>
+        <input id="profilePhone" maxlength="25">
+      </div>
+
+      <div class="field">
+        <label>شهر</label>
+        <input id="profileCity" maxlength="60">
+      </div>
+
+      <div class="field">
+        <label>اعلان‌ها</label>
+        <select id="notifyPreference">
+          <option value="on">روشن</option>
+          <option value="off">خاموش</option>
+        </select>
+      </div>
+
+    </div>
+
+    <div id="profileActions" class="actions hidden">
+      <button onclick="saveProfile()">ذخیره تنظیمات</button>
+      <button class="secondary" onclick="resetPasswordFromAccount()">
+        ارسال لینک تغییر رمز
+      </button>
+      <button class="danger" onclick="signOutUser()">خروج از حساب</button>
+    </div>
+
+  </div>
+
+  <h3 class="section-title">آگهی‌های من</h3>
+  <div id="myAds" class="adgrid"></div>
+
+  <div class="card">
+    <h3>امنیت و حریم خصوصی</h3>
+    <p class="muted">
+      اطلاعات تماس برای ارتباط درباره آگهی استفاده می‌شود.
+      از رمز عبور قوی استفاده کنید و آن را در اختیار دیگران قرار ندهید.
+      برای درخواست حذف اطلاعات با مدیر سامانه تماس بگیرید.
+    </p>
+  </div>
+
+</section>
+
+<!-- پیام‌ها و اعلان‌ها -->
+<section id="messages" class="section hidden">
+
+  <div class="card">
+    <h2 style="margin-top:0">پیام‌ها و اعلان‌ها</h2>
+
+    <p class="muted">
+      برای پیام دادن، از دکمه «پیام به آگهی‌دهنده» در آگهی منتشرشده استفاده کنید.
+    </p>
+
+    <div class="row">
+      <h3>پیام‌های من</h3>
+      <button class="secondary" onclick="loadMessages()">به‌روزرسانی</button>
+    </div>
+
+    <div id="messagesList"></div>
+
+    <hr>
+
+    <div class="row">
+      <h3>اعلان‌ها</h3>
+      <button class="secondary" onclick="loadNotifications()">به‌روزرسانی</button>
+    </div>
+
+    <div id="notificationsList"></div>
+  </div>
+
+</section>
+
+<!-- پنل مدیریت -->
+<section id="admin" class="section hidden">
+
+  <div class="card">
+    <h2 style="margin-top:0">مدیریت آگهی‌ها</h2>
+
+    <p class="notice">
+      دسترسی مدیر فقط برای حساب‌هایی فعال است که شناسه کاربری آن‌ها
+      در مسیر admins/{uid} در پایگاه داده روی true تنظیم شده باشد.
+    </p>
+
+    <div class="actions">
+      <button onclick="loadAdminAds()">بارگذاری آگهی‌های در انتظار</button>
+    </div>
+
+    <div id="adminList"></div>
+  </div>
+
+</section>
+
+<div class="footer">
+  نرخینو — نسخه آزمایشی وب‌اپلیکیشن
+</div>
+
+</main>
