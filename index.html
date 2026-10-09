@@ -2,275 +2,65 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#1565c0">
-<title>نرخینو | اجاره، خرید و فروش ماشین‌آلات</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#132b3a">
+<title>نرخینو | بازار ماشین‌آلات سنگین</title>
 <link rel="manifest" href="/rent-machinery-app/manifest.json">
 
 <style>
-:root {
-  --blue: #1565c0;
-  --dark: #17212b;
-  --green: #16834a;
-  --red: #c62828;
-  --bg: #f3f6fa;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: Tahoma, Arial, sans-serif;
-  background: var(--bg);
-  color: #222;
-  line-height: 1.8;
-}
-
-header {
-  background: var(--dark);
-  color: #fff;
-  text-align: center;
-  padding: 20px 12px;
-}
-
-header h1 {
-  margin: 0;
-  font-size: 30px;
-}
-
-header p {
-  margin: 4px 0;
-  color: #dce7f3;
-}
-
-nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-  padding: 12px;
-  background: #fff;
-  box-shadow: 0 2px 8px #00000010;
-}
-
-button,
-.nav-button {
-  font-family: inherit;
-  cursor: pointer;
-  border: none;
-  border-radius: 8px;
-  padding: 10px 14px;
-  background: var(--blue);
-  color: #fff;
-  font-size: 14px;
-}
-
-button:hover {
-  opacity: .9;
-}
-
-button:disabled {
-  opacity: .6;
-  cursor: not-allowed;
-}
-
-.nav-button {
-  background: #e7eef8;
-  color: #173b63;
-}
-
-.container {
-  width: 100%;
-  max-width: 1100px;
-  padding: 16px;
-  margin: auto;
-}
-
-.section {
-  display: none;
-}
-
-.section.active {
-  display: block;
-}
-
-.panel,
-.card {
-  background: #fff;
-  border-radius: 12px;
-  padding: 18px;
-  margin-bottom: 16px;
-  box-shadow: 0 3px 12px #0000000b;
-}
-
-.hero {
-  background: linear-gradient(135deg, #173b63, #1565c0);
-  color: #fff;
-  padding: 25px 18px;
-  border-radius: 14px;
-  margin-bottom: 18px;
-}
-
-.hero h2 {
-  margin-top: 0;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 14px;
-}
-
-.category-card {
-  border: 1px solid #e3e8ef;
-  border-radius: 12px;
-  background: #fff;
-  padding: 16px;
-  text-align: center;
-  cursor: pointer;
-  color: #222;
-}
-
-.category-icon {
-  font-size: 35px;
-}
-
-label {
-  display: block;
-  font-weight: bold;
-  margin: 12px 0 5px;
-}
-
-input,
-select,
-textarea {
-  display: block;
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  font-family: inherit;
-  font-size: 15px;
-  background: #fff;
-}
-
-textarea {
-  min-height: 95px;
-  resize: vertical;
-}
-
-.primary {
-  background: var(--blue);
-  color: #fff;
-  width: 100%;
-  margin-top: 18px;
-  padding: 13px;
-  font-size: 16px;
-}
-
-.success {
-  padding: 12px;
-  background: #e5f7ec;
-  color: #176b38;
-  border-radius: 8px;
-  margin: 12px 0;
-}
-
-.error {
-  padding: 12px;
-  background: #ffebee;
-  color: #a11624;
-  border-radius: 8px;
-  margin: 12px 0;
-}
-
-.muted {
-  color: #687586;
-  font-size: 13px;
-}
-
-.ad-image {
-  width: 100%;
-  max-height: 230px;
-  object-fit: cover;
-  border-radius: 10px;
-  background: #edf1f5;
-}
-
-.badge {
-  display: inline-block;
-  padding: 3px 9px;
-  border-radius: 20px;
-  font-size: 12px;
-  background: #fff3cd;
-  color: #755700;
-  margin: 3px;
-}
-
-.badge.approved {
-  background: #e5f7ec;
-  color: #176b38;
-}
-
-.card h3 {
-  margin-top: 5px;
-}
-
-.card-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 12px;
-}
-
-.card-actions button {
-  flex: 1;
-  min-width: 100px;
-}
-
-.secondary {
-  background: #546575;
-}
-
-.danger {
-  background: var(--red);
-}
-
-.green {
-  background: var(--green);
-}
-
-hr {
-  border: none;
-  border-top: 1px solid #e7ebf0;
-  margin: 18px 0;
-}
-
-footer {
-  text-align: center;
-  padding: 20px;
-  color: #66717f;
-  font-size: 13px;
-}
-
-.hidden {
-  display: none !important;
-}
-
-@media(max-width:480px) {
-  header h1 {
-    font-size: 25px;
-  }
-
-  nav button {
-    flex: 1 1 40%;
-  }
-
-  .container {
-    padding: 10px;
-  }
+*{box-sizing:border-box}
+body{margin:0;font-family:Tahoma,Arial,sans-serif;background:#f2f5f7;color:#17212b;line-height:1.8}
+header{background:#132b3a;color:white;padding:22px 16px;border-radius:0 0 22px 22px}
+header h1{margin:0;font-size:27px}
+header p{margin:4px 0;color:#d6e2e8}
+.container{max-width:1000px;margin:auto;padding:15px}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer;border:0;border-radius:10px;padding:10px 14px}
+.primary{background:#ff9f1c;color:#17212b;font-weight:bold}
+.dark{background:#132b3a;color:white}
+.light{background:#e8eef2;color:#132b3a}
+.danger{background:#ffe9e7;color:#b52c21}
+nav{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;background:white;padding:7px;border-radius:14px;position:sticky;top:0;z-index:5;box-shadow:0 3px 12px #0001}
+nav button{background:transparent;font-size:12px;padding:9px 2px;color:#344854}
+nav button.active{background:#132b3a;color:white}
+.section{display:none;padding-top:20px}
+.section.active{display:block}
+h2{font-size:20px;margin:0 0 14px}
+.card{background:white;border-radius:15px;padding:15px;margin-bottom:13px;border:1px solid #e0e6ea;box-shadow:0 4px 14px #00000008}
+.categories{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.category{background:white;border:1px solid #e0e6ea;padding:12px 4px;font-size:12px;font-weight:bold}
+.category span{display:block;font-size:24px}
+input,select,textarea{width:100%;padding:11px;border:1px solid #d5dee4;border-radius:10px;background:white;margin-top:5px}
+label{display:block;font-size:13px;font-weight:bold;margin-top:12px}
+textarea{min-height:100px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.full{grid-column:1/-1}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.ad{background:white;border:1px solid #e0e6ea;border-radius:14px;overflow:hidden;min-width:0}
+.ad img{width:100%;height:170px;object-fit:cover;background:#e7ecef}
+.adbody{padding:12px}
+.ad h3{font-size:15px;margin:0 0 6px}
+.muted{color:#687783;font-size:12px}
+.price{color:#16845b;font-weight:bold}
+.actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.actions button,.actions a{font-size:11px;padding:7px 9px;border-radius:8px}
+.actions a{background:#e7f7ed;color:#126b44;text-decoration:none}
+.notice{padding:12px;border-radius:10px;margin:10px 0;display:none;font-size:13px}
+.notice.show{display:block}
+.success{background:#e5f7ec;color:#116b43}
+.error{background:#ffebe9;color:#a4261c}
+.info{background:#e8f3fb;color:#205a7c}
+.empty{background:white;border:1px dashed #ccd6dc;border-radius:14px;text-align:center;padding:25px;color:#687783}
+.preview{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin-top:8px}
+.preview img{width:100%;height:60px;object-fit:cover;border-radius:7px}
+footer{text-align:center;color:#7b8992;font-size:11px;padding:25px}
+@media(max-width:560px){
+ .container{padding:10px}
+ .cards{grid-template-columns:1fr}
+ .grid{grid-template-columns:1fr}
+ .full{grid-column:auto}
+ nav button{font-size:10px}
+ .categories{grid-template-columns:repeat(3,1fr)}
 }
 </style>
 </head>
@@ -278,259 +68,154 @@ footer {
 <body>
 
 <header>
-  <h1>🚜 نرخینو</h1>
-  <p>سامانه ثبت و جستجوی آگهی ماشین‌آلات راه‌سازی و معدنی</p>
-  <p id="connectionStatus">در حال بررسی اتصال...</p>
+<h1>🚜 نرخینو</h1>
+<p>بازار تخصصی ماشین‌آلات راه‌سازی و معدنی</p>
+<p>اجاره | خرید و فروش | استخدام راننده | قطعات</p>
 </header>
 
+<div class="container">
+
 <nav>
-  <button class="nav-button" onclick="showSection('home')">🏠 خانه</button>
-  <button class="nav-button" onclick="showSection('register')">➕ ثبت آگهی</button>
-  <button class="nav-button" onclick="showSection('ads')">🔎 آگهی‌ها</button>
-  <button class="nav-button" onclick="showSection('addresses')">📍 نشانی‌ها</button>
-  <button class="nav-button" onclick="showSection('favorites')">❤️ علاقه‌مندی‌ها</button>
-  <button class="nav-button" onclick="showSection('featured')">⭐ آگهی منتخب</button>
-  <button class="nav-button" onclick="showSection('admin')">🔐 مدیریت</button>
+<button class="active" onclick="showSection('home',this)">⌂ خانه</button>
+<button onclick="showSection('ads',this)">▦ آگهی‌ها</button>
+<button onclick="showSection('register',this)">＋ ثبت آگهی</button>
+<button onclick="showSection('favorites',this)">♡ ذخیره‌ها</button>
+<button onclick="showSection('admin',this)">⚙ مدیریت</button>
 </nav>
 
-<main class="container">
-
 <section id="home" class="section active">
-
-  <div class="hero">
-    <h2>ماشین‌آلات را آگهی کن، سریع پیدا کن</h2>
-    <p>
-      ثبت و جستجوی آگهی اجاره، خرید و فروش ماشین‌آلات،
-      استخدام راننده و ارائه قطعات ماشین‌آلات.
-    </p>
-    <button onclick="showSection('register')">ثبت آگهی جدید</button>
-    <button class="secondary" onclick="showSection('ads')">مشاهده آگهی‌ها</button>
-  </div>
-
-  <div class="panel">
-    <h2>دسته‌بندی‌ها</h2>
-    <div id="categoryGrid" class="grid"></div>
-  </div>
-
-  <div class="panel">
-    <h2>آخرین آگهی‌های منتشرشده</h2>
-    <div id="homeAds" class="grid">
-      <p>در حال دریافت آگهی‌ها...</p>
-    </div>
-  </div>
-
-</section>
-
-<section id="register" class="section">
-
-  <div class="panel">
-    <h2>📝 ثبت آگهی</h2>
-    <p class="muted">آگهی شما پس از بررسی و تأیید مدیر منتشر خواهد شد.</p>
-
-    <div id="registerMessage" aria-live="polite"></div>
-
-    <form id="adForm">
-
-      <label for="ownerName">نام و نام خانوادگی</label>
-      <input id="ownerName" maxlength="80" required>
-
-      <label for="phone">شماره تماس</label>
-      <input
-        id="phone"
-        type="tel"
-        inputmode="tel"
-        maxlength="20"
-        placeholder="مثلاً 09123456789"
-        required
-      >
-
-      <label for="adType">نوع آگهی</label>
-      <select id="adType" required>
-        <option value="اجاره">اجاره ماشین‌آلات</option>
-        <option value="خرید و فروش">خرید و فروش</option>
-        <option value="استخدام راننده">استخدام راننده</option>
-        <option value="ارائه قطعات">ارائه قطعات ماشین‌آلات</option>
-      </select>
-
-      <label for="machine">دسته‌بندی</label>
-      <select id="machine" required></select>
-
-      <label for="title">عنوان آگهی</label>
-      <input
-        id="title"
-        maxlength="120"
-        placeholder="مثلاً اجاره بیل مکانیکی کوماتسو"
-        required
-      >
-
-      <label for="city">شهر یا منطقه فعالیت</label>
-      <input
-        id="city"
-        maxlength="100"
-        placeholder="مثلاً اهواز، جایزان یا بهبهان"
-        required
-      >
-
-      <label for="price">قیمت یا شرایط همکاری</label>
-      <input
-        id="price"
-        maxlength="100"
-        placeholder="مثلاً توافقی یا روزانه"
-      >
-
-      <label for="description">توضیحات آگهی</label>
-      <textarea
-        id="description"
-        maxlength="1500"
-        placeholder="مدل دستگاه، سال ساخت، شرایط اجاره و..."
-        required
-      ></textarea>
-
-      <label for="images">تصاویر آگهی (حداکثر ۳ تصویر)</label>
-      <input
-        id="images"
-        type="file"
-        accept="image/jpeg,image/png,image/webp"
-        multiple
-      >
-
-      <p class="muted">
-        برای کاهش مصرف اینترنت، تصاویر پیش از ارسال کوچک می‌شوند.
-      </p>
-
-      <button id="submitAdButton" class="primary" type="submit">
-        ثبت آگهی
-      </button>
-
-    </form>
-  </div>
-
+<h2>دسته‌بندی ماشین‌آلات</h2>
+<div id="categories" class="categories"></div>
+<h2 style="margin-top:22px">آخرین آگهی‌ها</h2>
+<div id="homeAds" class="cards"></div>
 </section>
 
 <section id="ads" class="section">
-
-  <div class="panel">
-    <h2>🔎 جستجوی آگهی‌ها</h2>
-
-    <label for="searchText">عبارت جستجو</label>
-    <input id="searchText" placeholder="نام دستگاه، عنوان یا شهر">
-
-    <label for="filterCategory">دسته‌بندی</label>
-    <select id="filterCategory">
-      <option value="">همه دسته‌بندی‌ها</option>
-    </select>
-
-    <label for="filterType">نوع آگهی</label>
-    <select id="filterType">
-      <option value="">همه انواع</option>
-      <option value="اجاره">اجاره</option>
-      <option value="خرید و فروش">خرید و فروش</option>
-      <option value="استخدام راننده">استخدام راننده</option>
-      <option value="ارائه قطعات">ارائه قطعات</option>
-    </select>
-
-    <button class="primary" onclick="renderAds()">جستجو</button>
-  </div>
-
-  <div id="adsList" class="grid"></div>
-
+<h2>جست‌وجوی آگهی‌ها</h2>
+<div class="card">
+<input id="search" placeholder="نام دستگاه، شهر یا عنوان آگهی" oninput="renderAds()">
+<select id="filterCategory" onchange="renderAds()">
+<option value="">همه دسته‌بندی‌ها</option>
+</select>
+<select id="filterType" onchange="renderAds()">
+<option value="">همه نوع آگهی‌ها</option>
+<option>اجاره</option>
+<option>خرید و فروش</option>
+<option>استخدام راننده</option>
+<option>ارائه قطعات</option>
+</select>
+</div>
+<div id="adsList" class="cards"></div>
 </section>
 
-<section id="addresses" class="section">
+<section id="register" class="section">
+<h2>ثبت آگهی جدید</h2>
+<div class="card">
+<p class="muted">آگهی شما پس از بررسی و تأیید مدیر منتشر خواهد شد. حداکثر ۵ عکس قابل انتخاب است.</p>
+<div id="registerMessage" class="notice"></div>
 
-  <div class="panel">
-    <h2>📍 نشانی‌های فعالیت</h2>
-    <p>نشانی شهر یا منطقه فعالیت آگهی‌دهندگان در این بخش نمایش داده می‌شود.</p>
-    <div id="addressList"></div>
-  </div>
+<form id="adForm">
+<div class="grid">
 
+<div>
+<label for="ownerName">نام و نام خانوادگی *</label>
+<input id="ownerName" required maxlength="70">
+</div>
+
+<div>
+<label for="phone">شماره تماس *</label>
+<input id="phone" required inputmode="tel" maxlength="20">
+</div>
+
+<div>
+<label for="type">نوع آگهی *</label>
+<select id="type" required>
+<option>اجاره</option>
+<option>خرید و فروش</option>
+<option>استخدام راننده</option>
+<option>ارائه قطعات</option>
+</select>
+</div>
+
+<div>
+<label for="category">دسته‌بندی *</label>
+<select id="category" required></select>
+</div>
+
+<div>
+<label for="title">عنوان آگهی *</label>
+<input id="title" required maxlength="100">
+</div>
+
+<div>
+<label for="city">شهر و استان *</label>
+<input id="city" required maxlength="70">
+</div>
+
+<div class="full">
+<label for="price">قیمت یا شرایط</label>
+<input id="price" placeholder="مثلاً توافقی">
+</div>
+
+<div class="full">
+<label for="description">توضیحات *</label>
+<textarea id="description" required maxlength="1800"></textarea>
+</div>
+
+<div class="full">
+<label for="images">تصاویر آگهی (حداکثر ۵ تصویر)</label>
+<input id="images" type="file" accept="image/jpeg,image/png,image/webp" multiple>
+<div id="imagePreview" class="preview"></div>
+</div>
+
+<div class="full">
+<label style="display:flex;align-items:center;gap:8px">
+<input type="checkbox" id="agree" required style="width:auto">
+اطلاعات آگهی صحیح است.
+</label>
+</div>
+
+<div class="full">
+<button id="submitButton" class="primary" type="submit" style="width:100%">ثبت آگهی</button>
+</div>
+
+</div>
+</form>
+</div>
 </section>
 
 <section id="favorites" class="section">
-
-  <div class="panel">
-    <h2>❤️ آگهی‌های موردعلاقه</h2>
-    <p class="muted">فهرست علاقه‌مندی‌ها در همین دستگاه ذخیره می‌شود.</p>
-    <div id="favoritesList" class="grid"></div>
-  </div>
-
-</section>
-
-<section id="featured" class="section">
-
-  <div class="panel">
-    <h2>⭐ آگهی منتخب</h2>
-    <p class="muted">
-      آگهی‌هایی که مدیریت نرخینو انتخاب کرده باشد در این قسمت نمایش داده می‌شوند.
-    </p>
-    <div id="featuredList" class="grid"></div>
-  </div>
-
+<h2>آگهی‌های ذخیره‌شده</h2>
+<div id="favoritesList" class="cards"></div>
 </section>
 
 <section id="admin" class="section">
-
-  <div class="panel">
-    <h2>🔐 پنل مدیریت</h2>
-
-    <p class="muted">
-      این رمز فقط آزمایشی است و امنیت واقعی ایجاد نمی‌کند.
-      برای استفاده عمومی، احراز هویت مدیر و قوانین امن Firebase لازم است.
-    </p>
-
-    <div id="adminLogin">
-      <label for="adminPassword">رمز آزمایشی پنل</label>
-      <input id="adminPassword" type="password" autocomplete="current-password">
-      <button class="primary" onclick="loginAdmin()">ورود</button>
-      <div id="adminMessage" aria-live="polite"></div>
-    </div>
-
-    <div id="adminContent" class="hidden">
-
-      <button class="secondary" onclick="logoutAdmin()">خروج از پنل</button>
-
-      <h3>آگهی‌های در انتظار بررسی</h3>
-      <div id="pendingAds" class="grid"></div>
-
-      <hr>
-
-      <h3>آگهی‌های منتشرشده</h3>
-      <div id="approvedAds" class="grid"></div>
-
-    </div>
-  </div>
-
+<h2>پنل مدیریت</h2>
+<div class="card">
+<p class="muted">ورود آزمایشی مدیر؛ برای استفاده عمومی باید احراز هویت امن راه‌اندازی شود.</p>
+<label for="adminPassword">رمز مدیر</label>
+<input id="adminPassword" type="password">
+<button class="dark" onclick="loginAdmin()" style="margin-top:10px">ورود</button>
+<div id="adminMessage" class="notice"></div>
+<div id="adminPanel" style="display:none">
+<hr>
+<button class="light" onclick="adminFilter='pending';renderAdmin()">در انتظار تأیید</button>
+<button class="light" onclick="adminFilter='approved';renderAdmin()">منتشرشده</button>
+<button class="light" onclick="adminFilter='all';renderAdmin()">همه آگهی‌ها</button>
+<div id="adminList" class="cards" style="margin-top:12px"></div>
+</div>
+</div>
 </section>
 
-</main>
-
-<footer>
-  نرخینو | سامانه آگهی ماشین‌آلات راه‌سازی و معدنی
-</footer>
+<footer>نرخینو © <span id="year"></span><br>بازار تخصصی ماشین‌آلات سنگین</footer>
+</div>
 
 <script type="module">
-
-import {
-  initializeApp
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
-import {
-  getDatabase,
-  ref,
-  push,
-  set,
-  update,
-  remove,
-  onValue
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
-
-import {
-  getStorage,
-  ref as storageRef,
-  uploadBytes,
-  getDownloadURL
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
-
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getDatabase, ref, push, set, onValue, update, remove }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+import { getStorage, ref as storageRef, uploadBytes, getDownloadURL }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBB12jJCxigpdASZZmjxU2XjfSWeQ8ehAY",
@@ -542,746 +227,302 @@ const firebaseConfig = {
   appId: "1:210006577129:web:295950d0412c28ebac0578"
 };
 
-
-const categories = [
-  {name:"بیل مکانیکی",icon:"🚜"},
-  {name:"لودر",icon:"🚧"},
-  {name:"بولدوزر",icon:"🚜"},
-  {name:"گریدر",icon:"🛣️"},
-  {name:"غلطک",icon:"🚧"},
-  {name:"کامیون باری",icon:"🚚"},
-  {name:"کامیون کمپرسی",icon:"🚛"},
-  {name:"جرثقیل",icon:"🏗️"},
-  {name:"کمرشکن",icon:"🚛"},
-  {name:"فنیشر",icon:"🛣️"},
-  {name:"دامپتراک",icon:"🚚"},
-  {name:"سایر ماشین‌آلات معدنی",icon:"⛏️"},
-  {name:"استخدام راننده",icon:"👷"},
-  {name:"قطعات ماشین‌آلات",icon:"⚙️"}
+const CATEGORIES = [
+"بیل مکانیکی","لودر","بولدوزر","گریدر","غلطک",
+"کامیون باری","کامیون و کمپرسی","جرثقیل","کمرشکن",
+"فنیشر","دامپتراک","سایر ماشین‌آلات معدنی",
+"استخدام راننده","ارائه قطعات ماشین‌آلات"
 ];
 
-
-let db;
-let storage;
-let allAds = {};
-let firebaseReady = false;
-let adminLoggedIn = false;
-
+const ADMIN_PASSWORD = "1234"; // فقط آزمایشی؛ رمز امن مدیریتی نیست.
 const $ = id => document.getElementById(id);
 
+let db, storage, ads = {}, adminLoggedIn = false;
+let adminFilter = "pending";
+let favorites = JSON.parse(localStorage.getItem("nerkhinoFavorites") || "[]");
 
-function showMessage(id, message, type = "success") {
-  const el = $(id);
-
-  if (el) {
-    el.className = type;
-    el.textContent = message;
-  }
+function esc(value=""){
+ return String(value).replace(/[&<>"']/g, c => ({
+ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+ }[c]));
 }
 
-
-function escapeHTML(value) {
-  return String(value ?? "").replace(/[&<>"']/g, char => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#039;"
-  })[char]);
+function message(id,text,type){
+ const el=$(id);
+ el.textContent=text;
+ el.className="notice show "+type;
 }
 
+function hideMessage(id){
+ $(id).className="notice";
+}
 
-window.showSection = function(id) {
-  document.querySelectorAll(".section").forEach(section => {
-    section.classList.remove("active");
-  });
+function showSection(id,button){
+ document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+ $(id).classList.add("active");
+ document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
+ if(button)button.classList.add("active");
+ if(id==="ads")renderAds();
+ if(id==="favorites")renderFavorites();
+ if(id==="admin"&&adminLoggedIn)renderAdmin();
+ window.scrollTo(0,0);
+}
+window.showSection=showSection;
 
-  if ($(id)) {
-    $(id).classList.add("active");
-  }
+function initializeCategories(){
+ $("categories").innerHTML=CATEGORIES.map((c,i)=>
+ `<button class="category" onclick="chooseCategory('${esc(c)}')"><span>${["🚜","🚧","🏗️","🛣️","🚜","🚚","🚛","🏗️","🚛","🛣️","⛏️","⚙️","👷","🔩"][i]}</span>${esc(c)}</button>`
+ ).join("");
 
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
+ ["category","filterCategory"].forEach(id=>{
+  $(id).innerHTML=(id==="filterCategory"?'<option value="">همه دسته‌بندی‌ها</option>':"")+
+  CATEGORIES.map(c=>`<option>${esc(c)}</option>`).join("");
+ });
+}
 
-  if (id === "ads") renderAds();
-  if (id === "addresses") renderAddresses();
-  if (id === "favorites") renderFavorites();
-  if (id === "featured") renderFeatured();
-
-  if (id === "admin" && adminLoggedIn) {
-    renderAdmin();
-  }
+window.chooseCategory=function(category){
+ $("filterCategory").value=category;
+ showSection("ads");
+ renderAds();
 };
 
+function connectFirebase(){
+ try{
+  const app=initializeApp(firebaseConfig);
+  db=getDatabase(app);
+  storage=getStorage(app);
 
-function populateCategories() {
-  $("categoryGrid").innerHTML = categories.map(category => `
-    <button
-      class="category-card"
-      onclick="chooseCategory('${escapeHTML(category.name)}')"
-    >
-      <div class="category-icon">${category.icon}</div>
-      <strong>${escapeHTML(category.name)}</strong>
-    </button>
-  `).join("");
-
-  $("machine").innerHTML = categories.map(category => `
-    <option value="${escapeHTML(category.name)}">
-      ${escapeHTML(category.name)}
-    </option>
-  `).join("");
-
-  $("filterCategory").innerHTML =
-    '<option value="">همه دسته‌بندی‌ها</option>' +
-    categories.map(category => `
-      <option value="${escapeHTML(category.name)}">
-        ${escapeHTML(category.name)}
-      </option>
-    `).join("");
+  onValue(ref(db,"ads"),snapshot=>{
+   ads=snapshot.val()||{};
+   renderHome();
+   renderAds();
+   renderFavorites();
+   if(adminLoggedIn)renderAdmin();
+  },error=>{
+   console.error(error);
+   message("registerMessage","اتصال به پایگاه داده ناموفق است. قوانین Firebase را بررسی کنید.","error");
+  });
+ }catch(error){
+  console.error(error);
+  message("registerMessage","راه‌اندازی Firebase ناموفق بود.","error");
+ }
 }
 
+function approvedAds(){
+ return Object.entries(ads)
+ .filter(([key,ad])=>ad&&ad.status==="approved")
+ .sort((a,b)=>(b[1].createdAt||0)-(a[1].createdAt||0));
+}
 
-window.chooseCategory = function(category) {
-  $("machine").value = category;
-  $("filterCategory").value = category;
-  showSection("ads");
-  renderAds();
+function adCard(key,ad,admin=false){
+ const image=Array.isArray(ad.images)&&ad.images.length?ad.images[0]:"";
+ let actions=`<button class="light" onclick="toggleFavorite('${key}')">${favorites.includes(key)?"♥ ذخیره‌شده":"♡ ذخیره"}</button>`;
+ if(ad.phone)actions+=`<a href="tel:${esc(ad.phone)}">تماس</a>`;
+ if(admin){
+  if(ad.status!=="approved")actions+=`<button class="primary" onclick="approveAd('${key}')">تأیید</button>`;
+  actions+=`<button class="light" onclick="toggleFeatured('${key}',${!ad.featured})">${ad.featured?"حذف منتخب":"⭐ منتخب"}</button>`;
+  actions+=`<button class="danger" onclick="deleteAd('${key}')">حذف</button>`;
+ }
+ return `<article class="ad">
+ ${image?`<img src="${esc(image)}" alt="تصویر آگهی" loading="lazy">`:'<div style="height:130px;display:grid;place-items:center;background:#e8eef2;font-size:42px">🚜</div>'}
+ <div class="adbody">
+ <h3>${esc(ad.title||"آگهی ماشین‌آلات")}</h3>
+ <div class="muted">${esc(ad.category||"")} · ${esc(ad.city||"")}</div>
+ <div class="muted">${esc(ad.type||"")}</div>
+ <p class="price">${esc(ad.price||"توافقی")}</p>
+ <p>${esc((ad.description||"").slice(0,130))}</p>
+ <div class="actions">${actions}</div>
+ ${admin?`<p class="muted">وضعیت: ${ad.status==="approved"?"منتشرشده":"در انتظار تأیید"} | ${esc(ad.ownerName||"")}</p>`:""}
+ </div></article>`;
+}
+
+function renderHome(){
+ const rows=approvedAds();
+ $("homeAds").innerHTML=rows.length?rows.slice(0,6).map(([k,a])=>adCard(k,a)).join(""):'<div class="empty">هنوز آگهی منتشرشده‌ای وجود ندارد.</div>';
+}
+
+function renderAds(){
+ if(!$("adsList"))return;
+ const term=($("search").value||"").trim().toLowerCase();
+ const category=$("filterCategory").value;
+ const type=$("filterType").value;
+
+ const rows=approvedAds().filter(([key,a])=>
+ (!category||a.category===category)&&
+ (!type||a.type===type)&&
+ (!term||[a.title,a.city,a.description,a.category,a.type].some(v=>(v||"").toLowerCase().includes(term)))
+ );
+ $("adsList").innerHTML=rows.length?rows.map(([k,a])=>adCard(k,a)).join(""):'<div class="empty">آگهی‌ای پیدا نشد.</div>';
+}
+
+window.toggleFavorite=function(key){
+ if(favorites.includes(key))favorites=favorites.filter(k=>k!==key);
+ else favorites.push(key);
+ localStorage.setItem("nerkhinoFavorites",JSON.stringify(favorites));
+ renderAds();renderHome();renderFavorites();
 };
 
-
-function setConnectionStatus(message, ok = false) {
-  $("connectionStatus").textContent = message;
-  $("connectionStatus").style.color =
-    ok ? "#a8f0bd" : "#ffd2d2";
+function renderFavorites(){
+ const rows=favorites.map(k=>[k,ads[k]]).filter(([k,a])=>a&&a.status==="approved");
+ $("favoritesList").innerHTML=rows.length?rows.map(([k,a])=>adCard(k,a)).join(""):'<div class="empty">هنوز آگهی ذخیره نکرده‌اید.</div>';
 }
 
-
-function connectFirebase() {
-  try {
-    const app = initializeApp(firebaseConfig);
-
-    db = getDatabase(app);
-    storage = getStorage(app);
-
-    onValue(
-      ref(db, "ads"),
-      snapshot => {
-        allAds = snapshot.val() || {};
-        firebaseReady = true;
-
-        setConnectionStatus(
-          "اتصال به پایگاه داده برقرار است",
-          true
-        );
-
-        renderAds();
-        renderHomeAds();
-        renderAddresses();
-        renderFavorites();
-        renderFeatured();
-
-        if (adminLoggedIn) {
-          renderAdmin();
-        }
-      },
-      error => {
-        firebaseReady = false;
-
-        setConnectionStatus("خطا در دریافت آگهی‌ها");
-
-        console.error(error);
-
-        $("adsList").innerHTML =
-          '<p class="error">دریافت آگهی‌ها ممکن نیست. قوانین Firebase را بررسی کنید.</p>';
-      }
-    );
-
-  } catch (error) {
-    console.error(error);
-    setConnectionStatus("راه‌اندازی Firebase ناموفق بود");
-  }
-}
-
-
-async function compressImage(file) {
-  if (!file.type.startsWith("image/")) {
-    throw new Error("یکی از فایل‌های انتخاب‌شده تصویر نیست.");
-  }
-
-  if (file.size > 12 * 1024 * 1024) {
-    throw new Error("حجم هر تصویر باید کمتر از ۱۲ مگابایت باشد.");
-  }
-
-  const url = URL.createObjectURL(file);
-
-  try {
-    const image = new Image();
-
-    await new Promise((resolve, reject) => {
-      image.onload = resolve;
-      image.onerror = () => reject(
-        new Error("خواندن تصویر ناموفق بود.")
-      );
-      image.src = url;
-    });
-
-    const ratio = Math.min(
-      1,
-      1200 / Math.max(image.width, image.height)
-    );
-
-    const canvas = document.createElement("canvas");
-
-    canvas.width = Math.max(
-      1,
-      Math.round(image.width * ratio)
-    );
-
-    canvas.height = Math.max(
-      1,
-      Math.round(image.height * ratio)
-    );
-
-    canvas.getContext("2d").drawImage(
-      image,
-      0,
-      0,
-      canvas.width,
-      canvas.height
-    );
-
-    const blob = await new Promise(resolve => {
-      canvas.toBlob(resolve, "image/jpeg", 0.78);
-    });
-
-    if (!blob) {
-      throw new Error("آماده‌سازی تصویر ناموفق بود.");
-    }
-
-    return blob;
-
-  } finally {
-    URL.revokeObjectURL(url);
-  }
-}
-
-
-async function uploadImages(files, key) {
-  const urls = [];
-
-  for (let i = 0; i < files.length; i++) {
-    const blob = await compressImage(files[i]);
-
-    const path = `adImages/${key}/${Date.now()}_${i}.jpg`;
-
-    const fileRef = storageRef(storage, path);
-
-    await uploadBytes(fileRef, blob, {
-      contentType: "image/jpeg"
-    });
-
-    urls.push(await getDownloadURL(fileRef));
-  }
-
-  return urls;
-}
-
-
-$("adForm").addEventListener("submit", async event => {
-  event.preventDefault();
-
-  const button = $("submitAdButton");
-  const files = Array.from($("images").files || []);
-
-  if (!firebaseReady) {
-    showMessage(
-      "registerMessage",
-      "اتصال به Firebase برقرار نیست. اتصال و قوانین دسترسی را بررسی کنید.",
-      "error"
-    );
-    return;
-  }
-
-  if (files.length > 3) {
-    showMessage(
-      "registerMessage",
-      "حداکثر ۳ تصویر انتخاب کنید.",
-      "error"
-    );
-    return;
-  }
-
-  const phone = $("phone").value.trim();
-
-  if (!/^[0-9۰-۹+\-\s()]{7,20}$/.test(phone)) {
-    showMessage(
-      "registerMessage",
-      "شماره تماس واردشده معتبر نیست.",
-      "error"
-    );
-    return;
-  }
-
-  const ad = {
-    ownerName: $("ownerName").value.trim(),
-    phone: phone,
-    adType: $("adType").value,
-    machine: $("machine").value,
-    title: $("title").value.trim(),
-    city: $("city").value.trim(),
-    price: $("price").value.trim(),
-    description: $("description").value.trim(),
-    status: "pending",
-    featured: false,
-    createdAt: Date.now(),
-    images: []
+function compressImage(file){
+ return new Promise((resolve,reject)=>{
+  const reader=new FileReader();
+  reader.onerror=()=>reject(Error("خواندن تصویر ناموفق بود"));
+  reader.onload=()=>{
+   const img=new Image();
+   img.onerror=()=>reject(Error("فایل تصویر معتبر نیست"));
+   img.onload=()=>{
+    const scale=Math.min(1,1400/Math.max(img.width,img.height));
+    const canvas=document.createElement("canvas");
+    canvas.width=Math.max(1,Math.round(img.width*scale));
+    canvas.height=Math.max(1,Math.round(img.height*scale));
+    canvas.getContext("2d").drawImage(img,0,0,canvas.width,canvas.height);
+    canvas.toBlob(blob=>blob?resolve(blob):reject(Error("فشرده‌سازی ناموفق بود")),"image/jpeg",0.78);
+   };
+   img.src=reader.result;
   };
+  reader.readAsDataURL(file);
+ });
+}
 
-  if (
-    !ad.ownerName ||
-    !ad.phone ||
-    !ad.title ||
-    !ad.city ||
-    !ad.description
-  ) {
-    showMessage(
-      "registerMessage",
-      "لطفاً تمام فیلدهای ضروری را تکمیل کنید.",
-      "error"
-    );
-    return;
-  }
-
-  button.disabled = true;
-  button.textContent = "در حال ثبت آگهی...";
-
-  showMessage(
-    "registerMessage",
-    "لطفاً منتظر بمانید...",
-    "success"
-  );
-
-  try {
-    const adRef = push(ref(db, "ads"));
-    const key = adRef.key;
-
-    if (files.length) {
-      ad.images = await uploadImages(files, key);
-    }
-
-    await set(adRef, ad);
-
-    $("adForm").reset();
-
-    showMessage(
-      "registerMessage",
-      "آگهی ثبت شد و پس از تأیید مدیر منتشر می‌شود.",
-      "success"
-    );
-
-    showSection("ads");
-
-  } catch (error) {
-    console.error(error);
-
-    let message = "ثبت آگهی ناموفق بود.";
-
-    if (error.code === "PERMISSION_DENIED") {
-      message =
-        "دسترسی Firebase رد شد. قوانین پایگاه داده یا Storage را بررسی کنید.";
-    } else if (
-      error.code === "storage/unauthorized" ||
-      error.code === "storage/unauthenticated"
-    ) {
-      message =
-        "بارگذاری تصویر مجاز نیست. قوانین Firebase Storage را بررسی کنید.";
-    } else if (!navigator.onLine) {
-      message = "اینترنت قطع است. اتصال را بررسی کنید.";
-    } else if (error.message) {
-      message += " " + error.message;
-    }
-
-    showMessage("registerMessage", message, "error");
-
-  } finally {
-    button.disabled = false;
-    button.textContent = "ثبت آگهی";
-  }
+$("images").addEventListener("change",()=>{
+ const files=Array.from($("images").files||[]);
+ const preview=$("imagePreview");
+ preview.innerHTML="";
+ if(files.length>5){
+  $("images").value="";
+  message("registerMessage","حداکثر ۵ تصویر انتخاب کنید.","error");
+  return;
+ }
+ files.forEach(file=>{
+  if(!file.type.startsWith("image/"))return;
+  const img=document.createElement("img");
+  img.src=URL.createObjectURL(file);
+  img.alt="پیش‌نمایش عکس";
+  preview.appendChild(img);
+ });
+ hideMessage("registerMessage");
 });
 
+$("adForm").addEventListener("submit",async event=>{
+ event.preventDefault();
+ if(!db||!storage){
+  message("registerMessage","اتصال Firebase برقرار نیست. صفحه را دوباره بارگذاری کنید.","error");
+  return;
+ }
 
-function getAllAds() {
-  return Object.entries(allAds)
-    .filter(([key, ad]) => ad)
-    .map(([key, ad]) => ({
-      ...ad,
-      key
-    }));
-}
+ const files=Array.from($("images").files||[]);
+ if(files.length>5){
+  message("registerMessage","حداکثر ۵ تصویر انتخاب کنید.","error");
+  return;
+ }
 
+ const button=$("submitButton");
+ button.disabled=true;
+ button.textContent="در حال ثبت آگهی...";
 
-function getApprovedAds() {
-  return getAllAds().filter(ad => ad.status === "approved");
-}
+ try{
+  const newRef=push(ref(db,"ads"));
+  const imageUrls=[];
 
-
-function makeAdCard(ad, adminMode = false) {
-  const category = categories.find(
-    item => item.name === ad.machine
-  );
-
-  const icon = category ? category.icon : "🚜";
-
-  const imageHTML =
-    Array.isArray(ad.images) && ad.images.length
-      ? ad.images.map(url => `
-          <img
-            class="ad-image"
-            src="${escapeHTML(url)}"
-            alt="${escapeHTML(ad.title)}"
-            loading="lazy"
-          >
-        `).join("")
-      : `<div class="category-icon">${icon}</div>`;
-
-  const favoriteButton = !adminMode
-    ? `<button class="secondary" onclick="toggleFavorite('${ad.key}')">
-         ❤️ علاقه‌مندی
-       </button>`
-    : "";
-
-  let adminButtons = "";
-
-  if (adminMode) {
-    if (ad.status === "pending") {
-      adminButtons += `
-        <button class="green" onclick="approveAd('${ad.key}')">
-          تأیید و انتشار
-        </button>
-      `;
-    }
-
-    if (ad.status === "approved") {
-      adminButtons += `
-        <button
-          class="${ad.featured === true ? "secondary" : "green"}"
-          onclick="toggleFeatured('${ad.key}', ${ad.featured === true ? "false" : "true"})"
-        >
-          ${ad.featured === true
-            ? "حذف از آگهی منتخب"
-            : "⭐ انتخاب به‌عنوان آگهی منتخب"}
-        </button>
-      `;
-    }
-
-    adminButtons += `
-      <button class="danger" onclick="deleteAd('${ad.key}')">
-        حذف آگهی
-      </button>
-    `;
+  for(let i=0;i<files.length;i++){
+   message("registerMessage",`در حال بارگذاری تصویر ${i+1} از ${files.length}...`,"info");
+   const blob=await compressImage(files[i]);
+   const imageRef=storageRef(storage,`ad-images/${newRef.key}/${Date.now()}-${i}.jpg`);
+   await uploadBytes(imageRef,blob,{contentType:"image/jpeg"});
+   imageUrls.push(await getDownloadURL(imageRef));
   }
 
-  const status = ad.status === "approved"
-    ? '<span class="badge approved">منتشرشده</span>'
-    : '<span class="badge">در انتظار تأیید</span>';
+  const ad={
+   ownerName:$("ownerName").value.trim(),
+   phone:$("phone").value.trim(),
+   type:$("type").value,
+   category:$("category").value,
+   title:$("title").value.trim(),
+   city:$("city").value.trim(),
+   price:$("price").value.trim()||"توافقی",
+   description:$("description").value.trim(),
+   images:imageUrls,
+   status:"pending",
+   featured:false,
+   createdAt:Date.now()
+  };
 
-  const featuredBadge = ad.featured === true
-    ? '<span class="badge">⭐ آگهی منتخب</span>'
-    : "";
+  await set(newRef,ad);
+  $("adForm").reset();
+  $("imagePreview").innerHTML="";
+  message("registerMessage","آگهی ثبت شد و پس از تأیید مدیر منتشر می‌شود.","success");
+ }catch(error){
+  console.error("ثبت آگهی ناموفق:",error);
+  let text="ثبت آگهی ناموفق بود. اتصال اینترنت و قوانین Firebase را بررسی کنید.";
+  if(error.code==="storage/unauthorized")text="مجوز بارگذاری تصاویر در Firebase Storage رد شد.";
+  if(error.code==="PERMISSION_DENIED"||error.code==="database/permission-denied")text="قوانین Realtime Database اجازه ثبت آگهی نمی‌دهند.";
+  message("registerMessage",text,"error");
+ }finally{
+  button.disabled=false;
+  button.textContent="ثبت آگهی";
+ }
+});
 
-  return `
-    <article class="card">
-      ${imageHTML}
-
-      <h3>${escapeHTML(ad.title)}</h3>
-
-      ${status}
-      ${featuredBadge}
-
-      <p><strong>دسته‌بندی:</strong> ${escapeHTML(ad.machine)}</p>
-      <p><strong>نوع آگهی:</strong> ${escapeHTML(ad.adType)}</p>
-      <p><strong>منطقه:</strong> ${escapeHTML(ad.city)}</p>
-      <p><strong>قیمت/شرایط:</strong> ${escapeHTML(ad.price || "توافقی")}</p>
-      <p>${escapeHTML(ad.description)}</p>
-      <p><strong>نام:</strong> ${escapeHTML(ad.ownerName)}</p>
-
-      <p>
-        <strong>تماس:</strong>
-        <a href="tel:${escapeHTML(ad.phone)}">${escapeHTML(ad.phone)}</a>
-      </p>
-
-      <div class="card-actions">
-        ${favoriteButton}
-        ${adminButtons}
-      </div>
-    </article>
-  `;
-}
-
-
-window.renderAds = function() {
-  const text = $("searchText").value.trim().toLowerCase();
-  const category = $("filterCategory").value;
-  const type = $("filterType").value;
-
-  const ads = getApprovedAds().filter(ad => {
-    const searchContent = [
-      ad.title,
-      ad.machine,
-      ad.city,
-      ad.description,
-      ad.adType
-    ].join(" ").toLowerCase();
-
-    return (
-      (!text || searchContent.includes(text)) &&
-      (!category || ad.machine === category) &&
-      (!type || ad.adType === type)
-    );
-  });
-
-  $("adsList").innerHTML = ads.length
-    ? ads.map(ad => makeAdCard(ad)).join("")
-    : '<p class="panel">آگهی منتشرشده‌ای با این مشخصات پیدا نشد.</p>';
+window.loginAdmin=function(){
+ if($("adminPassword").value!==ADMIN_PASSWORD){
+  message("adminMessage","رمز مدیر صحیح نیست.","error");
+  return;
+ }
+ adminLoggedIn=true;
+ $("adminPanel").style.display="block";
+ renderAdmin();
 };
 
-
-function renderHomeAds() {
-  const ads = getApprovedAds()
-    .sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0))
-    .slice(0, 6);
-
-  $("homeAds").innerHTML = ads.length
-    ? ads.map(ad => makeAdCard(ad)).join("")
-    : "<p>هنوز آگهی منتشرشده‌ای وجود ندارد.</p>";
-}
-
-
-function renderAddresses() {
-  const ads = getApprovedAds();
-
-  const cities = [
-    ...new Set(ads.map(ad => ad.city).filter(Boolean))
-  ];
-
-  $("addressList").innerHTML = cities.length
-    ? cities.map(city => {
-        const count = ads.filter(ad => ad.city === city).length;
-
-        return `
-          <div class="card">
-            <strong>📍 ${escapeHTML(city)}</strong>
-            <p>${count} آگهی منتشرشده</p>
-            <button onclick="searchCity('${escapeHTML(city)}')">
-              مشاهده آگهی‌ها
-            </button>
-          </div>
-        `;
-      }).join("")
-    : "<p>هنوز نشانی ثبت‌شده‌ای وجود ندارد.</p>";
-}
-
-
-window.searchCity = function(city) {
-  $("searchText").value = city;
-  showSection("ads");
-  renderAds();
+window.renderAdmin=function(){
+ if(!adminLoggedIn)return;
+ const rows=Object.entries(ads).filter(([k,a])=>
+ a&&(adminFilter==="all"||a.status===adminFilter)
+ ).sort((a,b)=>(b[1].createdAt||0)-(a[1].createdAt||0));
+ $("adminList").innerHTML=rows.length?rows.map(([k,a])=>adCard(k,a,true)).join(""):'<div class="empty">آگهی‌ای در این بخش نیست.</div>';
 };
 
-
-function readFavorites() {
-  try {
-    return JSON.parse(
-      localStorage.getItem("nerkhinoFavorites") || "[]"
-    );
-  } catch (error) {
-    return [];
-  }
-}
-
-
-window.toggleFavorite = function(key) {
-  const favorites = readFavorites();
-
-  const next = favorites.includes(key)
-    ? favorites.filter(item => item !== key)
-    : [...favorites, key];
-
-  localStorage.setItem(
-    "nerkhinoFavorites",
-    JSON.stringify(next)
-  );
-
-  renderFavorites();
+window.approveAd=async function(key){
+ if(!adminLoggedIn)return alert("ابتدا وارد پنل مدیریت شوید.");
+ if(!confirm("آگهی منتشر شود؟"))return;
+ try{
+  await update(ref(db,"ads/"+key),{status:"approved",approvedAt:Date.now()});
+  alert("آگهی تأیید شد.");
+ }catch(error){
+  console.error(error);
+  alert("تأیید ناموفق بود. قوانین Firebase را بررسی کنید.");
+ }
 };
 
-
-function renderFavorites() {
-  const favorites = readFavorites();
-
-  const ads = getApprovedAds().filter(
-    ad => favorites.includes(ad.key)
-  );
-
-  $("favoritesList").innerHTML = ads.length
-    ? ads.map(ad => makeAdCard(ad)).join("")
-    : "<p>هنوز آگهی‌ای به علاقه‌مندی‌ها اضافه نکرده‌اید.</p>";
-}
-
-
-function renderFeatured() {
-  const ads = getApprovedAds()
-    .filter(ad => ad.featured === true)
-    .sort((a, b) =>
-      (b.featuredAt || b.approvedAt || b.createdAt || 0) -
-      (a.featuredAt || a.approvedAt || a.createdAt || 0)
-    );
-
-  $("featuredList").innerHTML = ads.length
-    ? ads.map(ad => makeAdCard(ad)).join("")
-    : '<p class="panel">هنوز آگهی منتخبی وجود ندارد.</p>';
-}
-
-
-const ADMIN_TEST_PASSWORD = "1234";
-
-
-window.loginAdmin = function() {
-  if ($("adminPassword").value !== ADMIN_TEST_PASSWORD) {
-    showMessage(
-      "adminMessage",
-      "رمز واردشده صحیح نیست.",
-      "error"
-    );
-    return;
-  }
-
-  adminLoggedIn = true;
-
-  $("adminLogin").classList.add("hidden");
-  $("adminContent").classList.remove("hidden");
-
-  renderAdmin();
+window.toggleFeatured=async function(key,featured){
+ if(!adminLoggedIn)return alert("ابتدا وارد پنل مدیریت شوید.");
+ try{
+  await update(ref(db,"ads/"+key),{featured,featuredAt:featured?Date.now():null});
+ }catch(error){
+  console.error(error);
+  alert("تغییر آگهی منتخب ناموفق بود.");
+ }
 };
 
-
-window.logoutAdmin = function() {
-  adminLoggedIn = false;
-
-  $("adminLogin").classList.remove("hidden");
-  $("adminContent").classList.add("hidden");
-  $("adminPassword").value = "";
+window.deleteAd=async function(key){
+ if(!adminLoggedIn)return alert("ابتدا وارد پنل مدیریت شوید.");
+ if(!confirm("آگهی حذف شود؟"))return;
+ try{
+  await remove(ref(db,"ads/"+key));
+  favorites=favorites.filter(k=>k!==key);
+  localStorage.setItem("nerkhinoFavorites",JSON.stringify(favorites));
+ }catch(error){
+  console.error(error);
+  alert("حذف آگهی ناموفق بود.");
+ }
 };
 
-
-function renderAdmin() {
-  if (!adminLoggedIn) return;
-
-  const entries = getAllAds();
-
-  const pending = entries.filter(
-    ad => ad.status === "pending"
-  );
-
-  const approved = entries.filter(
-    ad => ad.status === "approved"
-  );
-
-  $("pendingAds").innerHTML = pending.length
-    ? pending.map(ad => makeAdCard(ad, true)).join("")
-    : "<p>آگهی در انتظار بررسی وجود ندارد.</p>";
-
-  $("approvedAds").innerHTML = approved.length
-    ? approved.map(ad => makeAdCard(ad, true)).join("")
-    : "<p>آگهی منتشرشده‌ای وجود ندارد.</p>";
-}
-
-
-window.approveAd = async function(key) {
-  if (!adminLoggedIn) {
-    alert("ابتدا وارد پنل مدیریت شوید.");
-    return;
-  }
-
-  if (!confirm("آیا از انتشار این آگهی مطمئن هستید؟")) {
-    return;
-  }
-
-  try {
-    await update(ref(db, "ads/" + key), {
-      status: "approved",
-      approvedAt: Date.now()
-    });
-
-    alert("آگهی تأیید شد.");
-
-  } catch (error) {
-    console.error(error);
-
-    alert(
-      "تأیید آگهی ناموفق بود. قوانین امنیتی Firebase را بررسی کنید."
-    );
-  }
-};
-
-
-window.toggleFeatured = async function(key, featured) {
-  if (!adminLoggedIn) {
-    alert("ابتدا وارد پنل مدیریت شوید.");
-    return;
-  }
-
-  try {
-    await update(ref(db, "ads/" + key), {
-      featured: featured,
-      featuredAt: featured ? Date.now() : null
-    });
-
-    alert(
-      featured
-        ? "آگهی به بخش آگهی منتخب اضافه شد."
-        : "آگهی از آگهی منتخب برداشته شد."
-    );
-
-  } catch (error) {
-    console.error(error);
-
-    alert(
-      "تغییر آگهی منتخب ناموفق بود. قوانین Firebase را بررسی کنید."
-    );
-  }
-};
-
-
-window.deleteAd = async function(key) {
-  if (!adminLoggedIn) {
-    alert("ابتدا وارد پنل مدیریت شوید.");
-    return;
-  }
-
-  if (!confirm("آیا از حذف این آگهی مطمئن هستید؟")) {
-    return;
-  }
-
-  try {
-    await remove(ref(db, "ads/" + key));
-    alert("آگهی حذف شد.");
-
-  } catch (error) {
-    console.error(error);
-
-    alert(
-      "حذف آگهی ناموفق بود. قوانین Firebase را بررسی کنید."
-    );
-  }
-};
-
-
-populateCategories();
+initializeCategories();
+$("year").textContent=new Date().getFullYear();
 connectFirebase();
-
 </script>
 
 </body>
