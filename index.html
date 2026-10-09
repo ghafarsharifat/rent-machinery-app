@@ -922,7 +922,9 @@ function adCard(ad,admin=false){
         ${statusHtml}
         <h3>${esc(title)}</h3>
         <div class="ad-meta">${esc(ad.category||"بدون دسته‌بندی")}</div>
-        <div class="ad-meta">📍 ${esc(ad.city||ad.address||"محدوده ثبت نشده")}</div>
+       <div class="ad-meta">
+  📍 نشانی: ${esc(ad.address || ad.location || ad.area || ad.city || "نشانی ثبت نشده")}
+</div>
         ${extra}
         <div class="ad-price">${esc(money(ad))}</div>
       </div>
